@@ -13,5 +13,8 @@
   },
   "notebooks/CLIP.ipynb": {
     "CLIP.html": "09d9b784"
+  },
+  "notebooks/HelloWorld.ipynb": {
+    "HelloWorld.html": "b95bc312"
   }
 }

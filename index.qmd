@@ -2,8 +2,8 @@
 title: "social-media-lab-quarto"
 
 notebook-view:
-  - notebook: notebooks/CLIP.ipynb
-    title: "CLIP.ipynb"
+  - notebook: notebooks/HelloWorld.ipynb
+    title: "HelloWorld.ipynb"
     url: https://colab.research.google.com/drive/12GsIPQ644SI4vkEEHiZn-Qqfbr-bD1__
 ---
 
@@ -13,7 +13,7 @@ This is a Quarto website.
 print("Hello World")
 ```
 
-{{< embed notebooks/CLIP.ipynb#fig-bill-marginal >}}
+{{< embed notebooks/HelloWorld.ipynb#fig-bill-marginal >}}
 
 To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
 
