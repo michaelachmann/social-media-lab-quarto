@@ -1,0 +1,17 @@
+{
+  "index.qmd": {
+    "index.html": "b1472bc7"
+  },
+  "about.qmd": {
+    "about.html": "b20465cc"
+  },
+  "test-notebook.ipynb": {
+    "test-notebook.html": "2770d320"
+  },
+  "test-notebook.qmd": {
+    "test-notebook.html": "1c62dfd7"
+  },
+  "notebooks/CLIP.ipynb": {
+    "CLIP.html": "09d9b784"
+  }
+}
