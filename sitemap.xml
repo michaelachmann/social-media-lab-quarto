@@ -1,15 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://michaelachmann.github.io/social-media-lab-quarto/notebooks/HelloWorld.html</loc>
-    <lastmod>2023-09-22T13:45:33.368Z</lastmod>
+    <loc>https://social-media-lab.net/getting-started/getting-started.html</loc>
+    <lastmod>2023-09-22T14:55:14.614Z</lastmod>
   </url>
   <url>
-    <loc>https://michaelachmann.github.io/social-media-lab-quarto/index.html</loc>
-    <lastmod>2023-09-22T13:45:32.206Z</lastmod>
+    <loc>https://social-media-lab.net/getting-started/getting-started-revealjs.html</loc>
+    <lastmod>2023-09-22T14:55:14.295Z</lastmod>
   </url>
   <url>
-    <loc>https://michaelachmann.github.io/social-media-lab-quarto/about.html</loc>
-    <lastmod>2023-09-22T13:45:32.947Z</lastmod>
+    <loc>https://social-media-lab.net/index.html</loc>
+    <lastmod>2023-09-22T14:55:12.457Z</lastmod>
+  </url>
+  <url>
+    <loc>https://social-media-lab.net/current-projects.html</loc>
+    <lastmod>2023-09-22T14:55:11.719Z</lastmod>
+  </url>
+  <url>
+    <loc>https://social-media-lab.net/about.html</loc>
+    <lastmod>2023-09-22T14:55:13.111Z</lastmod>
   </url>
 </urlset>
