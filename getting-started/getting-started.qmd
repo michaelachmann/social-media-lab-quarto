@@ -1,0 +1,37 @@
+---
+format: 
+  html: default
+  revealjs: 
+    slide-number: true
+    logo: ../urlogo.png
+    fig-responsive: true
+    footer: Michael Achmann-Denkler | Lehrstuhl für Medieninformatik | Universität Regensburg | WiSe 2023 / 24
+    output-file: getting-started-revealjs.html
+title: "Getting Started"
+date: now
+author:
+  - name: Michael Achmann-Denkler
+    id: ma
+    orcid: 0000-0002-4754-7842
+    email: michael.achmann@informatik.uni-regensburg.de
+citation:
+    doi: 10.5281/zenodo.8199902
+    title: Notes on (Computational) Social Media Research
+license:
+    text: "Licenced under GNU Affero General Public License v3.0"
+    url: https://github.com/michaelachmann/social-media-lab-wiki/blob/main/LICENSE
+---
+
+# Introduction
+
+## What to Expect
+- Theoretical Knowledge
+- Practical Knowledge
+![](../images/banner.png)
+
+
+## Useful 
+
+# Course Plan
+
+# Test
