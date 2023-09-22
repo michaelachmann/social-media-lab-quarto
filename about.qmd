@@ -2,4 +2,52 @@
 title: "About"
 ---
 
-About this site
+
+
+**Website Owner**
+Michael Achmann
+Universitätsstr. 31
+93053 Regensburg
+Email: michael.achmann@informatik.uni-regensburg.de
+Phone: 0941 / 943 5098
+
+
+**Copyright Information:**
+Copyright © Michael Achmann 2023. The text-content and supplement materials are licensed unter [GNU GPL 3.0](https://github.com/michaelachmann/social-media-lab/blob/main/LICENSE). 
+
+Please use one of the following options for citing the content of this repository when using the notebooks and examples in your academic work.
+
+```
+Michael Achmann. (2023). michaelachmann/social-media-lab: DOI Release (v0.0.1). Zenodo. https://doi.org/10.5281/zenodo.8199902
+```
+
+```bibtex
+@software{michael_achmann_2023_8199902,
+  author       = {Michael Achmann},
+  title        = {michaelachmann/social-media-lab: DOI Release},
+  month        = jul,
+  year         = 2023,
+  publisher    = {Zenodo},
+  version      = {v0.0.1},
+  doi          = {10.5281/zenodo.8199902},
+  url          = {https://doi.org/10.5281/zenodo.8199902}
+}
+```
+
+Citing information for the website will follow soon.
+
+**Disclaimer:**
+The information contained on this website is for general informational purposes only. While we make every effort to keep the information up to date and accurate, we make no representations or warranties of any kind, express or implied, about the completeness, accuracy, reliability, suitability, or availability concerning the website or the information, products, services, or related graphics contained on the website for any purpose. Any reliance you place on such information is strictly at your own risk.
+
+**Links to Third-Party Websites:**
+This website may contain links to third-party websites. These links are provided solely for your convenience and do not imply any endorsement, sponsorship, or recommendation by us. We have no control over the content of these websites and assume no responsibility for their accuracy, legality, or content.
+
+Data Protection:
+This [MkDocs](https://squidfunk.github.io/mkdocs-material/) website is hosted on [GitHub](https://github.com/). While this website does not use any analytics software, GitHub may store cookies on your device. You can change the <a href="#__consent">cookie settings</a> at any time.
+
+**Trademark Notice:**
+All trademarks and logos used on this website are the property of their respective owners.
+
+**Contact:**
+If you have any questions or concerns regarding this impressum or our website, please contact us using the contact information provided above.
+
