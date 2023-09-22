@@ -16,5 +16,18 @@
   },
   "notebooks/HelloWorld.ipynb": {
     "HelloWorld.html": "b95bc312"
+  },
+  "getting-started.qmd": {
+    "getting-started.html": "d47dfbc5"
+  },
+  "current-projects.qmd": {
+    "current-projects.html": "cba4bfb6",
+    "document-revealjs.html": "2a9fb04e"
+  },
+  "getting-started/getting-started.qmd": {
+    "getting-started.html": "d39b3d7a",
+    "document-revealjs.html": "f6c80a6c",
+    "getting-started-revealjs.html": "eea83b78",
+    "getting-started.tex": "9f101fc6"
   }
 }

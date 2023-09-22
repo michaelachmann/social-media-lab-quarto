@@ -3,11 +3,32 @@ project:
 
 website:
   title: "Notes on (Computational) Social Media Research"
+  sidebar:
+    style: "floating"
+    search: false
+    #contents:
+    #  - section: "Getting Started"
+        #contents:
+        #  - getting-started/getting-started.qmd
+    #  - section: "Theory & Related Work"
+    #  - section: "Data Collection"
+    #  - section: "Analysis"
+      #- current-projects.qmd
   navbar:
+    tools:
+        - icon: twitter
+          href: https://twitter.com/michael_achmann
+        - icon: github
+          href:  https://github.com/michaelachmann/social-media-lab
     left:
       - href: index.qmd
         text: Home
       - about.qmd
+      
+  cookie-consent: true
+  twitter-card: true
+  site-url: https://social-media-lab.net
+
 
 execute:
   freeze: auto
