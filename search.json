@@ -46,21 +46,21 @@
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "Michael Achmann Universitätsstr. 31 93053 Regensburg Email: michael.achmann@informatik.uni-regensburg.de Phone: 0941 / 943 5098"
+    "text": "Michael Achmann  Universitätsstr. 31  93053 Regensburg  Email: michael.achmann@informatik.uni-regensburg.de  Phone: 0941 / 943 5098"
   },
   {
     "objectID": "about.html#website-owner",
     "href": "about.html#website-owner",
     "title": "About",
     "section": "",
-    "text": "Michael Achmann Universitätsstr. 31 93053 Regensburg Email: michael.achmann@informatik.uni-regensburg.de Phone: 0941 / 943 5098"
+    "text": "Michael Achmann  Universitätsstr. 31  93053 Regensburg  Email: michael.achmann@informatik.uni-regensburg.de  Phone: 0941 / 943 5098"
   },
   {
     "objectID": "about.html#copyright-information",
     "href": "about.html#copyright-information",
     "title": "About",
     "section": "Copyright Information",
-    "text": "Copyright Information\nCopyright © Michael Achmann 2023. The text-content and supplement materials are licensed unter GNU GPL 3.0.\n\nCitation\nPlease use one of the following options for citing the content of this repository when using the notebooks and examples in your academic work.\nMichael Achmann. (2023). michaelachmann/social-media-lab: DOI Release (v0.0.1). Zenodo. https://doi.org/10.5281/zenodo.8199902\n@software{michael_achmann_2023_8199902,\n  author       = {Michael Achmann},\n  title        = {michaelachmann/social-media-lab: DOI Release},\n  month        = jul,\n  year         = 2023,\n  publisher    = {Zenodo},\n  version      = {v0.0.1},\n  doi          = {10.5281/zenodo.8199902},\n  url          = {https://doi.org/10.5281/zenodo.8199902}\n}\nCiting information for the website will follow soon."
+    "text": "Copyright Information\nCopyright © Michael Achmann 2023. The text-content and supplement materials are licensed unter GNU GPL 3.0.\n\nCitation\nCiting information for the website will follow soon."
   },
   {
     "objectID": "about.html#disclaimer",
