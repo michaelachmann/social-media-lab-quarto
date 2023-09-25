@@ -29,5 +29,13 @@
     "document-revealjs.html": "f6c80a6c",
     "getting-started-revealjs.html": "eea83b78",
     "getting-started.tex": "9f101fc6"
+  },
+  "getting-started/index.qmd": {
+    "index.html": "093f2b04",
+    "getting-started-revealjs.html": "cef31c51"
+  },
+  "data-collection/index.qmd": {
+    "index.html": "15f80f23",
+    "getting-started-revealjs.html": "b49619af"
   }
 }

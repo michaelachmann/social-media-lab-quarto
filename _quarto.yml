@@ -3,18 +3,22 @@ project:
 
 website:
   title: "Notes on (Computational) Social Media Research"
+  page-navigation: true
   sidebar:
     style: "floating"
     search: false
-    #contents:
-    #  - section: "Getting Started"
-        #contents:
-        #  - getting-started/getting-started.qmd
+    contents:
+      - section: "Getting Started"
+        contents:
+          - getting-started/index.qmd
     #  - section: "Theory & Related Work"
-    #  - section: "Data Collection"
+      - section: "Data Collection"
+        contents:
+          - data-collection/index.qmd
     #  - section: "Analysis"
       #- current-projects.qmd
   navbar:
+    logo: images/logo.png
     tools:
         - icon: twitter
           href: https://twitter.com/michael_achmann
