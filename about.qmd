@@ -3,13 +3,12 @@ title: "About"
 ---
 
 
-
 ## Website Owner
 
-Michael Achmann
-Universitätsstr. 31
-93053 Regensburg
-Email: michael.achmann@informatik.uni-regensburg.de
+**Michael Achmann** <br/>
+Universitätsstr. 31 <br/>
+93053 Regensburg <br/>
+Email: michael.achmann@informatik.uni-regensburg.de <br/>
 Phone: 0941 / 943 5098
 
 
@@ -17,26 +16,6 @@ Phone: 0941 / 943 5098
 Copyright © Michael Achmann 2023. The text-content and supplement materials are licensed unter [GNU GPL 3.0](https://github.com/michaelachmann/social-media-lab/blob/main/LICENSE). 
 
 ### Citation
-
-Please use one of the following options for citing the content of this repository when using the notebooks and examples in your academic work.
-
-```
-Michael Achmann. (2023). michaelachmann/social-media-lab: DOI Release (v0.0.1). Zenodo. https://doi.org/10.5281/zenodo.8199902
-```
-
-```bibtex
-@software{michael_achmann_2023_8199902,
-  author       = {Michael Achmann},
-  title        = {michaelachmann/social-media-lab: DOI Release},
-  month        = jul,
-  year         = 2023,
-  publisher    = {Zenodo},
-  version      = {v0.0.1},
-  doi          = {10.5281/zenodo.8199902},
-  url          = {https://doi.org/10.5281/zenodo.8199902}
-}
-```
-
 Citing information for the website will follow soon.
 
 ## Disclaimer
