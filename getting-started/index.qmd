@@ -64,6 +64,15 @@ The following expectations and criteria must be met to pass the course:
 * needs to be handed in no later than **31.03.2024**.
 
 
+### Social Media Lab
+* Most course material will be available on [social-media-lab.net](https://social-media-lab.net).
+* Additional material will be provided via GRIPS.
+* We will work collaboratively on the website through the semester.
+* The content is edited using [Quarto](https://quarto.org/) and [Markdown](https://en.wikipedia.org/wiki/Markdown), you will need a [GitHub Account](https://github.com/).
+* Please provide your GitHub username to get access to the repository.
+* All content will be published under [GPL-3](https://www.gnu.de/documents/gpl.en.html).
+
+
 # Course Plan
 |  Date      | Content                                                                              |
 |:-----------|:-------------------------------------------------------------------------------------|
@@ -97,37 +106,3 @@ The following expectations and criteria must be met to pass the course:
 ### Data Collection: IG Stories
 
 ### Data Collection: TikTok
-
-
-
-# Useful Tools
-
-## Colab 
-
-[Colab](https://colab.research.google.com/?utm_source=scs-index) is a platform created by Google for collaborative work and research. It offers a preconfigured Python development environment with access to popular libraries and tools. It is based on [Jupyter notebooks](https://jupyter.org/), which allows users to create and share documents that contain live code, equations, visualizations, and narrative text. Throughout the semester I am going to provide code for different applications as Jupyter notebooks, which can easily be accessed and run on Colab.
-
----
-
-![A screenshot of Colab](/images/colab.png)
-
----
-Colab can be used for free, but it also offers a paid subscription plan called Colab Pro. The pro version offers, among other features, access to GPUs, which are often used for machine learning. We are probably going to use APIs and GPT throughout the semester, if we need to access GPUs we may use [schlaubox](https://schlaubox.de/).
-
-
-## Git & GitHub
-
-## Twitter (X)
-
-## Open Research: Project Documentation
-
-## Open Research: Research Communication 
-
-## Figma
-
-## Rawgraphs
-
-## ImageJ
-
-## PixPlot
-
-## Memespector

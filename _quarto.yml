@@ -2,7 +2,8 @@ project:
   type: website
 
 website:
-  title: "Notes on (Computational) Social Media Research"
+  title: "Social Media Lab"
+  description: "Notes on computational social media analysis"
   page-navigation: true
   sidebar:
     style: "floating"
@@ -11,10 +12,15 @@ website:
       - section: "Getting Started"
         contents:
           - getting-started/index.qmd
+          - getting-started/theory.qmd
+          - getting-started/tools.qmd
     #  - section: "Theory & Related Work"
       - section: "Data Collection"
         contents:
           - data-collection/index.qmd
+          - data-collection/ig-posts.qmd
+          - data-collection/ig-stories.qmd
+          - data-collection/tiktok.qmd
     #  - section: "Analysis"
       #- current-projects.qmd
   navbar:

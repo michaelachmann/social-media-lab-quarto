@@ -7,8 +7,10 @@ format:
     fig-responsive: true
     footer: Michael Achmann-Denkler | Lehrstuhl für Medieninformatik | Universität Regensburg | WiSe 2023 / 24
     output-file: getting-started-revealjs.html
-title: "Basics: Data Collection"
+title: "Overview"
 #title-block-banner: ../images/banner.png
+#abstract-title:
+# 
 date: now
 author:
   - name: Michael Achmann-Denkler

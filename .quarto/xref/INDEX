@@ -37,5 +37,28 @@
   "data-collection/index.qmd": {
     "index.html": "15f80f23",
     "getting-started-revealjs.html": "b49619af"
+  },
+  "projects/index.qmd": {
+    "index.html": "1d2ce871"
+  },
+  "getting-started/tools.qmd": {
+    "tools.html": "851b3bb5",
+    "getting-started-revealjs.html": "bca4b2ff"
+  },
+  "data-collection/ig-posts.qmd": {
+    "ig-posts.html": "50980cd6",
+    "getting-started-revealjs.html": "b4b1b358"
+  },
+  "data-collection/ig-stories.qmd": {
+    "ig-stories.html": "526bf4e4",
+    "getting-started-revealjs.html": "e0cbf68a"
+  },
+  "data-collection/tiktok.qmd": {
+    "tiktok.html": "2a45d3ac",
+    "getting-started-revealjs.html": "9c753688"
+  },
+  "getting-started/theory.qmd": {
+    "theory.html": "897bdfa0",
+    "getting-started-revealjs.html": "473f6e02"
   }
 }
