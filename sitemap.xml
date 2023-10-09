@@ -1,23 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://social-media-lab.net/getting-started/getting-started.html</loc>
-    <lastmod>2023-09-25T07:54:28.690Z</lastmod>
+    <loc>https://social-media-lab.net/getting-started/index.html</loc>
+    <lastmod>2023-10-09T07:37:50.740Z</lastmod>
   </url>
   <url>
-    <loc>https://social-media-lab.net/getting-started/getting-started-revealjs.html</loc>
-    <lastmod>2023-09-25T07:54:28.391Z</lastmod>
-  </url>
-  <url>
-    <loc>https://social-media-lab.net/index.html</loc>
-    <lastmod>2023-09-25T07:54:26.684Z</lastmod>
-  </url>
-  <url>
-    <loc>https://social-media-lab.net/current-projects.html</loc>
-    <lastmod>2023-09-25T07:54:25.775Z</lastmod>
+    <loc>https://social-media-lab.net/getting-started/tools.html</loc>
+    <lastmod>2023-10-09T07:37:49.325Z</lastmod>
   </url>
   <url>
     <loc>https://social-media-lab.net/about.html</loc>
-    <lastmod>2023-09-25T07:54:27.190Z</lastmod>
+    <lastmod>2023-10-09T07:37:47.693Z</lastmod>
+  </url>
+  <url>
+    <loc>https://social-media-lab.net/projects/index.html</loc>
+    <lastmod>2023-10-09T07:37:46.743Z</lastmod>
+  </url>
+  <url>
+    <loc>https://social-media-lab.net/data-collection/tiktok.html</loc>
+    <lastmod>2023-10-09T07:37:45.635Z</lastmod>
+  </url>
+  <url>
+    <loc>https://social-media-lab.net/data-collection/ig-stories.html</loc>
+    <lastmod>2023-10-09T07:37:44.534Z</lastmod>
+  </url>
+  <url>
+    <loc>https://social-media-lab.net/data-collection/index.html</loc>
+    <lastmod>2023-10-09T07:37:45.107Z</lastmod>
+  </url>
+  <url>
+    <loc>https://social-media-lab.net/data-collection/ig-posts.html</loc>
+    <lastmod>2023-10-09T07:37:46.131Z</lastmod>
+  </url>
+  <url>
+    <loc>https://social-media-lab.net/index.html</loc>
+    <lastmod>2023-10-09T07:37:47.195Z</lastmod>
+  </url>
+  <url>
+    <loc>https://social-media-lab.net/getting-started/related-work.html</loc>
+    <lastmod>2023-10-09T07:37:48.679Z</lastmod>
+  </url>
+  <url>
+    <loc>https://social-media-lab.net/getting-started/theory.html</loc>
+    <lastmod>2023-10-09T07:37:50.058Z</lastmod>
   </url>
 </urlset>
