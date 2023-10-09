@@ -4,7 +4,7 @@
     "href": "getting-started/index.html",
     "title": "About the Seminar",
     "section": "",
-    "text": "The research seminar Computational Analysis of Visual Social Media consists of project-centred work in groups, lectures on theory and practical sessions. Each group will follow their own research interests and datasets. Groups will be formed in the third session, together with preliminary topics. We have participants from different fields, the topics will mirror this interdisciplinarity, roughly drawn from the interesctions of media studies, political science, and communication science. The seminar aims at master students with first knowledge of at least one programming language.\n\n\nBy the end of the semester you should know more about:\n\nThe state of Social Media Research,\ninteresting questions to answer with social media data,\nethical and legal restrictions,\ndevelop operationalizations for visual and textual data,\n\n\n\n\nBy the end of the semester you will be able to:\n\nCollect Instagram stories, posts and TikTok videos,\napply OCR and automatically transcribe videos,\ncomputationally classify text and images using GPT and CLIP,\nevaluate and optimize your classifications using Human Annotations,\npresent your results.\n\n\n\n\nThe following expectations and criteria must be met to pass the course:\n\nIndependent immersion into a scientific topic: Literature research on your own topic, formulation of research questions, and operationalization.\nFamiliarization with new tools (supported by practical units and some provided Jupyter Notebooks).\nActive and regular team collaboration on the individual project.\nContinuous documentation of current progress through a project wiki.\nWriting a project report at the end of the semester.\n\n\n\n\nI will provide a template for your report.\nYou will continously add to your report at every stage.\nThrough the semester we will come back to the draft.\nThe goal is to publish the report on social-media-lab.net.\n\n\n\n\n\nThe project report will be handed in collaboratively,\nconsists of app. 20 pages,\nfollows the IMRAD1 principle,\nuses APA citation style,\nneeds to be handed in no later than 31.03.2024.\n\n\n\n\n\nMost course material will be available on social-media-lab.net.\nAdditional material will be provided via GRIPS.\nWe will work collaboratively on the website through the semester.\nThe content is edited using Quarto and Markdown, you will need a GitHub Account.\nPlease provide your GitHub username to get access to the repository.\nAll content will be published under GPL-3."
+    "text": "The research seminar Computational Analysis of Visual Social Media consists of project-centred work in groups, lectures on theory and practical sessions. Each group will follow their own research interests and datasets. Groups will be formed in the third session, together with preliminary topics. We have participants from different fields, the topics will mirror this interdisciplinarity, roughly drawn from the interesctions of media studies, political science, and communication science. The seminar aims at master students with first knowledge of at least one programming language.\n\n\nBy the end of the semester you should know more about:\n\nThe state of Social Media Research,\ninteresting questions to answer with social media data,\nethical and legal restrictions,\ndevelop operationalizations for visual and textual data,\n\n\n\n\nBy the end of the semester you will be able to:\n\nCollect Instagram stories, posts and TikTok videos,\napply OCR and automatically transcribe videos,\ncomputationally classify text and images using GPT and CLIP,\nevaluate and optimize your classifications using human annotations,\npresent your results.\n\n\n\n\nThe following expectations and criteria must be met to pass the course:\n\nIndependent familiarization with your own scientific topic: Literature research, formulation of research questions, and operationalization.\nWillingness to master new tools (supported by practical units and some provided Jupyter Notebooks).\nActive and regular team collaboration on the individual project.\nContinuous documentation of current progress through a project wiki.\nWriting a project report at the end of the semester.\n\n\n\n\n\nWe will openly document our project progress, incorporating a strong Open Science stance.\nThe project report template is a good starting point for your report and continuous documentation.\nThrough the semester we will come back to the draft and extend it towards the final report.\nThe goal is to publish the report on social-media-lab.net.\n\n\n\n\n\nThe project report will be handed in collaboratively,\nconsists of app. 20 pages,\nfollows the IMRAD1 principle,\nuses APA citation style,\nneeds to be handed in no later than 31.03.2024.\n\n\n\n\n\nSuggest your own project\nPossible Projects:\n\nLandtagswahl BY 2023\n\nIG Stories & Posts\nTikTok\nJugendorganisationen\n\nPolitische Influencer auf TikTok\nWar in Sozialen Medien:\n\nUkraine Invasion\nHamas Angriff auf Israel\n\nFalschinformationen & KI-Generierte Inhalte\n\n\n\n\n\n\nMost course material will be available on social-media-lab.net.\nAdditional material will be provided via GRIPS.\nWe will work collaboratively on the website through the semester.\nThe content is edited using Quarto and Markdown, you will need a GitHub Account.\nPlease provide your GitHub username to get access to the repository.\nAll content will be published under GPL-3."
   },
   {
     "objectID": "getting-started/index.html#what-to-expect-theoretical-skills",
@@ -18,21 +18,147 @@
     "href": "getting-started/index.html#what-to-expect-practical-skills",
     "title": "About the Seminar",
     "section": "",
-    "text": "By the end of the semester you will be able to:\n\nCollect Instagram stories, posts and TikTok videos,\napply OCR and automatically transcribe videos,\ncomputationally classify text and images using GPT and CLIP,\nevaluate and optimize your classifications using Human Annotations,\npresent your results."
+    "text": "By the end of the semester you will be able to:\n\nCollect Instagram stories, posts and TikTok videos,\napply OCR and automatically transcribe videos,\ncomputationally classify text and images using GPT and CLIP,\nevaluate and optimize your classifications using human annotations,\npresent your results."
   },
   {
     "objectID": "getting-started/index.html#class-requirements",
     "href": "getting-started/index.html#class-requirements",
     "title": "About the Seminar",
     "section": "",
-    "text": "The following expectations and criteria must be met to pass the course:\n\nIndependent immersion into a scientific topic: Literature research on your own topic, formulation of research questions, and operationalization.\nFamiliarization with new tools (supported by practical units and some provided Jupyter Notebooks).\nActive and regular team collaboration on the individual project.\nContinuous documentation of current progress through a project wiki.\nWriting a project report at the end of the semester.\n\n\n\n\nI will provide a template for your report.\nYou will continously add to your report at every stage.\nThrough the semester we will come back to the draft.\nThe goal is to publish the report on social-media-lab.net.\n\n\n\n\n\nThe project report will be handed in collaboratively,\nconsists of app. 20 pages,\nfollows the IMRAD1 principle,\nuses APA citation style,\nneeds to be handed in no later than 31.03.2024.\n\n\n\n\n\nMost course material will be available on social-media-lab.net.\nAdditional material will be provided via GRIPS.\nWe will work collaboratively on the website through the semester.\nThe content is edited using Quarto and Markdown, you will need a GitHub Account.\nPlease provide your GitHub username to get access to the repository.\nAll content will be published under GPL-3."
+    "text": "The following expectations and criteria must be met to pass the course:\n\nIndependent familiarization with your own scientific topic: Literature research, formulation of research questions, and operationalization.\nWillingness to master new tools (supported by practical units and some provided Jupyter Notebooks).\nActive and regular team collaboration on the individual project.\nContinuous documentation of current progress through a project wiki.\nWriting a project report at the end of the semester."
+  },
+  {
+    "objectID": "getting-started/index.html#project-documentation",
+    "href": "getting-started/index.html#project-documentation",
+    "title": "About the Seminar",
+    "section": "",
+    "text": "We will openly document our project progress, incorporating a strong Open Science stance.\nThe project report template is a good starting point for your report and continuous documentation.\nThrough the semester we will come back to the draft and extend it towards the final report.\nThe goal is to publish the report on social-media-lab.net."
+  },
+  {
+    "objectID": "getting-started/index.html#project-report",
+    "href": "getting-started/index.html#project-report",
+    "title": "About the Seminar",
+    "section": "",
+    "text": "The project report will be handed in collaboratively,\nconsists of app. 20 pages,\nfollows the IMRAD1 principle,\nuses APA citation style,\nneeds to be handed in no later than 31.03.2024."
+  },
+  {
+    "objectID": "getting-started/index.html#project-ideas",
+    "href": "getting-started/index.html#project-ideas",
+    "title": "About the Seminar",
+    "section": "",
+    "text": "Suggest your own project\nPossible Projects:\n\nLandtagswahl BY 2023\n\nIG Stories & Posts\nTikTok\nJugendorganisationen\n\nPolitische Influencer auf TikTok\nWar in Sozialen Medien:\n\nUkraine Invasion\nHamas Angriff auf Israel\n\nFalschinformationen & KI-Generierte Inhalte"
+  },
+  {
+    "objectID": "getting-started/index.html#social-media-lab",
+    "href": "getting-started/index.html#social-media-lab",
+    "title": "About the Seminar",
+    "section": "",
+    "text": "Most course material will be available on social-media-lab.net.\nAdditional material will be provided via GRIPS.\nWe will work collaboratively on the website through the semester.\nThe content is edited using Quarto and Markdown, you will need a GitHub Account.\nPlease provide your GitHub username to get access to the repository.\nAll content will be published under GPL-3."
+  },
+  {
+    "objectID": "getting-started/index.html#introduction-to-social-media-analysis",
+    "href": "getting-started/index.html#introduction-to-social-media-analysis",
+    "title": "About the Seminar",
+    "section": "Introduction to Social Media Analysis",
+    "text": "Introduction to Social Media Analysis\n\nOverview of social media studies\n\nWhich academic disciplines are interested in plattforms like Instagram?\nWhat is their interest, how do they study the user generated content?\nSpecial focus: Political Communication on Instagram\n\nHow to conduct your own literature review\nTheory: Digital Methods & Cultural Analytics\nA short word about ethics & laws"
+  },
+  {
+    "objectID": "getting-started/index.html#getting-started-tools",
+    "href": "getting-started/index.html#getting-started-tools",
+    "title": "About the Seminar",
+    "section": "Getting Started: Tools",
+    "text": "Getting Started: Tools\n\nInstallation & Configuration of different tools.\n\nGoogle Colab / Jupyter Notebooks\nQuarto & Markdown for project documentation\nGit & GitHub\nFirefox Plugins\nFigma\nand more"
+  },
+  {
+    "objectID": "getting-started/index.html#data-collection-ig-posts-stories",
+    "href": "getting-started/index.html#data-collection-ig-posts-stories",
+    "title": "About the Seminar",
+    "section": "Data Collection: IG Posts & Stories",
+    "text": "Data Collection: IG Posts & Stories\n\nPost types and platform affordances of Instagram\nHow to use Instaloader\nHow to use CrowdTangle2\nCollecting Stories using Zeeschuimer-F and the firebase backend.\nCollecting Posts using Zeeschuimer and 4CAT"
+  },
+  {
+    "objectID": "getting-started/index.html#data-collection-tiktok",
+    "href": "getting-started/index.html#data-collection-tiktok",
+    "title": "About the Seminar",
+    "section": "Data Collection: TikTok",
+    "text": "Data Collection: TikTok\n\nPost types and platform affordances of TikTok\nCollecting TikToks using Zeeschuimer and 4CAT"
+  },
+  {
+    "objectID": "getting-started/index.html#data-preprocessing",
+    "href": "getting-started/index.html#data-preprocessing",
+    "title": "About the Seminar",
+    "section": "Data Preprocessing",
+    "text": "Data Preprocessing\n\nOCR\nWe are going to use easyocr to detect and recognize text embedded in images, such as posts and stories.\nWe will export the first frame of videos for OCR and further analyses.\nAutomated Transcription\n\nWe will extract any audio from collected videos.\nWe will use whisper to transcribe the audio content of videos"
+  },
+  {
+    "objectID": "getting-started/index.html#textual-exploration",
+    "href": "getting-started/index.html#textual-exploration",
+    "title": "About the Seminar",
+    "section": "Textual Exploration",
+    "text": "Textual Exploration\n\nWe will first take a look at the textual data using simple frequency analyses and wordclouds.\nWe will use the GPT-API to explore the textual content of our data.\nOptional we might use BERTopic to explore our textual data."
+  },
+  {
+    "objectID": "getting-started/index.html#operationalization-i",
+    "href": "getting-started/index.html#operationalization-i",
+    "title": "About the Seminar",
+    "section": "Operationalization I",
+    "text": "Operationalization I\n\nThis session depends on your own research: By december you should have developed an initial research request and explored related work in order to develop the first operationalization for content analysis.\nWe will learn more about content analysis in this session.\nBased on your research, and the explorations of the previous sesssion, we will develop the first annotation guide.\nThrough the session we will explore how to (efficiently) use GPT for text data annotation."
+  },
+  {
+    "objectID": "getting-started/index.html#data-annotation",
+    "href": "getting-started/index.html#data-annotation",
+    "title": "About the Seminar",
+    "section": "Data Annotation",
+    "text": "Data Annotation\n\nIn this session we will import our data into LabelStudio and develop a final annotation manual.\nUsing the manuals and LabelStudio projects we will annotate the data.\nWe will shuffle annotators: Everyone will annotate for another group."
+  },
+  {
+    "objectID": "getting-started/index.html#evaluation-i",
+    "href": "getting-started/index.html#evaluation-i",
+    "title": "About the Seminar",
+    "section": "Evaluation I",
+    "text": "Evaluation I\n\nUsing the human annotations we will evaluate the performance of our computational text annotations / information extractions.\nWe can fine-tune our prompts using the annotation data to improve the annotation quality.\nWe will learn how to present and visualize the quality of the model."
+  },
+  {
+    "objectID": "getting-started/index.html#exploration-of-visual-data",
+    "href": "getting-started/index.html#exploration-of-visual-data",
+    "title": "About the Seminar",
+    "section": "Exploration of Visual Data",
+    "text": "Exploration of Visual Data\n\nWe will explore different tools to visualize images:\nImageJ\nPixPlot\nMemespector and Gephi3\nThe visualization forms the basis for image classification: In this stage we want to find similarities and differences."
+  },
+  {
+    "objectID": "getting-started/index.html#operationalization-ii",
+    "href": "getting-started/index.html#operationalization-ii",
+    "title": "About the Seminar",
+    "section": "Operationalization II",
+    "text": "Operationalization II\n\nOnce more a dive in the literature: This time on visual content analysis.\nCombining the results of our exploration, reserach interest and related work with content analysis, we will develop an annotation manual for the images.\nWe will learn how to use CLIP for image classification\nBased on your previous experience you will create human annotations.\nWe will shuffle annotators: Everyone will annotate for another group."
+  },
+  {
+    "objectID": "getting-started/index.html#evaluation-ii",
+    "href": "getting-started/index.html#evaluation-ii",
+    "title": "About the Seminar",
+    "section": "Evaluation II",
+    "text": "Evaluation II\n\nOnce more we will evaluate the quality of our model,\nand fine-tune our prompts.\nWork in Progress: We might organize this session differently on short notice, depending on the outcomes of my current research project.\nWaiting in Progress: In case of visual GPT being published we might have to adapt."
+  },
+  {
+    "objectID": "getting-started/index.html#data-wrangling-as-a-conversation",
+    "href": "getting-started/index.html#data-wrangling-as-a-conversation",
+    "title": "About the Seminar",
+    "section": "Data Wrangling as a Conversation",
+    "text": "Data Wrangling as a Conversation\n\nThe Advanced Data Analysis mode of ChatGPT is a powerful tool to (quickly) analyze metadata (and more) of social media data.\nWe will give it a shot with some simple analyses, like trends over time.\nExperimental in case we have enough time left, we might try to create a workflow with LangChain and LlamaIndex to chat with our data."
+  },
+  {
+    "objectID": "getting-started/index.html#visual-presentation-of-your-data",
+    "href": "getting-started/index.html#visual-presentation-of-your-data",
+    "title": "About the Seminar",
+    "section": "Visual Presentation of your Data",
+    "text": "Visual Presentation of your Data\n\nOur last session of the semester will be all about telling a story with your data.\nWe will use Python (Jupyter Notebooks) to transform our data in CSV files.\nWe will import the data into RAWGraphs to create convincing plots\nWe will use Figma to collaboratively sketch the layout of your project report website."
   },
   {
     "objectID": "getting-started/index.html#footnotes",
     "href": "getting-started/index.html#footnotes",
     "title": "About the Seminar",
     "section": "Footnotes",
-    "text": "Footnotes\n\n\nIntroduction, Method, Result, Analaysis, Discussion↩︎"
+    "text": "Footnotes\n\n\nIntroduction, Method, Result, Analaysis, Discussion↩︎\nI will not be able to provide access to the tool. We can, however, export data for our projects from the platform and you will learn how to use the exported data.↩︎\nfollowing Omena’s concept for cloud vision labels, see related work.↩︎"
   },
   {
     "objectID": "getting-started/tools.html",
@@ -233,9 +359,9 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Notes on (Computational) Social Media Research",
+    "title": "Notes on Computational Social Media Research",
     "section": "",
-    "text": "Welcome to this collection of notes on social media analysis with a special focus on computational methods. It is a work-in-progress website, created as part of my PhD project and teaching at the Media Informatics Group at the University of Regensburg, Germany. My name is Michael Achmann and I’m currently experimenting with computational approaches for multimodal analysis of social media content, like Instagram posts and stories. My aim for this website is to develop a collection of notes exploring various methodologies, techniques, and tools for social media research. The website will accompany my research seminar “Computational Analysis of Visual Social Media” in the 2023/24 winter semester.\nThe website remains, for the moment, a placeholder. As soon as I have written enough content (or the semester starts) I will update this page."
+    "text": "Welcome to this collection of notes on social media analysis with a special focus on computational methods. It is a work-in-progress website, created as part of my PhD project and teaching at the Media Informatics Group at the University of Regensburg, Germany. My name is Michael Achmann-Denkler and I’m currently experimenting with computational approaches for multimodal analysis of social media content, like Instagram posts and stories. My aim for this website is to develop a collection of notes exploring various methodologies, techniques, and tools for social media research. As a first milestone, the website will accompany my research seminar Computational Analysis of Visual Social Media in the 2023/24 winter semester.\nCode and notebooks will be published on GitHub, the repository is registered with zenodo, the README.md file provides detailed instructions for citing the provided code in academic work."
   },
   {
     "objectID": "getting-started/related-work.html",
