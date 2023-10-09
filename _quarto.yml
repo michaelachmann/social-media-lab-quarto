@@ -10,11 +10,11 @@ website:
     search: false
     contents:
       - section: "Getting Started"
-    #    contents:
-    #      - getting-started/index.qmd
-    #      - getting-started/theory.qmd
-    #      - getting-started/related-work.qmd
-    #      - getting-started/tools.qmd
+        contents:
+          - getting-started/index.qmd
+          - getting-started/theory.qmd
+          - getting-started/related-work.qmd
+          - getting-started/tools.qmd
     #  - section: "Theory & Related Work"
     #  - section: "Data Collection"
     #    contents:

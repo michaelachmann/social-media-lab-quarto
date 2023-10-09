@@ -99,7 +99,7 @@ Once you are satisfied with your changes and have committed them to your branch,
      ```
      quarto publish gh-pages
      ```
-     If you're using a custom domain or path, you might need to provide additional arguments. Refer to the [Quarto documentation](https://quarto.org/docs/publishing/github-pages.htmls) for more details.
+     If you're using a custom domain or path, you might need to provide additional arguments. Refer to the [Quarto documentation](https://quarto.org/docs/publishing/github-pages.html) for more details.
 
 2. **Verify Live Website**
    - An administrator will have to approve your publish request.
