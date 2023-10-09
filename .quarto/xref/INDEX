@@ -1,9 +1,11 @@
 {
   "index.qmd": {
-    "index.html": "b1472bc7"
+    "index.html": "b1472bc7",
+    "index.tex": "86fcf1f2"
   },
   "about.qmd": {
-    "about.html": "b20465cc"
+    "about.html": "b20465cc",
+    "about.tex": "d49fd0b6"
   },
   "test-notebook.ipynb": {
     "test-notebook.html": "2770d320"
@@ -22,7 +24,8 @@
   },
   "current-projects.qmd": {
     "current-projects.html": "cba4bfb6",
-    "document-revealjs.html": "2a9fb04e"
+    "document-revealjs.html": "2a9fb04e",
+    "current-projects.tex": "53e3a4a1"
   },
   "getting-started/getting-started.qmd": {
     "getting-started.html": "d39b3d7a",
@@ -32,33 +35,45 @@
   },
   "getting-started/index.qmd": {
     "index.html": "093f2b04",
-    "getting-started-revealjs.html": "cef31c51"
+    "getting-started-revealjs.html": "cef31c51",
+    "index.tex": "693be1d0"
   },
   "data-collection/index.qmd": {
     "index.html": "15f80f23",
-    "getting-started-revealjs.html": "b49619af"
+    "getting-started-revealjs.html": "b49619af",
+    "index.tex": "43c3a2a9"
   },
   "projects/index.qmd": {
-    "index.html": "1d2ce871"
+    "index.html": "1d2ce871",
+    "index.tex": "abfbf355"
   },
   "getting-started/tools.qmd": {
     "tools.html": "851b3bb5",
-    "getting-started-revealjs.html": "bca4b2ff"
+    "getting-started-revealjs.html": "bca4b2ff",
+    "tools.tex": "04029688"
   },
   "data-collection/ig-posts.qmd": {
     "ig-posts.html": "50980cd6",
-    "getting-started-revealjs.html": "b4b1b358"
+    "getting-started-revealjs.html": "b4b1b358",
+    "ig-posts.tex": "d4f99e3d"
   },
   "data-collection/ig-stories.qmd": {
     "ig-stories.html": "526bf4e4",
-    "getting-started-revealjs.html": "e0cbf68a"
+    "getting-started-revealjs.html": "e0cbf68a",
+    "ig-stories.tex": "c1330345"
   },
   "data-collection/tiktok.qmd": {
     "tiktok.html": "2a45d3ac",
-    "getting-started-revealjs.html": "9c753688"
+    "getting-started-revealjs.html": "9c753688",
+    "tiktok.tex": "f17e5c22"
   },
   "getting-started/theory.qmd": {
     "theory.html": "897bdfa0",
-    "getting-started-revealjs.html": "473f6e02"
+    "getting-started-revealjs.html": "473f6e02",
+    "theory.tex": "2861af95"
+  },
+  "getting-started/related-work.qmd": {
+    "related-work.html": "49630183",
+    "related-work.tex": "666ee4f0"
   }
 }

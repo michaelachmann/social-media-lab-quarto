@@ -7,7 +7,7 @@ format:
   #   fig-responsive: true
   #   footer: Michael Achmann-Denkler | Lehrstuhl für Medieninformatik | Universität Regensburg | WiSe 2023 / 24
   #   output-file: getting-started-revealjs.html
-title: "Overview"
+title: "Instagram Stories"
 #title-block-banner: ../images/banner.png
 #abstract-title:
 # 
@@ -25,16 +25,7 @@ license:
     url: https://github.com/michaelachmann/social-media-lab-wiki/blob/main/LICENSE
 ---
 
-# Introduction
 
-## What to Expect
-- Theoretical Knowledge
-- Practical Knowledge
-![](../images/banner.png)
+## Instaloader
 
-
-## Useful 
-
-# Course Plan
-
-# Test
+## Zeeschuimer-F

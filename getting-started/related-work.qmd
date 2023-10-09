@@ -1,0 +1,106 @@
+---
+format: 
+  html: default
+title: "Related Work"
+date: 2023-10-04
+bibliography: ../literature.bib
+author:
+  - name: Michael Achmann-Denkler
+    id: ma
+    orcid: 0000-0002-4754-7842
+    email: michael.achmann@informatik.uni-regensburg.de
+license: CC BY
+---
+
+While the two visual platforms Instagram and TikTok, are relatively new, plenty of research has already been published about both platforms. A naive search on google scholar for the term `instagram analysis` results in 4.180.000 results, for `tiktok analysis` in 54.800 results. We are going to take a look at current literature review studies, concentrating on Instagram. The goal for this chapter is to identify major research areas in (visual) social media research. Beyond themes, trends, and topics, review studies also offer methodological overviews on how to study social media platforms.
+
+```{=html}
+<!--
+::: {.column-page layout-ncol="2"} -->
+```
+![Screenshot of Google Scholar results for the search term "instagram analysis".](/images/scholar-screenshot.png){fig-alt="Screenshot of Google Scholar for the search term \"instagram analysis\" with about 4.180.000 results."}
+
+```{=html}
+<!--![](/images/scholar-screenshot-tiktok.png){fig-alt="Screenshot of Google Scholar for the search term \"tiktok analysis\" with about 54.800 results."}
+ ::: -->
+```
+Additionally, we will explore tools like *Publish or Perish* that help in creating one's own literature review. The *Related Work* section forms a pivotal foundation for high-quality scientific research, and a successful project report.
+
+## Literature Reviews
+
+@Rejeb2022-xr compiled a bibliometric analysis of 2,242 publications collected from the [Web of Science](https://www.webofscience.com/wos/woscc/basic-search)[^1] database. They cover publications dated from 2013--2021 and outline 22 prior review studies, most of them concentrating on a smaller scope. Topics of these reviews include: Health, Psychology, Journalism, Mental Health, Body Image, and Marketing. Overall, their bibliographic study found similar themes in the current research: Some articles analyse the use of Instagram in the context of business, marketing, and travel. Others take a psychological angle and look into personality traits or health issues. They also found scholarly articles on privacy concerns and Instagram. Here's some research interests they encountered in their review:
+
+[^1]: Accessible via VPN / on campus (when connected to eduroam).
+
+> -   How does Instagram affect social and health issues, such as social comparison, eating disorders, addiction, and suicidal ideation?
+> -   How does Instagram facilitate and transform healthcare?
+> -   What are the security and privacy concerns that result from the use of Instagram?
+> -   How does Instagram inter-relate with other social media platforms, such as Facebook and Twitter?
+> -   What are the emerging research trends and frontiers in Instagram research?
+
+The found researchers to use a multitude of methods, including surveys and questionnaires; [content analysis](theory.qmd#content-analysis) to examine user-generated content; experimental designs to test the effects of Instagram use on users' psychological states and behaviors; and qualitative methods, such as interviews and focus groups, to gain in-depth insights into users' experiences with Instagram.
+
+Interestingly the bibiometric study seems to overlook a larger portion of research covering political communication on Instagram. @Bast2021-fh concentrates on this exact topic, she reviewed 37 studies on Instagram usage by politicians, parties, and governments. 30 studies were concerned with the Instagram use of political actors. They explored different aspects, like the self-presentation of politicians, mobilization and campaign information or whether they used Instagram to talk about political issues or interact with voters. Some of the studies use a comparative approach, e.g. comparing the Instagram activity of multiple actors, others compared the Instagram usage of political actors across different countries, political systems, or election/non-election periods [@Bast2021-fh].
+
+From a methodological point of view the reivew of visual content analysis for image-based social media by @Milanesi2020-hk is quite interesting: They included 29 articles in their study and explored the platforms, that have been invastigated as well as the approach, whether the analysis was manual or automated. Outstanding at first is the large share of projects that have been classified as using automated approaches. Upon closer inspection, they have also classified the use of qualitative data analysis software like NVivo, as automation. Few projects, however, have already been using deep learning and computer vision based approaches for image analysis. Finally, the paper suggests that a mixed methodology that combines a netnographic approach, a research methodology that adapts ethnographic research techniques to the study of online communities, for textual and visual data collection in online communities and textual and visual content analysis may provide new insights for branding or destination management research. Overall, they argue for a combined analysis of textual and visual data.
+
+Overall, the
+
+## Related Work (Overview)
+
+One of the first analyses of Instagram content was published in 2013: The article explores how the interfaces of social media platforms like Instagram shape user interactions and the creation and sharing of media. Through computational analysis and visualizations of Instagram content, the authors study social and cultural patterns. They compare visual data from 13 global cities and provide a detailed analysis of photos from Tel Aviv, Israel, showing how such visualizations can offer insights into social, cultural, and political activities in specific locales over time​ [@Hochman2013-gh]. Interestingly [Lev Manovich](theory.qmd#cultural-analytics) is among the authors of this paper.
+
+![Screenshot of the [phototrails website](https://phototrails.net/instagram-cities/) visualizing 50.000 images per city.](/images/screenshot-instagram-cities.png)
+
+Shortly afterwards, in 2014, one of the most cited studies about Instagram was published. It provides a comprehensive analysis of Instagram photo content and user types, using computer vision techniques and clustering. The authors collected Instagram data using the Instagram API and developed a coding scheme for categorizing the photos. They identified eight popular photo categories and five distinct types of Instagram users in terms of their posted photos. They also found that a user's audience (number of followers) is independent of their shared photos on Instagram. This study was the first in-depth analysis of content and users on Instagram [@Hu2014-ga].
+
+### Recommended Reading
+
+| Reference        | Title                                                                                                 | Note                                                                                                                                                            |
+|------------------------|------------------------|------------------------|
+| @Bainotti2020-rn | From archive cultures to ephemeral content, and back: Studying Instagram Stories with digital methods | This paper explores Instagram stories and their collection. The authors conduct a content analysis and derive different grammars for private Instagram stories. |
+| @Omena2020-jk    | Digital Methods for Hashtag Engagement Research                                                       |                                                                                                                                                                 |
+| @Omena2021-gu    | The Potentials of Google Vision API-based Networks to Study Natively Digital Images                   |                                                                                                                                                                 |
+
+## Writing the Related Work section
+
+The aim of our project paper diverges somewhat from a comprehensive literature review, such as those that commonly serve as the start for dissertations. Nevertheless, the "Related Work" section of your paper is as an important element of your research project. The goal here is to showcase a thorough understanding of the existing literature in your field of study. This enables you to position your research within the broader academic context, highlighting its relevance and identifying gaps that your project seeks to address. It is important to discuss your findings in this section, offering insights into the methodologies, findings, and limitations of the studies you review. Here are some steps to follow:
+
+1. Ask yourself: What is your research interest?  
+2. Write down *key-words* for your research interest. 
+3. Using the key-words, start your initial search with e.g. the *Quick and Dirty* strategy. Using the first results, start an in-depth search based [on other strategies](https://onlinekurslabor.phil.uni-augsburg.de/course/text/3875/3889).
+4. Write notes to retain search terms and selected results. Tools like [Obsidian](https://obsidian.md/) or [Notion](https://www.notion.so/) are excelent tools for notes, Excel or [Google Sheets](https://docs.google.com/spreadsheets/) are simple, yet efficient, tools to structure your searches and selected literature (and we can export the data as `csv` files to process them using Python). [Publish or Perish](#publish-or-perish) is a great tool to help in this stage, as it retains a protocol of your searches and offers the data export of search results.
+5. Concentrate on reading the abstract in your initial searches. We have to work efficiently, the abstract should contain the most relevant information about a given article for a first evaluation of its importance for your project. In the section [GPT-Assisted Review](#gpt-assisted-review) I provide a notebook with a rudimentary interface for the first decision-making.
+5. Use literature management software like [Paperpile](https://paperpile.com/), [Zotero](https://www.zotero.org/), or [Citavi](https://www.citavi.com/) to organize your reading. You might start using the software already at the skimming and abstract reading stage, once the reading starts, however, I would absolutely recommend to add the read articles to the managment software: Keep the PDFs organized using the software, keep your annotations in there, keep your notes in there!
+6. At the end of your literature search process, you should be able to write the related work section of your project report and methods section. The related work section is part of your introduction and should include a summary and analysis of the relevant studies and research that has been conducted on your topic. Furthermore, your method section should ideally contain references to previous studies that have used similar methods or approaches. 
+
+
+
+### Publish or Perish
+
+[Publish or Perish](https://harzing.com/resources/publish-or-perish) is a neat piece of software, that helps documenting your literature review process. It provides a unified interface to a majority of databases. Each search can be saved, multiple searches can be organized into folders. Additionally, the results can be exported to different formats. Thus, Publish or Perish is also a good starting point for AI-Assisted literature reviews.
+
+![](/images/screenshot-publish-perish.png){fig-align="center"}
+
+### Connected Papers
+[Connected Papers](https://www.connectedpapers.com/) is one of my favorite tools for literature reseraches. Paste any [DOI](https://de.wikipedia.org/wiki/Digital_Object_Identifier) into the search field and the tool will create a graph of the article, linking the cited literature as well as incorporating newer literature that cites the work that you've been looking for. Using colors and node sizes all data is visualised neatly. 
+
+![](/images/screenshot-connected-papers.png)
+
+### GPT-Assisted Review
+
+### AI Tools
+Over the past months, several AI Literature Review tools have been released:
+
+* [Perplexity](https://www.perplexity.ai/) incorporates GPT-3 (GPT-4 and Claude-2 in the pro version) and offers a chat interface. You can ask any question, it starts answering your question based on sources which are provided in the interface. 
+* [Elicit](https://elicit.com/) works somewhat differently, it expects you to ask a research question and tries to answer you question based on papers and has the ability to extract different type of information from papers automatically. In my experience the system does not work that well for social science questions.
+* [ChatPDF](https://www.chatpdf.com/) is one of many tools that allow to upload PDF files, process them, and allow to chat with their content. In my experience it works rather well. However, as with all AI tools, we should be careful to manually verify the responses. The tool returns a link to the text anchor it refers to for answers. Overall, I recommend this tool for refinding information in papers that you've already read, or as a companion for skimming papers -- although you might miss out important information!
+* [LangChain](https://www.langchain.com/) and [LlamaIndex](https://www.llamaindex.ai/) are python package that help building applications like ChatPDF yourself. 
+
+
+--- 
+
+### References
+
+::: {#refs}
+:::

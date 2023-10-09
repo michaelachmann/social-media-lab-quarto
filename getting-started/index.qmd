@@ -1,13 +1,7 @@
 ---
 format: 
   html: default
-  revealjs: 
-    slide-number: true
-    logo: /images/urlogo.png
-    fig-responsive: true
-    footer: Michael Achmann-Denkler | Lehrstuhl für Medieninformatik | Universität Regensburg | WiSe 2023 / 24
-    output-file: getting-started-revealjs.html
-title: "About the Seminar"
+title: "About the Seminar"    
 date: now
 author:
   - name: Michael Achmann-Denkler

@@ -13,18 +13,19 @@ website:
         contents:
           - getting-started/index.qmd
           - getting-started/theory.qmd
+          - getting-started/related-work.qmd
           - getting-started/tools.qmd
     #  - section: "Theory & Related Work"
       - section: "Data Collection"
         contents:
           - data-collection/index.qmd
-          - data-collection/ig-posts.qmd
-          - data-collection/ig-stories.qmd
-          - data-collection/tiktok.qmd
+    #      - data-collection/ig-posts.qmd
+    #      - data-collection/ig-stories.qmd
+    #      - data-collection/tiktok.qmd
     #  - section: "Analysis"
-      #- current-projects.qmd
+      - projects/index.qmd
   navbar:
-    logo: images/logo.png
+    logo: images/logo2.png
     tools:
         - icon: twitter
           href: https://twitter.com/michael_achmann
@@ -39,13 +40,14 @@ website:
   twitter-card: true
   site-url: https://social-media-lab.net
 
-
 execute:
   freeze: auto
 
 format:
   html:
-    theme: cosmo
+    theme: 
+      light: cosmo
+      dark: darkly
     css: styles.css
     toc: true
 
