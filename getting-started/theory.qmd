@@ -8,24 +8,33 @@ format:
   #   footer: Michael Achmann-Denkler | Lehrstuhl für Medieninformatik | Universität Regensburg | WiSe 2023 / 24
   #   output-file: getting-started-revealjs.html
 title: "Introduction to SMA"
-date: now
+date: 2023-10-10
+bibliography: ../literature.bib
 author:
   - name: Michael Achmann-Denkler
     id: ma
     orcid: 0000-0002-4754-7842
     email: michael.achmann@informatik.uni-regensburg.de
-citation:
-    doi: 10.5281/zenodo.8199902
-    title: Notes on (Computational) Social Media Research
-license:
-    text: "Licenced under GNU Affero General Public License v3.0"
-    url: https://github.com/michaelachmann/social-media-lab-wiki/blob/main/LICENSE
+license: CC BY
 ---
 
+Social Network Analyses (SMA) are used both, in academia and in professional settings. Our course concentrates on the academic interest in Social Media, with an emphasize on questions about media, politics and society. The [related work](related-work.qmd) chapter offers an overview of research conducted with Instagram and TikTok content, even beyond our topics of interest.  In this chapter we focus on Cultural Analytics and Digital Methods as a theoretical basis for social media research. Afterwards we will take a look at the ethical and legal challenge of social media analyses and end the chapter with an overview of different methodologies.
 
 
 ## Cultural Analytics
 
 ## Digital Methods
 
-## Content Analysis
+## Ethical Considerations
+
+## Legal Considerations
+
+## Methodology
+
+### Content Analysis
+
+### Visual Content Analysis
+
+### Platform Vernaculars & Grammars
+
+### Platform Affordances

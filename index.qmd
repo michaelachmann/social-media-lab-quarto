@@ -1,10 +1,9 @@
 ---
-title: "Notes on (Computational) Social Media Research"
+title: "Notes on Computational Social Media Research"
 ---
 
 ![](images/banner.png)
 
-Welcome to this collection of notes on social media analysis with a special focus on computational methods. It is a work-in-progress website, created as part of my PhD project and teaching at the Media Informatics Group at the University of Regensburg, Germany. My name is Michael Achmann and I’m currently experimenting with computational approaches for multimodal analysis of social media content, like Instagram posts and stories. My aim for this website is to develop a collection of notes exploring various methodologies, techniques, and tools for social media research. The website will accompany my research seminar “Computational Analysis of Visual Social Media” in the 2023/24 winter semester.
+Welcome to this collection of notes on social media analysis with a special focus on computational methods. It is a work-in-progress website, created as part of my PhD project and teaching at the Media Informatics Group at the University of Regensburg, Germany. My name is [Michael Achmann-Denkler](https://go.ur.de/michael-achmann) and I’m currently experimenting with computational approaches for multimodal analysis of social media content, like Instagram posts and stories. My aim for this website is to develop a collection of notes exploring various methodologies, techniques, and tools for social media research. As a first milestone, the website will accompany my research seminar [Computational Analysis of Visual Social Media](https://campusportal.uni-regensburg.de/qisserver/pages/startFlow.xhtml?_flowId=detailView-flow&_flowExecutionKey=e1s1) in the 2023/24 winter semester.
 
-The website remains, for the moment, a placeholder. As soon as I have written enough content (or the semester starts) I will update this page.
-
+Code and notebooks will be published on [GitHub](https://github.com/michaelachmann/social-media-lab), the repository is registered with zenodo, the [README.md](https://github.com/michaelachmann/social-media-lab#citation) file provides detailed instructions for citing the provided code in academic work. 

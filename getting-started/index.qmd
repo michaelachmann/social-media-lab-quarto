@@ -1,10 +1,8 @@
 ---
 format: 
   html: default
-  beamer:
-    keep-tex: true   
 title: "About the Seminar"    
-date: now
+date: 2023-10-09
 author:
   - name: Michael Achmann-Denkler
     id: ma
@@ -75,7 +73,7 @@ The following expectations and criteria must be met to pass the course:
 
 ## Social Media Lab
 * Most course material will be available on [social-media-lab.net](https://social-media-lab.net).
-* Additional material will be provided via GRIPS.
+* Additional material will be provided via [GRIPS](https://elearning.uni-regensburg.de/course/view.php?id=63813).
 * We will work collaboratively on the website through the semester.
 * The content is edited using [Quarto](https://quarto.org/) and [Markdown](https://en.wikipedia.org/wiki/Markdown), you will need a [GitHub Account](https://github.com/).
 * Please provide your GitHub username to get access to the repository.
@@ -86,8 +84,8 @@ The following expectations and criteria must be met to pass the course:
 |  Date      | Content                                                                              |
 |:-----------|:-------------------------------------------------------------------------------------|
 |  16.10.23  | Course Organization          |
-|  23.10.23  | Introduction to Social Media Analysis |
-|  30.10.23  | Projects &amp; Groups, <br/> Getting Started: Tools                                                                |
+|  23.10.23  | [Introduction to Social Media Analysis](theory.qmd) |
+|  30.10.23  | Projects &amp; Groups, <br/> [Getting Started: Tools](tools.qmd)                                 |
 |  06.11.23  | Data Collection: IG Posts &amp; Stories                                              |
 |  13.11.23  | Data Collection: TikTok                                                              |
 |  20.11.23  | Data Preprocessing: OCR &amp; Whisper                                                |
@@ -165,7 +163,7 @@ The following expectations and criteria must be met to pass the course:
 * We will explore different tools to visualize images:
  + [ImageJ](https://imagej.nih.gov/ij/download.html)
  + [PixPlot](https://github.com/YaleDHLab/pix-plot)
- + [Memespector](https://github.com/jason-chao/memespector-gui) and [Gephi](https://gephi.org/)^[following Omena's concept for cloud vision labels, see [related work](related-work.qmd).]
+ + [Memespector](https://github.com/jason-chao/memespector-gui) and [Gephi](https://gephi.org/)^[following Omena's concept for cloud vision labels, see [related work]().]
 * The visualization forms the basis for image classification: In this stage we want to find similarities and differences.
 
 ## Operationalization II

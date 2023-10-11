@@ -75,5 +75,13 @@
   "getting-started/related-work.qmd": {
     "related-work.html": "49630183",
     "related-work.tex": "666ee4f0"
+  },
+  "data-collection/ig-instaloader.ipynb": {
+    "ig-instaloader.html": "b91724ba",
+    "ig-instaloader.ipynb.html": "be29f8d2"
+  },
+  "notebooks/ig-instaloader.ipynb": {
+    "ig-instaloader.ipynb.html": "37c54ceb",
+    "ig-instaloader.html": "1b6aa234"
   }
 }

@@ -7,43 +7,48 @@ author:
   - name: Michael Achmann-Denkler
     id: ma
     email: michael.achmann@informatik.uni-regensburg.de
-license:
-    text: "Licenced under GNU Affero General Public License v3.0"
-    url: https://github.com/michaelachmann/social-media-lab-wiki/blob/main/LICENSE
 ---
 
-Starting in 2022, several student projects and bachelor and master theses have been exploring Social Media Analysis under my supervision. Each project approached the field with a unique research interest and questions, influenced by interdisciplinary questions and perspectives.
+Starting in 2022, several student projects and bachelor and master theses have been exploring Social Media Analysis under my supervision. Each project approached the field with a unique research interest and questions, influenced by interdisciplinary questions and perspectives. On this page I keep track of past and current projects. 
 
 
-## Bachelor Theses
+## Semester Projects
+
+### Digital Humanities -- Winter 2022/2023
+* "Trends in Visual Features of NFT Art from the Most Economically Successful Artists on OpenSea" (Ferah Noor, Mari McCarville)
+* "Body Positivity auf Instagram – Eine qualitative Inhaltsanalyse" (Anna Ignjatovic, Adela Myslikova, Ronny Retschmeier)
+* "Aktivismus oder Klimaterror? Die Kommentierung der Klimabewegung auf Twitter in der Analyse" (Marie Ederer, Sebastian Daniel)
+* "Die Relevanz des Ukraine-Kriegs im nationalen Kontext BILD, SZ und Tagesschau im Vergleich" (Milena Bach, Tobias Ederer, Sebastian Mißler)
+* "Die Verwendung naturverbundener Farben anhand ausgewählter Food-Influencerinnen" (Anna Zagel, Mona Meier-to-Krax, Chiara Rahe)
+* "Instagram Beiträge zum Thema Ukraine von Nachrichtenkanälen aus verschiedenen Ländern (vor und während des Krieges im Vergleich)" (Philipp Pielmeier, Katharina Kampa, Johanna Grünler)
+* "Die Vermarktung von ESN-Fitnessprodukten in den Stories auf der Plattform Instagram" (Kessler Julia, Nett Ellena, Ousseni Océane, Traßl-Wilterius Annika, Umbreit Janosch)
+* "Politisches Posten im Rahmen des Krieges in der Ukraine" (Jakob Berg)
+
+
+### Computational Analysis of Visual Social Media -- Winter 2023/2024
+*Work in Progress:* We will form groups with a final set of topics on October, 30th. [We organize our groups and topics on mural.](https://app.mural.co/t/dh0000/m/dh0000/1696936861193/3ecf3d9c56ee7d6999a23b06a01877b377c32332?sender=u28bb3505e871d61e7f0b7425)
+
+## Theses
+
+### Bachelor
 
 | Title                                                                                                                                    	| Author          	| Status           	| Year 	|
 |------------------------------------------------------------------------------------------------------------------------------------------	|-------------------	|------------------	|------	|
 | Social Media Analyse von Instagram Stories am Beispiel politischer Akteure während der Bundestagswahl 2021                             	| Lisa Hampel       	| Completed        	| 2021 	|
 | Sammlung und Auswertung eines Social-Media-Korpus durch Entwicklung eines Browser-Plugins zur Annotation von Instagram Stories         	| Ruslan Asabidi    	| Completed        	| 2021 	|
 | Classification of Multimodal Social Media Crisis Data – Evaluation and Comparison of two Multimodal Machine Learning Models            	| Markus Weinberger 	| Completed        	| 2023 	|
+| Reaktionen politischer Akteure auf den russischen Angriffskrieg in Instagram Stories & Videos                                            	| Franka Heinlein   	| Completed 	| 2023 	|
+| Political stories -- improving face recognition performance for political Instagram story analysis                                       	| Philip Pirkl      	| Completed 	| 2023 	|
 | Data Donations and Ephemeral Content: Obtaining Instagram-Stories                                                                        	| Tobias Lanzl      	| Work in Progress 	| 2023 	|
-| Reaktionen politischer Akteure auf den russischen Angriffskrieg in Instagram Stories & Videos                                            	| Franka Heinlein   	| Work in Progress 	| 2023 	|
 | Xu Hướng: An Analysis of Trending TikTok Videos in Vietnam                                                                               	| Thuy-Linh Nguyen  	| Work in Progress 	| 2023 	|
-| Political stories -- improving face recognition performance for political Instagram story analysis                                       	| Philip Pirkl      	| Work in Progress 	| 2023 	|
 | Entwicklung eines interaktiven Dashboards zur Echtzeitauswertung der politischen Kommunikation   auf Instagram im Landtagswahlkampf 2023 	| Jonas Ernst       	| Work in Progress 	| 2023 	|
 
-## Master Theses
+### Master
 
 | Title                                                                                                                                    	| Author          	| Status           	| Year 	|
 |------------------------------------------------------------------------------------------------------------------------------------------	|-------------------	|------------------	|------	|
 | Untersuchung der Telegram-Kanäle der "Querdenker"-Bewegung                                                                                                                            	| Theresa   Strohmeier 	| Completed 	| 2022 	|
-| Investigating African American Writing and Thought by comparison of two corpora via Distant Reading                                                                                   	| Aenne Knierim        	| Completed 	| 2022 	|
-| Selbstoptimierung vs. Selbstliebe? Eine vergleichende Inhaltsanalyse von Fitspiration- und Bodypositivity-Bildern auf Instagram mit Methoden der automatischen   Bildklassifikation 	| Julia Glas           	| Completed 	| 2022 	|
+| Investigating African American Writing and Thought by comparison of two corpora via Distant Reading                                                                                   	| [Aenne Knierim](https://www.uni-hildesheim.de/fr/lsf/personen/person/?lsfid=7490&cHash=bd707747c4efef797ffcdc987b6646a9)        	| Completed 	| 2022 	|
+| Selbstoptimierung vs. Selbstliebe? Eine vergleichende Inhaltsanalyse von Fitspiration- und Bodypositivity-Bildern auf Instagram mit Methoden der automatischen   Bildklassifikation 	| [Julia Glas](https://www.psy.lmu.de/ffp/persons/ag-fischer/glas-julia/index.html)           	| Completed 	| 2022 	|
 | Analyse visueller und textueller Kommunikationsaspekte von deutschen Lifestyle-Influencern auf Instagram und deren Einfluss auf das User Engagement                                 	| Nina Dillinger       	| Completed 	| 2023 	|
 
-## Semester Projects
-
-### Digital Humanities -- Winter 2022/2023
-
-### Computational Analysis of Visual Social Media -- Winter 2023/2024
-
-**Suggested Projects**
-
-* Exploration of the Bavarian State Election on TikTok
-* 
