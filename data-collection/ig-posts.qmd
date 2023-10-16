@@ -2,7 +2,8 @@
 title: "Instagram Posts"
 format: 
   html: default
-date: now
+date: 2023-10-16
+bibliography: ../literature.bib
 author:
   - name: Michael Achmann-Denkler
     id: ma
@@ -26,10 +27,21 @@ Posts offer different affordances. First of all they contain at least one image 
 Through the following subchapters I will try to illuminate the advantages of each collection methods. For each method I will provide a manual to follow in order to collect metadata and the actual media for Instagram posts.
 
 ## Instaloader
-[Instaloader](https://instaloader.github.io/) is a python package for downloading instagram pictures and videos along with their metadata.
+[Instaloader](https://instaloader.github.io/) is a python package for downloading instagram pictures and videos along with their metadata. I have written a [getting started tutorial on Medium](https://achmann.dev/getting-started-with-instagram-analysis-instaloader-bbf686cb6e3b). It is, together with [the provided notebook](https://github.com/michaelachmann/ig-tutorial/blob/main/01_DataCollection.ipynb), the basis for this chapter.
 
 {{< embed ../notebooks/ig-instaloader.ipynb echo=true >}}
 
 ## CrowdTangle
+![Screenshot of the [CrowdTangle](https://www.crowdtangle.com/) interface.](/images/crowdtangle.png){width="600"}
+
+[CrowdTangle](https://www.crowdtangle.com/) is the best option to collect IG posts -- in theory. It provides legal access to Instagram data and offers several tools to export large amount of data. For a current project we've exported more than 500.000 public posts through a hashtag query. Unfortunately there are several restrictions: CrowdTangle is the best tool to export metadata of public posts, and captions. The abilty to collect images through the platform is limited: Image links expire after a certain amount of time, thus we need to use some makeshift approach to download the images. When we can download the images, it's always just one per post, no matter if it's a gallery or a single image. And let's not talk about videos. I have written [another Medium story with a step-by-step guide to CrowdTangle](https://achmann.dev/crowdtangle-for-instagram-analysis-a-step-by-step-guide-for-beginners-6d4f1f8cb0a3).
 
 ## Zeeschuimer & 4CAT
+Zeeschuimer [@Peeters_undated-ee] and 4CAT [@Peeters_undated-ow] are two tools developed for the [https://wiki.digitalmethods.net/](Digital Methods Initiative). The first is a firefox plugin that captures traffic when browsing websites likes Instagram or TikTok. The second, 4CAT, is an analysis platform incorporating several steps of preprocessing and further analyses. For post collection we can use the original [Zeeschuimer Firefox Plugin](https://github.com/digitalmethodsinitiative/zeeschuimer), download the latest release from GitHub and install it in Firefox. 
+
+We can use our own 4CAT instance at [https://4cat.digitalhumanities.io/](https://4cat.digitalhumanities.io/)
+
+## References
+
+::: {#refs}
+:::

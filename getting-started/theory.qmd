@@ -18,16 +18,21 @@ author:
 license: CC BY
 ---
 
-Social Network Analyses (SMA) are used both, in academia and in professional settings. Our course concentrates on the academic interest in Social Media, with an emphasize on questions about media, politics and society. The [related work](related-work.qmd) chapter offers an overview of research conducted with Instagram and TikTok content, even beyond our topics of interest.  In this chapter we focus on Cultural Analytics and Digital Methods as a theoretical basis for social media research. Afterwards we will take a look at the ethical and legal challenge of social media analyses and end the chapter with an overview of different methodologies.
-
+Social Network Analyses (SMA) are used both, in academia and in professional settings. Depending on the research agenda, different methodologies may be applied [@Kanthawala2022-zu; @Rejeb2022-xr]. Our course concentrates on the academic interest in Social Media, with an emphasize on questions about media, politics and society, thus an intersection of communication science and political science. The [related work](related-work.qmd) chapter offers an overview of research conducted with Instagram and TikTok content, even beyond our topics of interest.  In this chapter, though, we focus on Cultural Analytics and Digital Methods as a theoretical basis for social media research. Afterwards we will take a look at the ethical and legal challenge of social media analyses and end the chapter with an overview of different methodologies.
 
 ## Cultural Analytics
+Cultural analytics, as explained in the introductory chapter of the book "Cultural Analytics" by Lev Manovich, is a field that uses computers to analyze and understand large amounts of cultural information or "big cultural data". This might include exploring big collections of images, videos, or other media data to see patterns and trends that are happening in digital culture. Manovich talks about some key questions and challenges in cultural analytics. For example, one big question is whether we should focus on finding common themes and patterns in our data, or whether we should pay more attention to things that are unusual or rare. Also, while cultural analytics can be a powerful tool for understanding aspects of culture, especially in the digital world, Manovich tells us to be aware of its limits. He says that computers and data analysis can tell us a lot, but they can't understand culture in the rich and deep way that humans can, especially when it comes to understanding things like aesthetics (beauty, style, etc.). So, while cultural analytics can help us see large scale patterns and trends in culture, Manovich advises us to also appreciate and be aware of what it can’t see or understand. The field of cultural analytics then becomes a space where we use computational tools to explore and question culture, while also being mindful of the limitations and challenges of using these tools [@Manovich2020-qq]. 
 
 ## Digital Methods
+"Digital Methods," as introduced by @Rogers2013-ja, proposes a paradigm wherein the internet is both a site and a source for research, especially for social media studies. Unlike conventional research approaches that see the internet merely as a tool or data source, Rogers advocates for a methodology that is intrinsically web-centric, understanding and employing the unique dynamics and mechanics of the digital medium itself. And example for a digital methods research project is understanding algorithmic operations, especially of search engines like Google, and comprehending their impact on digital culture, information accessibility, and user engagement. This perspective is important to explore the foundations of how information is organized, ranked, and accessed online. Studying the digital medium itself means to study web-native phenomena such as hyperlink networks, search engine behaviors, and social media activities to uncover patterns, tendencies, and hierarchical structures within digital cultures and societies. 
+
+The concepts of cultural analytics and digital methods will guide us through our semester and our projects: We borrow the idea to use computational methods in order to understand "big cultural data" form Manovich and the concept of studying the digital medium itself from Rogers. Throughout the semester will enrich our projects with more focused literature and theory based on the research interests. Beyond these foundations, we will borrow from i.e. the Computational Social Sciences [@Lazer2009-mp], the concept of Distant Viewing [@Arnold2019-ls], or [Grammars of Action](#platform-vernaculars--grammars) [@Agre1994-qi; @Gerlitz2018-pn; @Bainotti2020-rn; @Omena2020-jk], and [Platform Vernaculars](#platform-vernaculars--grammars) [@Gibbs2015-se].
+
+## Legal Considerations
+
 
 ## Ethical Considerations
 
-## Legal Considerations
 
 ## Methodology
 
@@ -37,4 +42,19 @@ Social Network Analyses (SMA) are used both, in academia and in professional set
 
 ### Platform Vernaculars & Grammars
 
+
 ### Platform Affordances
+
+
+## Recommended Reading
+The following books provide a good introduction in Social Media Analyses using computational approaches. They are available at the UR library.
+
+* @Haim2023-or: Computational Communication Science: Eine Einführung.
+* @Quan-Haase2022-mx: The SAGE handbook of social media research methods.
+
+--- 
+
+### References
+
+::: {#refs}
+:::
