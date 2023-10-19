@@ -18,7 +18,19 @@ author:
 license: CC BY
 ---
 
-Social Network Analyses (SMA) are used both, in academia and in professional settings. Depending on the research agenda, different methodologies may be applied [@Kanthawala2022-zu; @Rejeb2022-xr]. Our course concentrates on the academic interest in Social Media, with an emphasize on questions about media, politics and society, thus an intersection of communication science and political science. The [related work](related-work.qmd) chapter offers an overview of research conducted with Instagram and TikTok content, even beyond our topics of interest.  In this chapter, though, we focus on Cultural Analytics and Digital Methods as a theoretical basis for social media research. Afterwards we will take a look at the ethical and legal challenge of social media analyses and end the chapter with an overview of different methodologies.
+Social Media Analyses (SMA) are used both, in academia and in professional settings. Depending on the research agenda, different methodologies may be applied [@Kanthawala2022-zu; @Rejeb2022-xr]. In our course, we focus on the academic exploration of Social Media. We place particular emphasis on questions related to media, politics, and society. This represents a confluence of communication science and political science, intertwined with computational methods.
+
+Bridging this discussion, there are several disciplines pivotal to the academic analysis of social media data at this intersection: @Lazer2009-mp outlined in an influencial article **computational social science** as an emerging field that built on the ability to collect and analyze vast amounts of data. The goal of the computational social science, according to this article, is to reveal patterns in human interactions, benefiting from various data sources such as emails, phone records, online social networks, and other digital traces left by individuals. We are going to concentrate on social media data, a type of data described by @Quan-Haase2022-db as incidental, since the data exists and is being created, no matter the researchers observing them -- or not. One special type of data, Instagram stories, even have an ephemeral character. 24 hours after posting the story expires -- becoming invisible for followers and researchers alike [see also @Leaver2020-cj on the importance of stories]. @Van_Atteveldt2018-ly noted a surge in the use of computational methods in communication science, attributing it to three primary factors: the availability of digital data, sophisticated data analysis tools, and the emergence of cost-effective, potent processing capabilities complemented by accessible computing infrastructure. Building on this perspective, @Haim2023-or sees the **computational communication science** as a sub-discipline of communication science that addresses digitally altered objects of research, which require computational approaches to tackle to amount and complexity of this special type of data.
+
+In the realm of **digital humanities**, computational approaches to text analysis have a long history, influenced by concepts such as **distant reading** [@Moretti2000-kj] and **macroanalysis** [@Jockers2013-hu]. Manovich picks up these concepts in his [**cultural analytics**](#cultural-analytics), see below. Lately also **distant viewing** has been outlined, as "a methodological and theoretical framework for the study of large collections of visual materials" [@Arnold2019-ls]. I see potential in integrating approaches and methods from the digital humanities into social media analysis. Vice versa, there's also potential in utilizing methods used for social media analysis to address questions in the humanities.
+
+Challanges for social media analyses have been outlined by @Quan-Haase2022-mx: the role of theory, representativeness of data, scale, multimodality, data accessability, and legal and ethical considerations. Through our semester we are going to work on several of those challanges: In the *Operationalization* session we are going to talk about data-driven approaches [bearing in mind @Anderson2008-cq], as well as theories as basis for your research questions and operationalizations. The representativeness of data will be the challenge for our data collection sessions: We will not just answer *how* to collect data, but also *what* data to collect. The two challenges left are at the centre of our seminar: Our answer for the challenge of scale is to apply computational methods for data analysis, to process data at scale. Multimodality is another key issues of this seminar: We want to *computationally* process *visual* (or *multimodal*) data. We will talk about accessability problems thorugh our data collection classes, and talk about legal and ethical issues on this page.
+
+Keeping these introductory considerations in mind, we immerse into a short outline of two theories: [Cultural Analytics](#cultural-analytics) and [Digital Methods](#digital-methods), as foundational elements for social media research. Subsequently, we'll address the ethical and legal challenges associated with analyzing social media. We'll conclude the chapter by presenting an array of methodologies. In the [related work](related-work.qmd) chapter, you'll find an overview of research on Instagram and TikTok content, even extending beyond our primary topics of interest.
+
+::: {.callout-note}
+The intent of this article is to provide a brief introduction to the field of computational social media analysis, tailored for my [Winter 2023/24 seminar](index.qmd). It offers only a cursory glance at various theories and methodologies. As such, please do not regard the content of this page as a definitive scientific piece. Instead, view it as a compass to guide and inspire your own research endeavors.
+:::
 
 ## Cultural Analytics
 Cultural analytics, as explained in the introductory chapter of the book "Cultural Analytics" by Lev Manovich, is a field that uses computers to analyze and understand large amounts of cultural information or "big cultural data". This might include exploring big collections of images, videos, or other media data to see patterns and trends that are happening in digital culture. Manovich talks about some key questions and challenges in cultural analytics. For example, one big question is whether we should focus on finding common themes and patterns in our data, or whether we should pay more attention to things that are unusual or rare. Also, while cultural analytics can be a powerful tool for understanding aspects of culture, especially in the digital world, Manovich tells us to be aware of its limits. He says that computers and data analysis can tell us a lot, but they can't understand culture in the rich and deep way that humans can, especially when it comes to understanding things like aesthetics (beauty, style, etc.). So, while cultural analytics can help us see large scale patterns and trends in culture, Manovich advises us to also appreciate and be aware of what it can’t see or understand. The field of cultural analytics then becomes a space where we use computational tools to explore and question culture, while also being mindful of the limitations and challenges of using these tools [@Manovich2020-qq]. 
@@ -28,29 +40,58 @@ Cultural analytics, as explained in the introductory chapter of the book "Cultur
 
 The concepts of cultural analytics and digital methods will guide us through our semester and our projects: We borrow the idea to use computational methods in order to understand "big cultural data" form Manovich and the concept of studying the digital medium itself from Rogers. Throughout the semester will enrich our projects with more focused literature and theory based on the research interests. Beyond these foundations, we will borrow from i.e. the Computational Social Sciences [@Lazer2009-mp], the concept of Distant Viewing [@Arnold2019-ls], or [Grammars of Action](#platform-vernaculars--grammars) [@Agre1994-qi; @Gerlitz2018-pn; @Bainotti2020-rn; @Omena2020-jk], and [Platform Vernaculars](#platform-vernaculars--grammars) [@Gibbs2015-se].
 
-## Legal Considerations
+## Legal & Ethical Challenges
+@Zimmer2010-zh
 
-
-## Ethical Considerations
 
 
 ## Methodology
-
-### Content Analysis
+The how
 
 ### Visual Content Analysis
+> 1. „Formulierung der Forschungsfragen bzw. Forschungshypothesen
+> 2. Untersuchungsplanung
+> 3. Populationsdefinition und Stichprobenziehung
+> 4. Archivierung und Aufbereitung des Untersuchungsmaterials
+> 5. Deduktiver Entwurf des Kategoriensystems sowie des Codebuches
+> 6. Induktive Überarbeitung des Kategoriensystems sowie des Codebuches
+> 7. Pretest und Revision des Kategoriensystems sowie des Codebuches
+> 8. Kodiererschulung
+> 9. Reliabilitätsanalyse und Finalisierung des Kategoriensystemssowie des Codebuches
+> 10. Datenerhebung durch Kodierung der gesamten Stichprobe
+> 11. Statistische Datenanalyse der per Inhaltsanalyse generierten Messwerte und
+> 12. Interpretation der statistischen Ergebnisse der Inhaltsanalyse.“
 
-### Platform Vernaculars & Grammars
+All the steps for content analysis according to @Doring2016-ul
+
 
 
 ### Platform Affordances
 
 
-## Recommended Reading
-The following books provide a good introduction in Social Media Analyses using computational approaches. They are available at the UR library.
+### Platform Vernaculars & Grammars
+Verbindung der beiden Features Affordanzen + Grammatiken. Hier auch das 3L concept von Omena ansprechen.
 
+
+## Summary 
+
+## Further Reading
+
+### Conferences
+* AoIR
+* ...
+
+### Journals
+* New Media & Society
+* ...
+
+### Textbooks
+* @Rose2016-qb: Visual Methodologies: An Introduction to Researching with Visual Materials.
 * @Haim2023-or: Computational Communication Science: Eine Einführung.
 * @Quan-Haase2022-mx: The SAGE handbook of social media research methods.
+
+### Online Resources 
+* [Richard Rogers: Social Media Research with Digital Methods (YouTube)](https://www.youtube.com/watch?v=PtSNZfYKRnk)
 
 --- 
 

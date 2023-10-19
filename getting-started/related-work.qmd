@@ -14,17 +14,17 @@ license: CC BY
 
 While the two visual platforms Instagram and TikTok, are relatively new, plenty of research has already been published about both platforms. A naive search on google scholar for the term `instagram analysis` results in 4.180.000 results, for `tiktok analysis` in 54.800 results. We are going to take a look at current literature review studies, concentrating on Instagram. The goal for this chapter is to identify major research areas in (visual) social media research. Beyond themes, trends, and topics, review studies also offer methodological overviews on how to study social media platforms.
 
-```{=html}
-<!--
-::: {.column-page layout-ncol="2"} -->
-```
+
+
 ![Screenshot of Google Scholar results for the search term "instagram analysis".](/images/scholar-screenshot.png){fig-alt="Screenshot of Google Scholar for the search term \"instagram analysis\" with about 4.180.000 results."}
 
-```{=html}
-<!--![](/images/scholar-screenshot-tiktok.png){fig-alt="Screenshot of Google Scholar for the search term \"tiktok analysis\" with about 54.800 results."}
- ::: -->
-```
 Additionally, we will explore tools like *Publish or Perish* that help in creating one's own literature review. The *Related Work* section forms a pivotal foundation for high-quality scientific research, and a successful project report.
+
+
+
+::: {.callout-note}
+The intent of this article is to provide a brief overview of the field of computational social media analysis, tailored for my [Winter 2023/24 seminar](index.qmd). As such, please do not regard the content of this page as a definitive scientific piece. Instead, view it as a compass to guide and inspire your own research endeavors.
+:::
 
 ## Literature Reviews
 
@@ -53,6 +53,14 @@ One of the first analyses of Instagram content was published in 2013: The articl
 ![Screenshot of the [phototrails website](https://phototrails.net/instagram-cities/) visualizing 50.000 images per city.](/images/screenshot-instagram-cities.png)
 
 Shortly afterwards, in 2014, one of the most cited studies about Instagram was published. It provides a comprehensive analysis of Instagram photo content and user types, using computer vision techniques and clustering. The authors collected Instagram data using the Instagram API and developed a coding scheme for categorizing the photos. They identified eight popular photo categories and five distinct types of Instagram users in terms of their posted photos. They also found that a user's audience (number of followers) is independent of their shared photos on Instagram. This study was the first in-depth analysis of content and users on Instagram [@Hu2014-ga].
+
+### Instagram Stories
+
+### TikTok
+::: {.callout-caution}
+## Work-In-Progress
+I have yet concentrated on literature about Instagram. An update for this section will be the outcome of our seminar!
+:::
 
 ### Recommended Reading
 

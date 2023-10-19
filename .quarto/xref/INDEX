@@ -83,5 +83,8 @@
   "notebooks/ig-instaloader.ipynb": {
     "ig-instaloader.ipynb.html": "37c54ceb",
     "ig-instaloader.html": "1b6aa234"
+  },
+  "processing/operationalization.qmd": {
+    "operationalization.html": "58f64cc4"
   }
 }
