@@ -8,7 +8,7 @@ format:
   #   footer: Michael Achmann-Denkler | Lehrstuhl für Medieninformatik | Universität Regensburg | WiSe 2023 / 24
   #   output-file: getting-started-revealjs.html
 title: "Tools and Software"
-date: now
+date: 2023-10-23
 author:
   - name: Michael Achmann-Denkler
     id: ma

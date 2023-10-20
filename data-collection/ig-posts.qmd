@@ -20,9 +20,9 @@ notebook-view:
 
 Instagram offers two ways of image sharing: permanent posts and [ephemeral stories](ig-stories.qmd). In this chapter I will offer three approaches for collecting posts: [Instaloader](#instaloader), [CrowdTangle](#crowdtangle), and [Zeeschuimer](#zeeschuimer--4cat). 
 
-![ A screenshot of a post by @bundeskanzler.](/images/instagram-post.png){fig-align="center" width=95%}
+<!--![ A screenshot of a post by @bundeskanzler.](/images/instagram-post.png){fig-align="center" width=95%} //-->
 
-Posts offer different affordances. First of all they contain at least one image or video. Posts may also contain an album consisting of more than one image or video. Morever, posts are accompanied by a caption, a longer text snippet provided by the author of the post. These captions may contain hashtags and / or mentions. Hashtags are used to self-organize posts on the platform, users can subscribe to hashtags and search for them. Mentions are used to link a post to another profile. Moreover, users can like, share and comment posts. Some data-collection approaches, like CrowdTangle, offer access to one image and post metrics, like the comment and like count. Instaloader, offer access to all images / videos, while being the legally most questionable approach. And then there's the middle ground: Zeeschuimer (optionally in connection with 4CAT). 
+Posts are shaped by several [affordances](/getting-started/theory.qmd#platform-affordances) and contain different type of media: least one image or video, often paired with text (captions). Posts may also contain an album consisting of more than one image or video. Captions may contain hashtags and / or mentions. Hashtags are used to self-organize posts on the platform, users can subscribe to hashtags and search for them. Mentions are used to link a post to another profile. Moreover, users can like, share and comment posts. Some data-collection approaches, like CrowdTangle, offer access to one image and post metrics, like the comment and like count. Instaloader, offer access to all images / videos, while being the legally most questionable approach. And then there's the middle ground: Zeeschuimer (optionally in connection with 4CAT). 
 
 Through the following subchapters I will try to illuminate the advantages of each collection methods. For each method I will provide a manual to follow in order to collect metadata and the actual media for Instagram posts.
 
@@ -39,7 +39,12 @@ Through the following subchapters I will try to illuminate the advantages of eac
 ## Zeeschuimer & 4CAT
 Zeeschuimer [@Peeters_undated-ee] and 4CAT [@Peeters_undated-ow] are two tools developed for the [https://wiki.digitalmethods.net/](Digital Methods Initiative). The first is a firefox plugin that captures traffic when browsing websites likes Instagram or TikTok. The second, 4CAT, is an analysis platform incorporating several steps of preprocessing and further analyses. For post collection we can use the original [Zeeschuimer Firefox Plugin](https://github.com/digitalmethodsinitiative/zeeschuimer), download the latest release from GitHub and install it in Firefox. 
 
-We can use our own 4CAT instance at [https://4cat.digitalhumanities.io/](https://4cat.digitalhumanities.io/)
+::: {.callout-caution}
+## Work-In-Progress
+The tutorial will be released for our data collection session on November, 6th.
+:::
+
+<!--We can use our own 4CAT instance at [https://4cat.digitalhumanities.io/](https://4cat.digitalhumanities.io/) //-->
 
 ## References
 
