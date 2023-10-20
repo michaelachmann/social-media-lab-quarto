@@ -1,14 +1,8 @@
 ---
 format: 
   html: default
-  # revealjs: 
-  #   slide-number: true
-  #   logo: /images/urlogo.png
-  #   fig-responsive: true
-  #   footer: Michael Achmann-Denkler | Lehrstuhl für Medieninformatik | Universität Regensburg | WiSe 2023 / 24
-  #   output-file: getting-started-revealjs.html
 title: "Introduction to SMA"
-date: 2023-10-10
+date: 2023-10-23
 bibliography: ../literature.bib
 author:
   - name: Michael Achmann-Denkler
@@ -41,49 +35,82 @@ Cultural analytics, as explained in the introductory chapter of the book "Cultur
 The concepts of cultural analytics and digital methods will guide us through our semester and our projects: We borrow the idea to use computational methods in order to understand "big cultural data" form Manovich and the concept of studying the digital medium itself from Rogers. Throughout the semester will enrich our projects with more focused literature and theory based on the research interests. Beyond these foundations, we will borrow from i.e. the Computational Social Sciences [@Lazer2009-mp], the concept of Distant Viewing [@Arnold2019-ls], or [Grammars of Action](#platform-vernaculars--grammars) [@Agre1994-qi; @Gerlitz2018-pn; @Bainotti2020-rn; @Omena2020-jk], and [Platform Vernaculars](#platform-vernaculars--grammars) [@Gibbs2015-se].
 
 ## Legal & Ethical Challenges
-@Zimmer2010-zh
 
+::: {.callout-warning}
+This subchapter scratches the surface. Recommended reading: @Haim2023-or pp. 62--69; 126--128.
+:::
+
+When working with social media data we're dealing with personal information. As such we need to take into account legal and ethical considerations. From the legal perspective we need to focus on two aspects: The ownership of the data, and -- when dealing with personal data -- the GDPR. For the latter we need to take into account consent and should think about pseudonymisation or anonymisation of our data [@Haim2023-or]. Further, the German *Urheberrecht*, the equivalent of the anglo-saxon copyright law (there are important differences, [see *Bundeszentrale für politische Bildung*](https://www.bpb.de/themen/digitalisierung/urheberrecht/169971/urheberrecht-und-copyright/) for a synopsis), defines exceptions for scientific research: The @Rat_fur_Sozial-_und_Wirtschaftsdaten_RatSWD2019-re publication takes a closer look at the database law and provides some practical guidance.
+
+The importance of the legal perspective social media research  grew recently: Following the [Cambridge Analytica scandal](https://en.wikipedia.org/wiki/Facebook%E2%80%93Cambridge_Analytica_data_scandal) Meta platforms (like Instagram) started closing down on APIs, which would have offered a legal and accepted (by the plattform) point of access for researchers. I recommend to read McCrow-Young's [-@McCrow-Young2021-pg] article as she demonstrates how academic research may be interrupted by platform changes, like the closure of the Instagram-API in the wake of the incident. Post-API social media research found creative way to access the data: @Bainotti2020-rn, for example, took a unique approach for data collection by capturing Instagram content through YouTube videos. Recent publications on Instagram analyses, and most approaches in our future session, rely on crawling and scraping. @Venturini2019-ve see a chance in the API-closure and argue that these techniques are "more than a ‘necessary evil’", as it might force researchers to come back to (digital) field work.
+
+Finally a word about reserach ethics. While the GDPR provides a rigid legal framework for dealing with personal information, I'd like to recommend the article "But the Data is Already Public" by @Zimmer2010-zh. The article documents how, in a matter of days, an anonymous dataset of 1700 facebook profiles became (partly) deanonymized. Based on this case study, the author compiles ethical concerns for future research, which we should also incorporate into our work.
 
 
 ## Methodology
-The how
+In this chapter we are going to take a look at different methods for use with social media reserach, and particularily, with our projects. We are going to use [(Visual) Content Analysis](#visual-content-analysis) to understand the content of posts and stories. The concept of [Plattform Affordances](#platform-affordances) will help us understand these posts and stories as embedded in the platform and its available functions and options. Finally, the idea of [Platform Vernaculars & Grammars](#platform-vernaculars--grammars) will help us to wire everything up, to discover patterns and trends in how users communicate and engage on these platforms.
 
-### Visual Content Analysis
-> 1. „Formulierung der Forschungsfragen bzw. Forschungshypothesen
-> 2. Untersuchungsplanung
-> 3. Populationsdefinition und Stichprobenziehung
-> 4. Archivierung und Aufbereitung des Untersuchungsmaterials
-> 5. Deduktiver Entwurf des Kategoriensystems sowie des Codebuches
-> 6. Induktive Überarbeitung des Kategoriensystems sowie des Codebuches
-> 7. Pretest und Revision des Kategoriensystems sowie des Codebuches
-> 8. Kodiererschulung
-> 9. Reliabilitätsanalyse und Finalisierung des Kategoriensystemssowie des Codebuches
-> 10. Datenerhebung durch Kodierung der gesamten Stichprobe
-> 11. Statistische Datenanalyse der per Inhaltsanalyse generierten Messwerte und
-> 12. Interpretation der statistischen Ergebnisse der Inhaltsanalyse.“
+### (Visual) Content Analysis
+We are going to apply quantitative content analyses to our corpora. The quantitative approach we are going to operationalize our theory-based interests and questions using formal and / or content features. Next, we need to apply the operationalization to the documents, in form of human annotations or computational coding [see @Doring2016-ul]. 
+@Doring2016-ul outline a general approach to content analysis, @Rose2016-qb in contrast concentrates on visual content analyses. She suggests four steps: 
 
-All the steps for content analysis according to @Doring2016-ul
+> 1. "Finding your Images.
+> 2. Devising your categories for coding.
+> 3. Coding the images.
+> 4. Analysing the results." -- [@Rose2016-qb ch. 5]
 
+The challenge of the first step is the sampling: Even with computational approaches, is it feasible to collect **everything**? The cultural analytics approach suggests such a goal, e.g. in order to obtain data and traces of subcultures. Due to practical limitations also Manovich's works use an approach to break the large amount of available data into a smaller portion [see @Hochman2013-gh]. This approach is called sampling, @Rose2016-qb introduces several sampling approaches like *random, stratified, systematic,* or *cluster* sampling. @Doring2016-ul provide a deeper look into sampling strategies.
+
+The codes, for the second step, may be devised from a qualitative exploration of the data or theories and related work. On coding there exists another large body of literature, like the Grounded Theory **Ergänze Zizazion** and Ethnic Coding Approach **Zitation**. In context of our projects we are going to use both approaches: We will annotate a subset of our data as ground-truth while coding the total data using computational approaches. 
+
+For the final analysis we are going to apply statistical data analyses. For an initial understanding of our data we will start with some exploratory analyses, e.g. plotting the data. In combination with the two approaches below, the platform affordances and platform vernaculars & grammars we may discover patterns of social media use. In most cases, our projects will compare different groups: These groups might be different user types (e.g. Politician Accounts vs. Party Accounts), or different Posts types (e.g. Posts vs. Stories), or different platforms (e.g. Instagram vs. TikTok). 
 
 
 ### Platform Affordances
+@Bossetta2018-lk provides an overview of the concept of affordances and their application in social media analyses. He traces the term back to boyd and Papacharissi & Yuan who argued "that  digital  communication  tech-
+nologies provide structural affordances to agents" [p. 473 @Bossetta2018-lk]. There are two important take-aways from his work: 1) The concept of affordances is not used consistently, and 2) the platforms shape affordances and thereby how users interact with the platform. @Bainotti2020-rn used the "Instagram-specific digital objects" as codes for their analysis of stories, linking the concept of affordances in the context of Instagram to the use of stickers. 
+
+In the context of our seminar we might consider the following elements as platform affordances:
+
+| TikTok   	| IG -- Posts 	| IG -- Stories 	|
+|----------	|-------------	|---------------	|
+| Likes    	| Likes       	| Sliders       	|
+| Comments 	| Comments    	| Votes         	|
+| Shares   	| Views       	| Questions     	|
+| Music    	| Mentions    	| Mentions      	|
+| Hashtags 	| Hashtags    	| Hashtags      	|
+| ...      	| ...          	| Locations     	|
+|          	|             	| ...            	|
+
+::: {.callout-tip}
+## Question
+Did you spot the difference between some of the listed affordances? Likes and comments, for instance, are reactions to posts. Would you consider these features as affordances? Let's discuss this is in class!
+:::
 
 
 ### Platform Vernaculars & Grammars
-Verbindung der beiden Features Affordanzen + Grammatiken. Hier auch das 3L concept von Omena ansprechen.
+**TODO: Umschreiben, damit es nicht gleich wie im Paper ist!!!**
+'Grammars' have been explored in previous research on Instagram stories \citep{Bainotti2020-rn, Omena2020-jk}. It has initially been developed within the context of privacy. There, grammars of action categorize activities based on specific action types recognized by an accounting scheme, organizing and structuring them. Applying a grammar to an activity facilitates data collection and analysis, uncovering patterns and insights. As a result, grammars of action serve as a valuable tool for capturing behavioral data, applicable to various purposes including surveillance and targeted advertising [@Agre1994-qi]. The concept has first been applied to social media data by @Gerlitz2018-pn who conducted a Twitter analysis employing grammars of action to gain a better understanding of the client landscape and platform-stakeholder relations.
+@Omena2020-jk introduce a "grammar of hashtags", which they see as the modes of action attached to hashtagging and how they are captured and organized by the platform. Grammars are merely one pillar of the three layers that the authors propose to capture hashtag engagement. They also look at the visibility of the content and actors as well as the visual and textual content. Finally, \citeauthor{Bainotti2020-rn} (\citeyear{Bainotti2020-rn}) picked up the concept of grammars to describe typical structures they found in ephemeral Instagram Stories. They see grammars as a key to understand aesthetic norms characterizing Stories in combination with actions offered by the platform. Thus, they see grammars to "take[...] into consideration the visual elements and how they are combined in their compositional modality [@Rose2016-qb], the cultural meaning they reflect, and the role of the platforms in prompting them." [p. 10, @Bainotti2020-rn]. @Gibbs2015-se were similarly concerned with the "combination of styles, grammars, and logics" of social media platforms, which they tried to capture as platform vernaculars. The vernacular is shaped from two ends, the platform affordances and the communication practices and habits of its users. 
 
 
 ## Summary 
+In this chapter we have positioned ourselfes between several disciplines: The computational social science, computational communication science, and digital humanities. In this position, we see social media data as trace data of human and social behaviour. The digitalness of our subject is, however, just one side of the coin: Follwing the theoretical frameworks of Digital Methods and Cultural Analytics, we want to conduct our analyses *computationally* with the aim to uncover patterns and trends of user behaviour on social media plattforms. Methodologically we can draw from quantitative content analysis, and the concept of platform affordances as features, and apply the concept of platform vernaculars and grammars to make sense of these feautures.
 
-## Further Reading
+
+## Additional Resources
 
 ### Conferences
+* International Conference on Social Media & Society
+* IC²S² 2022
+* ICWSM
 * AoIR
-* ...
+* WebSci
+* International Conference on CMC and Social Media Corpora for the Humanities
 
 ### Journals
 * New Media & Society
-* ...
+* Big Data & Society
 
 ### Textbooks
 * @Rose2016-qb: Visual Methodologies: An Introduction to Researching with Visual Materials.
@@ -92,6 +119,10 @@ Verbindung der beiden Features Affordanzen + Grammatiken. Hier auch das 3L conce
 
 ### Online Resources 
 * [Richard Rogers: Social Media Research with Digital Methods (YouTube)](https://www.youtube.com/watch?v=PtSNZfYKRnk)
+
+::: {.callout-note}
+Do you know of any ressources to be added to this list? Drop me a line: [michael.achmann@ur.de](mailto:michael.achmann@informatik.uni-regensburg.de).
+:::
 
 --- 
 
