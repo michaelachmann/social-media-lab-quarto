@@ -6,10 +6,9 @@ date: 2023-10-09
 author:
   - name: Michael Achmann-Denkler
     id: ma
+    orcid: 0000-0002-4754-7842
     email: michael.achmann@informatik.uni-regensburg.de
-license:
-    text: "Licenced under GNU Affero General Public License v3.0"
-    url: https://github.com/michaelachmann/social-media-lab-wiki/blob/main/LICENSE
+license: CC BY
 ---
 
 # Introduction
@@ -91,7 +90,7 @@ The following expectations and criteria must be met to pass the course:
 |:-------------|:---------------------------------------------------------|
 | 16.10.23 | Course Organization                                                   |
 | 23.10.23 | [Introduction to Social Media Analysis](theory.qmd)                   |
-| 30.10.23 | Projects & Groups, <br/> [Getting Started: Tools](tools.qmd)          |
+| 30.10.23 | Projects & Groups, <br/> Getting Started: Tools         |
 | 06.11.23 | Data Collection: IG Posts & Stories                                   |
 | 13.11.23 | Data Collection: TikTok                                               |
 | 20.11.23 | Data Preprocessing: OCR & Whisper                                     |

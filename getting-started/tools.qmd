@@ -8,19 +8,22 @@ format:
   #   footer: Michael Achmann-Denkler | Lehrstuhl für Medieninformatik | Universität Regensburg | WiSe 2023 / 24
   #   output-file: getting-started-revealjs.html
 title: "Tools and Software"
-date: 2023-10-23
+date: 2023-10-30
 author:
   - name: Michael Achmann-Denkler
     id: ma
     orcid: 0000-0002-4754-7842
     email: michael.achmann@informatik.uni-regensburg.de
-citation:
-    doi: 10.5281/zenodo.8199902
-    title: Notes on (Computational) Social Media Research
-license:
-    text: "Licenced under GNU Affero General Public License v3.0"
-    url: https://github.com/michaelachmann/social-media-lab-wiki/blob/main/LICENSE
+#citation:
+#    doi: 10.5281/zenodo.8199902
+#    title: Notes on (Computational) Social Media Research
+license: cc-by
 ---
+
+::: {.callout-caution}
+## Work-In-Progress
+Will be available for the 10/30 session.
+:::
 
 
 ## Colab 

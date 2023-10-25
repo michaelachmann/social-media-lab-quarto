@@ -9,9 +9,7 @@ author:
     id: ma
     orcid: 0000-0002-4754-7842
     email: michael.achmann@informatik.uni-regensburg.de
-license:
-    text: "Licenced under GNU Affero General Public License v3.0"
-    url: https://github.com/michaelachmann/social-media-lab-wiki/blob/main/LICENSE
+license: cc-by
 notebook-view:
   - notebook: ../notebooks/ig-instaloader.ipynb
     title: "Collecting Posts with Instaloader"

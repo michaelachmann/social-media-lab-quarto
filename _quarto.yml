@@ -29,11 +29,13 @@ website:
         - icon: twitter
           href: https://twitter.com/michael_achmann
         - icon: github
-          href:  https://github.com/michaelachmann/social-media-lab
+          href:  https://github.com/michaelachmann/social-media-lab-quarto
     left:
       - href: index.qmd
         text: Home
       - about.qmd
+      - href: https://github.com/michaelachmann/social-media-lab
+        text: Notebooks 
       
   cookie-consent: true
   twitter-card: true

@@ -1,30 +1,22 @@
 ---
 format: 
   html: default
-  # revealjs: 
-  #   slide-number: true
-  #   logo: images/urlogo.png
-  #   fig-responsive: true
-  #   footer: Michael Achmann-Denkler | Lehrstuhl für Medieninformatik | Universität Regensburg | WiSe 2023 / 24
-  #   output-file: getting-started-revealjs.html
 title: "Instagram Stories"
-#title-block-banner: ../images/banner.png
-#abstract-title:
-# 
-date: now
+date: 2023-11-06
 author:
   - name: Michael Achmann-Denkler
     id: ma
     orcid: 0000-0002-4754-7842
     email: michael.achmann@informatik.uni-regensburg.de
-#citation:
-#    doi: 10.5281/zenodo.8199902
-#    title: Notes on (Computational) Social Media Research
-license:
-    text: "Licenced under GNU Affero General Public License v3.0"
-    url: https://github.com/michaelachmann/social-media-lab-wiki/blob/main/LICENSE
+license: cc-by
 ---
 
+::: {.callout-caution}
+## Work-In-Progress
+Will be available for the 11/06 session.
+:::
+
+## 4CAT & Zeeschuimer
 
 ## Instaloader
 
