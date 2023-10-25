@@ -8,7 +8,11 @@ author:
   - name: Michael Achmann-Denkler
     id: ma
     orcid: 0000-0002-4754-7842
+    doi: 10.5281/zenodo.10039756
     email: michael.achmann@informatik.uni-regensburg.de
+citation:
+  type: webpage
+  doi: 10.5281/zenodo.10039756
 license: CC BY
 ---
 

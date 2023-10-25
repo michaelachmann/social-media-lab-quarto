@@ -10,6 +10,9 @@ author:
     orcid: 0000-0002-4754-7842
     email: michael.achmann@informatik.uni-regensburg.de
 license: CC BY
+citation:
+  type: webpage
+  doi: 10.5281/zenodo.10039756
 ---
 
 Social Media Analyses (SMA) are used both, in academia and in professional settings. Depending on the research agenda, different methodologies may be applied [@Kanthawala2022-zu; @Rejeb2022-xr]. In our course, we focus on the academic exploration of Social Media. We place particular emphasis on questions related to media, politics, and society. This represents a confluence of communication science and political science, intertwined with computational methods.

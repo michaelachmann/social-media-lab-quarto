@@ -1,10 +1,14 @@
-# Social Media Lab Website
+# Social Media Lab Website [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10039756.svg)](https://doi.org/10.5281/zenodo.10039756)
+
 ![Social Media Lab Banner](images/banner2.png)
 
 Welcome to the repository for the source of social-media-lab.net, a growing compilation of notes and computational notebooks centered around social media analysis, with a spotlight on computational methodologies and political communication. This project, both a website and an informational resource, is woven into the fabric of my PhD project and teaching at the Media Informatics Group, University of Regensburg, Germany.
 
 ## Supplements
 The website references several jupyter notebooks, [all code is located in the supplement repository](https://github.com/michaelachmann/social-media-lab).
+
+## Citation
+[Citation data for the latest releases can be exported from Zenodo](https://zenodo.org/records/10039756).
 
 ## Getting Started with Collaboration
 
