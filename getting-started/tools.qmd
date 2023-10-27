@@ -17,6 +17,7 @@ author:
 license: CC BY
 ---
 
+This page provides an overview of useful tools -- not just for the visual social media analysis. In our tools session (October 30th) we will take a look at Colab and git / GitHub. As the semester progresses we will learn more tools, which gradually will be added to this page. A first list of software for the future sessions is linked at the bottom of the page. 
 
 ## Colab 
 
@@ -44,9 +45,13 @@ You may clone the repository with `git clone git@github.com:michaelachmann/socia
 
 ## Git & GitHub
 
+[Git](https://git-scm.com/) is a distributed version control system that enables us to track changes in our codebase, allowing multiple team members to work simultaneously without overwriting each other's contributions. By creating and switching between different branches, we can experiment with new features or bug fixes without disturbing the main code. When we're ready, merging these changes back into the main branch is straightforward. Moreover, Git's history tracking feature ensures that we can always trace back our steps, understand the evolution of our code, and even revert to previous versions if necessary. 
 
+![A screenshot of commiting and pushing changes to the repository of this website.](/images/git.png)
 
+> GitHub, Inc. (/ˈɡɪthʌb/[a]) is a platform and cloud-based service for software development and version control using Git, allowing developers to store and manage their code. It provides the distributed version control of Git plus access control, bug tracking, software feature requests, task management, continuous integration, and wikis for every project.[6] Headquartered in California, it has been a subsidiary of Microsoft since 2018. [Wikipedia](https://en.wikipedia.org/wiki/GitHub)
 
+Using [GitHub](https://github.com/), we can manage our projects, collaborate on coding tasks, and track changes seamlessly using Git. The platform can also be used to host research data and can connected to [OSF](https://osf.io/), to provide code and data anonymously to reviewers. Using [Zenodo](https://zenodo.org/) we can create DOIs and provide citable software packages. 
 
 
 ## Future Sessions -- Outlook

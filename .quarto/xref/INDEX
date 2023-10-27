@@ -86,5 +86,12 @@
   },
   "processing/operationalization.qmd": {
     "operationalization.html": "58f64cc4"
+  },
+  "notebooks/literature-review.ipynb": {
+    "literature-review.ipynb.html": "58d44396",
+    "literature-review.html": "3f14bd64"
+  },
+  "getting-started/literature-review-assistant.qmd": {
+    "literature-review-assistant.html": "a11f378e"
   }
 }
