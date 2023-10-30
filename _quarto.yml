@@ -14,8 +14,8 @@ website:
           - getting-started/index.qmd
           - getting-started/theory.qmd
           - getting-started/related-work.qmd
-          - getting-started/literature-review-assistant.qmd
           - getting-started/tools.qmd
+          - getting-started/literature-review-assistant.qmd
     #  - section: "Theory & Related Work"
       - section: "Data Collection"
         contents:
