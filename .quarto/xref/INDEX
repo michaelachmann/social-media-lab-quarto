@@ -93,5 +93,8 @@
   },
   "getting-started/literature-review-assistant.qmd": {
     "literature-review-assistant.html": "a11f378e"
+  },
+  "notebooks/2023_10_05_GPT_Literature_Review_Assistant.ipynb": {
+    "2023_10_05_GPT_Literature_Review_Assistant.html": "5861af34"
   }
 }
