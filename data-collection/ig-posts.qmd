@@ -28,6 +28,11 @@ Through the following subchapters I will try to illuminate the advantages of eac
 ## Instaloader
 [Instaloader](https://instaloader.github.io/) is a python package for downloading instagram pictures and videos along with their metadata. I have written a [getting started tutorial on Medium](https://achmann.dev/getting-started-with-instagram-analysis-instaloader-bbf686cb6e3b). It is, together with [the provided notebook](https://github.com/michaelachmann/ig-tutorial/blob/main/01_DataCollection.ipynb), the basis for this chapter.
 
+::: {.callout-note}
+Instaloader is a stand-alone piece of software: It offers options to download most Instagram content, like posts and stories, through different strategies, e.g. lists of profiles or by hashtag. For complex tasks I recommend to call instaloader from terminal, [see the documentation for more information](https://instaloader.github.io/basic-usage.html).
+:::
+
+
 {{< embed ../notebooks/ig-instaloader.ipynb echo=true >}}
 
 
@@ -64,7 +69,7 @@ Through the following subchapters I will try to illuminate the advantages of eac
 <div class="pros">
 ### Pros:
 <ul class="pro-con-list pro">
-<li>Legal Acces</li>
+<li>Legal Access</li>
 <li>We can select the time frame for export</li>
 <li>Export in CSV format</li>
 </ul>
