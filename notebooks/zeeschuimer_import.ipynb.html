@@ -1,0 +1,1406 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="generator" content="quarto-1.3.450">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+    <title>Social Media Lab - Zeeschuimer Data Import </title>    <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      div.columns{display: flex; gap: min(4vw, 1.5em);}
+      div.column{flex: auto; overflow-x: auto;}
+      div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+      ul.task-list{list-style: none;}
+      ul.task-list li input[type="checkbox"] {
+        width: 0.8em;
+        margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+        vertical-align: middle;
+      }
+      /* CSS for syntax highlighting */
+      pre > code.sourceCode { white-space: pre; position: relative; }
+      pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+      pre > code.sourceCode > span:empty { height: 1.2em; }
+      .sourceCode { overflow: visible; }
+      code.sourceCode > span { color: inherit; text-decoration: inherit; }
+      div.sourceCode { margin: 1em 0; }
+      pre.sourceCode { margin: 0; }
+      @media screen {
+      div.sourceCode { overflow: auto; }
+      }
+      @media print {
+      pre > code.sourceCode { white-space: pre-wrap; }
+      pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+      }
+      pre.numberSource code
+        { counter-reset: source-line 0; }
+      pre.numberSource code > span
+        { position: relative; left: -4em; counter-increment: source-line; }
+      pre.numberSource code > span > a:first-child::before
+        { content: counter(source-line);
+          position: relative; left: -1em; text-align: right; vertical-align: baseline;
+          border: none; display: inline-block;
+          -webkit-touch-callout: none; -webkit-user-select: none;
+          -khtml-user-select: none; -moz-user-select: none;
+          -ms-user-select: none; user-select: none;
+          padding: 0 4px; width: 4em;
+        }
+      pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+      div.sourceCode
+        {   }
+      @media screen {
+      pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+      }
+    </style>
+    <style>
+      .quarto-embed-header {
+        height: 3em;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: solid 1px;
+      }
+      .quarto-embed-header h6 {
+        font-size: 1em;
+        padding-top: 0.6em;
+        margin-left: 1em;
+        margin-right: 1em;
+        font-weight: 300;
+      }
+      .quarto-embed-header a.quarto-download-embed {
+        font-size: 0.7em;
+        margin-top: 1em;
+        margin-bottom: 1em;
+        margin-left: 1em;
+        margin-right: 1em;
+      }
+    </style>
+    
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+     <script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>  
+<script type="text/javascript" charset="UTF-8">
+document.addEventListener('DOMContentLoaded', function () {
+cookieconsent.run({
+  "notice_banner_type":"simple",
+  "consent_type":"implied",
+  "palette":"light",
+  "language":"en",
+  "page_load_consent_levels":["strictly-necessary","functionality","tracking","targeting"],
+  "notice_banner_reject_button_hide":false,
+  "preferences_center_close_button_hide":false,
+  "website_name":""
+  });
+});
+</script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+<script src="https://unpkg.com/@jupyter-widgets/html-manager@*/dist/embed-amd.js" crossorigin="anonymous"></script>  
+        <link rel="stylesheet" href="../styles.css">
+      <meta name="twitter:title" content="Social Media Lab - Zeeschuimer Data Import ">
+<meta name="twitter:description" content="">
+<meta name="twitter:image" content="https://zenodo.org/badge/DOI/10.5281/zenodo.8199901.svg">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+  <body class="nav-sidebar floating nav-fixed quarto-notebook">
+    <div class="quarto-embed-header">
+      <h6><i class="bi bi-journal-code"></i> zeeschuimer_import.ipynb</h6>
+      <a href="../notebooks/zeeschuimer_import.ipynb" class="btn btn-primary quarto-download-embed" download="zeeschuimer_import.ipynb">Download Notebook</a>
+    </div>
+     <div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../images/logo2.png" alt="" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Social Media Lab</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html" rel="" target="">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html" rel="" target="">
+ <span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://github.com/michaelachmann/social-media-lab" rel="" target="">
+ <span class="menu-text">Notebooks</span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools ms-auto tools-wide">
+    <a href="https://twitter.com/michael_achmann" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-twitter"></i></a>
+    <a href="https://github.com/michaelachmann/social-media-lab-quarto" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Zeeschuimer Data Import <a href="https://doi.org/10.5281/zenodo.8199901"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.8199901.svg" class="img-fluid" alt="DOI"></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Getting Started</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../getting-started/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About the Seminar</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../getting-started/theory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to SMA</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../getting-started/related-work.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Related Work</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../getting-started/tools.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tools and Software</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../getting-started/literature-review-assistant.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">GPT Literature Review Assistant</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Data Collection</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../data-collection/ig-posts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Instagram Posts</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../projects/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Projects</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a>
+  <ul class="collapse">
+  <li><a href="#project-information" id="toc-project-information" class="nav-link" data-scroll-target="#project-information">Project Information</a></li>
+  </ul></li>
+  <li><a href="#license-information" id="toc-license-information" class="nav-link" data-scroll-target="#license-information">License Information</a></li>
+  <li><a href="#citation" id="toc-citation" class="nav-link" data-scroll-target="#citation">Citation</a></li>
+  <li><a href="#zip-files-for-download" id="toc-zip-files-for-download" class="nav-link" data-scroll-target="#zip-files-for-download">ZIP files for download</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content page-columns page-full" id="quarto-document-content">      <header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Zeeschuimer Data Import <a href="https://doi.org/10.5281/zenodo.8199901"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.8199901.svg" class="img-fluid" alt="DOI"></a></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>     <div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://raw.githubusercontent.com/michaelachmann/social-media-lab/main/images/banner.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Notes on (Computational) Social Media Research Banner</figcaption>
+</figure>
+</div>
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p>This Jupyter notebook is a part of the social-media-lab.net project, which is a work-in-progress textbook on computational social media analysis. The notebook is intended for use in my classes.</p>
+<p>The <strong>Zeeschuimer Data Import</strong> notebook handles <em>ndjson</em> files provided by the <a href="https://github.com/digitalmethodsinitiative/zeeschuimer">Zeeschuimer</a> plugin for collecting Instagram posts. After importing the files, we can download images (same as 4CAT). Additionally we can convert the data to be compatible with other notebooks in the coures.</p>
+<p><strong>TODO:</strong> At the moment we can only download one image per posts. Future versions of this notebook should be capable of downloading all images / media from albums.</p>
+<p>See <a href="https://social-media-lab.net/data-collection/ig-posts.html#zeeschuimer-4cat">social-media-lab.net</a> for more information.</p>
+<section id="project-information" class="level3">
+<h3 class="anchored" data-anchor-id="project-information">Project Information</h3>
+<ul>
+<li>Project Website: <a href="https://social-media-lab.net/">social-media-lab.net</a></li>
+<li>GitHub Repository: <a href="https://github.com/michaelachmann/social-media-lab">https://github.com/michaelachmann/social-media-lab</a></li>
+</ul>
+</section>
+</section>
+<section id="license-information" class="level2">
+<h2 class="anchored" data-anchor-id="license-information">License Information</h2>
+<p>This notebook, along with all other notebooks in the project, is licensed under the following terms:</p>
+<ul>
+<li>License: <a href="https://www.gnu.org/licenses/gpl-3.0.de.html">GNU General Public License version 3.0 (GPL-3.0)</a></li>
+<li>This Notebook incorporates code taken from the <a href="https://github.com/digitalmethodsinitiative/4cat/">4CAT repository</a>, licenced under Mozilla Public License, 2.0.<br>
+</li>
+<li>License File: <a href="https://github.com/michaelachmann/social-media-lab/blob/main/LICENSE.md">LICENSE.md</a></li>
+</ul>
+</section>
+<section id="citation" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="citation">Citation</h2>
+<p>If you use or reference this notebook in your work, please cite it appropriately. Here is an example of the citation:</p>
+<pre><code>Michael Achmann. (2023). michaelachmann/social-media-lab: 06.11.2023 (v0.0.3). Zenodo. https://doi.org/10.5281/zenodo.8199901</code></pre>
+<div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [1]:</pre></div><div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div>
+<div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [61]:</pre></div><div class="cell" data-cellview="form" data-outputid="e6bd9328-f437-44c8-c368-2092818f9bab" data-execution_count="61">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#@title Import Zeeschuimer Data</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">#@markdown **Keep 4CAT as format to download images within this notebook.** &lt;br&gt; **Formats:** *MA* corresponds to CrowdTangle and instaloader Notebooks. Compatible with future notebooks for data annotation. *4CAT* corresponds to 4CAT CSV format. &lt;br&gt; *</span><span class="al">TODO</span><span class="co">: Import multiple images.* &lt;br&gt; This importer is based on 4CAT code, published under Mozilla Pulice License 2.0 at https://github.com/digitalmethodsinitiative/4cat/tree/master/datasources/instagram</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tqdm.auto <span class="im">import</span> tqdm</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>import_format <span class="op">=</span> <span class="st">"4CAT"</span> <span class="co"># @param ["MA", "4CAT"]</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>import_filename <span class="op">=</span> <span class="st">'/content/zeeschuimer-export-instagram.com-2023-11-03T131020.ndjson'</span>  <span class="co"># @param {type: "string"}</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>export_filename <span class="op">=</span> <span class="st">'/content/2023-11-03-ig-zeeschuimer-export.csv'</span>  <span class="co"># @param {type: "string"}</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co">"""</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co">Import scraped Instagram data</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co">This code has been taken from 4CAT, available under Mozilla Public License 2.0 at https://github.com/digitalmethodsinitiative/4cat/tree/master/datasources/instagram</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co">"""</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> datetime</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="co"># some magic numbers instagram uses</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>MEDIA_TYPE_PHOTO <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>MEDIA_TYPE_VIDEO <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>MEDIA_TYPE_CAROUSEL <span class="op">=</span> <span class="dv">8</span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> parse_graph_item(node):</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="co">    Parse Instagram post in Graph format</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a><span class="co">    :param node:  Data as received from Instagram</span></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="co">    :return dict:  Mapped item</span></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>        caption <span class="op">=</span> node[<span class="st">"edge_media_to_caption"</span>][<span class="st">"edges"</span>][<span class="dv">0</span>][<span class="st">"node"</span>][<span class="st">"text"</span>]</span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">IndexError</span>:</span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>        caption <span class="op">=</span> <span class="st">""</span></span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>    num_media <span class="op">=</span> <span class="dv">1</span> <span class="cf">if</span> node[<span class="st">"__typename"</span>] <span class="op">!=</span> <span class="st">"GraphSidecar"</span> <span class="cf">else</span> <span class="bu">len</span>(node[<span class="st">"edge_sidecar_to_children"</span>][<span class="st">"edges"</span>])</span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>    <span class="co"># get media url</span></span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>    <span class="co"># for carousels, get the first media item, for videos, get the video</span></span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>    <span class="co"># url, for photos, get the highest resolution</span></span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> node[<span class="st">"__typename"</span>] <span class="op">==</span> <span class="st">"GraphSidecar"</span>:</span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>        media_node <span class="op">=</span> node[<span class="st">"edge_sidecar_to_children"</span>][<span class="st">"edges"</span>][<span class="dv">0</span>][<span class="st">"node"</span>]</span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>        media_node <span class="op">=</span> node</span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> media_node[<span class="st">"__typename"</span>] <span class="op">==</span> <span class="st">"GraphVideo"</span>:</span>
+<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a>        media_url <span class="op">=</span> media_node[<span class="st">"video_url"</span>]</span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> media_node[<span class="st">"__typename"</span>] <span class="op">==</span> <span class="st">"GraphImage"</span>:</span>
+<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a>        resources <span class="op">=</span> media_node.get(<span class="st">"display_resources"</span>, media_node.get(<span class="st">"thumbnail_resources"</span>))</span>
+<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a>        <span class="cf">try</span>:</span>
+<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>            media_url <span class="op">=</span> resources.pop()[<span class="st">"src"</span>]</span>
+<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a>        <span class="cf">except</span> <span class="pp">AttributeError</span>:</span>
+<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a>            media_url <span class="op">=</span> media_node.get(<span class="st">"display_url"</span>, <span class="st">""</span>)</span>
+<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a>        media_url <span class="op">=</span> media_node[<span class="st">"display_url"</span>]</span>
+<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a>    <span class="co"># type, 'mixed' means carousel with video and photo</span></span>
+<span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a>    type_map <span class="op">=</span> {<span class="st">"GraphSidecar"</span>: <span class="st">"photo"</span>, <span class="st">"GraphVideo"</span>: <span class="st">"video"</span>}</span>
+<span id="cb3-59"><a href="#cb3-59" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> node[<span class="st">"__typename"</span>] <span class="op">!=</span> <span class="st">"GraphSidecar"</span>:</span>
+<span id="cb3-60"><a href="#cb3-60" aria-hidden="true" tabindex="-1"></a>        media_type <span class="op">=</span> type_map.get(node[<span class="st">"__typename"</span>], <span class="st">"unknown"</span>)</span>
+<span id="cb3-61"><a href="#cb3-61" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb3-62"><a href="#cb3-62" aria-hidden="true" tabindex="-1"></a>        media_types <span class="op">=</span> <span class="bu">set</span>([s[<span class="st">"node"</span>][<span class="st">"__typename"</span>] <span class="cf">for</span> s <span class="kw">in</span> node[<span class="st">"edge_sidecar_to_children"</span>][<span class="st">"edges"</span>]])</span>
+<span id="cb3-63"><a href="#cb3-63" aria-hidden="true" tabindex="-1"></a>        media_type <span class="op">=</span> <span class="st">"mixed"</span> <span class="cf">if</span> <span class="bu">len</span>(media_types) <span class="op">&gt;</span> <span class="dv">1</span> <span class="cf">else</span> type_map.get(media_types.pop(), <span class="st">"unknown"</span>)</span>
+<span id="cb3-64"><a href="#cb3-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-65"><a href="#cb3-65" aria-hidden="true" tabindex="-1"></a>    location <span class="op">=</span> {<span class="st">"name"</span>: <span class="st">""</span>, <span class="st">"latlong"</span>: <span class="st">""</span>, <span class="st">"city"</span>: <span class="st">""</span>}</span>
+<span id="cb3-66"><a href="#cb3-66" aria-hidden="true" tabindex="-1"></a>    <span class="co"># location has 'id', 'has_public_page', 'name', and 'slug' keys in tested examples; no lat long or "city" though name seems</span></span>
+<span id="cb3-67"><a href="#cb3-67" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> node.get(<span class="st">"location"</span>):</span>
+<span id="cb3-68"><a href="#cb3-68" aria-hidden="true" tabindex="-1"></a>        location[<span class="st">"name"</span>] <span class="op">=</span> node[<span class="st">"location"</span>].get(<span class="st">"name"</span>)</span>
+<span id="cb3-69"><a href="#cb3-69" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Leaving this though it does not appear to be used in this type; maybe we'll be surprised in the future...</span></span>
+<span id="cb3-70"><a href="#cb3-70" aria-hidden="true" tabindex="-1"></a>        location[<span class="st">"latlong"</span>] <span class="op">=</span> <span class="bu">str</span>(node[<span class="st">"location"</span>][<span class="st">"lat"</span>]) <span class="op">+</span> <span class="st">","</span> <span class="op">+</span> <span class="bu">str</span>(node[<span class="st">"location"</span>][<span class="st">"lng"</span>]) <span class="cf">if</span> node[</span>
+<span id="cb3-71"><a href="#cb3-71" aria-hidden="true" tabindex="-1"></a>            <span class="st">"location"</span>].get(<span class="st">"lat"</span>) <span class="cf">else</span> <span class="st">""</span></span>
+<span id="cb3-72"><a href="#cb3-72" aria-hidden="true" tabindex="-1"></a>        location[<span class="st">"city"</span>] <span class="op">=</span> node[<span class="st">"location"</span>].get(<span class="st">"city"</span>)</span>
+<span id="cb3-73"><a href="#cb3-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-74"><a href="#cb3-74" aria-hidden="true" tabindex="-1"></a>    mapped_item <span class="op">=</span> {</span>
+<span id="cb3-75"><a href="#cb3-75" aria-hidden="true" tabindex="-1"></a>        <span class="st">"id"</span>: node[<span class="st">"shortcode"</span>],</span>
+<span id="cb3-76"><a href="#cb3-76" aria-hidden="true" tabindex="-1"></a>        <span class="st">"thread_id"</span>: node[<span class="st">"shortcode"</span>],</span>
+<span id="cb3-77"><a href="#cb3-77" aria-hidden="true" tabindex="-1"></a>        <span class="st">"parent_id"</span>: node[<span class="st">"shortcode"</span>],</span>
+<span id="cb3-78"><a href="#cb3-78" aria-hidden="true" tabindex="-1"></a>        <span class="st">"body"</span>: caption,</span>
+<span id="cb3-79"><a href="#cb3-79" aria-hidden="true" tabindex="-1"></a>        <span class="st">"author"</span>: node[<span class="st">"owner"</span>][<span class="st">"username"</span>],</span>
+<span id="cb3-80"><a href="#cb3-80" aria-hidden="true" tabindex="-1"></a>        <span class="st">"timestamp"</span>: datetime.datetime.fromtimestamp(node[<span class="st">"taken_at_timestamp"</span>]).strftime(<span class="st">"%Y-%m-</span><span class="sc">%d</span><span class="st"> %H:%M:%S"</span>),</span>
+<span id="cb3-81"><a href="#cb3-81" aria-hidden="true" tabindex="-1"></a>        <span class="st">"author_fullname"</span>: node[<span class="st">"owner"</span>].get(<span class="st">"full_name"</span>, <span class="st">""</span>),</span>
+<span id="cb3-82"><a href="#cb3-82" aria-hidden="true" tabindex="-1"></a>        <span class="st">"author_avatar_url"</span>: node[<span class="st">"owner"</span>].get(<span class="st">"profile_pic_url"</span>, <span class="st">""</span>),</span>
+<span id="cb3-83"><a href="#cb3-83" aria-hidden="true" tabindex="-1"></a>        <span class="st">"type"</span>: media_type,</span>
+<span id="cb3-84"><a href="#cb3-84" aria-hidden="true" tabindex="-1"></a>        <span class="st">"url"</span>: <span class="st">"https://www.instagram.com/p/"</span> <span class="op">+</span> node[<span class="st">"shortcode"</span>],</span>
+<span id="cb3-85"><a href="#cb3-85" aria-hidden="true" tabindex="-1"></a>        <span class="st">"image_url"</span>: node[<span class="st">"display_url"</span>],</span>
+<span id="cb3-86"><a href="#cb3-86" aria-hidden="true" tabindex="-1"></a>        <span class="st">"media_url"</span>: media_url,</span>
+<span id="cb3-87"><a href="#cb3-87" aria-hidden="true" tabindex="-1"></a>        <span class="st">"hashtags"</span>: <span class="st">","</span>.join(re.findall(<span class="vs">r"#([^\s!@#$%ˆ&amp;*()_+</span><span class="sc">{}</span><span class="vs">:\"|&lt;&gt;?\[\];'\,./`~']+)"</span>, caption)),</span>
+<span id="cb3-88"><a href="#cb3-88" aria-hidden="true" tabindex="-1"></a>        <span class="co"># "usertags": ",".join(</span></span>
+<span id="cb3-89"><a href="#cb3-89" aria-hidden="true" tabindex="-1"></a>        <span class="co">#     [u["node"]["user"]["username"] for u in node["edge_media_to_tagged_user"]["edges"]]),</span></span>
+<span id="cb3-90"><a href="#cb3-90" aria-hidden="true" tabindex="-1"></a>        <span class="st">"num_likes"</span>: node[<span class="st">"edge_media_preview_like"</span>][<span class="st">"count"</span>],</span>
+<span id="cb3-91"><a href="#cb3-91" aria-hidden="true" tabindex="-1"></a>        <span class="st">"num_comments"</span>: node.get(<span class="st">"edge_media_preview_comment"</span>, {}).get(<span class="st">"count"</span>, <span class="dv">0</span>),</span>
+<span id="cb3-92"><a href="#cb3-92" aria-hidden="true" tabindex="-1"></a>        <span class="st">"num_media"</span>: num_media,</span>
+<span id="cb3-93"><a href="#cb3-93" aria-hidden="true" tabindex="-1"></a>        <span class="st">"location_name"</span>: location[<span class="st">"name"</span>],</span>
+<span id="cb3-94"><a href="#cb3-94" aria-hidden="true" tabindex="-1"></a>        <span class="st">"location_latlong"</span>: location[<span class="st">"latlong"</span>],</span>
+<span id="cb3-95"><a href="#cb3-95" aria-hidden="true" tabindex="-1"></a>        <span class="st">"location_city"</span>: location[<span class="st">"city"</span>],</span>
+<span id="cb3-96"><a href="#cb3-96" aria-hidden="true" tabindex="-1"></a>        <span class="st">"unix_timestamp"</span>: node[<span class="st">"taken_at_timestamp"</span>]</span>
+<span id="cb3-97"><a href="#cb3-97" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb3-98"><a href="#cb3-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-99"><a href="#cb3-99" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> mapped_item</span>
+<span id="cb3-100"><a href="#cb3-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-101"><a href="#cb3-101" aria-hidden="true" tabindex="-1"></a><span class="at">@staticmethod</span></span>
+<span id="cb3-102"><a href="#cb3-102" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> parse_itemlist_item(node):</span>
+<span id="cb3-103"><a href="#cb3-103" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb3-104"><a href="#cb3-104" aria-hidden="true" tabindex="-1"></a><span class="co">    Parse Instagram post in 'item list' format</span></span>
+<span id="cb3-105"><a href="#cb3-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-106"><a href="#cb3-106" aria-hidden="true" tabindex="-1"></a><span class="co">    :param node:  Data as received from Instagram</span></span>
+<span id="cb3-107"><a href="#cb3-107" aria-hidden="true" tabindex="-1"></a><span class="co">    :return dict:  Mapped item</span></span>
+<span id="cb3-108"><a href="#cb3-108" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb3-109"><a href="#cb3-109" aria-hidden="true" tabindex="-1"></a>    num_media <span class="op">=</span> <span class="dv">1</span> <span class="cf">if</span> node[<span class="st">"media_type"</span>] <span class="op">!=</span> MEDIA_TYPE_CAROUSEL <span class="cf">else</span> <span class="bu">len</span>(node[<span class="st">"carousel_media"</span>])</span>
+<span id="cb3-110"><a href="#cb3-110" aria-hidden="true" tabindex="-1"></a>    caption <span class="op">=</span> <span class="st">""</span> <span class="cf">if</span> <span class="kw">not</span> node.get(<span class="st">"caption"</span>) <span class="cf">else</span> node[<span class="st">"caption"</span>][<span class="st">"text"</span>]</span>
+<span id="cb3-111"><a href="#cb3-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-112"><a href="#cb3-112" aria-hidden="true" tabindex="-1"></a>    <span class="co"># get media url</span></span>
+<span id="cb3-113"><a href="#cb3-113" aria-hidden="true" tabindex="-1"></a>    <span class="co"># for carousels, get the first media item, for videos, get the video</span></span>
+<span id="cb3-114"><a href="#cb3-114" aria-hidden="true" tabindex="-1"></a>    <span class="co"># url, for photos, get the highest resolution</span></span>
+<span id="cb3-115"><a href="#cb3-115" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> node[<span class="st">"media_type"</span>] <span class="op">==</span> MEDIA_TYPE_CAROUSEL:</span>
+<span id="cb3-116"><a href="#cb3-116" aria-hidden="true" tabindex="-1"></a>        media_node <span class="op">=</span> node[<span class="st">"carousel_media"</span>][<span class="dv">0</span>]</span>
+<span id="cb3-117"><a href="#cb3-117" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb3-118"><a href="#cb3-118" aria-hidden="true" tabindex="-1"></a>        media_node <span class="op">=</span> node</span>
+<span id="cb3-119"><a href="#cb3-119" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-120"><a href="#cb3-120" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> media_node[<span class="st">"media_type"</span>] <span class="op">==</span> MEDIA_TYPE_VIDEO:</span>
+<span id="cb3-121"><a href="#cb3-121" aria-hidden="true" tabindex="-1"></a>        media_url <span class="op">=</span> media_node[<span class="st">"video_versions"</span>][<span class="dv">0</span>][<span class="st">"url"</span>]</span>
+<span id="cb3-122"><a href="#cb3-122" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="st">"image_versions2"</span> <span class="kw">in</span> media_node:</span>
+<span id="cb3-123"><a href="#cb3-123" aria-hidden="true" tabindex="-1"></a>            display_url <span class="op">=</span> media_node[<span class="st">"image_versions2"</span>][<span class="st">"candidates"</span>][<span class="dv">0</span>][<span class="st">"url"</span>]</span>
+<span id="cb3-124"><a href="#cb3-124" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb3-125"><a href="#cb3-125" aria-hidden="true" tabindex="-1"></a>            <span class="co"># no image links at all :-/</span></span>
+<span id="cb3-126"><a href="#cb3-126" aria-hidden="true" tabindex="-1"></a>            <span class="co"># video is all we have</span></span>
+<span id="cb3-127"><a href="#cb3-127" aria-hidden="true" tabindex="-1"></a>            display_url <span class="op">=</span> media_node[<span class="st">"video_versions"</span>][<span class="dv">0</span>][<span class="st">"url"</span>]</span>
+<span id="cb3-128"><a href="#cb3-128" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> media_node[<span class="st">"media_type"</span>] <span class="op">==</span> MEDIA_TYPE_PHOTO:</span>
+<span id="cb3-129"><a href="#cb3-129" aria-hidden="true" tabindex="-1"></a>        media_url <span class="op">=</span> media_node[<span class="st">"image_versions2"</span>][<span class="st">"candidates"</span>][<span class="dv">0</span>][<span class="st">"url"</span>]</span>
+<span id="cb3-130"><a href="#cb3-130" aria-hidden="true" tabindex="-1"></a>        display_url <span class="op">=</span> media_url</span>
+<span id="cb3-131"><a href="#cb3-131" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb3-132"><a href="#cb3-132" aria-hidden="true" tabindex="-1"></a>        media_url <span class="op">=</span> <span class="st">""</span></span>
+<span id="cb3-133"><a href="#cb3-133" aria-hidden="true" tabindex="-1"></a>        display_url <span class="op">=</span> <span class="st">""</span></span>
+<span id="cb3-134"><a href="#cb3-134" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-135"><a href="#cb3-135" aria-hidden="true" tabindex="-1"></a>    <span class="co"># type, 'mixed' means carousel with video and photo</span></span>
+<span id="cb3-136"><a href="#cb3-136" aria-hidden="true" tabindex="-1"></a>    type_map <span class="op">=</span> {MEDIA_TYPE_PHOTO: <span class="st">"photo"</span>, MEDIA_TYPE_VIDEO: <span class="st">"video"</span>}</span>
+<span id="cb3-137"><a href="#cb3-137" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> node[<span class="st">"media_type"</span>] <span class="op">!=</span> MEDIA_TYPE_CAROUSEL:</span>
+<span id="cb3-138"><a href="#cb3-138" aria-hidden="true" tabindex="-1"></a>        media_type <span class="op">=</span> type_map.get(node[<span class="st">"media_type"</span>], <span class="st">"unknown"</span>)</span>
+<span id="cb3-139"><a href="#cb3-139" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb3-140"><a href="#cb3-140" aria-hidden="true" tabindex="-1"></a>        media_types <span class="op">=</span> <span class="bu">set</span>([s[<span class="st">"media_type"</span>] <span class="cf">for</span> s <span class="kw">in</span> node[<span class="st">"carousel_media"</span>]])</span>
+<span id="cb3-141"><a href="#cb3-141" aria-hidden="true" tabindex="-1"></a>        media_type <span class="op">=</span> <span class="st">"mixed"</span> <span class="cf">if</span> <span class="bu">len</span>(media_types) <span class="op">&gt;</span> <span class="dv">1</span> <span class="cf">else</span> type_map.get(media_types.pop(), <span class="st">"unknown"</span>)</span>
+<span id="cb3-142"><a href="#cb3-142" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-143"><a href="#cb3-143" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="st">"comment_count"</span> <span class="kw">in</span> node:</span>
+<span id="cb3-144"><a href="#cb3-144" aria-hidden="true" tabindex="-1"></a>        num_comments <span class="op">=</span> node[<span class="st">"comment_count"</span>]</span>
+<span id="cb3-145"><a href="#cb3-145" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> <span class="st">"comments"</span> <span class="kw">in</span> node <span class="kw">and</span> <span class="bu">type</span>(node[<span class="st">"comments"</span>]) <span class="kw">is</span> <span class="bu">list</span>:</span>
+<span id="cb3-146"><a href="#cb3-146" aria-hidden="true" tabindex="-1"></a>        num_comments <span class="op">=</span> <span class="bu">len</span>(node[<span class="st">"comments"</span>])</span>
+<span id="cb3-147"><a href="#cb3-147" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb3-148"><a href="#cb3-148" aria-hidden="true" tabindex="-1"></a>        num_comments <span class="op">=</span> <span class="op">-</span><span class="dv">1</span></span>
+<span id="cb3-149"><a href="#cb3-149" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-150"><a href="#cb3-150" aria-hidden="true" tabindex="-1"></a>    location <span class="op">=</span> {<span class="st">"name"</span>: <span class="st">""</span>, <span class="st">"latlong"</span>: <span class="st">""</span>, <span class="st">"city"</span>: <span class="st">""</span>}</span>
+<span id="cb3-151"><a href="#cb3-151" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> node.get(<span class="st">"location"</span>):</span>
+<span id="cb3-152"><a href="#cb3-152" aria-hidden="true" tabindex="-1"></a>        location[<span class="st">"name"</span>] <span class="op">=</span> node[<span class="st">"location"</span>].get(<span class="st">"name"</span>)</span>
+<span id="cb3-153"><a href="#cb3-153" aria-hidden="true" tabindex="-1"></a>        location[<span class="st">"latlong"</span>] <span class="op">=</span> <span class="bu">str</span>(node[<span class="st">"location"</span>][<span class="st">"lat"</span>]) <span class="op">+</span> <span class="st">","</span> <span class="op">+</span> <span class="bu">str</span>(node[<span class="st">"location"</span>][<span class="st">"lng"</span>]) <span class="cf">if</span> node[</span>
+<span id="cb3-154"><a href="#cb3-154" aria-hidden="true" tabindex="-1"></a>            <span class="st">"location"</span>].get(<span class="st">"lat"</span>) <span class="cf">else</span> <span class="st">""</span></span>
+<span id="cb3-155"><a href="#cb3-155" aria-hidden="true" tabindex="-1"></a>        location[<span class="st">"city"</span>] <span class="op">=</span> node[<span class="st">"location"</span>].get(<span class="st">"city"</span>)</span>
+<span id="cb3-156"><a href="#cb3-156" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-157"><a href="#cb3-157" aria-hidden="true" tabindex="-1"></a>    mapped_item <span class="op">=</span> {</span>
+<span id="cb3-158"><a href="#cb3-158" aria-hidden="true" tabindex="-1"></a>        <span class="st">"id"</span>: node[<span class="st">"code"</span>],</span>
+<span id="cb3-159"><a href="#cb3-159" aria-hidden="true" tabindex="-1"></a>        <span class="st">"thread_id"</span>: node[<span class="st">"code"</span>],</span>
+<span id="cb3-160"><a href="#cb3-160" aria-hidden="true" tabindex="-1"></a>        <span class="st">"parent_id"</span>: node[<span class="st">"code"</span>],</span>
+<span id="cb3-161"><a href="#cb3-161" aria-hidden="true" tabindex="-1"></a>        <span class="st">"body"</span>: caption,</span>
+<span id="cb3-162"><a href="#cb3-162" aria-hidden="true" tabindex="-1"></a>        <span class="st">"author"</span>: node[<span class="st">"user"</span>][<span class="st">"username"</span>],</span>
+<span id="cb3-163"><a href="#cb3-163" aria-hidden="true" tabindex="-1"></a>        <span class="st">"author_fullname"</span>: node[<span class="st">"user"</span>][<span class="st">"full_name"</span>],</span>
+<span id="cb3-164"><a href="#cb3-164" aria-hidden="true" tabindex="-1"></a>        <span class="st">"author_avatar_url"</span>: node[<span class="st">"user"</span>][<span class="st">"profile_pic_url"</span>],</span>
+<span id="cb3-165"><a href="#cb3-165" aria-hidden="true" tabindex="-1"></a>        <span class="st">"timestamp"</span>: datetime.datetime.fromtimestamp(node[<span class="st">"taken_at"</span>]).strftime(<span class="st">"%Y-%m-</span><span class="sc">%d</span><span class="st"> %H:%M:%S"</span>),</span>
+<span id="cb3-166"><a href="#cb3-166" aria-hidden="true" tabindex="-1"></a>        <span class="st">"type"</span>: media_type,</span>
+<span id="cb3-167"><a href="#cb3-167" aria-hidden="true" tabindex="-1"></a>        <span class="st">"url"</span>: <span class="st">"https://www.instagram.com/p/"</span> <span class="op">+</span> node[<span class="st">"code"</span>],</span>
+<span id="cb3-168"><a href="#cb3-168" aria-hidden="true" tabindex="-1"></a>        <span class="st">"image_url"</span>: display_url,</span>
+<span id="cb3-169"><a href="#cb3-169" aria-hidden="true" tabindex="-1"></a>        <span class="st">"media_url"</span>: media_url,</span>
+<span id="cb3-170"><a href="#cb3-170" aria-hidden="true" tabindex="-1"></a>        <span class="st">"hashtags"</span>: <span class="st">","</span>.join(re.findall(<span class="vs">r"#([^\s!@#$%ˆ&amp;*()_+</span><span class="sc">{}</span><span class="vs">:\"|&lt;&gt;?\[\];'\,./`~']+)"</span>, caption)),</span>
+<span id="cb3-171"><a href="#cb3-171" aria-hidden="true" tabindex="-1"></a>        <span class="co"># "usertags": ",".join(</span></span>
+<span id="cb3-172"><a href="#cb3-172" aria-hidden="true" tabindex="-1"></a>        <span class="co">#     [u["node"]["user"]["username"] for u in node["edge_media_to_tagged_user"]["edges"]]),</span></span>
+<span id="cb3-173"><a href="#cb3-173" aria-hidden="true" tabindex="-1"></a>        <span class="st">"num_likes"</span>: node[<span class="st">"like_count"</span>],</span>
+<span id="cb3-174"><a href="#cb3-174" aria-hidden="true" tabindex="-1"></a>        <span class="st">"num_comments"</span>: num_comments,</span>
+<span id="cb3-175"><a href="#cb3-175" aria-hidden="true" tabindex="-1"></a>        <span class="st">"num_media"</span>: num_media,</span>
+<span id="cb3-176"><a href="#cb3-176" aria-hidden="true" tabindex="-1"></a>        <span class="st">"location_name"</span>: location[<span class="st">"name"</span>],</span>
+<span id="cb3-177"><a href="#cb3-177" aria-hidden="true" tabindex="-1"></a>        <span class="st">"location_latlong"</span>: location[<span class="st">"latlong"</span>],</span>
+<span id="cb3-178"><a href="#cb3-178" aria-hidden="true" tabindex="-1"></a>        <span class="st">"location_city"</span>: location[<span class="st">"city"</span>],</span>
+<span id="cb3-179"><a href="#cb3-179" aria-hidden="true" tabindex="-1"></a>        <span class="st">"unix_timestamp"</span>: node[<span class="st">"taken_at"</span>]</span>
+<span id="cb3-180"><a href="#cb3-180" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb3-181"><a href="#cb3-181" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-182"><a href="#cb3-182" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> mapped_item</span>
+<span id="cb3-183"><a href="#cb3-183" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-184"><a href="#cb3-184" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> map_item(item):</span>
+<span id="cb3-185"><a href="#cb3-185" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb3-186"><a href="#cb3-186" aria-hidden="true" tabindex="-1"></a><span class="co">    Map Instagram item</span></span>
+<span id="cb3-187"><a href="#cb3-187" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-188"><a href="#cb3-188" aria-hidden="true" tabindex="-1"></a><span class="co">    Instagram importing is a little bit roundabout since we can expect</span></span>
+<span id="cb3-189"><a href="#cb3-189" aria-hidden="true" tabindex="-1"></a><span class="co">    input in two separate and not completely overlapping formats - an "edge</span></span>
+<span id="cb3-190"><a href="#cb3-190" aria-hidden="true" tabindex="-1"></a><span class="co">    list" or an "item list", and posts are structured differently between</span></span>
+<span id="cb3-191"><a href="#cb3-191" aria-hidden="true" tabindex="-1"></a><span class="co">    those, and do not contain the same data. So we find a middle ground</span></span>
+<span id="cb3-192"><a href="#cb3-192" aria-hidden="true" tabindex="-1"></a><span class="co">    here... each format has its own handler function</span></span>
+<span id="cb3-193"><a href="#cb3-193" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-194"><a href="#cb3-194" aria-hidden="true" tabindex="-1"></a><span class="co">    :param dict item:  Item to map</span></span>
+<span id="cb3-195"><a href="#cb3-195" aria-hidden="true" tabindex="-1"></a><span class="co">    :return:  Mapped item</span></span>
+<span id="cb3-196"><a href="#cb3-196" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb3-197"><a href="#cb3-197" aria-hidden="true" tabindex="-1"></a>    link <span class="op">=</span> item.get(<span class="st">"link"</span>, <span class="st">""</span>)</span>
+<span id="cb3-198"><a href="#cb3-198" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (item.get(<span class="st">"product_type"</span>, <span class="st">""</span>) <span class="op">==</span> <span class="st">"ad"</span>) <span class="kw">or</span> <span class="op">\</span></span>
+<span id="cb3-199"><a href="#cb3-199" aria-hidden="true" tabindex="-1"></a>            (link <span class="kw">and</span> link.startswith(<span class="st">"https://www.facebook.com/ads/ig_redirect"</span>)):</span>
+<span id="cb3-200"><a href="#cb3-200" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-201"><a href="#cb3-201" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">None</span></span>
+<span id="cb3-202"><a href="#cb3-202" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-203"><a href="#cb3-203" aria-hidden="true" tabindex="-1"></a>    is_graph_response <span class="op">=</span> <span class="st">"__typename"</span> <span class="kw">in</span> item <span class="kw">and</span> item[<span class="st">"__typename"</span>] <span class="kw">not</span> <span class="kw">in</span> (<span class="st">"XDTMediaDict"</span>,)</span>
+<span id="cb3-204"><a href="#cb3-204" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-205"><a href="#cb3-205" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> is_graph_response:</span>
+<span id="cb3-206"><a href="#cb3-206" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> parse_graph_item(item)</span>
+<span id="cb3-207"><a href="#cb3-207" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb3-208"><a href="#cb3-208" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> parse_itemlist_item(item)</span>
+<span id="cb3-209"><a href="#cb3-209" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-210"><a href="#cb3-210" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-211"><a href="#cb3-211" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-212"><a href="#cb3-212" aria-hidden="true" tabindex="-1"></a><span class="co">##########</span></span>
+<span id="cb3-213"><a href="#cb3-213" aria-hidden="true" tabindex="-1"></a><span class="co"># CODE MA</span></span>
+<span id="cb3-214"><a href="#cb3-214" aria-hidden="true" tabindex="-1"></a><span class="co">##########</span></span>
+<span id="cb3-215"><a href="#cb3-215" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-216"><a href="#cb3-216" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> []</span>
+<span id="cb3-217"><a href="#cb3-217" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-218"><a href="#cb3-218" aria-hidden="true" tabindex="-1"></a><span class="co"># List to store all the dictionaries</span></span>
+<span id="cb3-219"><a href="#cb3-219" aria-hidden="true" tabindex="-1"></a>data_list <span class="op">=</span> []</span>
+<span id="cb3-220"><a href="#cb3-220" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-221"><a href="#cb3-221" aria-hidden="true" tabindex="-1"></a><span class="co"># Read the ndjson file line by line</span></span>
+<span id="cb3-222"><a href="#cb3-222" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(import_filename, <span class="st">'r'</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb3-223"><a href="#cb3-223" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> line <span class="kw">in</span> <span class="bu">file</span>:</span>
+<span id="cb3-224"><a href="#cb3-224" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Parse the JSON line and extract the 'data' field</span></span>
+<span id="cb3-225"><a href="#cb3-225" aria-hidden="true" tabindex="-1"></a>        json_line <span class="op">=</span> json.loads(line)</span>
+<span id="cb3-226"><a href="#cb3-226" aria-hidden="true" tabindex="-1"></a>        data_field <span class="op">=</span> json_line[<span class="st">'data'</span>]</span>
+<span id="cb3-227"><a href="#cb3-227" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-228"><a href="#cb3-228" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Add the 'data' field to your list</span></span>
+<span id="cb3-229"><a href="#cb3-229" aria-hidden="true" tabindex="-1"></a>        data_list.append(data_field)</span>
+<span id="cb3-230"><a href="#cb3-230" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-231"><a href="#cb3-231" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-232"><a href="#cb3-232" aria-hidden="true" tabindex="-1"></a><span class="co"># Next, we convert the data into a table</span></span>
+<span id="cb3-233"><a href="#cb3-233" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> element <span class="kw">in</span> tqdm(data_list):</span>
+<span id="cb3-234"><a href="#cb3-234" aria-hidden="true" tabindex="-1"></a>  item <span class="op">=</span> map_item(element)</span>
+<span id="cb3-235"><a href="#cb3-235" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-236"><a href="#cb3-236" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> item:</span>
+<span id="cb3-237"><a href="#cb3-237" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> import_format <span class="op">==</span> <span class="st">"MA"</span>:</span>
+<span id="cb3-238"><a href="#cb3-238" aria-hidden="true" tabindex="-1"></a>      data.append({</span>
+<span id="cb3-239"><a href="#cb3-239" aria-hidden="true" tabindex="-1"></a>          <span class="st">'shortcode'</span>: item.get(<span class="st">"id"</span>, <span class="st">""</span>),</span>
+<span id="cb3-240"><a href="#cb3-240" aria-hidden="true" tabindex="-1"></a>          <span class="st">'username'</span>: item.get(<span class="st">"author"</span>, <span class="st">""</span>),</span>
+<span id="cb3-241"><a href="#cb3-241" aria-hidden="true" tabindex="-1"></a>          <span class="st">'timestamp'</span>: item.get(<span class="st">"unix_timestamp"</span>, <span class="va">None</span>),</span>
+<span id="cb3-242"><a href="#cb3-242" aria-hidden="true" tabindex="-1"></a>          <span class="st">'caption'</span>: item.get(<span class="st">"body"</span>, <span class="st">""</span>),</span>
+<span id="cb3-243"><a href="#cb3-243" aria-hidden="true" tabindex="-1"></a>          <span class="st">'location'</span>: item.get(<span class="st">"location_name"</span>, <span class="va">None</span>),</span>
+<span id="cb3-244"><a href="#cb3-244" aria-hidden="true" tabindex="-1"></a>      })</span>
+<span id="cb3-245"><a href="#cb3-245" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-246"><a href="#cb3-246" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb3-247"><a href="#cb3-247" aria-hidden="true" tabindex="-1"></a>      data.append(item)</span>
+<span id="cb3-248"><a href="#cb3-248" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-249"><a href="#cb3-249" aria-hidden="true" tabindex="-1"></a>posts_df <span class="op">=</span> pd.DataFrame(data)</span>
+<span id="cb3-250"><a href="#cb3-250" aria-hidden="true" tabindex="-1"></a>posts_df.to_csv(export_filename)</span>
+<span id="cb3-251"><a href="#cb3-251" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-252"><a href="#cb3-252" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Imported Zeeschuimer Data. Saved export to </span><span class="sc">{</span>export_filename<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"ff654d4551f646cbbe3e0bce39b3abc2","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Imported Zeeschuimer Data. Saved export to /content/2023-11-03-ig-zeeschuimer-export.csv</code></pre>
+</div>
+</div></div>
+<div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [64]:</pre></div><div class="cell" data-outputid="33ac51b7-ff9a-4283-d31b-7706312cdb6f" data-execution_count="64">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>posts_df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="fig-bill-marginal" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+
+  <div id="df-a9b0ee42-1fb8-430d-8705-3076894bd2c7" class="colab-df-container">
+    <div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">id</th>
+<th data-quarto-table-cell-role="th">thread_id</th>
+<th data-quarto-table-cell-role="th">parent_id</th>
+<th data-quarto-table-cell-role="th">body</th>
+<th data-quarto-table-cell-role="th">author</th>
+<th data-quarto-table-cell-role="th">author_fullname</th>
+<th data-quarto-table-cell-role="th">author_avatar_url</th>
+<th data-quarto-table-cell-role="th">timestamp</th>
+<th data-quarto-table-cell-role="th">type</th>
+<th data-quarto-table-cell-role="th">url</th>
+<th data-quarto-table-cell-role="th">image_url</th>
+<th data-quarto-table-cell-role="th">media_url</th>
+<th data-quarto-table-cell-role="th">hashtags</th>
+<th data-quarto-table-cell-role="th">num_likes</th>
+<th data-quarto-table-cell-role="th">num_comments</th>
+<th data-quarto-table-cell-role="th">num_media</th>
+<th data-quarto-table-cell-role="th">location_name</th>
+<th data-quarto-table-cell-role="th">location_latlong</th>
+<th data-quarto-table-cell-role="th">location_city</th>
+<th data-quarto-table-cell-role="th">unix_timestamp</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>CzLuRzfrukl</td>
+<td>CzLuRzfrukl</td>
+<td>CzLuRzfrukl</td>
+<td>Dear citizens of Israel, \n\nYou have been our...</td>
+<td>stateofisrael</td>
+<td>Israel</td>
+<td>https://scontent.cdninstagram.com/v/t51.2885-1...</td>
+<td>2023-11-03 12:04:11</td>
+<td>video</td>
+<td>https://www.instagram.com/p/CzLuRzfrukl</td>
+<td>https://scontent.cdninstagram.com/v/t51.2885-1...</td>
+<td>https://scontent.cdninstagram.com/o1/v/t16/f1/...</td>
+<td></td>
+<td>2775</td>
+<td>807</td>
+<td>1</td>
+<td></td>
+<td></td>
+<td></td>
+<td>1699013051</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>CzGoQoFrGQR</td>
+<td>CzGoQoFrGQR</td>
+<td>CzGoQoFrGQR</td>
+<td>אני עוד חי, חי, חי, \nעם ישראל חי.\n\n📸 @arnon...</td>
+<td>stateofisrael</td>
+<td>Israel</td>
+<td>https://scontent.cdninstagram.com/v/t51.2885-1...</td>
+<td>2023-11-01 12:33:49</td>
+<td>photo</td>
+<td>https://www.instagram.com/p/CzGoQoFrGQR</td>
+<td>https://scontent.cdninstagram.com/v/t51.2885-1...</td>
+<td>https://scontent.cdninstagram.com/v/t51.2885-1...</td>
+<td></td>
+<td>20749</td>
+<td>6436</td>
+<td>1</td>
+<td></td>
+<td></td>
+<td></td>
+<td>1698842029</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>CzEIzgitG5w</td>
+<td>CzEIzgitG5w</td>
+<td>CzEIzgitG5w</td>
+<td>Unsere Demokratie steht im Feuer. Wir als poli...</td>
+<td>kathaschulze</td>
+<td>Katharina Schulze</td>
+<td>https://scontent.cdninstagram.com/v/t51.2885-1...</td>
+<td>2023-10-31 13:20:28</td>
+<td>photo</td>
+<td>https://www.instagram.com/p/CzEIzgitG5w</td>
+<td>https://scontent.cdninstagram.com/v/t39.30808-...</td>
+<td>https://scontent.cdninstagram.com/v/t39.30808-...</td>
+<td>parlament,landtag,bayern,demokratie,rede</td>
+<td>570</td>
+<td>27</td>
+<td>1</td>
+<td>Bayerischer Landtag</td>
+<td>48.136341,11.594312</td>
+<td>None</td>
+<td>1698758428</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>CzLGA9jtJuj</td>
+<td>CzLGA9jtJuj</td>
+<td>CzLGA9jtJuj</td>
+<td>Hass und Desinformation dürfen im Netz nicht g...</td>
+<td>spdde</td>
+<td>SPD</td>
+<td>https://scontent.cdninstagram.com/v/t51.2885-1...</td>
+<td>2023-11-03 06:10:47</td>
+<td>photo</td>
+<td>https://www.instagram.com/p/CzLGA9jtJuj</td>
+<td>https://scontent.cdninstagram.com/v/t51.2885-1...</td>
+<td>https://scontent.cdninstagram.com/v/t51.2885-1...</td>
+<td></td>
+<td>747</td>
+<td>46</td>
+<td>1</td>
+<td></td>
+<td></td>
+<td></td>
+<td>1698991847</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>CzGC5dxth82</td>
+<td>CzGC5dxth82</td>
+<td>CzGC5dxth82</td>
+<td></td>
+<td>jungealternativebayern</td>
+<td>Junge Alternative Bayern ❌</td>
+<td>https://scontent.cdninstagram.com/v/t51.2885-1...</td>
+<td>2023-11-01 07:07:20</td>
+<td>photo</td>
+<td>https://www.instagram.com/p/CzGC5dxth82</td>
+<td>https://scontent.cdninstagram.com/v/t39.30808-...</td>
+<td>https://scontent.cdninstagram.com/v/t39.30808-...</td>
+<td></td>
+<td>164</td>
+<td>4</td>
+<td>1</td>
+<td></td>
+<td></td>
+<td></td>
+<td>1698822440</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-a9b0ee42-1fb8-430d-8705-3076894bd2c7')" title="Convert this dataframe to an interactive table." style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-a9b0ee42-1fb8-430d-8705-3076894bd2c7 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-a9b0ee42-1fb8-430d-8705-3076894bd2c7');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+<div id="df-25cae4d0-bb0a-43e8-b769-6cef7fa2ebc7">
+  <button class="colab-df-quickchart" onclick="quickchart('df-25cae4d0-bb0a-43e8-b769-6cef7fa2ebc7')" title="Suggest charts." style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 0 24 24" width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"></path>
+    </g>
+</svg>
+  </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+  <script>
+    async function quickchart(key) {
+      const quickchartButtonEl =
+        document.querySelector('#' + key + ' button');
+      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+      quickchartButtonEl.classList.add('colab-df-spinner');
+      try {
+        const charts = await google.colab.kernel.invokeFunction(
+            'suggestCharts', [key], {});
+      } catch (error) {
+        console.error('Error during call to suggestCharts:', error);
+      }
+      quickchartButtonEl.classList.remove('colab-df-spinner');
+      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+    }
+    (() => {
+      let quickchartButtonEl =
+        document.querySelector('#df-25cae4d0-bb0a-43e8-b769-6cef7fa2ebc7 button');
+      quickchartButtonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+    })();
+  </script>
+</div>
+    </div>
+  </div>
+<figcaption class="figure-caption">Figure&nbsp;1: <strong>?(caption)</strong></figcaption>
+</figure>
+</div>
+</div></div>
+<div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [58]:</pre></div><div class="cell" data-cellview="form" data-execution_count="58">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#@title Download Videos and Images</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co">#@markdown This cell downloads all images and, if available, videos to the folders below. &lt;br&gt; **</span><span class="al">TODO</span><span class="co">: Download multiple images per Post**</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>video_folder <span class="op">=</span> <span class="st">"/content/posts/videos"</span>  <span class="co"># @param {type: "string"}</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>image_folder <span class="op">=</span> <span class="st">"/content/posts/images"</span>  <span class="co"># @param {type: "string"}</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Set up the base path for media</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>base_video_path <span class="op">=</span> Path(<span class="st">"/content/posts/videos"</span>)</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>base_image_path <span class="op">=</span> Path(<span class="st">"/content/posts/images"</span>)</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Ensure the base directories exist before entering the loop</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>base_video_path.mkdir(parents<span class="op">=</span><span class="va">True</span>, exist_ok<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>base_image_path.mkdir(parents<span class="op">=</span><span class="va">True</span>, exist_ok<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> requests.Session() <span class="im">as</span> session:</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> index, row <span class="kw">in</span> posts_df.iterrows():</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Determine the media type and set up path and url accordingly</span></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> row[<span class="st">'type'</span>] <span class="op">==</span> <span class="st">"video"</span>:</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>            path <span class="op">=</span> base_video_path <span class="op">/</span> row[<span class="st">'author'</span>]</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>            media_url <span class="op">=</span> row[<span class="st">'media_url'</span>]</span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>            file_extension <span class="op">=</span> <span class="st">".mp4"</span></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:  <span class="co"># assuming all non-video types are images</span></span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>            path <span class="op">=</span> base_image_path <span class="op">/</span> row[<span class="st">'author'</span>]</span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>            media_url <span class="op">=</span> row[<span class="st">'image_url'</span>]</span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>            file_extension <span class="op">=</span> <span class="st">".jpg"</span></span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Ensure the author-specific directory exists</span></span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>        path.mkdir(parents<span class="op">=</span><span class="va">True</span>, exist_ok<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Construct the file path</span></span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>        filename <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>row[<span class="st">'id'</span>]<span class="sc">}{</span>file_extension<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>        file_path <span class="op">=</span> path <span class="op">/</span> filename</span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Make the request and save the file</span></span>
+<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a>        <span class="cf">try</span>:</span>
+<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a>            response <span class="op">=</span> session.get(media_url, allow_redirects<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a>            response.raise_for_status()  <span class="co"># Will raise an HTTPError if the HTTP request returned an unsuccessful status code</span></span>
+<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a>            <span class="cf">with</span> <span class="bu">open</span>(file_path, <span class="st">'wb'</span>) <span class="im">as</span> f:</span>
+<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a>                f.write(response.content)</span>
+<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a>        <span class="cf">except</span> requests.HTTPError <span class="im">as</span> e:</span>
+<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"HTTP Error for </span><span class="sc">{</span>media_url<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a>        <span class="cf">except</span> requests.RequestException <span class="im">as</span> e:</span>
+<span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"Request Exception for </span><span class="sc">{</span>media_url<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div>
+</section>
+<section id="zip-files-for-download" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="zip-files-for-download">ZIP files for download</h2>
+<div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [63]:</pre></div><div class="cell" data-outputid="c7d3b60d-1681-49a1-a2ee-7fa4d5e65aa6" data-execution_count="63">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span><span class="bu">zip</span> <span class="op">-</span>r posts.<span class="bu">zip</span> <span class="op">/</span>content<span class="op">/</span>posts<span class="op">/</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  adding: content/posts/ (stored 0%)
+  adding: content/posts/images/ (stored 0%)
+  adding: content/posts/images/jungealternativebayern/ (stored 0%)
+  adding: content/posts/images/jungealternativebayern/CzGC5dxth82.jpg (deflated 1%)
+  adding: content/posts/images/kathaschulze/ (stored 0%)
+  adding: content/posts/images/kathaschulze/CzEIzgitG5w.jpg (deflated 1%)
+  adding: content/posts/images/spdde/ (stored 0%)
+  adding: content/posts/images/spdde/CzLGA9jtJuj.jpg (deflated 2%)
+  adding: content/posts/images/stateofisrael/ (stored 0%)
+  adding: content/posts/images/stateofisrael/CzGoQoFrGQR.jpg (deflated 1%)
+  adding: content/posts/videos/ (stored 0%)
+  adding: content/posts/videos/stateofisrael/ (stored 0%)
+  adding: content/posts/videos/stateofisrael/CzLuRzfrukl.mp4 (deflated 0%)</code></pre>
+</div>
+</div></div>
+<p>The file <code>posts.zip</code> will appear in the files pane on the left. Right click the file to download it. Files can also be moved to Google Drive (faster!): <code>!cp posts.zip /content/drive/MyDrive/</code>.</p>
+
+
+</section>
+     </main> <!-- /main -->  <script type="application/vnd.jupyter.widget-state+json">
+{"065e6335dd8846718af75249fde096ad":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"HTMLModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"HTMLModel","_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"1.5.0","_view_name":"HTMLView","description":"","description_tooltip":null,"layout":"IPY_MODEL_f59e5e3c34de4670a7f07667d2467b31","placeholder":"​","style":"IPY_MODEL_75aa36d60e484da7841a9af91e9026cc","value":" 10/10 [00:00&lt;00:00, 773.33it/s]"}},"392d41ffe3724aeba9bc068b84c9482f":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"DescriptionStyleModel","state":{"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"DescriptionStyleModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"StyleView","description_width":""}},"461e4acc9b904be9b8ff823e005005c2":{"model_module":"@jupyter-widgets/base","model_module_version":"1.2.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"1.2.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"overflow_x":null,"overflow_y":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"6ef3d1e5103f4503a3cce13692c4ac82":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"ProgressStyleModel","state":{"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"ProgressStyleModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"StyleView","bar_color":null,"description_width":""}},"75aa36d60e484da7841a9af91e9026cc":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"DescriptionStyleModel","state":{"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"DescriptionStyleModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"StyleView","description_width":""}},"86fd4802076b45d8b4c0a13090b5d75e":{"model_module":"@jupyter-widgets/base","model_module_version":"1.2.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"1.2.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"overflow_x":null,"overflow_y":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"f519aef403514ebcb404e98de2822c5c":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"FloatProgressModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"FloatProgressModel","_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"1.5.0","_view_name":"ProgressView","bar_style":"success","description":"","description_tooltip":null,"layout":"IPY_MODEL_461e4acc9b904be9b8ff823e005005c2","max":10,"min":0,"orientation":"horizontal","style":"IPY_MODEL_6ef3d1e5103f4503a3cce13692c4ac82","value":10}},"f59e5e3c34de4670a7f07667d2467b31":{"model_module":"@jupyter-widgets/base","model_module_version":"1.2.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"1.2.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"overflow_x":null,"overflow_y":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"f5af39a8a3bd47ac9f44375fa6503d48":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"HTMLModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"HTMLModel","_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"1.5.0","_view_name":"HTMLView","description":"","description_tooltip":null,"layout":"IPY_MODEL_86fd4802076b45d8b4c0a13090b5d75e","placeholder":"​","style":"IPY_MODEL_392d41ffe3724aeba9bc068b84c9482f","value":"100%"}},"f8875d84ea744082813404f1cba11b4e":{"model_module":"@jupyter-widgets/base","model_module_version":"1.2.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"1.2.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"overflow_x":null,"overflow_y":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"ff654d4551f646cbbe3e0bce39b3abc2":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"HBoxModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"HBoxModel","_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"1.5.0","_view_name":"HBoxView","box_style":"","children":["IPY_MODEL_f5af39a8a3bd47ac9f44375fa6503d48","IPY_MODEL_f519aef403514ebcb404e98de2822c5c","IPY_MODEL_065e6335dd8846718af75249fde096ad"],"layout":"IPY_MODEL_f8875d84ea744082813404f1cba11b4e"}}}
+</script>  <script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>  </div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center"><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer> 
+  
+
+</body></html>

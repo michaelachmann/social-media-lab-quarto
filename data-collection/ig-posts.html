@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Michael Achmann-Denkler">
-<meta name="dcterms.date" content="2023-10-16">
+<meta name="dcterms.date" content="2023-11-06">
 
 <title>Social Media Lab - Instagram Posts</title>
 <style>
@@ -283,7 +283,11 @@ cookieconsent.run({
   <ul>
   <li><a href="#instaloader" id="toc-instaloader" class="nav-link active" data-scroll-target="#instaloader">Instaloader</a></li>
   <li><a href="#crowdtangle" id="toc-crowdtangle" class="nav-link" data-scroll-target="#crowdtangle">CrowdTangle</a></li>
-  <li><a href="#zeeschuimer-4cat" id="toc-zeeschuimer-4cat" class="nav-link" data-scroll-target="#zeeschuimer-4cat">Zeeschuimer &amp; 4CAT</a></li>
+  <li><a href="#zeeschuimer-4cat" id="toc-zeeschuimer-4cat" class="nav-link" data-scroll-target="#zeeschuimer-4cat">Zeeschuimer &amp; 4CAT</a>
+  <ul class="collapse">
+  <li><a href="#working-with-4cat" id="toc-working-with-4cat" class="nav-link" data-scroll-target="#working-with-4cat">Working with 4CAT</a></li>
+  <li><a href="#working-with-python" id="toc-working-with-python" class="nav-link" data-scroll-target="#working-with-python">Working with Python</a></li>
+  </ul></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
 <div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="https://colab.research.google.com/github/michaelachmann/ig-tutorial/blob/main/01_DataCollection.ipynb"><i class="bi bi-journal-code"></i>Collecting Posts with Instaloader</a></li></ul></div></nav>
@@ -310,7 +314,7 @@ cookieconsent.run({
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">October 16, 2023</p>
+      <p class="date">November 6, 2023</p>
     </div>
   </div>
   
@@ -327,6 +331,19 @@ cookieconsent.run({
 <section id="instaloader" class="level2">
 <h2 class="anchored" data-anchor-id="instaloader">Instaloader</h2>
 <p><a href="https://instaloader.github.io/">Instaloader</a> is a python package for downloading instagram pictures and videos along with their metadata. I have written a <a href="https://achmann.dev/getting-started-with-instagram-analysis-instaloader-bbf686cb6e3b">getting started tutorial on Medium</a>. It is, together with <a href="https://github.com/michaelachmann/ig-tutorial/blob/main/01_DataCollection.ipynb">the provided notebook</a>, the basis for this chapter.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Instaloader is a stand-alone piece of software: It offers options to download most Instagram content, like posts and stories, through different strategies, e.g.&nbsp;lists of profiles or by hashtag. For complex tasks I recommend to call instaloader from terminal, <a href="https://instaloader.github.io/basic-usage.html">see the documentation for more information</a>.</p>
+</div>
+</div>
 <div class="quarto-embed-nb-cell">
 <p>In order to download posts and stories from Instagram, we use the package <code>instaloader</code>. You can install package for python using <code>pip install &lt;package&gt;</code>, the command <code>-q</code> minimizes the output.</p>
 <div class="cell" data-outputid="aa0e0d4b-dd59-489d-b9cb-4d8f19709378">
@@ -499,6 +516,36 @@ cookieconsent.run({
 </section>
 </section>
 <a class="quarto-notebook-link" id="nblink-1" href="https://colab.research.google.com/github/michaelachmann/ig-tutorial/blob/main/01_DataCollection.ipynb">Source: Collecting Posts with Instaloader</a></div>
+<div class="pros-cons-container">
+<section id="pros" class="level3 pros">
+<h3 class="anchored" data-anchor-id="pros">Pros:</h3>
+<ul class="pro-con-list pro">
+<li>
+Maximum Flexibility
+</li>
+<li>
+Can collect everything out of the box
+</li>
+<li>
+We can collect content computationally
+</li>
+</ul>
+</section>
+<section id="cons" class="level3 cons">
+<h3 class="anchored" data-anchor-id="cons">Cons:</h3>
+<ul class="pro-con-list con">
+<li>
+Possibly against the TOS
+</li>
+<li>
+Rate Limits
+</li>
+<li>
+Blocked Accounts
+</li>
+</ul>
+</section>
+</div>
 </section>
 <section id="crowdtangle" class="level2">
 <h2 class="anchored" data-anchor-id="crowdtangle">CrowdTangle</h2>
@@ -509,10 +556,103 @@ cookieconsent.run({
 </figure>
 </div>
 <p><a href="https://www.crowdtangle.com/">CrowdTangle</a> is the best option to collect IG posts – in theory. It provides legal access to Instagram data and offers several tools to export large amount of data. For a current project we’ve exported more than 500.000 public posts through a hashtag query. Unfortunately there are several restrictions: CrowdTangle is the best tool to export metadata of public posts, and captions. The abilty to collect images through the platform is limited: Image links expire after a certain amount of time, thus we need to use some makeshift approach to download the images. When we can download the images, it’s always just one per post, no matter if it’s a gallery or a single image. And let’s not talk about videos. I have written <a href="https://achmann.dev/crowdtangle-for-instagram-analysis-a-step-by-step-guide-for-beginners-6d4f1f8cb0a3">another Medium story with a step-by-step guide to CrowdTangle</a>.</p>
+<div class="pros-cons-container">
+<section id="pros-1" class="level3 pros">
+<h3 class="anchored" data-anchor-id="pros-1">Pros:</h3>
+<ul class="pro-con-list pro">
+<li>
+Legal Access
+</li>
+<li>
+We can select the time frame for export
+</li>
+<li>
+Export in CSV format
+</li>
+</ul>
+</section>
+<section id="cons-1" class="level3 cons">
+<h3 class="anchored" data-anchor-id="cons-1">Cons:</h3>
+<ul class="pro-con-list con">
+<li>
+Only access to one image for album posts
+</li>
+<li>
+Limited access to historical images, the browsing to the bottom strategy is limited
+</li>
+<li>
+No videos for newer posts
+</li>
+</ul>
+</section>
+</div>
 </section>
 <section id="zeeschuimer-4cat" class="level2">
 <h2 class="anchored" data-anchor-id="zeeschuimer-4cat">Zeeschuimer &amp; 4CAT</h2>
-<p>Zeeschuimer <span class="citation" data-cites="Peeters_undated-ee">(<a href="#ref-Peeters_undated-ee" role="doc-biblioref">Peeters, n.d.</a>)</span> and 4CAT <span class="citation" data-cites="Peeters_undated-ow">(<a href="#ref-Peeters_undated-ow" role="doc-biblioref">Peeters, Hagen, and Wahl, n.d.</a>)</span> are two tools developed for the <a href="Digital Methods Initiative">https://wiki.digitalmethods.net/</a>. The first is a firefox plugin that captures traffic when browsing websites likes Instagram or TikTok. The second, 4CAT, is an analysis platform incorporating several steps of preprocessing and further analyses. For post collection we can use the original <a href="https://github.com/digitalmethodsinitiative/zeeschuimer">Zeeschuimer Firefox Plugin</a>, download the latest release from GitHub and install it in Firefox.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/zeeschuimer-screenshot.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Screenshot of Zeeschuimer</figcaption>
+</figure>
+</div>
+<p>Zeeschuimer <span class="citation" data-cites="Peeters_undated-ee">(<a href="#ref-Peeters_undated-ee" role="doc-biblioref">Peeters, n.d.</a>)</span> and 4CAT <span class="citation" data-cites="Peeters_undated-ow">(<a href="#ref-Peeters_undated-ow" role="doc-biblioref">Peeters, Hagen, and Wahl, n.d.</a>)</span> are two tools developed for the <a href="Digital Methods Initiative">https://wiki.digitalmethods.net/</a>. The first is a firefox plugin that captures traffic when browsing websites likes Instagram or TikTok. The second, 4CAT, is an analysis platform incorporating several steps of preprocessing and further analyses. For post collection we can use the original <a href="https://github.com/digitalmethodsinitiative/zeeschuimer">Zeeschuimer Firefox Plugin</a>, download the latest release from GitHub and install it in Firefox. To download Instagram posts using Zeeschuimer follow these steps (* steps are only necessary when working with 4CAT):</p>
+<ol type="1">
+<li><a href="https://www.mozilla.org/de/firefox/new/">Download and install Firefox</a></li>
+<li><a href="https://github.com/digitalmethodsinitiative/zeeschuimer">Download and install the Plugin</a></li>
+<li>*<a href="https://4cat.digitalhumanities.io/request-access/">Register a 4CAT Account</a></li>
+<li><strong>Activate</strong> the <em>Instagram (Posts)</em> Switch.</li>
+<li>*Fill out the <em>4CAT server URL</em> field (<code>https://4cat.digitalhumanities.io/</code>).</li>
+<li>Open Instagram in a new tab. Browse the profiles you’re interested in. Keep scrolling to the bottom of the profile until you reach posts at the end of your period of investigation.</li>
+<li>Download the data from the plugin or export the data to 4CAT.</li>
+</ol>
+<div class="pros-cons-container">
+<section id="pros-2" class="level3 pros">
+<h3 class="anchored" data-anchor-id="pros-2">Pros:</h3>
+<ul class="pro-con-list pro">
+<li>
+We do not infringe the TOS
+</li>
+<li>
+Can collect data from private profiles
+</li>
+<li>
+We can collect all media, also albums and videos
+</li>
+</ul>
+</section>
+<section id="cons-2" class="level3 cons">
+<h3 class="anchored" data-anchor-id="cons-2">Cons:</h3>
+<ul class="pro-con-list con">
+<li>
+We need to browse through the profiles
+</li>
+<li>
+Practical limitations (e.g.&nbsp;volume, timeframe, # of profiles …)
+</li>
+</ul>
+</section>
+</div>
+<section id="working-with-4cat" class="level3">
+<h3 class="anchored" data-anchor-id="working-with-4cat">Working with 4CAT</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/4cat-screenshot.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Screenshot of 4CAT</figcaption>
+</figure>
+</div>
+<p>4CAT is a tool developed by the <a href="https://wiki.digitalmethods.net/">Digital Methods Initiative</a>. The collected data can be exported to 4CAT with only the click of a button. After successfully importing the post data, the tools offers several modules. At first, download the images associated with each post with the <em>Download images</em> module at the bottom. Select <code>image_url</code> in the options tab and hit <em>Run</em>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/vision-screenshot.png" class="img-fluid figure-img" width="600"></p>
+<figcaption class="figure-caption">Available modules for visual analysis using 4CAT</figcaption>
+</figure>
+</div>
+<p>Once the images have been downloaded more analysis options are available when clicking the <em>More</em> button on the right. Further, you may download images as a ZIP file and can export the posts from 4CAT in CSV format. Repeat the process with the <em>Download Video</em> function to access posted videos. We will be able to use the collected data using the CSV export and the media files provided in the ZIP packages. Additionally, each ZIP file contains a <code>.metadata.json</code> file which we may use to map filenames to media files.</p>
+<p>The authors of Zeeschuimer and 4CAT <a href="https://docs.google.com/document/d/19MAiqX7Vx1FcNJ44K-vSdnKDVC5gcFwtrSQiewnwW8A/edit?pli=1">have published a manual here</a>.</p>
+</section>
+<section id="working-with-python" class="level3">
+<h3 class="anchored" data-anchor-id="working-with-python">Working with Python</h3>
+<p>Data collected using Zeeschuimer can also be exported as <em>ndjson</em> files. The <a href="https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2023_11_03_Zeeschuimer_Import.ipynb">Zeeschuimer Import</a> notebook provides a code example for reading the files and converting them to either 4CAT format, or a table format compatible with the above notebooks for CrowdTangle and instaloader.</p>
 <div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -523,10 +663,10 @@ Work-In-Progress
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The tutorial will be released for our data collection session on November, 6th.</p>
+<p>We could download multiple images / videos for albums with little refactoring. We will work on an update if necessary.</p>
 </div>
 </div>
-<!--We can use our own 4CAT instance at [https://4cat.digitalhumanities.io/](https://4cat.digitalhumanities.io/) //-->
+</section>
 </section>
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References</h2>
@@ -542,7 +682,7 @@ Peeters, Stijn, Sal Hagen, and Dale Wahl. n.d. <span>“<span class="nocase">4CA
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div>cc-by</div></div></section></div></main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></div></section></div></main> <!-- /main -->
 <script type="application/vnd.jupyter.widget-state+json">
 {"05fe9fa653804364887a671eba646b3b":{"model_module":"@jupyter-widgets/base","model_module_version":"1.2.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"1.2.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"overflow_x":null,"overflow_y":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"22cbb422e31f4526a3d6559f567b1fa8":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"DescriptionStyleModel","state":{"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"DescriptionStyleModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"StyleView","description_width":""}},"2dcf80dad8ff455ea0d235f0ea4d2bbc":{"model_module":"@jupyter-widgets/base","model_module_version":"1.2.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"1.2.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"overflow_x":null,"overflow_y":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"9e830d38a76848838378fcfe8d8dae48":{"model_module":"@jupyter-widgets/base","model_module_version":"1.2.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"1.2.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"overflow_x":null,"overflow_y":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"a4eeb318c69c4014b2b7719e1b25225c":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"FloatProgressModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"FloatProgressModel","_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"1.5.0","_view_name":"ProgressView","bar_style":"success","description":"","description_tooltip":null,"layout":"IPY_MODEL_2dcf80dad8ff455ea0d235f0ea4d2bbc","max":5,"min":0,"orientation":"horizontal","style":"IPY_MODEL_ed581dd35e064ccb8a90088663718a66","value":5}},"ba040b9d901649198653a45b6f22c5cf":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"DescriptionStyleModel","state":{"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"DescriptionStyleModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"StyleView","description_width":""}},"d0e8248f20314929ab7290313d7b7fca":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"HBoxModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"HBoxModel","_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"1.5.0","_view_name":"HBoxView","box_style":"","children":["IPY_MODEL_e9b4da35b28c4c37a959af3852fe7a7b","IPY_MODEL_a4eeb318c69c4014b2b7719e1b25225c","IPY_MODEL_dfd7aade8e10493ebc6ec8a7c085cbc2"],"layout":"IPY_MODEL_9e830d38a76848838378fcfe8d8dae48"}},"dfd7aade8e10493ebc6ec8a7c085cbc2":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"HTMLModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"HTMLModel","_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"1.5.0","_view_name":"HTMLView","description":"","description_tooltip":null,"layout":"IPY_MODEL_05fe9fa653804364887a671eba646b3b","placeholder":"​","style":"IPY_MODEL_ba040b9d901649198653a45b6f22c5cf","value":" 5/5 [00:00&lt;00:00, 70.77it/s]"}},"e9b4da35b28c4c37a959af3852fe7a7b":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"HTMLModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"HTMLModel","_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"1.5.0","_view_name":"HTMLView","description":"","description_tooltip":null,"layout":"IPY_MODEL_f3ff70a3040a401a97ff95d5aa49613a","placeholder":"​","style":"IPY_MODEL_22cbb422e31f4526a3d6559f567b1fa8","value":"100%"}},"ed581dd35e064ccb8a90088663718a66":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"ProgressStyleModel","state":{"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"ProgressStyleModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"StyleView","bar_color":null,"description_width":""}},"f3ff70a3040a401a97ff95d5aa49613a":{"model_module":"@jupyter-widgets/base","model_module_version":"1.2.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"1.2.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"overflow_x":null,"overflow_y":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}}}
 </script>

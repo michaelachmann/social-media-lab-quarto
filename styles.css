@@ -1,1 +1,62 @@
 /* css styles */
+
+.pros-cons-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    align-items: stretch; /* This will make the child items stretch to the same height */
+
+  }
+
+  .pros-cons-container h3 {
+    margin-top: 5px;
+  }
+  
+  .pros, .cons {
+    width: 45%; /* Makes sure that the two boxes take up almost half of the container's width each */
+    border: 1px solid #e0e0e0; /* Adds a light border around each box */
+    border-radius: 10px; /* Rounds the corners of the boxes */
+    padding: 10px; /* Adds some space inside the boxes */
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow for a bit of depth */
+    display: flex;           /* Added flex display for inner content */
+    flex-direction: column;  /* Organizes content vertically */
+  }
+  
+  .pros {
+    background-color: #e8ffe8; /* Light green background for Pros */
+  }
+  
+  .cons {
+    background-color: #ffe8e8; /* Light red background for Cons */
+  }
+  
+  .pro-con-list {
+    list-style-type: none; /* Removes the default bullet points */
+    padding-left: 0; /* Removes the default padding on the left */
+    margin-top: 10px; /* Adds some space above the list */
+  }
+  
+  .pro-con-list li {
+    padding: 5px 0; /* Adds some vertical space between list items */
+    margin-left: 10px; /* Indents the list items slightly */
+    position: relative; /* Required for custom bullet points */
+  }
+  
+  .pro-con-list li:before {
+    content: '→'; /* Creates a custom bullet point */
+    position: relative; /* Positions the custom bullet point */
+    left: 0; /* Aligns the bullet point with the left edge of the list item */
+    margin-right: 5px;
+    color: #666; /* Gives the bullet point a medium-gray color */
+    font-size: 1.2em; /* Increases the size of the bullet point */
+    line-height: 1; /* Ensures the bullet point is vertically centered with the list item */
+  }
+  
+  /* Optional: Different bullet colors for pros and cons */
+  .pros .pro-con-list li:before {
+    color: #006600; /* Green bullet for pros */
+  }
+  
+  .cons .pro-con-list li:before {
+    color: #990000; /* Red bullet for cons */
+  }
