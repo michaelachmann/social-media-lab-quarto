@@ -11,13 +11,20 @@ author:
 license: cc-by
 ---
 
-::: {.callout-caution}
-## Work-In-Progress
-Will be available for the 11/06 session.
-:::
+Instagram stories are a special format with ephemeral character. They expire after 24 hours, thus we need to collect them just in time, retrospective data collection is not possible with this format. There are two feasable approaches: Instaloader and Zeeschuimer-F. Additionally, there are commercial tools like [4k Stogram](https://www.4kdownload.com/de/products/stogram-2) available. 
 
-## 4CAT & Zeeschuimer
+Overall, the ephemeral chracter of stories requires us to continually monitor and collect data from our profiles of interest. Thus, in order to make sure that we capture **every** story item, I recommend to collect stories twice daily, approximately 12 hours appart. This approach leaves room for inaccurate timing of the data collection, as the time frames overlap. We may collect the material manually or computationally. The manual approach in combination with Zeeschuimer-F is the most acceptable approach as we do not infringe the TOS. For this approach we would install the plugin and visit all stories in our browser twice per day. With Instaloader, on the other hand, we would just start the command and wait for the software to collect all data. Ideally, we would use e.g. [Cron](https://de.wikipedia.org/wiki/Cron) to automate the process. 
 
 ## Instaloader
+1. Nutzung
+2. CRON
+
 
 ## Zeeschuimer-F
+
+1. Plugin Installation
+2. Beschreibung firebase backend
+3. Konfiguration (mit Hilfe Notebook)
+4. Sammlung
+5. Export
+6. 
