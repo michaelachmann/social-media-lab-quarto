@@ -20,8 +20,8 @@ website:
       - section: "Data Collection"
         contents:
           - data-collection/ig-posts.qmd
-    #      - data-collection/ig-stories.qmd
-    #      - data-collection/tiktok.qmd
+          - data-collection/ig-stories.qmd
+          - data-collection/tiktok.qmd
     #  - section: "Analysis"
       - projects/index.qmd
   navbar:

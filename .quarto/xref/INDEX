@@ -100,5 +100,9 @@
   "notebooks/zeeschuimer_import.ipynb": {
     "zeeschuimer_import.ipynb.html": "e462c724",
     "zeeschuimer_import.html": "5ad3e796"
+  },
+  "notebooks/firebase-interface-notebook.ipynb": {
+    "firebase-interface-notebook.ipynb.html": "1478790f",
+    "firebase-interface-notebook.html": "f335030e"
   }
 }

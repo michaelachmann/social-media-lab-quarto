@@ -8,7 +8,7 @@ author:
     id: ma
     orcid: 0000-0002-4754-7842
     email: michael.achmann@informatik.uni-regensburg.de
-license: cc-by
+license: CC BY
 ---
 
 ::: {.callout-caution}
