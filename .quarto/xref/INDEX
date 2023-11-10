@@ -104,5 +104,8 @@
   "notebooks/firebase-interface-notebook.ipynb": {
     "firebase-interface-notebook.ipynb.html": "1478790f",
     "firebase-interface-notebook.html": "f335030e"
+  },
+  "notebooks/ig-instaloader-stories-metadata.ipynb": {
+    "ig-instaloader-stories-metadata.html": "22daf9fc"
   }
 }

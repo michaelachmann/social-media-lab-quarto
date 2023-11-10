@@ -118,7 +118,6 @@ Over the past months, several AI Literature Review tools have been released:
 * [ChatPDF](https://www.chatpdf.com/) is one of many tools that allow to upload PDF files, process them, and allow to chat with their content. In my experience it works rather well. However, as with all AI tools, we should be careful to manually verify the responses. The tool returns a link to the text anchor it refers to for answers. Overall, I recommend this tool for refinding information in papers that you've already read, or as a companion for skimming papers -- although you might miss out important information!
 * [LangChain](https://www.langchain.com/) and [LlamaIndex](https://www.llamaindex.ai/) are python package that help building applications like ChatPDF yourself. 
 
-### GPT Literature Review Assistant
 
 --- 
 

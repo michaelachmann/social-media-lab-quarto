@@ -16,11 +16,70 @@ notebook-view:
 ---
 Instagram stories are a special format with ephemeral character. They expire after 24 hours, thus we need to collect them just in time, retrospective data collection is not possible with this format. There are two feasable approaches: Instaloader and Zeeschuimer-F. Additionally, there are commercial tools like [4k Stogram](https://www.4kdownload.com/de/products/stogram-2) available. 
 
+![A screenshot of stories by @tagesschau opened in the firefox browser](/images/stories-screenshot.png)
+
 Overall, the ephemeral chracter of stories requires us to continually monitor and collect data from our profiles of interest. Thus, in order to make sure that we capture **every** story item, I recommend to collect stories twice daily, approximately 12 hours appart. This approach leaves room for inaccurate timing of the data collection, as the time frames overlap. We may collect the material manually or computationally. The manual approach in combination with Zeeschuimer-F is the most acceptable approach as we do not infringe the TOS. For this approach we would install the plugin and visit all stories in our browser twice per day. With Instaloader, on the other hand, we would just start the command and wait for the software to collect all data. Ideally, we would use e.g. [Cron](https://de.wikipedia.org/wiki/Cron) to automate the process. 
 
 ## Instaloader
-1. Nutzung
-2. CRON
+Instaloader for stories works very similar to [collecting Posts](ig-posts.qmd#instaloader). First of all, the package needs to be installed:
+```python
+!pip -q install instaloader
+```
+
+In contrast to the previous tutorial, I recommend to use the command line interface of Instaloader for collection stories. Open a terminal and run the following command: 
+
+```bash
+instaloader --login your.profile.name --dirname-pattern ig_stories/{profile} :stories --no-compress-json
+```
+This command creates a subfolder in `ig_stories` for each user that your profile is following. It downloads the metadata, images and videos for each story. The metadata is contained in a `JSON` file. By default the file is xz compressed, using the `--no-compress-json` switch suppresses the compression. The `JSON` files can then be read into a pandas DataFram using python. 
+
+The process may be automated, e.g. using this `bash` script in combination with `cron`:
+
+```bash
+#!/bin/bash
+
+# Generate a random number of seconds between 0 and 3600 (1 hours)
+sleep_duration=$(( RANDOM % 3600 ))
+
+# Print the sleep duration
+echo "Sleeping for $sleep_duration seconds..."
+
+# Sleep for the random duration
+sleep $sleep_duration
+
+# Run Instaloader command to download the latest Instagram stories
+instaloader --login your.profile.name --dirname-pattern ~/ig_stories/{profile} :stories  --no-compress-json
+
+# Add more script to check for success and send alerts in case of error
+```
+
+Start cron by entering `crontab -e` on your terminal and add a line pointing to the `bash` script, e.g.:
+
+```bash
+* 8,20 * * * /path/to/your/script.sh >/dev/null 2>&1
+```
+
+
+<div class="pros-cons-container">
+
+<div class="pros">
+### Pros:
+<ul class="pro-con-list pro">
+<li>Very easy to automate</li>
+<li>Collects all data: metadata, images, videos</li>
+</ul>
+</div>
+
+<div class="cons">
+### Cons:
+<ul class="pro-con-list con">
+<li>Possibly against the TOS</li>
+<li>Rate Limits</li>
+<li>Blocked Accounts (*very* quickly)</li>
+</ul>
+</div>
+
+</div>
 
 
 ## Zeeschuimer-F
@@ -46,6 +105,29 @@ Download the latest release `.xpi` file for the extension form [GitHub](https://
 ### The Firebase Interface Notebook
 
 {{< embed ../notebooks/firebase-interface-notebook.ipynb echo=true >}}
+
+
+<div class="pros-cons-container">
+
+<div class="pros">
+### Pros:
+<ul class="pro-con-list pro">
+<li>We do not infringe the TOS</li>
+<li>Collects all data: metadata, images, videos</li>
+<li>The firebase backend handles alert emails</li>
+</ul>
+</div>
+
+<div class="cons">
+### Cons:
+<ul class="pro-con-list con">
+<li>Current solution relies on the firebase backend</li>
+<li>We need to manually browse the stories twice a day (*can* be automated using [Selenium](https://www.selenium.dev/))</li>
+<li>Data is collected on firebase storage, we need to export to use it</li>
+</ul>
+</div>
+
+</div>
 
 
 ## Conclusion

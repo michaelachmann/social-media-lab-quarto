@@ -21,8 +21,11 @@ website:
         contents:
           - data-collection/ig-posts.qmd
           - data-collection/ig-stories.qmd
-          - data-collection/tiktok.qmd
-    #  - section: "Analysis"
+          - href: https://docs.google.com/document/d/19MAiqX7Vx1FcNJ44K-vSdnKDVC5gcFwtrSQiewnwW8A/edit?pli=1
+            text: TikTok (External, DMI)
+      - section: "(Pre)processing"
+      - section: "Evaluation"
+      - section: "Analysis"
       - projects/index.qmd
   navbar:
     logo: images/logo2.png
