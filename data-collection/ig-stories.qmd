@@ -14,26 +14,32 @@ notebook-view:
     title: "Firebase Interface Notebook"
     url: https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2023_11_07_Firebase_Interface.ipynb
 ---
-Instagram stories are a special format with ephemeral character. They expire after 24 hours, thus we need to collect them just in time, retrospective data collection is not possible with this format. There are two feasable approaches: Instaloader and Zeeschuimer-F. Additionally, there are commercial tools like [4k Stogram](https://www.4kdownload.com/de/products/stogram-2) available. 
+Revised Text:
+---
+
+Instagram stories, characterized by their ephemeral nature, expire after 24 hours. Therefore, it's crucial to collect them in a timely manner, as retrospective data collection is not an option with this format. There are two feasible methods: Instaloader and Zeeschuimer-F. Additionally, commercial tools such as [4k Stogram](https://www.4kdownload.com/de/products/stogram-2) are also available.
 
 ![A screenshot of stories by @tagesschau opened in the firefox browser](/images/stories-screenshot.png)
 
-Overall, the ephemeral chracter of stories requires us to continually monitor and collect data from our profiles of interest. Thus, in order to make sure that we capture **every** story item, I recommend to collect stories twice daily, approximately 12 hours appart. This approach leaves room for inaccurate timing of the data collection, as the time frames overlap. We may collect the material manually or computationally. The manual approach in combination with Zeeschuimer-F is the most acceptable approach as we do not infringe the TOS. For this approach we would install the plugin and visit all stories in our browser twice per day. With Instaloader, on the other hand, we would just start the command and wait for the software to collect all data. Ideally, we would use e.g. [Cron](https://de.wikipedia.org/wiki/Cron) to automate the process. 
+Overall, the ephemeral nature of stories necessitates our continuous monitoring and data collection from our targeted profiles. To ensure that we capture **every** story item, I recommend collecting stories twice daily, approximately 12 hours apart. This method accounts for potential inaccuracies in timing, as the intervals overlap. Data can be gathered manually or through computational means. The manual approach, especially in conjunction with Zeeschuimer-F, is preferable as it does not violate the Terms of Service (TOS). For this method, we would install the plugin and view all stories in our browser twice daily. Alternatively, using Instaloader involves simply initiating the command and waiting for the software to gather all the data. Optimally, we could utilize tools like [Cron](https://de.wikipedia.org/wiki/Cron) to automate this process.
+
 
 ## Instaloader
-Instaloader for stories works very similar to [collecting Posts](ig-posts.qmd#instaloader). First of all, the package needs to be installed:
+Instaloader for Stories operates in a manner akin to [collecting Posts](ig-posts.qmd#instaloader). Initially, the package must be installed:
 ```python
 !pip -q install instaloader
 ```
 
-In contrast to the previous tutorial, I recommend to use the command line interface of Instaloader for collection stories. Open a terminal and run the following command: 
+Unlike the method outlined in the previous tutorial, I advise employing the command-line interface of Instaloader for collecting stories. To do this, open a terminal and execute the command below:
 
 ```bash
 instaloader --login your.profile.name --dirname-pattern ig_stories/{profile} :stories --no-compress-json
 ```
-This command creates a subfolder in `ig_stories` for each user that your profile is following. It downloads the metadata, images and videos for each story. The metadata is contained in a `JSON` file. By default the file is xz compressed, using the `--no-compress-json` switch suppresses the compression. The `JSON` files can then be read into a pandas DataFram using python. 
 
-The process may be automated, e.g. using this `bash` script in combination with `cron`:
+Executing this command generates a dedicated subfolder within `ig_stories` for each user followed by your profile. It downloads the metadata, images, and videos of each story. The metadata is saved in a `JSON` file. While these files are typically xz-compressed by default, using the `--no-compress-json` option prevents this compression. Subsequently, the `JSON` files can be imported into a pandas DataFrame in Python.
+
+This process can be automated, for example, by utilizing a `bash` script in conjunction with `cron`:
+
 
 ```bash
 #!/bin/bash
@@ -85,20 +91,21 @@ Start cron by entering `crontab -e` on your terminal and add a line pointing to 
 ## Zeeschuimer-F
 ![](/images/zeeschuimer-f.png)
 
-This approach uses the [Zeeschuimer Firefox Plugin](https://github.com/digitalmethodsinitiative/zeeschuimer) as basis. I modified the original plugin and created Zeeschuimer-F, capable of collecting Instagram stories and connecting to [Zeeschuimer-Firebase-Backend](https://github.com/michaelachmann/zeeschuimer-firebase-backend) for real-time data collection. [Zeeschuimer-F is available on GitHub](https://github.com/michaelachmann/zeeschuimer-firebase-backend), download the latest version using [Firefox](https://www.mozilla.org/de/firefox/new/) and install the plugin. I provide a backend instance for our seminar, take a look at the `README.md` on GitHub for instructions to install your own instance on firebase. **The credentials for our seminar will be provided via GRIPS**. We will follow these steps to download stories using Zeeschuimer-F:
+This method is based on the [Zeeschuimer Firefox Plugin](https://github.com/digitalmethodsinitiative/zeeschuimer). I have adapted the original plugin to create Zeeschuimer-F, which is specifically tailored for collecting Instagram stories and interfacing with the [Zeeschuimer-Firebase-Backend](https://github.com/michaelachmann/zeeschuimer-firebase-backend) for real-time data collection. You can find [Zeeschuimer-F on GitHub](https://github.com/michaelachmann/zeeschuimer-f). To use it, download the latest version via [Firefox](https://www.mozilla.org/firefox/new/) and install the plugin. For our seminar, I'll provide a backend instance; refer to the `README.md` on GitHub for guidance on setting up your own instance on Firebase. **Credentials for our seminar will be distributed through GRIPS**. Follow these steps to download stories using Zeeschuimer-F:
 
-1. Download and install the plugin
-2. Create a project on the backend (via Notebook)
-3. Configure the plugin
-4. Periodically view stories to collect them using Firefox
-5. Download the results (via Notebook)
+1. Download and install the plugin.
+2. Create a project on the backend (via Notebook).
+3. Configure the plugin.
+4. Regularly view stories in Firefox to collect them.
+5. Download the collected data (via Notebook).
 
 ### Plugin Installation
-Download the latest release `.xpi` file for the extension form [GitHub](https://github.com/michaelachmann/zeeschuimer-firebase-backend) using Firefox. Next, click on the downloaded file in firefox, confirm the installation of the extension.
+To install the plugin, download the latest release `.xpi` file from [GitHub](https://github.com/michaelachmann/zeeschuimer-f) using Firefox. After downloading, click on the file in Firefox and confirm the installation of the extension.
 
-![Screenshot of Firefox with open extensions menu](/images/plugins.png)
+![Screenshot of Firefox with the open extensions menu](/images/plugins.png)
 
- Check the right hand menu to confirm the installation of the extension. We will come back to the browser in a moment.
+Verify the extension's installation by checking the right-hand menu in Firefox. We will return to the browser shortly.
+
 
 ---
 
@@ -132,6 +139,9 @@ Download the latest release `.xpi` file for the extension form [GitHub](https://
 
 ## Conclusion
 
-This page provided an overview of two approaches for collecting ephemeral Instagram stories. We collect the stories in real time as they expire after 24 hours. The first approach, [instaloader](#instaloader), does -- in theory -- a great job. As with the posts, however, Instagram accounts using Instaloader get banned really fast. The second approach is less invasive, we capture the data sent to the browser while browsing stories on Instagram and send the metadata to our firebase project. Once a new story is added to the database, the backend starts downloading videos and images for any given story. I have provided a notebook to create projects, a manual to configure the plugin, and some more code to export the captured stories using a Jupyter notebook.
+This page offers an overview of two methods for collecting ephemeral Instagram stories, which are crucial to capture in real time due to their 24-hour expiration period. The first method, [instaloader](#instaloader), is theoretically effective. However, similar to the case with posts, Instagram accounts utilizing Instaloader face a high risk of being banned swiftly. 
 
+The second approach adopts a less invasive strategy. It involves capturing the data transmitted to the browser while viewing stories on Instagram, and then transferring the metadata to our Firebase project. Upon the addition of a new story to the database, the backend initiates the download of videos and images for that story.
+
+To facilitate this process, I have provided a notebook for project creation, a manual for configuring the plugin, and additional code to export the captured stories via a Jupyter notebook.
 
