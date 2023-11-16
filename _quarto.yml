@@ -24,6 +24,12 @@ website:
           - href: https://docs.google.com/document/d/19MAiqX7Vx1FcNJ44K-vSdnKDVC5gcFwtrSQiewnwW8A/edit?pli=1
             text: TikTok (External, DMI)
       - section: "(Pre)processing"
+        contents:
+          - processing/index.qmd
+          #- processing/frequencies.qmd
+          #- processing/preprocessing.qmd
+          - processing/exploration.qmd
+          - processing/operationalization.qmd
       - section: "Evaluation"
       - section: "Analysis"
       - projects/index.qmd

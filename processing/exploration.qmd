@@ -1,19 +1,18 @@
 ---
 format: 
   html: default
-title: "TikTok"
-date: 2023-11-13
+title: "Text Exploration"
+date: 2023-11-27
 author:
   - name: Michael Achmann-Denkler
     id: ma
     orcid: 0000-0002-4754-7842
     email: michael.achmann@informatik.uni-regensburg.de
 license: CC BY
+bibliography: ../literature.bib
 ---
 
 ::: {.callout-caution}
 ## Work-In-Progress
-Will be available for the 11/13 session.
+Will be available for the 11/27 session.
 :::
-
-## 4CAT & Zeeschuimer

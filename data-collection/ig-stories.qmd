@@ -14,8 +14,6 @@ notebook-view:
     title: "Firebase Interface Notebook"
     url: https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2023_11_07_Firebase_Interface.ipynb
 ---
-Revised Text:
----
 
 Instagram stories, characterized by their ephemeral nature, expire after 24 hours. Therefore, it's crucial to collect them in a timely manner, as retrospective data collection is not an option with this format. There are two feasible methods: Instaloader and Zeeschuimer-F. Additionally, commercial tools such as [4k Stogram](https://www.4kdownload.com/de/products/stogram-2) are also available.
 

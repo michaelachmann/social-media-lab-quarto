@@ -1,0 +1,66 @@
+---
+format: 
+  html: default
+title: "Text as Data"
+date: 2023-11-20
+author:
+  - name: Michael Achmann-Denkler
+    id: ma
+    orcid: 0000-0002-4754-7842
+    email: michael.achmann@informatik.uni-regensburg.de
+license: CC BY
+bibliography: ../literature.bib
+---
+
+The analysis of texutal data has a long tradition under the term [*Natural Language Processing* (NLP)](https://en.wikipedia.org/wiki/Natural_language_processing). As noted by @Bengfort2018-nr, "Language is *unstructured* data that has been produced by people to be understood by other people". This characterization of language as unstructured data highlights its contrast with *structured* or *semi-structured* data. Unlike structured data, which is organized in a way that computers can easily parse and analyze, unstructured data like language requires more complex methods to be processed and understood. In the context of e.g. Instagram, CrowdTangle exports contain *structured data* columns such as 'User Name', 'Like Count', or 'Comment Count'. These pieces of data are quantifiable and can be easily sorted, filtered, or counted, e.g. using tools like Excel or Python's `pandas` library. For instance, we can quickly determine the most active users by counting the number of rows associated with each username. In contrast, *unstructured* data is not organized in a predefined manner and is typically more challenging to process and analyze. The 'Description' column in our dataset, which contains the captions of Instagram posts, is a prime example of unstructured data. These captions, composed of paragraphs or sentences, require different analytical approaches to extract meaningful insights. Unlike structured data, we cannot simply count or sort these texts in a straightforward manner. In our context, we often refer to the collection of texts we analyze as a "Corpus". Each individual piece of text is called a "Document". Each document can be broken down into smaller units known as "features". Features can be words, phrases, or even patterns of words, which we then use to quantify and analyze the text [compare p. 230 @Haim2023-or]. For the goal of our research seminar, we can follow the three technical perspectives inspired by @Haim2023-or: 1. Frequency Analysis, 2. Contextual Analysis, and 3. Content Analysis. 
+
+### Schedule
+
+1. In our first session, we begin with frequency analyses of our corpus, which involves counting words or phrases to identify the most common elements. This method provides a foundational understanding of the prominent themes or topics. Additionally, we learn to convert embedded text in images into machine-readable format using [OCR](https://en.wikipedia.org/wiki/Optical_character_recognition), essential for including visual data in our analysis.
+2. Next, we will engage in explorative text analysis. This step enhances our understanding of the corpus and lays the groundwork for quantitative content analysis. We plan to utilize tools like GPT (and possibly [BERTopic](https://maartengr.github.io/BERTopic/index.html) for an in-depth exploration of our documents.
+3. Finally, we move towards more complex methods like classification or coding. These techniques allow us to categorize text into predefined groups or themes, enabling a more nuanced and quantitative understanding of the content. By applying these methods, we can, for example, classify Instagram captions into categories such as 'promotional', 'personal', 'informative', etc., based on their content and context.
+
+
+## OCR
+
+* Schwierigkeit: Wir müssen irgendwie eine Zeile zu einem Bild mappen
+* OCR Notebook einbauen
+
+
+## Frequencies
+
+* Simples Wortzählen,
+* Text und Token einführen
+* Word Cloud
+
+
+
+## Conclusion
+...
+
+
+
+
+
+
+## More Resources
+**Python & Computational Social Sciences**
+
+* [Python for Computational Social Science and Digital Humanities (YouTube)](https://www.youtube.com/watch?v=T7qMZH25co0)
+* [Introduction to Computational Social Science methods with Python](https://github.com/gesiscss/css_methods_python)
+
+**Python & NLP**
+
+* [Natural Language Processing (Notebook, GESIS CSS)](https://github.com/gesiscss/css_methods_python/blob/main/c_data_preprocessing_methods/3_natural_language_processing.ipynb)
+* [Word Frequencies](https://programminghistorian.org/en/lessons/counting-frequencies)
+* [Introduction Jupyter Notebooks](https://programminghistorian.org/en/lessons/jupyter-notebooks)
+
+
+**NLP**
+
+* Buchempfehlung, etwas älter, aber gut für grundlegendes Verständnis: [Konchady (2016): Text Mining Application Programming](https://dl.acm.org/doi/book/10.5555/1137800)
+
+
+Certainly! Here's an improved connection between the two sentences to ensure a smoother transition and better context:
+
+ 

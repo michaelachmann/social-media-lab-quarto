@@ -107,5 +107,17 @@
   },
   "notebooks/ig-instaloader-stories-metadata.ipynb": {
     "ig-instaloader-stories-metadata.html": "22daf9fc"
+  },
+  "processing/index.qmd": {
+    "index.html": "dd1ab160"
+  },
+  "processing/preprocessing.qmd": {
+    "preprocessing.html": "5404ef46"
+  },
+  "processing/frequencies.qmd": {
+    "frequencies.html": "3a7415df"
+  },
+  "processing/exploration.qmd": {
+    "exploration.html": "f113c282"
   }
 }
