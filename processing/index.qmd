@@ -2,7 +2,7 @@
 format: 
   html: default
 title: "Text as Data"
-date: 2023-11-20
+date: 2023-11-27
 author:
   - name: Michael Achmann-Denkler
     id: ma
@@ -10,57 +10,103 @@ author:
     email: michael.achmann@informatik.uni-regensburg.de
 license: CC BY
 bibliography: ../literature.bib
+notebook-view:
+  - notebook: ../notebooks/ocr-notebook.ipynb
+    title: "OCR using easyocr"
+    url: https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2023_11_24_OCR.ipynb
+  - notebook: ../notebooks/whisper-notebook.ipynb
+    title: "Transcription using Whisper"
+    url: https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2023_11_24_Whisper.ipynb
+  - notebook: ../notebooks/corpus-analysis-notebook.ipynb
+    title: "Introduction to Corpus Analysis"
+    url: https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2023_11_24_Simple_Corpus_Analysis.ipynb
 ---
 
 The analysis of texutal data has a long tradition under the term [*Natural Language Processing* (NLP)](https://en.wikipedia.org/wiki/Natural_language_processing). As noted by @Bengfort2018-nr, "Language is *unstructured* data that has been produced by people to be understood by other people". This characterization of language as unstructured data highlights its contrast with *structured* or *semi-structured* data. Unlike structured data, which is organized in a way that computers can easily parse and analyze, unstructured data like language requires more complex methods to be processed and understood. In the context of e.g. Instagram, CrowdTangle exports contain *structured data* columns such as 'User Name', 'Like Count', or 'Comment Count'. These pieces of data are quantifiable and can be easily sorted, filtered, or counted, e.g. using tools like Excel or Python's `pandas` library. For instance, we can quickly determine the most active users by counting the number of rows associated with each username. In contrast, *unstructured* data is not organized in a predefined manner and is typically more challenging to process and analyze. The 'Description' column in our dataset, which contains the captions of Instagram posts, is a prime example of unstructured data. These captions, composed of paragraphs or sentences, require different analytical approaches to extract meaningful insights. Unlike structured data, we cannot simply count or sort these texts in a straightforward manner. In our context, we often refer to the collection of texts we analyze as a "Corpus". Each individual piece of text is called a "Document". Each document can be broken down into smaller units known as "features". Features can be words, phrases, or even patterns of words, which we then use to quantify and analyze the text [compare p. 230 @Haim2023-or]. For the goal of our research seminar, we can follow the three technical perspectives inspired by @Haim2023-or: 1. Frequency Analysis, 2. Contextual Analysis, and 3. Content Analysis. 
 
-### Schedule
+## Schedule
 
-1. In our first session, we begin with frequency analyses of our corpus, which involves counting words or phrases to identify the most common elements. This method provides a foundational understanding of the prominent themes or topics. Additionally, we learn to convert embedded text in images into machine-readable format using [OCR](https://en.wikipedia.org/wiki/Optical_character_recognition), essential for including visual data in our analysis.
+1. In our first session, we begin with frequency analyses of our corpus, which involves counting words or phrases to identify the most common elements. This method provides a foundational understanding of the prominent themes or topics. Additionally, we learn to convert embedded text in images and videos into machine-readable format, using [OCR](https://en.wikipedia.org/wiki/Optical_character_recognition), and automated audio transcription.
 2. Next, we will engage in explorative text analysis. This step enhances our understanding of the corpus and lays the groundwork for quantitative content analysis. We plan to utilize tools like GPT (and possibly [BERTopic](https://maartengr.github.io/BERTopic/index.html) for an in-depth exploration of our documents.
 3. Finally, we move towards more complex methods like classification or coding. These techniques allow us to categorize text into predefined groups or themes, enabling a more nuanced and quantitative understanding of the content. By applying these methods, we can, for example, classify Instagram captions into categories such as 'promotional', 'personal', 'informative', etc., based on their content and context.
 
+## Hands-On
+We are working with Python and pandas, our data is structured in tables, also known as DataFrames. Each DataFrame (`df`) consists of rows and columns. We can store and structure data differently using these two dimensions, one concept for storing research data using tables is *Tidy Data* [@Wickham2014-bz]. According to this standard
 
-## OCR
+> 1. Each variable forms a column.
+> 2. Each observation forms a row.
+> 3. Each type of observational unit forms a table.
 
-* Schwierigkeit: Wir müssen irgendwie eine Zeile zu einem Bild mappen
-* OCR Notebook einbauen
+
+![Visualization of the tidy data components, source: [R for Data Science](https://r4ds.had.co.nz/tidy-data.html).](../images/tidy-1.png)
 
 
-## Frequencies
+What, in context of social media data, is an obersavtion? Is it a post? I suggest to start by seeing posts as observations, i.e. rows. Thus, we have one table for our corpus, consisting of one row per post with multiple columns for different variables, including an `ID`, possibly a link, a referrence to the image / video, and one or more text variables for each post. When dealing with Instagram or TikTok posts, we might have three text columns: caption / description, OCR, and transcription. When dealing with stories two: OCR and transcription. 
 
-* Simples Wortzählen,
-* Text und Token einführen
-* Word Cloud
+::: {.callout-note}
+When dealing with more complex data, e.g. Instagram albums that may contain multiple images per post, we will have to reconsider this choice. In this case we might consider each observation to be one image / video, which has variables like OCR and transcription. Keeping the `ID` column for images and videos, we have a fixed reference to the original post, thus we may re-merge the data later on with the post metadata or combine variables across media for one post.
+:::
+
+
+All data exported from CrowdTangle, 4CAT, and Zeeschuimer-F are saved as `CSV` files. Throughout the semester, we keep using this file format to save our progress. We work with multiple Jupyter notebooks, generally one notebook per task. This helps to keep a good structure of our projects. Each time we modified the `df`, we save the `CSV` file to our Google Drive / Harddrive. In the two examples below we add an OCR and a Transcription column to our DataFrame, for each task we use one notebook. After completing each task, we store the results in a file. While Google Drive provides file versioning to mitigate data loss in certain scenarios, I recommend to save your results to a new file during the experimental phase. This practice ensures data safety until you have fully verified the functionality of your code. Additionally, I recommend naming your files in a `YYYY-MM-DD-descriptive-name.csv` fashion. When working with colab notebooks I recommend to keep track of notebooks using notes / lists, e.g. using the [Dataloom](https://github.com/trey-wallis/obsidian-dataloom) plugin for [Obsidian](https://obsidian.md).
+
+![Keeping track of Colab notebooks with Obsidian and the [Dataloom](https://github.com/trey-wallis/obsidian-dataloom) plugin.](../images/loom.png)
+
+The `CSV` files contain only metadata, the actual media files (images / videos) are saved to different locations. The OCR and Transcription notebooks below contain code to import media files from 4CAT and Zeeschuimer-F. I suggest to save the files to `media/videos` or `media/images`. Both notebooks introduce a column `image_file` or `video_file` where the relative location of the media files is written to. Creating a new `ZIP` file using the new folder structure and saving the file to Google Drive allows us to use the media files in future notebooks (e.g. for image classification) without modifying the `image_file` or `video_file` columns again. 
+
+::: {.callout-note}
+This page and all referenced notebooks deal with 4CAT and Zeeschuimer-F metadata and media files. Generally all information applies to `instaloader` as well. Its advisable to use the `--filename-pattern` [command line parameter](https://instaloader.github.io/basic-usage.html#filename-specification) to control the filename of the media files. Mapping `JSON` metadata to actual media objects becomes easier this way. Once all posts / stories have been loaded using instaloader, I recommend to read all `JSON` files in a loop and create a DataFrame (see [Data Collection / Posts / Instaloader](../data-collection/ig-posts.qmd#instaloader) for more information and code examples).
+:::
+
+**Key Take-Aways**
+
+* We organize our data inspired by TidyData
+  - One row per post
+  - One column per variable
+* We use one notebook per task
+* We save our progress to `CSV` files, either on our harddrive or Google Drive
+* We keep a reference to media files as a relative reference in our DataFrame
+* We keep our media files in the structure `media/videos`, and `media/images`, which we compress to `ZIP` and keep on our Google Drive (or central HDD location)
+* **When working with experimental code, keep backups of your data file, do not overwrite the original file!**
+
+## From Images / Videos to Text
+Computational approaches for text analyses are established as part of computational sociales science research [@Baden2022-oe], which we may utilize when dealing with visual and multimodal social media. Instagram posts often contain embedded text, TikTok posts often contain an audio layer, both of which we can transform to computer readable text. For the first, we are going to use OCR, for the second we apply Whisper. The following subchapters demonstrate the application of these technique in order to extract textual content from images and videos. In the thirs subchapter, I demonstrate a simple application of corpus analytics for a first analysis of the social media content based on word frequencies.
+
+### OCR
+
+{{< embed ../notebooks/ocr-notebook.ipynb echo=true >}}
+
+
+
+### Automated Audio Transcription (Whisper)
+
+{{< embed ../notebooks/whisper-notebook.ipynb echo=true >}}
+
+
+
+
+### Analyzing Corpus and Word Frequencies
+
+{{< embed ../notebooks/corpus-analysis-notebook.ipynb echo=true >}}
 
 
 
 ## Conclusion
-...
-
-
-
-
+In summary, this session provides us with the practical skills to use Python, pandas, and Jupyter notebooks for the computational analysis of multimodal social media data. Our adherence to Tidy Data principles and the integration of technologies like OCR and Whisper are integral to extract and analyze textual content from multimedia sources. In the next session we will keep exploring the content through a textual lens. Further, we will use prompting as a technique to classify texts as part of a computational content analysis.
 
 
 ## More Resources
 **Python & Computational Social Sciences**
 
 * [Python for Computational Social Science and Digital Humanities (YouTube)](https://www.youtube.com/watch?v=T7qMZH25co0)
-* [Introduction to Computational Social Science methods with Python](https://github.com/gesiscss/css_methods_python)
+* [Introduction to Computational Social Science methods with Python (Online)](https://github.com/gesiscss/css_methods_python)
+* [Introduction to Data Science: A Python Approach to Concepts, Techniques and Applications (E-Book)](https://link.springer.com/book/10.1007/978-3-319-50017-1)
+* [R for Data Science (2nd edition)](https://r4ds.hadley.nz/) -- not Python, but the principles can easily be migrated to pandas. 
 
 **Python & NLP**
 
 * [Natural Language Processing (Notebook, GESIS CSS)](https://github.com/gesiscss/css_methods_python/blob/main/c_data_preprocessing_methods/3_natural_language_processing.ipynb)
-* [Word Frequencies](https://programminghistorian.org/en/lessons/counting-frequencies)
-* [Introduction Jupyter Notebooks](https://programminghistorian.org/en/lessons/jupyter-notebooks)
+* [Word Frequencies (Online)](https://programminghistorian.org/en/lessons/counting-frequencies)
+* [Introduction Jupyter Notebooks (Online)](https://programminghistorian.org/en/lessons/jupyter-notebooks)
+* [Konchady (2016): Text Mining Application Programming](https://dl.acm.org/doi/book/10.5555/1137800) (Somewhat older, still an interesting reading for the basics of computational corpus analysis)
 
-
-**NLP**
-
-* Buchempfehlung, etwas älter, aber gut für grundlegendes Verständnis: [Konchady (2016): Text Mining Application Programming](https://dl.acm.org/doi/book/10.5555/1137800)
-
-
-Certainly! Here's an improved connection between the two sentences to ensure a smoother transition and better context:
-
- 

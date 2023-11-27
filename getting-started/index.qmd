@@ -89,20 +89,22 @@ The following expectations and criteria must be met to pass the course:
 | Date     | Content                                                               |
 |:-------------|:---------------------------------------------------------|
 | 16.10.23 | Course Organization                                                   |
-| 23.10.23 | [Introduction to Social Media Analysis](theory.qmd)                   |
+| 23.10.23 | Introduction to Social Media Analysis                  |
 | 30.10.23 | Projects & Groups, <br/> Getting Started: Tools         |
 | 06.11.23 | Data Collection: IG Posts & Stories                                   |
 | 13.11.23 | Data Collection: TikTok                                               |
-| 20.11.23 | Data Preprocessing: OCR & Whisper                                     |
-| 27.11.23 | Exploration of Textual Data using GPT                                 |
-| 04.12.23 | Operationalization I & Computational Text Classification using GPT    |
-| 11.12.23 | Data Annotation: LabelStudio & Annotation Guides                      |
-| 18.12.23 | Evaluation I: Optimizing Text Classification                          |
-| 08.01.24 | Exploration of Visual Data                                            |
-| 15.01.24 | Operationalization II & Computational Image Classification using CLIP |
-| 22.01.24 | Evaluation II: Optimizing Image Classification                        |
-| 29.01.24 | Data Wrangling as a Conversation: Exploring trends using ChatGPT      |
-| 05.02.24 | Visual Presentation of your Data & Results: RAWGraphs and more.       |
+| 20.11.23 | - entfallen - |
+| 27.11.23 | Data Preprocessing: OCR & Whisper                                     |
+| 04.12.23 | Exploration of Textual Data using GPT                                 |
+| 11.12.23 | Operationalization I & Computational Text Classification using GPT    |
+| 18.12.23 | Data Annotation: LabelStudio & Annotation Guides                      |
+| 08.01.24 | Evaluation I: Optimizing Text Classification                          |
+| 15.01.24 | Exploration of Visual Data                                            |
+| 22.01.24 | Operationalization II & Computational Image Classification using CLIP |
+| 29.01.24 | Evaluation II: Optimizing Image Classification                        |
+| 05.02.24 | Data Analysis as a Conversation: Exploring trends using ChatGPT <br />Visual Presentation of your Data & Results: RAWGraphs and more. |
+
+
 
 : Overview of our sessions
 

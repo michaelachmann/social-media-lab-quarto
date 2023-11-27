@@ -119,5 +119,17 @@
   },
   "processing/exploration.qmd": {
     "exploration.html": "f113c282"
+  },
+  "notebooks/ocr-notebook.ipynb": {
+    "ocr-notebook.ipynb.html": "16c8fcd6",
+    "ocr-notebook.html": "0e61b3fa"
+  },
+  "notebooks/whisper-notebook.ipynb": {
+    "whisper-notebook.ipynb.html": "9c0fec7d",
+    "whisper-notebook.html": "87ac8fb9"
+  },
+  "notebooks/corpus-analysis-notebook.ipynb": {
+    "corpus-analysis-notebook.ipynb.html": "164a7b37",
+    "corpus-analysis-notebook.html": "63b8eea9"
   }
 }

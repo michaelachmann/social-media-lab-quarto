@@ -31,7 +31,7 @@ website:
           - processing/exploration.qmd
           - processing/operationalization.qmd
       - section: "Evaluation"
-      - section: "Analysis"
+      # - section: "Analysis"
       - projects/index.qmd
   navbar:
     logo: images/logo2.png
