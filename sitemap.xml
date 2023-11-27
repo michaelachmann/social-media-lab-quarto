@@ -2,66 +2,78 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://social-media-lab.net/notebooks/firebase-interface-notebook.html</loc>
-    <lastmod>2023-11-13T09:29:04.689Z</lastmod>
+    <lastmod>2023-11-27T12:40:59.597Z</lastmod>
   </url>
   <url>
-    <loc>https://social-media-lab.net/notebooks/ig-instaloader.html</loc>
-    <lastmod>2023-11-13T09:29:02.964Z</lastmod>
+    <loc>https://social-media-lab.net/notebooks/corpus-analysis-notebook.html</loc>
+    <lastmod>2023-11-27T12:40:57.769Z</lastmod>
   </url>
   <url>
-    <loc>https://social-media-lab.net/getting-started/index.html</loc>
-    <lastmod>2023-11-13T09:29:01.078Z</lastmod>
-  </url>
-  <url>
-    <loc>https://social-media-lab.net/getting-started/tools.html</loc>
-    <lastmod>2023-11-13T09:28:58.270Z</lastmod>
-  </url>
-  <url>
-    <loc>https://social-media-lab.net/about.html</loc>
-    <lastmod>2023-11-13T09:28:56.251Z</lastmod>
-  </url>
-  <url>
-    <loc>https://social-media-lab.net/projects/index.html</loc>
-    <lastmod>2023-11-13T09:28:54.998Z</lastmod>
-  </url>
-  <url>
-    <loc>https://social-media-lab.net/data-collection/ig-posts.html</loc>
-    <lastmod>2023-11-13T09:28:53.474Z</lastmod>
-  </url>
-  <url>
-    <loc>https://social-media-lab.net/data-collection/index.html</loc>
-    <lastmod>2023-11-13T09:28:51.785Z</lastmod>
-  </url>
-  <url>
-    <loc>https://social-media-lab.net/data-collection/ig-stories.html</loc>
-    <lastmod>2023-11-13T09:28:51.158Z</lastmod>
-  </url>
-  <url>
-    <loc>https://social-media-lab.net/data-collection/tiktok.html</loc>
-    <lastmod>2023-11-13T09:28:52.327Z</lastmod>
-  </url>
-  <url>
-    <loc>https://social-media-lab.net/processing/operationalization.html</loc>
-    <lastmod>2023-11-13T09:28:54.017Z</lastmod>
-  </url>
-  <url>
-    <loc>https://social-media-lab.net/index.html</loc>
-    <lastmod>2023-11-13T09:28:55.752Z</lastmod>
-  </url>
-  <url>
-    <loc>https://social-media-lab.net/getting-started/related-work.html</loc>
-    <lastmod>2023-11-13T09:28:57.607Z</lastmod>
-  </url>
-  <url>
-    <loc>https://social-media-lab.net/getting-started/theory.html</loc>
-    <lastmod>2023-11-13T09:28:59.930Z</lastmod>
+    <loc>https://social-media-lab.net/notebooks/whisper-notebook.html</loc>
+    <lastmod>2023-11-27T12:40:56.358Z</lastmod>
   </url>
   <url>
     <loc>https://social-media-lab.net/getting-started/literature-review-assistant.html</loc>
-    <lastmod>2023-11-13T09:29:02.335Z</lastmod>
+    <lastmod>2023-11-27T12:40:54.832Z</lastmod>
+  </url>
+  <url>
+    <loc>https://social-media-lab.net/getting-started/theory.html</loc>
+    <lastmod>2023-11-27T12:40:52.622Z</lastmod>
+  </url>
+  <url>
+    <loc>https://social-media-lab.net/getting-started/related-work.html</loc>
+    <lastmod>2023-11-27T12:40:50.220Z</lastmod>
+  </url>
+  <url>
+    <loc>https://social-media-lab.net/index.html</loc>
+    <lastmod>2023-11-27T12:40:48.148Z</lastmod>
+  </url>
+  <url>
+    <loc>https://social-media-lab.net/processing/index.html</loc>
+    <lastmod>2023-11-27T12:40:46.762Z</lastmod>
+  </url>
+  <url>
+    <loc>https://social-media-lab.net/processing/operationalization.html</loc>
+    <lastmod>2023-11-27T12:40:43.479Z</lastmod>
+  </url>
+  <url>
+    <loc>https://social-media-lab.net/data-collection/ig-stories.html</loc>
+    <lastmod>2023-11-27T12:40:40.852Z</lastmod>
+  </url>
+  <url>
+    <loc>https://social-media-lab.net/data-collection/ig-posts.html</loc>
+    <lastmod>2023-11-27T12:40:42.752Z</lastmod>
+  </url>
+  <url>
+    <loc>https://social-media-lab.net/processing/exploration.html</loc>
+    <lastmod>2023-11-27T12:40:44.156Z</lastmod>
+  </url>
+  <url>
+    <loc>https://social-media-lab.net/projects/index.html</loc>
+    <lastmod>2023-11-27T12:40:47.557Z</lastmod>
+  </url>
+  <url>
+    <loc>https://social-media-lab.net/about.html</loc>
+    <lastmod>2023-11-27T12:40:48.639Z</lastmod>
+  </url>
+  <url>
+    <loc>https://social-media-lab.net/getting-started/tools.html</loc>
+    <lastmod>2023-11-27T12:40:51.089Z</lastmod>
+  </url>
+  <url>
+    <loc>https://social-media-lab.net/getting-started/index.html</loc>
+    <lastmod>2023-11-27T12:40:53.662Z</lastmod>
+  </url>
+  <url>
+    <loc>https://social-media-lab.net/notebooks/ig-instaloader.html</loc>
+    <lastmod>2023-11-27T12:40:55.556Z</lastmod>
+  </url>
+  <url>
+    <loc>https://social-media-lab.net/notebooks/ocr-notebook.html</loc>
+    <lastmod>2023-11-27T12:40:57.067Z</lastmod>
   </url>
   <url>
     <loc>https://social-media-lab.net/notebooks/literature-review.html</loc>
-    <lastmod>2023-11-13T09:29:03.856Z</lastmod>
+    <lastmod>2023-11-27T12:40:58.711Z</lastmod>
   </url>
 </urlset>
