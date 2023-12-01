@@ -10,9 +10,42 @@ author:
     email: michael.achmann@informatik.uni-regensburg.de
 license: CC BY
 bibliography: ../literature.bib
+notebook-view:
+  - notebook: ../notebooks/2023_12_01_GPT_Text_Exploration.ipynb
+    title: "Text Exploration Using GPT"
+    url: https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2023_12_01_GPT_Text_Exploration.ipynb
+  - notebook: ../notebooks/2023_12_01_BERTopic.ipynb
+    title: "Topic Modeling Using BERTopic"
+    url: https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2023_12_01_BERTopic.ipynb
 ---
 
-::: {.callout-caution}
-## Work-In-Progress
-Will be available for the 12/04 session.
+In the previous session we talked about [text as data](index.qmd), suggesting that text data offers a rich source of insights. This chapter concentrates on the advanced tools for exploring these textual dimensions: BERTopic and the Generative Pre-trained Transformer (GPT). These technologies stand at the forefront of computational text analysis and are intersting tools to unlock the meanings and patterns hidden within the vast textual content of social media. 
+
+
+## Topic Modeling with BERTopic 
+::: {.column-margin}
+![](../images/bertopic-logo.png){width=50%}
 :::
+
+[BERTopic](https://maartengr.github.io/BERTopic/index.html) [@Grootendorst2022-sd] is a transformer-based topic modeling tool. It uses the BERT (Bidirectional Encoder Representations from Transformers) framework, an advanced method for natural language processing (NLP) that understands the context of words in text. BERTopic is adept at identifying and clustering topics within short text documents [@Grootendorst2022-sd, @Egger2022-dg], making it an interesting tool to analyze and categorize text data from social media. The author is actively working on the documentation and keeps improving the topic modeling technique to adapt the latest advances of Large Language Models (LLMs), just recently a [Zero-Shot topic modeling](https://maartengr.github.io/BERTopic/getting_started/zeroshot/zeroshot.html) approach has been added. I have used BERTopic for a first exploration of stories and posts published by politicians and parties during the 2021 Federal Election in Germany [@Achmann2023-rs]. Past research has used LDA, another topic modeling algorithm, to explore themes and topics in Instagram posts by politicians [@Rodina2019-na].
+
+{{< embed ../notebooks/2023_12_01_BERTopic.ipynb echo=true >}}
+
+
+## Exploration Through Prompting
+{{< embed ../notebooks/2023_12_01_GPT_Text_Exploration.ipynb echo=true >}}
+
+## Conclusion
+We have explored to transformer based approaches for text exploration. BERTopic is an easy to use tool for topic modeling. Using this approach we can quickly explore patterns in the content of (textual) social media content -- as long as there is a GPU available (e.g. on Colab). We will come back to this tool in the future, when dealing with images, as we might be able to harness its abilities for visual media. 
+
+The text exploration using GPT, on the other hand, does not rely on special hardware, as we query the API and OpenAI is taking care of the heavy computing. Prompting offers the posibilities to explore our data according to endless questions, yet we need some form of question to get started. We have explored policy issues using the `gpt-3.5-turbo` model, the results are mixed. Looking through the wordcloud we see issues that might have been at the centre of attention, like *Education*, *Climate Protection*, and *Security*. At this point, however, we should be cautious to generalize, other issues might have been named differently between requests, thus disappearing within the wordcloud. In comparison the the BERTopic results, we see similar topics, like *Security and Migration* (Topic 2), *Climate Protection* (Topic 1), and *Education* (Topic 12). 
+
+Today's prompting marks the tip of the iceberg, over the course of the next weeks we will use more and more prompts, moving from exploration, to classification. One prompting technique which we will not discuss this semester is [Retrieval Augmented Generation (RAG)](https://www.promptingguide.ai/techniques/rag), which might also be useful for Text Exploration. This technique combines  information retrieval with text generation. [LlamaIndex](https://www.llamaindex.ai/) and [LangChain](https://www.langchain.com/) are python package that may help to build RAG applications. How to integrate them into our research workflow will be a future project (or topic for a feature BA or MA thesis).
+
+
+## More Resources
+* [Prompting Guide](https://www.promptingguide.ai/introduction/examples#information-extraction)
+* @Brown2020-il: Language Models are Few-Shot Learners
+* @Liu2023-ph: Pre-train, Prompt, and Predict: A Systematic Survey of Prompting Methods in Natural Language Processing
+* @Moller2023-ni: Is a prompt and a few samples all you need? Using GPT-4 for data augmentation in low-resource classification tasks. 
+* [PromptCompass Prompts](https://github.com/ErikBorra/PromptCompass/blob/main/prompts.json) [@Borra_undated-sl]

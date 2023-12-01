@@ -131,5 +131,13 @@
   "notebooks/corpus-analysis-notebook.ipynb": {
     "corpus-analysis-notebook.ipynb.html": "164a7b37",
     "corpus-analysis-notebook.html": "63b8eea9"
+  },
+  "notebooks/2023_12_01_BERTopic.ipynb": {
+    "2023_12_01_BERTopic.html": "566684dd",
+    "2023_12_01_BERTopic.ipynb.html": "9fe40178"
+  },
+  "notebooks/2023_12_01_GPT_Text_Exploration.ipynb": {
+    "2023_12_01_GPT_Text_Exploration.html": "9bca7cee",
+    "2023_12_01_GPT_Text_Exploration.ipynb.html": "5ff88b1b"
   }
 }
