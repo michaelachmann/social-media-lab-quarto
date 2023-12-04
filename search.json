@@ -340,7 +340,7 @@
     "href": "processing/exploration.html#more-resources",
     "title": "Data Import",
     "section": "More Resources",
-    "text": "More Resources\n\nPrompting Guide\nBrown et al. (2020): Language Models are Few-Shot Learners\nLiu et al. (2023): Pre-train, Prompt, and Predict: A Systematic Survey of Prompting Methods in Natural Language Processing\nMøller et al. (2023): Is a prompt and a few samples all you need? Using GPT-4 for data augmentation in low-resource classification tasks.\nPromptCompass Prompts (Borra, n.d.)"
+    "text": "More Resources\n\nPrompting Guide\nBrown et al. (2020): Language Models are Few-Shot Learners\nLiu et al. (2023): Pre-train, Prompt, and Predict: A Systematic Survey of Prompting Methods in Natural Language Processing\nMøller et al. (2023): Is a prompt and a few samples all you need? Using GPT-4 for data augmentation in low-resource classification tasks.\nPromptCompass Prompts (Borra, n.d.)\nBERTopic for Topic Modeling - Maarten Grootendorst - Talking Language AI (YouTube)"
   },
   {
     "objectID": "projects/index.html",
