@@ -1,0 +1,21 @@
+---
+format: 
+  html: default
+title: "Agreement & Evaluation"    
+date: 2024-01-08
+author:
+  - name: Michael Achmann-Denkler
+    id: ma
+    orcid: 0000-0002-4754-7842
+    email: michael.achmann@informatik.uni-regensburg.de
+license: CC BY
+bibliography: ../literature.bib
+citation:
+  type: webpage
+  doi: 10.5281/zenodo.10039756
+---
+
+
+::: {.callout-warning}
+This chapter will be available on January 8th 2024.
+:::
