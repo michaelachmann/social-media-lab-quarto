@@ -1,7 +1,7 @@
 ---
 format: 
   html: default
-title: "Validation: Why & How"    
+title: "Gold Standard Validation"    
 date: 2023-12-18
 author:
   - name: Michael Achmann-Denkler
@@ -15,6 +15,69 @@ citation:
   doi: 10.5281/zenodo.10039756
 ---
 
-::: {.callout-warning}
-This chapter will be available on December 18th 2023.
+In computational social media analysis, validation is crucial for ensuring the accuracy and reliability of text analysis methods. As highlighted by @Birkenmaier2023-go, validation entails both internal and external processes. Internal validation assess a model's plausibility and quality within the data context and tends to rely researchers' judgment, whereas external validation compares model outputs with external benchmarks, such as human-annotated labels. @Baden2022-oe further emphasize the significance of continuous evaluation and transparent reporting of validation steps and results. Additionally, they criticize the the frequent oversight in evaluating the validity of the actual measures. This problem arises when researchers focus more on the technical performance of their models, neglecting to verify whether these models accurately represent the intended social phenomena. This gap can lead to results that are statistically sound but lack real-world relevance.
+
+In context of our research projects we'll focus on external validation through non-expert annotations using LabelStudio, a practical aspect of the validation approach. Our focus will be on generating gold standard data for an external validation. This is crucial because external validation, through methods like crowd annotation, directly assesses how well computational models perform against real-world data. The setup of LabelStudio projects and the creation of annotation manuals are key steps in this process, ensuring that the data used for validation is accurately and consistently labeled, providing a solid foundation for assessing model performance. Although the evaluation of the actual measures is important [@Baden2022-oe], our discussion will concentrate on these practical aspects of external validation.
+
+Having humans coders annotate your social media content is the first part of generating a gold standard dataset. The second step will the the evaluation of the annotations, to validate their quality. We will use the interrater agreement as measurement for the coherence of our annotations. We will focus on this topic in the next session.
+
+## Creating an Annotation Manual
+Developing an annotation manual for social media text data is an iterative process. We start with a theoretical understanding of the phenomenon to be annotated, and describe it for easy application by annotators, minimizing ambiguity. The process optimally involves multiple rounds of annotation, each refining the guidelines through discussions of disagreements and revisions. Pilot annotations should be done by those familiar with the theory, focusing on major disagreements to refine categories and examples. As guidelines evolve, both the guidelines and annotators improve, while we need to make sure that the guidelines that are understandable even to less trained individuals [@Reiter2019-qv; @Reiter_undated-yo]. In this section I will provide some examples for annotation manuals and some practical adivce to create effective annotation guidelines for social media analysis.
+
+![Example of an annotation workflow with multiple iterations [Source](https://nilsreiter.de/blog/2017/howto-annotation)](/images/annotation-workflow.png){width=75%}
+
+Practically speaking, get started by creating a document which can be shared online, e.g. on [Google Docs](https://docs.google.com/) or [CodiMD](https://md.digitalhumanities.io/). I suggest to structure you document as follows:
+
+```
+.
+├── Introduction
+│   ├── Outline the research project:
+│   │   ├── What is your goal?
+│   │   └── Why do you need the help of annotators?
+│   ├── What can annotators expect?
+│   └── How are they being reimbursed? 
+├── Overview of all steps, e.g.
+│   ├── How and where to register
+│   └── When to act
+├── Software Manual (LabelStudio HowTo)
+│   ├── Annotation Interface
+│   └── Keyboard Shortcuts
+├── Introduction to Variables
+│   ├── Definition for each variable / Values
+│   └── Instructions for each variable / Values
+└── Examples for each Variable
+    ├── Positive Examples
+    └── Negative Examples
+```
+
+Make use of tables, images and formatting to guide the attention of the readers to the right places. Put emphasize on the most important parts of the annotation manual to gain good quality annotations. I have created several annotation projects in the past. The quality of the manuals started evolving as well. Take a look at the examples for a better understanding of good formatting and how to present examples to your annotators:
+
+* [Coding categories for images (German)](https://md.digitalhumanities.io/s/CW3TLUz5V)
+* [Coding policy issues for text (German)](https://md.digitalhumanities.io/s/mMe--msnX)
+* [Coding multiple content variables for text (German)](https://md.digitalhumanities.io/s/qemlDtXK0)
+
+Based on my personal experience I would recommend to:
+
+1. Focus on few variables per annotation project, due to two reasons: On the one hand it is easiert to read a short annotation manual for one or few variables and then keep annotating. We do not need to keep switching between tasks and thus to look up the definition of the one or the other variable again and again. On the other hand the software which we are going to use (LabelStudio) has a neat keyboard shortcut feature: This enables annotators to quickle select values by pressing buttons on their keyboard. The less options, the better shortcuts can be used (and remembered).
+2. Generally speaking: Less is more. Keep the amount of variables low. Stick to one modality at a time. Keep the total amount of annotations per annotator at a manageable level (e.g. 2-3 hours of work) and ask the participants to take breaks when coding! 
+3. Through my annotations B.A. Students reached consistently lower annotation quality than M.A. / M.Sc. students. 
+4. To improve the quality I have experimented with Google Forms and generated a quiz. We can provide the correct solutions to questions, ask future annotators to take the quiz and they will receive some feedback on a test round of coding before starting the actual project. 
+5. In another approach to improve the quality I asked to participants first code a small subsets and take a qualitative look at the results. I gave feedback and resolved conflicts before adding the annotators to my actual project.
+
+:::{.column-page}
+![A negative example: This annotation interface, based on @Hasler2021-gg, slows the annotation process down: Keyboard shortcuts cannot be used efficiently.](/images/labelstudio.png)
 :::
+
+## Setup LabelStudio
+
+* Hier das Notebook einfügen und noch etwas beschreiben.
+* Welche Instanz möchte ich nutzen? Evtl. meine digitalhumanities.io Instanz? Oder kann ich noch eine größere von HumanSignal bekommen?
+
+
+## Collect Annotations
+
+* Praktische Tipps zur Sammlung von Annotationen
+* Konkret: VP Stunden und GRIPS Forum
+
+## Further Reading
+
