@@ -1,0 +1,137 @@
+---
+format: 
+  html: default
+title: "Text Classification"    
+date: 2023-12-04
+author:
+  - name: Michael Achmann-Denkler
+    id: ma
+    orcid: 0000-0002-4754-7842
+    email: michael.achmann@informatik.uni-regensburg.de
+license: CC BY
+bibliography: ../literature.bib
+citation:
+  type: webpage
+  doi: 10.5281/zenodo.10039756
+notebook-view:
+  - notebook: ../notebooks/2023_12_11_GPT_Text_Classification2.ipynb 
+    title: "GPT Text Classification"
+    url: https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2023_12_11_GPT_Text_Classification.ipynb
+  - notebook: ../notebooks/2023_12_11_GPT_Text_Classification3.ipynb
+    title: "GPT Text Classification"
+    url: https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2023_12_11_GPT_Text_Classification.ipynb
+  - notebook: ../notebooks/2023_12_11_GPT_Text_Classification.ipynb
+    title: "GPT Text Classification"
+    url: https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2023_12_11_GPT_Text_Classification.ipynb
+  - notebook: ../notebooks/2023_12_11_GPT_Text_Classification4.ipynb
+    title: "GPT Text Classification"
+    url: https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2023_12_11_GPT_Text_Classification.ipynb
+---
+The [text as data](index.qmd) taught us that text is *unstructured* data, which needs some processing to convert its content into measurable *structured* data useful for quantitative analyses. This process is for many analyses the operationalization step, where we translate theoretical concepts into measurable quantities [@Nguyen2020-zg]. [Content analysis](https://en.wikipedia.org/wiki/Content_analysis), a research method used in social science and other disciplines, provides a well-established framework for all necessary steps towards operationalization, classification (labelling or coding), and evaluation. Content analysis can be conducted *qualitatively* and *quantitatively*. @Doring2016-ul define the two as:
+
+> "Typical for **qualitative** document analyses is a research problem that presents itself as an open research question and thus has an explorative or theory-building function; accordingly, the entire procedure - despite a reference to the previous state of research and the use of a theoretical framework - is rather inductive, i.e. data-driven."  -- [@Doring2016-ul, p. 540]
+
+> "[...] a **quantitative** content analysis must first be carried out in order to generate measured values. In contrast to qualitative document analysis, which interprets a small number of documents in detail, quantitative document analysis works with much larger [...] samples of documents. The documents are analysed against the background of the respective research problem with regard to individual, theoretically relevant quantitative characteristics." -- [@Doring2016-ul, p. 552]
+
+Last session's [text exploration approaches](exploration.qmd) might be useful in context of qualitative document analyses. For the quantitative approach, however, we need to operationalize our concept of interest (from the theory, or we use operationalization from the literature), and classify our text according to the operationalization. Additionally, we want to evaluate the computational classification, which will be next session's topic. For today's session, we work with two operationalizations, or measurements, from the literature: 1) Mobilization [@Wurst2023-pn; @Hasler2021-gg], and 2) Sentiment [@Moller2023-ni; @Schmidt2022-lb].
+
+## Classification using GPT
+We are going to practice text classification using GPT based on operationalization from the literature. As outlined above, we are going to measure sentiment and mobilization. Each variable has different values and applications:
+
+**Sentiment** analysis, also known as Opinion Mining, is a field within natural language processing (NLP) and linguistics that focuses on identifying and analyzing people's opinions, sentiments, evaluations, appraisals, attitudes, and emotions expressed towards various entities like products, services, organizations, individuals, events, and topics [@Liu2022-ua]. Generally, we can conduct polarity-based and emotion-based sentiment analyses. In today's session we are interested in polarity: @Schmidt2022-lb distinguish between Positive, Negative, Neutral, and Mixed tweets, @Moller2023-ni use the categories Positive, Negative, and Neutral. 
+
+**Mobilization**, on the other hand, refers to the efforts made by political parties to encourage and activate citizens to participate in the political process. This can include activities such as voting, supporting a campaign, seeking political information, liking and sharing posts on social media, and other forms of civic engagement [@Wurst2023-pn]. The authors distinguish between three types of calls to participate: calls to inform, calls to interact, and calls to support. They also subcategorized offline and online forms of each type of call. 
+
+
+### Prompt Engineering
+Prompt engineering is a new technique in machine learning that has grown alongside the development of large pre-trained models, such as foundation models or large language models (LLMs). This method emerged when it was realized that these models work better with well-designed inputs. Prompt engineering is about creating or changing a question or input so the model can more easily find the right information [@Gu2023-gr]. It is based on the understanding that different questions can produce more or less accurate results, so adjusting the format and examples of the prompt is key to getting the best results [@Zhao2021-wr]. The field of prompt engineering involves different ways of making these prompts. One can decide to create prompts manually or use automated methods [@Liu2023-ph]. The growth and use of prompt engineering signify a major change in machine learning, deeply linked to the flexibility and wide range of applications of foundation models [@Gu2023-gr].
+
+## Zero-Shot Classification
+Zero-shot prompting is a method where a model receives only a natural language instruction to perform a task, without any prior examples or demonstrations, which mirrors the way humans often approach tasks, using only textual instructions. This approach emphasizes convenience and the potential for robustness, minimizing the risk of learning spurious correlations that may be present in the training data. However, this method presents significant challenges, as it can be hard even for humans to understand the task requirements without examples [@Brown2020-il].
+
+### Designing the Prompt 
+The literature provides several prompts for sentiment analysis using GPT-models. Let's take this example:
+
+> **System prompt:** You are an advanced classifying AI. You are tasked with classifying the sentiment of a text. Sentiment can be either positive , negative or neutral. 
+>
+> **Prompt:** Classify the following social media comment into either 'negative', 'neutral' or 'positive'. Your answer MUST be either one of ['negative', 'neutral', 'positive']. Your answer must be lowercase.
+>
+> -- @Moller2023-ni (via @Borra_undated-sl).
+
+Testing new prompts within the ChatGPT interface turned out as a good practice through my experiments: Without an additional cost we receive a first understanding of the efficacy of the prompt. The following screenshot shows the sentiment analysis prompt used with some random [Amazon reviews](https://www.amazon.de/product-reviews/B07538S1M9/ref=cm_cr_unknown?ie=UTF8&filterByStar=one_star&reviewerType=all_reviews&pageNumber=1#reviews-filter-bar):
+
+![The Sentiment Prompt used with a Positive Review (GPT-4.0)](../images/sentiment-positive.png)
+
+![The Sentiment Prompt used with a Negative Review (GPT-4.0)](../images/sentiment-negative.png)
+
+Using the ChatGPT interface, we can also interact with the model asking for updates:
+
+![Updating the Prompt using ChatGPT.](../images/prompt-update-by-chat.png)
+
+> **System Prompt:** You are an advanced classifying AI. Your task is to classify the sentiment of a text. Sentiment can be either 'positive', 'negative', or 'neutral'.
+>
+> Formatting: After processing the text, the response should be formatted in JSON like this:
+>
+> ```python
+> { 
+>   "sentiment": "positive" // or "negative" or "neutral"`
+> }
+>```
+>
+> Please classify the following social media comment into either ‘negative’, ‘neutral’, or ‘positive’. Your answer MUST be one of ['negative', 'neutral', 'positive'], and it should be presented in lowercase within a JSON format.
+> 
+> **Text:** [Insert the text here]
+
+Next, let's use our improved prompt in the playground to test the differntiation between **system prompt** and **user prompt**:
+
+::: {.callout-tip}
+Set the `temperature` variable to 0 for more consistent model output.
+:::
+
+
+![Testing the Sentiment Analysis in the Playground](../images/sentiment-playground.png)
+
+### Implementing the Prompt using Python
+
+{{< embed ../notebooks/2023_12_11_GPT_Text_Classification.ipynb echo=true >}}
+
+## Zero-Shot Multiclass
+So far we have been using one request for exactly one classification. Additionally, our classification has been a categorical variable (sentiment). Since GPT natively speaks [JSON](https://en.wikipedia.org/wiki/JSON) as well as other file formats, we can easily request our responses to be formated in JSON. As such, we can request the model to return not just one classification at a time, but multiple classifications simultaneously. [Above](#classification-using-gpt) I introduced two theoretically motivated operationalizations. The second example, mobilization, can be measured e.g. as direct vs. indirect calls to action, or online or offline calls. We could model this question as two categorical classification tasks (direct/indirect/NA, online/offline/NA). My example below makes use of so-called [dummy variables](https://en.wikipedia.org/wiki/Dummy_variable_(statistics)), where the presence or absence of each value is coded using 1 or 0 (`True` or `False`), as a boolean variable. The dummy variables simplifies the prompt and allow cases, where multiple types of calls to action are used in one text.
+
+Prompting for multiclass classification works well when defining the output format to adhere strict formatting rules, for more complex use-cases I recommend the [`guardrails` package](https://github.com/guardrails-ai/guardrails). The second step is to intpret the GPT response in the right, in our case, to use the `json` package. This is an error-prone process (image the model to retun `None` instead of `{}`)! Make use of [python errors and exceptions](https://docs.python.org/3/tutorial/errors.html) to guard your loop against runtime errors. The example below expects all values in the `COLUMNS` variable to be part of the JSON object returned from the model and saves the result in `df`'s column of the same name. Python's dynamic typing usually takes care of casting the model result to `boolean`, further down the stream we might have to cast the columns manually (i.e. after saving and loading the `df` from `csv`.)
+
+
+{{< embed ../notebooks/2023_12_11_GPT_Text_Classification4.ipynb echo=true >}}
+
+
+
+## Few-Shot Classification
+Few-shot learning, involves presenting a model with a small number of task demonstrations at inference time. The number of examples is constrained by the model's context window capacity. The primary advantage of few-shot learning is the significant reduction in the need for task-specific data, alongside minimizing the risk of learning a narrow distribution from a large, but limited, fine-tuning dataset. However, this method has shown inferior performance compared to state-of-the-art fine-tuned models and still requires a minimal amount of task-specific data [@Brown2020-il].
+
+{{< embed ../notebooks/2023_12_11_GPT_Text_Classification2.ipynb echo=true >}}
+
+## Saving Money -- Multidocument Classification
+
+When using GPT for text classification using the above prompts, we send one request per text document in our `df`. Each time, we send the `system_prompt` and `prompt`, repeating the same text over and over again. With the code below we try another approach: We send a table with multiple documents at once, thus we just need to send the `system_prompt` and `prompt` once every `n` documents, saving tokens and therefore saving money. Classifications using `gpt-3.5` are relatively cheap, and the multidocument classification resulted in small quality drops through my experiments, for `gpt-4`, however, it cut my expenses drastically. `gpt-4-turbo` lies inbetween the two, it is still 10 times more expansive than `gpt-3.5`, yet input tokens are 1/3 of `gpt-4` prices. See: https://openai.com/pricing
+
+**Verdict:** Always run the mock requests first to estimate cost. For `gpt-3.5` sending one document per request is often the best option. For `gpt-4` the multidocument approach is often the better option: Cheaper than single-document `gpt-4`, higher quality than `gpt-3.5`. (According to my experiments, which have limitations!).
+
+### New System Prompt
+Let's get started by creating a new system prompt that incoporates command for the new approach. We need to define the prompt, as we need to calculate the tokens before splitting the textdocuments in tables.
+
+{{< embed ../notebooks/2023_12_11_GPT_Text_Classification3.ipynb echo=true >}}
+
+
+## Conclusion
+
+We have scratched the surface of (textual) content analysis as a foundation for our text classification tasks. Starting our journey with the idea of [text as data](index.qmd) and following the [exploration of textual content](exploration.qmd), we just added a new instrument to our toolbox for computational social media analysis: text classification. We focused solely on prompting and GPT for the classification tasks. There exist several other approaches (e.g. using [BERT](https://www.tensorflow.org/text/tutorials/classify_text_with_bert) and [other trasnformer models](https://huggingface.co/docs/transformers/tasks/sequence_classification)), and several providers offer cloud services and APIs for classification tasks (e.g. in the [Google Cloud](https://cloud.google.com/natural-language/docs/classify-text-tutorial)). For sentiment analysis there are dedicated models (see @Schmidt2022-lb for the application of such a model), and even more services and APIs (e.g. on [Microsoft Azure](https://learn.microsoft.com/en-us/azure/ai-services/language-service/sentiment-opinion-mining/quickstart?tabs=macos&pivots=programming-language-csharp)).
+
+At the same time, the first papers show interesting results when using GPT for text classification [e.g. @Brown2020-il], with prompt design being accessible for researcher with zero to few experience with machine learning. There is currently a lot of opportunity to experiment with prompts, and to test and evaluate Large Language Models and prompts against fine-tuned and existing models. We are currently missing one last step to setup a complete experiment: The evaluation, which is the next topic of our seminar. While there exists literature about prompting and prompt engineering (see top and further reading), some of the literature has a more technical motivation and is short of practical advice. Through this session I have presented the practical knowledge that I gathered through my last research project (currently under review), which still is experimental. I presented the Zero-Shot and Few-Shot approach, as well as a Zero-Shot Multiclass approach and a Multidocument approach to save money / requests while working with expensive models. 
+
+
+## Further Reading
+
+* @White2023-lx: [A Prompt Pattern Catalog to Enhance Prompt Engineering with ChatGPT](http://arxiv.org/abs/2302.11382)
+* @Zamfirescu-Pereira2023-fy: [Why Johnny Can’t Prompt: How Non-AI Experts Try (and Fail) to Design LLM Prompts](https://doi.org/10.1145/3544548.3581388)
+* [Collection of Projects and (Preprint) Papers on Prompt Engineering](https://github.com/promptslab/Awesome-Prompt-Engineering)
+* [GPT3 Subreddit](https://www.reddit.com/r/GPT3/)
