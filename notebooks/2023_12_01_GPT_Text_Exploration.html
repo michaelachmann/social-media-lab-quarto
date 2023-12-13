@@ -257,7 +257,7 @@ cookieconsent.run({
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
- <span class="menu-text">(Pre)processing</span></a>
+ <span class="menu-text">Text Analysis</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -277,15 +277,32 @@ cookieconsent.run({
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../processing/operationalization.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Operationalization</span></a>
+  <a href="../processing/classification.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Text Classification</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Evaluation</span></span>
+ <span class="menu-text">Image Analysis</span></span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+ <span class="menu-text">Evaluation</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../evaluation/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Validation: Why &amp; How</span></a>
+  </div>
+</li>
+      </ul>
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
@@ -391,8 +408,14 @@ cookieconsent.run({
 <p>Next, we create a system prompt describing what we want to extract. For further examples of prompts and advice on prompt engineering see e.g.&nbsp;<a href="https://www.promptingguide.ai/introduction/examples#information-extraction">the prompting guide</a> and further resources linked at the bottom of the page.</p>
 <p>For the initial example we use social media content shared by politicans and parties. We know, that some of these texts mention policy issues, let’s try to extract these issues across all documents.</p>
 <p><strong>Note:</strong> The extracted issues are not going to be consistent, because each document is sent as a singular request to the API, thus the previous issues are not going to be used as context.</p>
-<p>Modify the following system prompt to extract other types of information. What else could you extract? * Locations (based on names) * Names (of persons or places) * Mentions of Companies * …</p>
-<p>Do not forget the <strong><a href="https://uniregensburg-my.sharepoint.com/:x:/g/personal/acm53421_ads_uni-regensburg_de/EVgX8Avwyx5DvRUGugboTCkBPLxgrndfe6RPfsjGnMs8gA?rtime=jn_wv2zy20g">Prompt Archive</a></strong> when experimenting. Share your successfull prompt with us!</p>
+<p>Modify the following system prompt to extract other types of information. What else could you extract?</p>
+<ul>
+<li>Locations (based on names)</li>
+<li>Names (of persons or places)</li>
+<li>Mentions of Companies</li>
+<li>…</li>
+</ul>
+<p>Do not forget the <strong><a href="https://uniregensburg-my.sharepoint.com/:x:/g/personal/acm53421_ads_uni-regensburg_de/EVgX8Avwyx5DvRUGugboTCkBMnp-faFsnKhhKvNH34tB-A?e=sYUY9K">Prompt Archive</a></strong> when experimenting. Share your successfull prompt with us!</p>
 <div class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>system_prompt <span class="op">=</span> <span class="st">"""</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="st">You are a helpful assistant, an expert for German politics.</span></span>
