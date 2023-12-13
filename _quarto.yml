@@ -23,15 +23,15 @@ website:
           - data-collection/ig-stories.qmd
           - href: https://docs.google.com/document/d/19MAiqX7Vx1FcNJ44K-vSdnKDVC5gcFwtrSQiewnwW8A/edit?pli=1
             text: TikTok (External, DMI)
-      - section: "(Pre)processing"
+      - section: "Text Analysis"
         contents:
           - processing/index.qmd
-          #- processing/frequencies.qmd
-          #- processing/preprocessing.qmd
           - processing/exploration.qmd
-          - processing/operationalization.qmd
+          - processing/classification.qmd
+      - section: "Image Analysis"
       - section: "Evaluation"
-      # - section: "Analysis"
+        contents:
+          - evaluation/index.qmd
       - projects/index.qmd
   navbar:
     logo: images/logo2.png

@@ -17,6 +17,9 @@ notebook-view:
   - notebook: ../notebooks/2023_12_01_BERTopic.ipynb
     title: "Topic Modeling Using BERTopic"
     url: https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2023_12_01_BERTopic.ipynb
+citation:
+  type: webpage
+  doi: 10.5281/zenodo.10039756
 ---
 
 In the previous session we talked about [text as data](index.qmd), suggesting that text data offers a rich source of insights. This chapter concentrates on the advanced tools for exploring these textual dimensions: BERTopic and the Generative Pre-trained Transformer (GPT). These technologies stand at the forefront of computational text analysis and are intersting tools to unlock the meanings and patterns hidden within the vast textual content of social media. 
@@ -49,3 +52,4 @@ Today's prompting marks the tip of the iceberg, over the course of the next week
 * @Liu2023-ph: Pre-train, Prompt, and Predict: A Systematic Survey of Prompting Methods in Natural Language Processing
 * @Moller2023-ni: Is a prompt and a few samples all you need? Using GPT-4 for data augmentation in low-resource classification tasks. 
 * [PromptCompass Prompts](https://github.com/ErikBorra/PromptCompass/blob/main/prompts.json) [@Borra_undated-sl]
+* [BERTopic for Topic Modeling - Maarten Grootendorst - Talking Language AI (YouTube)](https://youtu.be/uZxQz87lb84?si=4q7HJRBYm-AksQzr)

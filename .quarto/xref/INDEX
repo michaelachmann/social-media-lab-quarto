@@ -139,5 +139,26 @@
   "notebooks/2023_12_01_GPT_Text_Exploration.ipynb": {
     "2023_12_01_GPT_Text_Exploration.html": "9bca7cee",
     "2023_12_01_GPT_Text_Exploration.ipynb.html": "5ff88b1b"
+  },
+  "processing/classification.qmd": {
+    "classification.html": "6ba400f7"
+  },
+  "notebooks/2023_12_11_GPT_Text_Classification.ipynb": {
+    "2023_12_11_GPT_Text_Classification.ipynb.html": "3f714a28",
+    "2023_12_11_GPT_Text_Classification.html": "c2e40d9e"
+  },
+  "evaluation/index.qmd": {
+    "index.html": "44261e4d"
+  },
+  "notebooks/2023_12_11_GPT_Text_Classification2.ipynb": {
+    "2023_12_11_GPT_Text_Classification2.ipynb.html": "c9cd4fca",
+    "2023_12_11_GPT_Text_Classification2.html": "b5603cac"
+  },
+  "notebooks/2023_12_11_GPT_Text_Classification3.ipynb": {
+    "2023_12_11_GPT_Text_Classification3.ipynb.html": "ad4d35d1",
+    "2023_12_11_GPT_Text_Classification3.html": "2c089d62"
+  },
+  "notebooks/2023_12_11_GPT_Text_Classification4.ipynb": {
+    "2023_12_11_GPT_Text_Classification4.ipynb.html": "35f22eda"
   }
 }
