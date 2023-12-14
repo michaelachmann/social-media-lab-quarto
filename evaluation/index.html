@@ -9,7 +9,7 @@
 <meta name="author" content="Michael Achmann-Denkler">
 <meta name="dcterms.date" content="2023-12-18">
 
-<title>Social Media Lab - Validation: Why &amp; How</title>
+<title>Social Media Lab - Gold Standard Validation</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,7 +22,26 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -32,7 +51,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../projects/index.html" rel="next">
+<link href="../evaluation/agreement.html" rel="next">
 <link href="../processing/classification.html" rel="prev">
 <script src="../site_libs/cookie-consent/cookie-consent.js"></script>
 <link href="../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
@@ -86,7 +105,8 @@ cookieconsent.run({
 
 
 <link rel="stylesheet" href="../styles.css">
-<meta name="twitter:title" content="Social Media Lab - Validation: Why &amp; How">
+<meta name="twitter:title" content="Social Media Lab - Gold Standard Validation">
+<meta name="twitter:description" content="">
 <meta name="twitter:image" content="https://social-media-lab.net/evaluation/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
 <meta name="twitter:card" content="summary_large_image">
 </head>
@@ -137,7 +157,7 @@ cookieconsent.run({
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../evaluation/index.html">Evaluation</a></li><li class="breadcrumb-item"><a href="../evaluation/index.html">Validation: Why &amp; How</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../evaluation/index.html">Evaluation</a></li><li class="breadcrumb-item"><a href="../evaluation/index.html">Gold Standard Validation</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -264,7 +284,13 @@ cookieconsent.run({
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../evaluation/index.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Validation: Why &amp; How</span></a>
+ <span class="menu-text">Gold Standard Validation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../evaluation/agreement.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Agreement &amp; Evaluation</span></a>
   </div>
 </li>
       </ul>
@@ -281,14 +307,20 @@ cookieconsent.run({
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#creating-an-annotation-manual" id="toc-creating-an-annotation-manual" class="nav-link active" data-scroll-target="#creating-an-annotation-manual">Creating an Annotation Manual</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Validation: Why &amp; How</h1>
+<h1 class="title">Gold Standard Validation</h1>
 </div>
 
 
@@ -325,23 +357,95 @@ Warning
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>This chapter will be available on December 18th 2023.</p>
+<p>This chapter is work in progress. It will be available on December 18th 2023.</p>
+</div>
+</div>
+<p>In computational social media analysis, validation is crucial for ensuring the accuracy and reliability of text analysis methods. As highlighted by <span class="citation" data-cites="Birkenmaier2023-go">Birkenmaier, Lechner, and Wagner (<a href="#ref-Birkenmaier2023-go" role="doc-biblioref">2023</a>)</span>, validation entails both internal and external processes. Internal validation assess a model’s plausibility and quality within the data context and tends to rely researchers’ judgment, whereas external validation compares model outputs with external benchmarks, such as human-annotated labels. <span class="citation" data-cites="Baden2022-oe">Baden et al. (<a href="#ref-Baden2022-oe" role="doc-biblioref">2022</a>)</span> further emphasize the significance of continuous evaluation and transparent reporting of validation steps and results. Additionally, they criticize the the frequent oversight in evaluating the validity of the actual measures. This problem arises when researchers focus more on the technical performance of their models, neglecting to verify whether these models accurately represent the intended social phenomena. This gap can lead to results that are statistically sound but lack real-world relevance.</p>
+<p>In context of our research projects we’ll focus on external validation through non-expert annotations using LabelStudio, a practical aspect of the validation approach. Our focus will be on generating gold standard data for an external validation. This is crucial because external validation, through methods like crowd annotation, directly assesses how well computational models perform against real-world data. The setup of LabelStudio projects and the creation of annotation manuals are key steps in this process, ensuring that the data used for validation is accurately and consistently labeled, providing a solid foundation for assessing model performance. Although the evaluation of the actual measures is important <span class="citation" data-cites="Baden2022-oe">(<a href="#ref-Baden2022-oe" role="doc-biblioref">Baden et al. 2022</a>)</span>, our discussion will concentrate on these practical aspects of external validation.</p>
+<p>Having humans coders annotate your social media content is the first part of generating a gold standard dataset. The second step will the the evaluation of the annotations, to validate their quality. We will use the interrater agreement as measurement for the coherence of our annotations. We will focus on this topic in the next session.</p>
+<section id="creating-an-annotation-manual" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="creating-an-annotation-manual">Creating an Annotation Manual</h2>
+<p>Developing an annotation manual for social media text data is an iterative process. We start with a theoretical understanding of the phenomenon to be annotated, and describe it for easy application by annotators, minimizing ambiguity. The process optimally involves multiple rounds of annotation, each refining the guidelines through discussions of disagreements and revisions. Pilot annotations should be done by those familiar with the theory, focusing on major disagreements to refine categories and examples. As guidelines evolve, both the guidelines and annotators improve, while we need to make sure that the guidelines that are understandable even to less trained individuals <span class="citation" data-cites="Reiter2019-qv Reiter_undated-yo">(<a href="#ref-Reiter2019-qv" role="doc-biblioref">Reiter, Willand, and Gius 2019</a>; <a href="#ref-Reiter_undated-yo" role="doc-biblioref">Reiter, n.d.</a>)</span>. In this section I will provide some examples for annotation manuals and some practical adivce to create effective annotation guidelines for social media analysis.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/annotation-workflow.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption class="figure-caption">Example of an annotation workflow with multiple iterations <a href="https://nilsreiter.de/blog/2017/howto-annotation">Source</a></figcaption>
+</figure>
+</div>
+<p>Practically speaking, get started by creating a document which can be shared online, e.g.&nbsp;on <a href="https://docs.google.com/">Google Docs</a> or <a href="https://md.digitalhumanities.io/">CodiMD</a>. I suggest to structure you document as follows:</p>
+<pre><code>.
+├── Introduction
+│   ├── Outline the research project:
+│   │   ├── What is your goal?
+│   │   └── Why do you need the help of annotators?
+│   ├── What can annotators expect?
+│   └── How are they being reimbursed? 
+├── Overview of all steps, e.g.
+│   ├── How and where to register
+│   └── When to act
+├── Software Manual (LabelStudio HowTo)
+│   ├── Annotation Interface
+│   └── Keyboard Shortcuts
+├── Introduction to Variables
+│   ├── Definition for each variable / Values
+│   └── Instructions for each variable / Values
+└── Examples for each Variable
+    ├── Positive Examples
+    └── Negative Examples</code></pre>
+<p>Make use of tables, images and formatting to guide the attention of the readers to the right places. Put emphasize on the most important parts of the annotation manual to gain good quality annotations. I have created several annotation projects in the past. The quality of the manuals started evolving as well. Take a look at the examples for a better understanding of good formatting and how to present examples to your annotators:</p>
+<ul>
+<li><a href="https://md.digitalhumanities.io/s/CW3TLUz5V">Coding categories for images (German)</a></li>
+<li><a href="https://md.digitalhumanities.io/s/mMe--msnX">Coding policy issues for text (German)</a></li>
+<li><a href="https://md.digitalhumanities.io/s/qemlDtXK0">Coding multiple content variables for text (German)</a></li>
+</ul>
+<p>Based on my personal experience I would recommend to:</p>
+<ol type="1">
+<li>Focus on few variables per annotation project, due to two reasons: On the one hand it is easiert to read a short annotation manual for one or few variables and then keep annotating. We do not need to keep switching between tasks and thus to look up the definition of the one or the other variable again and again. On the other hand the software which we are going to use (LabelStudio) has a neat keyboard shortcut feature: This enables annotators to quickle select values by pressing buttons on their keyboard. The less options, the better shortcuts can be used (and remembered).</li>
+<li>Generally speaking: Less is more. Keep the amount of variables low. Stick to one modality at a time. Keep the total amount of annotations per annotator at a manageable level (e.g.&nbsp;2-3 hours of work) and ask the participants to take breaks when coding!</li>
+<li>Through my annotations B.A. Students reached consistently lower annotation quality than M.A.&nbsp;/ M.Sc. students.</li>
+<li>To improve the quality I have experimented with Google Forms and generated a quiz. We can provide the correct solutions to questions, ask future annotators to take the quiz and they will receive some feedback on a test round of coding before starting the actual project.</li>
+<li>In another approach to improve the quality I asked to participants first code a small subsets and take a qualitative look at the results. I gave feedback and resolved conflicts before adding the annotators to my actual project.</li>
+</ol>
+<div class="column-page">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/labelstudio.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">A negative example: This annotation interface, based on <span class="citation" data-cites="Hasler2021-gg">Haßler, Kümpel, and Keller (<a href="#ref-Hasler2021-gg" role="doc-biblioref">2021</a>)</span>, slows the annotation process down: Keyboard shortcuts cannot be used efficiently.</figcaption>
+</figure>
 </div>
 </div>
 
 
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{achmann-denkler2023,
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-Baden2022-oe" class="csl-entry" role="listitem">
+Baden, Christian, Christian Pipal, Martijn Schoonvelde, and Mariken A C G van der Velden. 2022. <span>“<span class="nocase">Three Gaps in Computational Text Analysis Methods for Social Sciences: A Research Agenda</span>.”</span> <em>Communication Methods and Measures</em> 16 (1): 1–18. <a href="https://doi.org/10.1080/19312458.2021.2015574">https://doi.org/10.1080/19312458.2021.2015574</a>.
+</div>
+<div id="ref-Birkenmaier2023-go" class="csl-entry" role="listitem">
+Birkenmaier, Lukas, Clemens M Lechner, and Claudia Wagner. 2023. <span>“<span class="nocase">The search for solid ground in text as data: A systematic review and practical recommendations for validation</span>.”</span> <a href="https://doi.org/10.31235/osf.io/kgn6f">https://doi.org/10.31235/osf.io/kgn6f</a>.
+</div>
+<div id="ref-Hasler2021-gg" class="csl-entry" role="listitem">
+Haßler, Jörg, Anna Sophie Kümpel, and Jessica Keller. 2021. <span>“<span class="nocase">Instagram and political campaigning in the 2017 German federal election. A quantitative content analysis of German top politicians’ and parliamentary parties’ posts</span>.”</span> <em>Information, Communication and Society</em>, July, 1–21. <a href="https://doi.org/10.1080/1369118X.2021.1954974">https://doi.org/10.1080/1369118X.2021.1954974</a>.
+</div>
+<div id="ref-Reiter_undated-yo" class="csl-entry" role="listitem">
+Reiter, Nils. n.d. <span>“<span class="nocase">How to Develop Annotation Guidelines</span>.”</span> <a href="https://nilsreiter.de/blog/2017/howto-annotation" class="uri">https://nilsreiter.de/blog/2017/howto-annotation</a>. <a href="https://nilsreiter.de/blog/2017/howto-annotation">https://nilsreiter.de/blog/2017/howto-annotation</a>.
+</div>
+<div id="ref-Reiter2019-qv" class="csl-entry" role="listitem">
+Reiter, Nils, Marcus Willand, and Evelyn Gius. 2019. <span>“<span class="nocase">A shared task for the digital humanities chapter 1: Introduction to annotation, narrative levels and shared tasks</span>.”</span> <em>Journal of Cultural Analytics</em>. <a href="https://doi.org/10.22148/16.048">https://doi.org/10.22148/16.048</a>.
+</div>
+</div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{achmann-denkler2023,
   author = {Achmann-Denkler, Michael},
-  title = {Validation: {Why} \&amp; {How}},
+  title = {Gold {Standard} {Validation}},
   date = {2023-12-18},
   url = {https://social-media-lab.net/evaluation},
   doi = {10.5281/zenodo.10039756},
   langid = {en}
 }
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-achmann-denkler2023" class="csl-entry quarto-appendix-citeas" role="listitem">
-Achmann-Denkler, Michael. 2023. <span>“Validation: Why &amp;
-How.”</span> December 18, 2023. <a href="https://doi.org/10.5281/zenodo.10039756">https://doi.org/10.5281/zenodo.10039756</a>.
+Achmann-Denkler, Michael. 2023. <span>“Gold Standard Validation.”</span>
+December 18, 2023. <a href="https://doi.org/10.5281/zenodo.10039756">https://doi.org/10.5281/zenodo.10039756</a>.
 </div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -698,8 +802,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../projects/index.html" class="pagination-link">
-        <span class="nav-page-text">Projects</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../evaluation/agreement.html" class="pagination-link">
+        <span class="nav-page-text">Agreement &amp; Evaluation</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
