@@ -164,5 +164,8 @@
   },
   "evaluation/agreement.qmd": {
     "agreement.html": "a2e71c00"
+  },
+  "notebooks/2023_12_14_Create_LabelStudio_Text_Evaluation.ipynb": {
+    "2023_12_14_Create_LabelStudio_Text_Evaluation.ipynb.html": "a3c5945b"
   }
 }

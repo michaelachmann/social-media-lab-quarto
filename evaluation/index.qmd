@@ -13,7 +13,16 @@ bibliography: ../literature.bib
 citation:
   type: webpage
   doi: 10.5281/zenodo.10039756
+notebook-view:
+  - notebook: ../notebooks/2023_12_14_Create_LabelStudio_Text_Evaluation.ipynb 
+    title: "Create Label Studio Project"
+    url: https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2023_12_14_Create_LabelStudio_Text_Evaluation.ipynb
 ---
+
+
+::: {.callout-warning}
+This chapter is work in progress. It will be available on December 18th 2023.
+:::
 
 In computational social media analysis, validation is crucial for ensuring the accuracy and reliability of text analysis methods. As highlighted by @Birkenmaier2023-go, validation entails both internal and external processes. Internal validation assess a model's plausibility and quality within the data context and tends to rely researchers' judgment, whereas external validation compares model outputs with external benchmarks, such as human-annotated labels. @Baden2022-oe further emphasize the significance of continuous evaluation and transparent reporting of validation steps and results. Additionally, they criticize the the frequent oversight in evaluating the validity of the actual measures. This problem arises when researchers focus more on the technical performance of their models, neglecting to verify whether these models accurately represent the intended social phenomena. This gap can lead to results that are statistically sound but lack real-world relevance.
 
@@ -68,16 +77,78 @@ Based on my personal experience I would recommend to:
 ![A negative example: This annotation interface, based on @Hasler2021-gg, slows the annotation process down: Keyboard shortcuts cannot be used efficiently.](/images/labelstudio.png)
 :::
 
-## Setup LabelStudio
+## Setup an annotation project
+We are going to use [Label Studio](https://labelstud.io/) as an annotation interface. While we do not need to use a specialized software, Label Studio makes the process of setting up annotation projects, inviting and organizing annotators, and the actual annotation a lot easier. A low resource alternative to specialized annotation software is Excel: Convert your text DataFrame to an Excel sheet, delete all but the text columns, add columns for your variables, and write a detailed annotation manual for your coders how to fill in your Excel sheet. These steps are easy to reproduce and quick to implement, yet the specialized software makes sure that annotator input follows your standard as you may define a detailed interface, it shuffles the order of annotations, and it offers keyboard shortcuts to speed up annotations. Additionally (when using the Enterprise version which is free for researchers), it tracks time spent on annotations and calculates first scores to estimate interrater reliability. [My Medium story "How to Accelerate your Annotation Process for Visual Social Media Analysis with Label Studio"](https://achmann.dev/how-to-accelerate-your-annotation-process-for-visual-social-media-analysis-with-label-studio-24c980a909f6) goes into more detail.
 
-* Hier das Notebook einfügen und noch etwas beschreiben.
-* Welche Instanz möchte ich nutzen? Evtl. meine digitalhumanities.io Instanz? Oder kann ich noch eine größere von HumanSignal bekommen?
+For our seminar, we are going to use a self-hosted version of Label Studio. The biggest draw back is the limitation of one annotation per document. We can, however, overcome this limitation by setting up the same project three times and calculating  interrater agreement measures ourselves (we are, of course, going to use standardized measures like Cohen's $\kappa$, see [Agreement & Evaluation](/evaluation/agreement.qmd)).
+
+### Setup a Label Studio project
+The [Label Studio Text Evaluation Notebook](https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2023_12_14_Create_LabelStudio_Text_Evaluation.ipynb) guides you step by step through the automated creation of a labelstudio project:
+
+{{< embed ../notebooks/2023_12_14_Create_LabelStudio_Text_Evaluation.ipynb echo=true >}}
+
+### Designing an Interface
+While the above notebook contains some logic to algorithmically generate a simple annotation interface, I recommend to customize your interface using the [Interface XML Tags](https://labelstud.io/tags) and CSS. In order to change the interface, open your project and click on *Settings*. 
+
+![The *Settings* button in the top-right corner of annotation projects.](/images/ls-settings.png){width="50%"}
+
+Next, select the *Labeling Interface* section and switch to code view. Here we can modify the interface using the custom Label Studio XML in a manner similar to HTML pages. 
+
+![The *Labeling Interface* in the project settings](/images/ls-interface-settings.png)
+
+When workig with Text the next tag is essential:
+
+```XML
+<Text name="Text" value="$Text"/>
+```
+
+Here we define a `Text` tag with the name `Text`, prefilled with the content of the `Text` column of the previously uploaded DataFrame, through the `$Text` placeholder. If you wanted to e.g. fill the tag with the `identifier` column set `value="$identifier"`. 
+
+Here is an example of a clear and simple coding interface that I used in a past project:
+
+![An example of a labeling interface for political communication.](/images/ls-interface.png){width=75%}
+
+::: {.callout-note}
+Note the *Unsure* option: It is good practice to offer annotators a fallback option in case of uncertainty. These uncertainties can, at a later stage, be resolved, e.g. through an expert review.
+:::
+
+
+And the XML / CSS code for the interface:
+
+```xml
+<View>
+   <Style> .caption { background: white; padding: 10px; border-radius: 5px; font-size:medium; max-width:728px; margin:auto;}</Style>
+  <Style> .interface {padding: 20px; margin: auto;}</Style>
+  <View className="caption">
+   <Text name="Text" value="$Text"/>
+  </View>
+  <View style="display:flex; box-shadow: 2px 2px 5px #999; padding: 5px; border-radius: 5px; max-width:680px; margin: auto; margin-top: 2em;">
+    <View className="interface">
+<Header value="Positioning" /><Choices name="Positioning" choice="single" toName="Text"><Choice value="True" /><Choice value="False" selected="true" /><Choice value="Unsure" /></Choices>
+    </View>
+    <View className="interface">
+      <Header value="Call to Action" /><Choices name="Call to Action" showInline="false" choice="single" toName="Text"><Choice value="True" /><Choice value="False" selected="true"  /><Choice value="Unsure" /></Choices>
+    </View>
+    <View className="interface">
+      <Header value="Documenation" /><Choices name="Documentation" showInline="false" choice="single" toName="Text"><Choice value="True" /><Choice value="False" selected="true"  /><Choice value="Unsure" /></Choices>
+    </View>
+    <View className="interface">
+      <Header value="Unleserlich" /><Choices name="OCR" showInline="false" choice="single" toName="Text"><Choice value="True" /><Choice value="False" selected="true"  /><Choice value="Unsure" selected="false" style="visibility:hidden;"/></Choices>
+    </View>
+  </View>
+    </View>
+```
+
+::: {.callout-tip}
+Give it a try to design an interface [with the help of ChatGPT](https://chat.openai.com/share/9a7ef2e4-5a5d-423d-a458-31ef830b5bbc)!
+:::
+
+Overall, the provided notebook and examples offer various options to export your social media data to label studio and to create a custom interface for your annotation project. It is, as outlined in the [creating an annotation manual](#creating-an-annotation-manual), important to test the annotation manual **and** the annotation interface through multiple iterations. Make use of your project teams here!
 
 
 ## Collect Annotations
 
-* Praktische Tipps zur Sammlung von Annotationen
-* Konkret: VP Stunden und GRIPS Forum
+The annotation manual is written, the data has been added to a label studio project, the manual and interface have both been tested and improved through several iterations: Now you are ready to invite annotators to your project! In context of our research seminar we aim at non-expert annotators. We may make use of our "Versuchspersonenstunden" (*participant hours*) system, thus we may hire students as annotators. For each hour of participation, their receive one participant hours. An ideal annotation project in this context should not exceed two hours! The [uni website](https://www.uni-regensburg.de/sprache-literatur-kultur/medieninformatik/studium/versuchspersonenstunden/index.html) offers all information on participant hours. Additionally, we can exchange participation in the annotation projects.
 
-## Further Reading
-
+## Conclusion
+...

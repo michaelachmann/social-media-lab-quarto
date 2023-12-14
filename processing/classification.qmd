@@ -49,6 +49,8 @@ Prompt engineering is a new technique in machine learning that has grown alongsi
 ## Zero-Shot Classification
 Zero-shot prompting is a method where a model receives only a natural language instruction to perform a task, without any prior examples or demonstrations, which mirrors the way humans often approach tasks, using only textual instructions. This approach emphasizes convenience and the potential for robustness, minimizing the risk of learning spurious correlations that may be present in the training data. However, this method presents significant challenges, as it can be hard even for humans to understand the task requirements without examples [@Brown2020-il].
 
+{{< video https://youtu.be/QcYGwC4QzW0 >}}
+
 ### Designing the Prompt 
 The literature provides several prompts for sentiment analysis using GPT-models. Let's take this example:
 
