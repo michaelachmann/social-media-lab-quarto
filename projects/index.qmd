@@ -11,6 +11,11 @@ author:
 
 Starting in 2022, several student projects and bachelor and master theses have been exploring Social Media Analysis under my supervision. Each project approached the field with a unique research interest and questions, influenced by interdisciplinary questions and perspectives. On this page I keep track of past and current projects. 
 
+## Publications
+* Achmann, M., & Wolff, C. (2023). Computergestützte Bildtypenanalyse durch Zero-Shot Klassifikation mit CLIP. In INFORMATIK 2023 - Designing Futures: Zukünfte gestalten, 821–830. Gesellschaft für Informatik e.V. [https://doi.org/10.18420/inf2023_92](https://doi.org/10.18420/inf2023_92)
+* Achmann, M., & Wolff, C. (2023). Policy issues vs. Documentation: Using BERTopic to gain insight in the political communication in Instagram stories and posts during the 2021 German Federal election campaign. Digital Humanities in the Nordic and Baltic Countries Publications, 5(1), 11–28. [https://doi.org/10.5617/dhnbpub.10647](https://doi.org/10.5617/dhnbpub.10647)
+* Achmann, M., Hampel, L., Asabidi, R., & Wolff, C. (2022). Studying the ephemeral, cultures of digital oblivion Identifying patterns in Instagram Stories. In M. Geierhos, P. Trilcke, I. Börner, S. Seifert, A. Busch, & P. Helling (Eds.), DHd 2022 Kulturen des digitalen Gedächtnisses. 8. Tagung des Verbands “Digital Humanities im deutschsprachigen Raum” (DHd 2022). [https://doi.org/10.5281/zenodo.6327901](https://doi.org/10.5281/zenodo.6327901)
+* Knierim, A., Achmann, M., & Wolff, C. (2022). Zeitgeschichte untersuchen - Topic Modeling von #blackouttuesday-Inhalten auf Instagram. In M. Geierhos, P. Trilcke, I. Börner, S. Seifert, A. Busch, & P. Helling (Eds.), DHd 2022 Kulturen des digitalen Gedächtnisses. 8. Tagung des Verbands “Digital Humanities im deutschsprachigen Raum” (DHd 2022). [https://doi.org/10.5281/zenodo.6322516](https://doi.org/10.5281/zenodo.6322516)
 
 ## Semester Projects
 
