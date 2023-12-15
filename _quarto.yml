@@ -5,6 +5,7 @@ website:
   title: "Social Media Lab"
   description: "Notes on computational social media analysis"
   page-navigation: true
+  favicon: images/favicon.ico
   sidebar:
     style: "floating"
     search: false
