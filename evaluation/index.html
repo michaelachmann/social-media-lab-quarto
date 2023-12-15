@@ -22,6 +22,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 /* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
@@ -53,6 +87,7 @@ div.csl-indent {
 <meta name="quarto:offset" content="../">
 <link href="../evaluation/agreement.html" rel="next">
 <link href="../processing/classification.html" rel="prev">
+<link href="../images/favicon.ico" rel="icon">
 <script src="../site_libs/cookie-consent/cookie-consent.js"></script>
 <link href="../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
 <script src="../site_libs/quarto-html/quarto.js"></script>
@@ -102,7 +137,12 @@ cookieconsent.run({
 });
 </script> 
   
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="../styles.css">
 <meta name="twitter:title" content="Social Media Lab - Gold Standard Validation">
@@ -312,15 +352,22 @@ cookieconsent.run({
    
   <ul>
   <li><a href="#creating-an-annotation-manual" id="toc-creating-an-annotation-manual" class="nav-link active" data-scroll-target="#creating-an-annotation-manual">Creating an Annotation Manual</a></li>
+  <li><a href="#setup-an-annotation-project" id="toc-setup-an-annotation-project" class="nav-link" data-scroll-target="#setup-an-annotation-project">Setup an annotation project</a>
+  <ul class="collapse">
+  <li><a href="#setup-a-label-studio-project" id="toc-setup-a-label-studio-project" class="nav-link" data-scroll-target="#setup-a-label-studio-project">Setup a Label Studio project</a></li>
+  <li><a href="#designing-an-interface" id="toc-designing-an-interface" class="nav-link" data-scroll-target="#designing-an-interface">Designing an Interface</a></li>
+  </ul></li>
+  <li><a href="#collect-annotations" id="toc-collect-annotations" class="nav-link" data-scroll-target="#collect-annotations">Collect Annotations</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
   </ul>
-</nav>
+<div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2023_12_14_Create_LabelStudio_Text_Evaluation.ipynb"><i class="bi bi-journal-code"></i>Create Label Studio Project</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Gold Standard Validation</h1>
+<h1 class="title">LabelStudio Setup</h1>
 </div>
 
 
@@ -347,20 +394,7 @@ cookieconsent.run({
 
 </header>
 
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Warning
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>This chapter is work in progress. It will be available on December 18th 2023.</p>
-</div>
-</div>
-<p>In computational social media analysis, validation is crucial for ensuring the accuracy and reliability of text analysis methods. As highlighted by <span class="citation" data-cites="Birkenmaier2023-go">Birkenmaier, Lechner, and Wagner (<a href="#ref-Birkenmaier2023-go" role="doc-biblioref">2023</a>)</span>, validation entails both internal and external processes. Internal validation assess a model’s plausibility and quality within the data context and tends to rely researchers’ judgment, whereas external validation compares model outputs with external benchmarks, such as human-annotated labels. <span class="citation" data-cites="Baden2022-oe">Baden et al. (<a href="#ref-Baden2022-oe" role="doc-biblioref">2022</a>)</span> further emphasize the significance of continuous evaluation and transparent reporting of validation steps and results. Additionally, they criticize the the frequent oversight in evaluating the validity of the actual measures. This problem arises when researchers focus more on the technical performance of their models, neglecting to verify whether these models accurately represent the intended social phenomena. This gap can lead to results that are statistically sound but lack real-world relevance.</p>
+<p>In computational social media analysis, validation is crucial for ensuring the accuracy and reliability of text analysis methods. As highlighted by <span class="citation" data-cites="Birkenmaier2023-nt">Birkenmaier, Lechner, and Wagner (<a href="#ref-Birkenmaier2023-nt" role="doc-biblioref">2023</a>)</span>, validation entails both internal and external processes. Internal validation assess a model’s plausibility and quality within the data context and tends to rely researchers’ judgment, whereas external validation compares model outputs with external benchmarks, such as human-annotated labels. <span class="citation" data-cites="Baden2022-oe">Baden et al. (<a href="#ref-Baden2022-oe" role="doc-biblioref">2022</a>)</span> further emphasize the significance of continuous evaluation and transparent reporting of validation steps and results. Additionally, they criticize the the frequent oversight in evaluating the validity of the actual measures. This problem arises when researchers focus more on the technical performance of their models, neglecting to verify whether these models accurately represent the intended social phenomena. This gap can lead to results that are statistically sound but lack real-world relevance.</p>
 <p>In context of our research projects we’ll focus on external validation through non-expert annotations using LabelStudio, a practical aspect of the validation approach. Our focus will be on generating gold standard data for an external validation. This is crucial because external validation, through methods like crowd annotation, directly assesses how well computational models perform against real-world data. The setup of LabelStudio projects and the creation of annotation manuals are key steps in this process, ensuring that the data used for validation is accurately and consistently labeled, providing a solid foundation for assessing model performance. Although the evaluation of the actual measures is important <span class="citation" data-cites="Baden2022-oe">(<a href="#ref-Baden2022-oe" role="doc-biblioref">Baden et al. 2022</a>)</span>, our discussion will concentrate on these practical aspects of external validation.</p>
 <p>Having humans coders annotate your social media content is the first part of generating a gold standard dataset. The second step will the the evaluation of the annotations, to validate their quality. We will use the interrater agreement as measurement for the coherence of our annotations. We will focus on this topic in the next session.</p>
 <section id="creating-an-annotation-manual" class="level2 page-columns page-full">
@@ -414,6 +448,484 @@ Warning
 </figure>
 </div>
 </div>
+</section>
+<section id="setup-an-annotation-project" class="level2">
+<h2 class="anchored" data-anchor-id="setup-an-annotation-project">Setup an annotation project</h2>
+<p>We are going to use <a href="https://labelstud.io/">Label Studio</a> as an annotation interface. While we do not need to use a specialized software, Label Studio makes the process of setting up annotation projects, inviting and organizing annotators, and the actual annotation a lot easier. A low resource alternative to specialized annotation software is Excel: Convert your text DataFrame to an Excel sheet, delete all but the text columns, add columns for your variables, and write a detailed annotation manual for your coders how to fill in your Excel sheet. These steps are easy to reproduce and quick to implement, yet the specialized software makes sure that annotator input follows your standard as you may define a detailed interface, it shuffles the order of annotations, and it offers keyboard shortcuts to speed up annotations. Additionally (when using the Enterprise version which is free for researchers), it tracks time spent on annotations and calculates first scores to estimate interrater reliability. <a href="https://achmann.dev/how-to-accelerate-your-annotation-process-for-visual-social-media-analysis-with-label-studio-24c980a909f6">My Medium story “How to Accelerate your Annotation Process for Visual Social Media Analysis with Label Studio”</a> goes into more detail.</p>
+<p>For our seminar, we are going to use a self-hosted version of Label Studio. The biggest draw back is the limitation of one annotation per document. We can, however, overcome this limitation by setting up the same project three times and calculating interrater agreement measures ourselves (we are, of course, going to use standardized measures like Cohen’s <span class="math inline">\(\kappa\)</span>, see <a href="../evaluation/agreement.html">Agreement &amp; Evaluation</a>).</p>
+<section id="setup-a-label-studio-project" class="level3">
+<h3 class="anchored" data-anchor-id="setup-a-label-studio-project">Setup a Label Studio project</h3>
+<p>The <a href="https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2023_12_14_Create_LabelStudio_Text_Evaluation.ipynb">Label Studio Text Evaluation Notebook</a> guides you step by step through the automated creation of a labelstudio project:</p>
+<div class="quarto-embed-nb-cell">
+<p>Install the <code>label-studio-sdk</code> package for programmatic control of Label Studio:</p>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip <span class="op">-</span>q install label<span class="op">-</span>studio<span class="op">-</span>sdk</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Next, let’s read the text master from the previous sessions</p>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'/content/drive/MyDrive/2023-12-01-Export-Posts-Text-Master.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>In my <a href="https://youtu.be/QcYGwC4QzW0">video on GPT text classification</a> I mentioned the problem of the unique identifier, as we also need a unique identifier for the annotations. Use the code below in our text classification notebook when working with multidocument classifications!</p>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'identifier'</span>] <span class="op">=</span> df.<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="ss">f"</span><span class="sc">{</span>x[<span class="st">'shortcode'</span>]<span class="sc">}</span><span class="ss">-</span><span class="sc">{</span>x[<span class="st">'Text Type'</span>]<span class="sc">}</span><span class="ss">"</span>, axis<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-outputid="155af2da-17ca-46c4-947e-6565f40640de" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+
+  <div id="df-2c59a3eb-cae0-446b-a21d-3a49644eb089" class="colab-df-container">
+    <div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Unnamed: 0</th>
+<th data-quarto-table-cell-role="th">shortcode</th>
+<th data-quarto-table-cell-role="th">Text</th>
+<th data-quarto-table-cell-role="th">Text Type</th>
+<th data-quarto-table-cell-role="th">Policy Issues</th>
+<th data-quarto-table-cell-role="th">identifier</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>0</td>
+<td>CyMAe_tufcR</td>
+<td>#Landtagswahl23 🤩🧡🙏 #FREIEWÄHLER #Aiwanger #Da...</td>
+<td>Caption</td>
+<td>['1. Political parties:\n- FREIEWÄHLER\n- Aiwa...</td>
+<td>CyMAe_tufcR-Caption</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>1</td>
+<td>CyL975vouHU</td>
+<td>Die Landtagswahl war für uns als Liberale hart...</td>
+<td>Caption</td>
+<td>['Landtagswahl']</td>
+<td>CyL975vouHU-Caption</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>2</td>
+<td>CyL8GWWJmci</td>
+<td>Nach einem starken Wahlkampf ein verdientes Er...</td>
+<td>Caption</td>
+<td>['1. Wahlkampf und Wahlergebnis:\n- Wahlkampf\...</td>
+<td>CyL8GWWJmci-Caption</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>3</td>
+<td>CyL7wyJtTV5</td>
+<td>So viele Menschen am Odeonsplatz heute mit ein...</td>
+<td>Caption</td>
+<td>['Israel', 'Terrorismus', 'Hamas', 'Entwicklun...</td>
+<td>CyL7wyJtTV5-Caption</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>4</td>
+<td>CyLxwHuvR4Y</td>
+<td>Herzlichen Glückwunsch zu diesem grandiosen Wa...</td>
+<td>Caption</td>
+<td>['1. Wahlsieg und Parlamentseinstieg\n- Wahlsi...</td>
+<td>CyLxwHuvR4Y-Caption</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-2c59a3eb-cae0-446b-a21d-3a49644eb089')" title="Convert this dataframe to an interactive table." style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-2c59a3eb-cae0-446b-a21d-3a49644eb089 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-2c59a3eb-cae0-446b-a21d-3a49644eb089');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+<div id="df-d1ba7831-9de2-4749-b87e-81da240e5126">
+  <button class="colab-df-quickchart" onclick="quickchart('df-d1ba7831-9de2-4749-b87e-81da240e5126')" title="Suggest charts" style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 0 24 24" width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"></path>
+    </g>
+</svg>
+  </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+  <script>
+    async function quickchart(key) {
+      const quickchartButtonEl =
+        document.querySelector('#' + key + ' button');
+      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+      quickchartButtonEl.classList.add('colab-df-spinner');
+      try {
+        const charts = await google.colab.kernel.invokeFunction(
+            'suggestCharts', [key], {});
+      } catch (error) {
+        console.error('Error during call to suggestCharts:', error);
+      }
+      quickchartButtonEl.classList.remove('colab-df-spinner');
+      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+    }
+    (() => {
+      let quickchartButtonEl =
+        document.querySelector('#df-d1ba7831-9de2-4749-b87e-81da240e5126 button');
+      quickchartButtonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+    })();
+  </script>
+</div>
+    </div>
+  </div>
+</div>
+</div>
+<p>Please specify the the URL and API-Key for you LabelStudio Instance.</p>
+<div class="cell" data-cellview="form" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> google.colab <span class="im">import</span> userdata</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>labelstudio_key_name <span class="op">=</span> <span class="st">"label2-key"</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>labelstudio_key <span class="op">=</span> userdata.get(labelstudio_key_name)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>labelstudio_url <span class="op">=</span> <span class="st">"https://label2.digitalhumanities.io"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="create-labelstudio-interface" class="level4">
+<h4 class="anchored" data-anchor-id="create-labelstudio-interface">Create LabelStudio Interface</h4>
+<p>Before creating the LabelStudio project you will need to define your labelling interface. Once the project is set up you will only be able to edit the interface in LabelStudio.</p>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>interface <span class="op">=</span> <span class="st">"""</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;View style="display:flex;"&gt;</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="st">  &lt;View style="flex:33%"&gt;</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="st">    &lt;Text name="Text" value="$Text"/&gt;</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="st">  &lt;/View&gt;</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="st">  &lt;View style="flex:66%"&gt;</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="add-a-simple-coding-interface" class="level4">
+<h4 class="anchored" data-anchor-id="add-a-simple-coding-interface">Add a simple coding interface</h4>
+<p>Do you want add codes (Classification) to the images? Please name your coding instance and add options. <br> <strong>By running this cell multiple times you’re able to add multiple variables (not recommended)</strong></p>
+<p>Add the variable name to <code>coding_name</code>, the checkbox labels in <code>coding_values</code>, and define whether to expect <code>single</code> choice or <code>multiple</code> choice input for this variable in <code>coding_choice</code>.</p>
+<div class="cell" data-cellview="form">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>coding_name <span class="op">=</span> <span class="st">"Sentiment"</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>coding_values <span class="op">=</span> <span class="st">"Positive,Neutral,Negative"</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>coding_choice <span class="op">=</span> <span class="st">"single"</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>coding_interface <span class="op">=</span> <span class="st">'&lt;Header value="</span><span class="sc">{}</span><span class="st">" /&gt;&lt;Choices name="</span><span class="sc">{}</span><span class="st">" choice="</span><span class="sc">{}</span><span class="st">" toName="Text"&gt;'</span>.<span class="bu">format</span>(coding_name, coding_name,coding_choice)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> value <span class="kw">in</span> coding_values.split(<span class="st">","</span>):</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  value <span class="op">=</span> value.strip()</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  coding_interface <span class="op">+=</span> <span class="st">'&lt;Choice value="</span><span class="sc">{}</span><span class="st">" /&gt;'</span>.<span class="bu">format</span>(value)</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>coding_interface <span class="op">+=</span> <span class="st">"&lt;/Choices&gt;"</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>interface <span class="op">+=</span> coding_interface</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Added </span><span class="sc">{}</span><span class="st">"</span>.<span class="bu">format</span>(coding_name))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Finally run the next line to close the XML of the annotation interface. <strong>Run this line even if you do not want to add any variables at the moment!</strong></p>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>interface <span class="op">+=</span> <span class="st">"""</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="st">        &lt;/View&gt;</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="st">    &lt;/View&gt;</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="st">    """</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="project-upload" class="level4">
+<h4 class="anchored" data-anchor-id="project-upload">Project Upload</h4>
+<p>This final step creates a LabelStudio project and configures the interface. Define a <code>project_name</code>, select the <code>text_column</code>, and <code>identifier_column</code>. Additionally, you may define a <code>sample_percentage</code> for sampling, we start with <span class="math inline">\(30\%\)</span>. When working with the Open Source version of Label Studio we need to create on project per annotator, enter the number of annotators in <code>num_copies</code> to create multiple copies at once.</p>
+<div class="cell" data-cellview="form" data-outputid="3e0856ad-0bf7-42a1-9ee6-ea17887f83fb" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> label_studio_sdk <span class="im">import</span> Client</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> contextlib</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> io</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>project_name <span class="op">=</span> <span class="st">"vSMA Test 1"</span> </span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>text_column <span class="op">=</span> <span class="st">"Text"</span> </span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>identifier_column <span class="op">=</span> <span class="st">"identifier"</span> </span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>sample_percentage <span class="op">=</span> <span class="dv">30</span>  </span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>num_copies <span class="op">=</span> <span class="dv">1</span> </span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>sample_size <span class="op">=</span> <span class="bu">round</span>(<span class="bu">len</span>(df) <span class="op">*</span> (sample_percentage <span class="op">/</span> <span class="dv">100</span>))</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>ls <span class="op">=</span> Client(url<span class="op">=</span>labelstudio_url, api_key<span class="op">=</span>labelstudio_key)</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>df_tasks <span class="op">=</span> df[[identifier_column, text_column]]</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>df_tasks <span class="op">=</span> df_tasks.sample(sample_size)</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>df_tasks <span class="op">=</span> df_tasks.fillna(<span class="st">""</span>)</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, num_copies):</span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>  project_name <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>project_name<span class="sc">}</span><span class="ss"> #</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Create the project</span></span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>  project <span class="op">=</span> ls.start_project(</span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>      title<span class="op">=</span>project_name,</span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>      label_config<span class="op">=</span>interface,</span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>      sampling<span class="op">=</span><span class="st">"Uniform sampling"</span></span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a>  <span class="cf">with</span> contextlib.redirect_stdout(io.StringIO()):</span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a>    project.import_tasks(</span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a>          df_tasks.to_dict(<span class="st">'records'</span>)</span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="ss">f"All done, created project #</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">! Visit </span><span class="sc">{</span>labelstudio_url<span class="sc">}</span><span class="ss">/projects/</span><span class="sc">{</span>project<span class="sc">.</span><span class="bu">id</span><span class="sc">}</span><span class="ss">/ and get started labelling!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>All done, created project #0! Visit https://label2.digitalhumanities.io/projects/61/ and get started labelling!</code></pre>
+</div>
+</div>
+</section>
+<a class="quarto-notebook-link" id="nblink-1" href="https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2023_12_14_Create_LabelStudio_Text_Evaluation.ipynb">Source: Create Label Studio Project</a></div>
+</section>
+<section id="designing-an-interface" class="level3">
+<h3 class="anchored" data-anchor-id="designing-an-interface">Designing an Interface</h3>
+<p>While the above notebook contains some logic to algorithmically generate a simple annotation interface, I recommend to customize your interface using the <a href="https://labelstud.io/tags">Interface XML Tags</a> and CSS. In order to change the interface, open your project and click on <em>Settings</em>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/ls-settings.png" class="img-fluid figure-img" style="width:50.0%"></p>
+<figcaption class="figure-caption">The <em>Settings</em> button in the top-right corner of annotation projects.</figcaption>
+</figure>
+</div>
+<p>Next, select the <em>Labeling Interface</em> section and switch to code view. Here we can modify the interface using the custom Label Studio XML in a manner similar to HTML pages.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/ls-interface-settings.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">The <em>Labeling Interface</em> in the project settings</figcaption>
+</figure>
+</div>
+<p>When workig with Text the next tag is essential:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode xml code-with-copy"><code class="sourceCode xml"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">Text</span><span class="ot"> name=</span><span class="st">"Text"</span><span class="ot"> value=</span><span class="st">"$Text"</span>/&gt;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Here we define a <code>Text</code> tag with the name <code>Text</code>, prefilled with the content of the <code>Text</code> column of the previously uploaded DataFrame, through the <code>$Text</code> placeholder. If you wanted to e.g.&nbsp;fill the tag with the <code>identifier</code> column set <code>value="$identifier"</code>.</p>
+<p>Here is an example of a clear and simple coding interface that I used in a past project:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/ls-interface.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption class="figure-caption">An example of a labeling interface for political communication.</figcaption>
+</figure>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Note the <em>Unsure</em> option: It is good practice to offer annotators a fallback option in case of uncertainty. These uncertainties can, at a later stage, be resolved, e.g.&nbsp;through an expert review.</p>
+</div>
+</div>
+<p>And the XML / CSS code for the interface:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode xml code-with-copy"><code class="sourceCode xml"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">View</span>&gt;</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>   &lt;<span class="kw">Style</span>&gt; .caption { background: white; padding: 10px; border-radius: 5px; font-size:medium; max-width:728px; margin:auto;}&lt;/<span class="kw">Style</span>&gt;</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">Style</span>&gt; .interface {padding: 20px; margin: auto;}&lt;/<span class="kw">Style</span>&gt;</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">View</span><span class="ot"> className=</span><span class="st">"caption"</span>&gt;</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>   &lt;<span class="kw">Text</span><span class="ot"> name=</span><span class="st">"Text"</span><span class="ot"> value=</span><span class="st">"$Text"</span>/&gt;</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  &lt;/<span class="kw">View</span>&gt;</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">View</span><span class="ot"> style=</span><span class="st">"display:flex; box-shadow: 2px 2px 5px #999; padding: 5px; border-radius: 5px; max-width:680px; margin: auto; margin-top: 2em;"</span>&gt;</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">View</span><span class="ot"> className=</span><span class="st">"interface"</span>&gt;</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">Header</span><span class="ot"> value=</span><span class="st">"Positioning"</span> /&gt;&lt;<span class="kw">Choices</span><span class="ot"> name=</span><span class="st">"Positioning"</span><span class="ot"> choice=</span><span class="st">"single"</span><span class="ot"> toName=</span><span class="st">"Text"</span>&gt;&lt;<span class="kw">Choice</span><span class="ot"> value=</span><span class="st">"True"</span> /&gt;&lt;<span class="kw">Choice</span><span class="ot"> value=</span><span class="st">"False"</span><span class="ot"> selected=</span><span class="st">"true"</span> /&gt;&lt;<span class="kw">Choice</span><span class="ot"> value=</span><span class="st">"Unsure"</span> /&gt;&lt;/<span class="kw">Choices</span>&gt;</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">View</span>&gt;</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">View</span><span class="ot"> className=</span><span class="st">"interface"</span>&gt;</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>      &lt;<span class="kw">Header</span><span class="ot"> value=</span><span class="st">"Call to Action"</span> /&gt;&lt;<span class="kw">Choices</span><span class="ot"> name=</span><span class="st">"Call to Action"</span><span class="ot"> showInline=</span><span class="st">"false"</span><span class="ot"> choice=</span><span class="st">"single"</span><span class="ot"> toName=</span><span class="st">"Text"</span>&gt;&lt;<span class="kw">Choice</span><span class="ot"> value=</span><span class="st">"True"</span> /&gt;&lt;<span class="kw">Choice</span><span class="ot"> value=</span><span class="st">"False"</span><span class="ot"> selected=</span><span class="st">"true"</span>  /&gt;&lt;<span class="kw">Choice</span><span class="ot"> value=</span><span class="st">"Unsure"</span> /&gt;&lt;/<span class="kw">Choices</span>&gt;</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">View</span>&gt;</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">View</span><span class="ot"> className=</span><span class="st">"interface"</span>&gt;</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>      &lt;<span class="kw">Header</span><span class="ot"> value=</span><span class="st">"Documenation"</span> /&gt;&lt;<span class="kw">Choices</span><span class="ot"> name=</span><span class="st">"Documentation"</span><span class="ot"> showInline=</span><span class="st">"false"</span><span class="ot"> choice=</span><span class="st">"single"</span><span class="ot"> toName=</span><span class="st">"Text"</span>&gt;&lt;<span class="kw">Choice</span><span class="ot"> value=</span><span class="st">"True"</span> /&gt;&lt;<span class="kw">Choice</span><span class="ot"> value=</span><span class="st">"False"</span><span class="ot"> selected=</span><span class="st">"true"</span>  /&gt;&lt;<span class="kw">Choice</span><span class="ot"> value=</span><span class="st">"Unsure"</span> /&gt;&lt;/<span class="kw">Choices</span>&gt;</span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">View</span>&gt;</span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">View</span><span class="ot"> className=</span><span class="st">"interface"</span>&gt;</span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>      &lt;<span class="kw">Header</span><span class="ot"> value=</span><span class="st">"Unleserlich"</span> /&gt;&lt;<span class="kw">Choices</span><span class="ot"> name=</span><span class="st">"OCR"</span><span class="ot"> showInline=</span><span class="st">"false"</span><span class="ot"> choice=</span><span class="st">"single"</span><span class="ot"> toName=</span><span class="st">"Text"</span>&gt;&lt;<span class="kw">Choice</span><span class="ot"> value=</span><span class="st">"True"</span> /&gt;&lt;<span class="kw">Choice</span><span class="ot"> value=</span><span class="st">"False"</span><span class="ot"> selected=</span><span class="st">"true"</span>  /&gt;&lt;<span class="kw">Choice</span><span class="ot"> value=</span><span class="st">"Unsure"</span><span class="ot"> selected=</span><span class="st">"false"</span><span class="ot"> style=</span><span class="st">"visibility:hidden;"</span>/&gt;&lt;/<span class="kw">Choices</span>&gt;</span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">View</span>&gt;</span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>  &lt;/<span class="kw">View</span>&gt;</span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">View</span>&gt;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Give it a try to design an interface <a href="https://chat.openai.com/share/9a7ef2e4-5a5d-423d-a458-31ef830b5bbc">with the help of ChatGPT</a>! Beware, the linked chat generated a mediocre solution: Some <code>style</code> tags are not being applied, yet the interface is fully functional and looks better than the standard interface. Generating an optimal interface takes time, both in conversation with ChatGPT, and from scratch.</p>
+</div>
+</div>
+<p>Overall, the provided notebook and examples offer various options to export your social media data to label studio and to create a custom interface for your annotation project. It is, as outlined in the <a href="#creating-an-annotation-manual">creating an annotation manual</a>, important to test the annotation manual <strong>and</strong> the annotation interface through multiple iterations. Make use of your project teams here!</p>
+</section>
+</section>
+<section id="collect-annotations" class="level2">
+<h2 class="anchored" data-anchor-id="collect-annotations">Collect Annotations</h2>
+<p>The annotation manual is written, the data has been added to a label studio project, the manual and interface have both been tested and improved through several iterations: Now you are ready to invite annotators to your project! In context of our research seminar we aim at non-expert annotators. We may make use of our “Versuchspersonenstunden” (<em>participant hours</em>) system, thus we may hire students as annotators. For each hour of participation, their receive one participant hours. An ideal annotation project in this context should not exceed two hours! The <a href="https://www.uni-regensburg.de/sprache-literatur-kultur/medieninformatik/studium/versuchspersonenstunden/index.html">uni website</a> offers all information on participant hours. Additionally, members from each group are welcome to participate in the other’s annotation projects, allowing for mutual exchange of participation.</p>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p><span class="citation" data-cites="Baden2022-oe">Baden et al. (<a href="#ref-Baden2022-oe" role="doc-biblioref">2022</a>)</span> and <span class="citation" data-cites="Birkenmaier2023-nt">Birkenmaier, Lechner, and Wagner (<a href="#ref-Birkenmaier2023-nt" role="doc-biblioref">2023</a>)</span> provide sound arguments for the need of validation when working with methods of computational text analysis. This chapter outlined the first practical steps towards an external validation of computational classifications: Creating an annotation manual, and setting up an annotation project. In the next session, we will take a look at the actual evaluation of computational classifications: First we are going to evaluate the quality of our human annotations through interrater agreement measurements. In an intermediary step we will derive ground truth data through majority decisions (following a common practiceto improve the quality of the final dataset <span class="citation" data-cites="Davani2022-nu">(<a href="#ref-Davani2022-nu" role="doc-biblioref">Davani, Dı́az, and Prabhakaran 2022</a>)</span>), before calculating the evaluation metrics (accuracy, refall, F1-scores) for our model comparing the gold standard dataset with the computational annotations.</p>
 
 
 
@@ -423,8 +935,11 @@ Warning
 <div id="ref-Baden2022-oe" class="csl-entry" role="listitem">
 Baden, Christian, Christian Pipal, Martijn Schoonvelde, and Mariken A C G van der Velden. 2022. <span>“<span class="nocase">Three Gaps in Computational Text Analysis Methods for Social Sciences: A Research Agenda</span>.”</span> <em>Communication Methods and Measures</em> 16 (1): 1–18. <a href="https://doi.org/10.1080/19312458.2021.2015574">https://doi.org/10.1080/19312458.2021.2015574</a>.
 </div>
-<div id="ref-Birkenmaier2023-go" class="csl-entry" role="listitem">
-Birkenmaier, Lukas, Clemens M Lechner, and Claudia Wagner. 2023. <span>“<span class="nocase">The search for solid ground in text as data: A systematic review and practical recommendations for validation</span>.”</span> <a href="https://doi.org/10.31235/osf.io/kgn6f">https://doi.org/10.31235/osf.io/kgn6f</a>.
+<div id="ref-Birkenmaier2023-nt" class="csl-entry" role="listitem">
+Birkenmaier, Lukas, Clemens M Lechner, and Claudia Wagner. 2023. <span>“<span class="nocase">The Search for Solid Ground in Text as Data: A Systematic Review of Validation Practices and Practical Recommendations for Validation</span>.”</span> <em>Communication Methods and Measures</em>, November, 1–29. <a href="https://doi.org/10.1080/19312458.2023.2285765">https://doi.org/10.1080/19312458.2023.2285765</a>.
+</div>
+<div id="ref-Davani2022-nu" class="csl-entry" role="listitem">
+Davani, Aida Mostafazadeh, Mark Dı́az, and Vinodkumar Prabhakaran. 2022. <span>“<span class="nocase">Dealing with Disagreements: Looking Beyond the Majority Vote in Subjective Annotations</span>.”</span> <em>Transactions of the Association for Computational Linguistics</em> 10 (January): 92–110. <a href="https://transacl.org/ojs/index.php/tacl/article/view/3173/0">https://transacl.org/ojs/index.php/tacl/article/view/3173/0</a>.
 </div>
 <div id="ref-Hasler2021-gg" class="csl-entry" role="listitem">
 Haßler, Jörg, Anna Sophie Kümpel, and Jessica Keller. 2021. <span>“<span class="nocase">Instagram and political campaigning in the 2017 German federal election. A quantitative content analysis of German top politicians’ and parliamentary parties’ posts</span>.”</span> <em>Information, Communication and Society</em>, July, 1–21. <a href="https://doi.org/10.1080/1369118X.2021.1954974">https://doi.org/10.1080/1369118X.2021.1954974</a>.

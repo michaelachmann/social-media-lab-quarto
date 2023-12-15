@@ -1,62 +1,83 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="generator" content="quarto-1.3.450">
 
-<meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-
-<title>Social Media Lab – corpus-analysis-notebook</title>
-<style>
-code{white-space: pre-wrap;}
-span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
-div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-ul.task-list{list-style: none;}
-ul.task-list li input[type="checkbox"] {
-  width: 0.8em;
-  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
-  vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-</style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
+    <title>Social Media Lab - LabelStudio Setup</title>    <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      div.columns{display: flex; gap: min(4vw, 1.5em);}
+      div.column{flex: auto; overflow-x: auto;}
+      div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+      ul.task-list{list-style: none;}
+      ul.task-list li input[type="checkbox"] {
+        width: 0.8em;
+        margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+        vertical-align: middle;
+      }
+      /* CSS for syntax highlighting */
+      pre > code.sourceCode { white-space: pre; position: relative; }
+      pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+      pre > code.sourceCode > span:empty { height: 1.2em; }
+      .sourceCode { overflow: visible; }
+      code.sourceCode > span { color: inherit; text-decoration: inherit; }
+      div.sourceCode { margin: 1em 0; }
+      pre.sourceCode { margin: 0; }
+      @media screen {
+      div.sourceCode { overflow: auto; }
+      }
+      @media print {
+      pre > code.sourceCode { white-space: pre-wrap; }
+      pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+      }
+      pre.numberSource code
+        { counter-reset: source-line 0; }
+      pre.numberSource code > span
+        { position: relative; left: -4em; counter-increment: source-line; }
+      pre.numberSource code > span > a:first-child::before
+        { content: counter(source-line);
+          position: relative; left: -1em; text-align: right; vertical-align: baseline;
+          border: none; display: inline-block;
+          -webkit-touch-callout: none; -webkit-user-select: none;
+          -khtml-user-select: none; -moz-user-select: none;
+          -ms-user-select: none; user-select: none;
+          padding: 0 4px; width: 4em;
+        }
+      pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+      div.sourceCode
+        {   }
+      @media screen {
+      pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+      }
+    </style>
+    <style>
+      .quarto-embed-header {
+        height: 3em;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: solid 1px;
+      }
+      .quarto-embed-header h6 {
+        font-size: 1em;
+        padding-top: 0.6em;
+        margin-left: 1em;
+        margin-right: 1em;
+        font-weight: 300;
+      }
+      .quarto-embed-header a.quarto-download-embed {
+        font-size: 0.7em;
+        margin-top: 1em;
+        margin-bottom: 1em;
+        margin-left: 1em;
+        margin-right: 1em;
+      }
+    </style>
+    
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
@@ -64,7 +85,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../images/favicon.ico" rel="icon">
 <script src="../site_libs/cookie-consent/cookie-consent.js"></script>
 <link href="../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
 <script src="../site_libs/quarto-html/quarto.js"></script>
@@ -78,7 +98,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<script id="quarto-search-options" type="application/json">{
+     <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -97,8 +117,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script>
-
+}</script>  
 <script type="text/javascript" charset="UTF-8">
 document.addEventListener('DOMContentLoaded', function () {
 cookieconsent.run({
@@ -113,18 +132,20 @@ cookieconsent.run({
   });
 });
 </script> 
-  
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
-<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
-
-
-<link rel="stylesheet" href="../styles.css">
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script> 
+        <link rel="stylesheet" href="../styles.css">
+      <meta name="twitter:title" content="Social Media Lab - LabelStudio Setup">
+<meta name="twitter:description" content="">
+<meta name="twitter:card" content="summary">
 </head>
-
-<body class="nav-sidebar floating nav-fixed">
-
-<div id="quarto-search-results"></div>
+  <body class="nav-sidebar floating nav-fixed quarto-notebook">
+    <div class="quarto-embed-header">
+      <h6><i class="bi bi-journal-code"></i> 2023_12_14_Create_LabelStudio_Text_Evaluation.ipynb</h6>
+      <a href="../notebooks/2023_12_14_Create_LabelStudio_Text_Evaluation.ipynb" class="btn btn-primary quarto-download-embed" download="2023_12_14_Create_LabelStudio_Text_Evaluation.ipynb">Download Notebook</a>
+    </div>
+     <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
@@ -168,7 +189,7 @@ cookieconsent.run({
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">LabelStudio Setup</li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -321,103 +342,40 @@ cookieconsent.run({
         
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">      <header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">LabelStudio Setup</h1>
+</div>
 
 
 
-<p>Among a variety of possibilities, we can, for example, look at the frequencies of the words contained in the corpus or examine the corpus for recurring themes it contains.</p>
-<p>First we need to import all the required libraries once again. The <a href="https://www.nltk.org/howto.html">Natural Language Toolkit (NLTK)</a> gives us access to a variety of natural language processing functions (e.g.&nbsp;tokenisation, stop word removal, part-of-speech tagging, …).</p>
-<div class="cell" data-outputid="0a4c7fe9-0768-4e96-b888-680b2e1c6f35" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> nltk</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>nltk.download(<span class="st">'punkt'</span>)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.tokenize <span class="im">import</span> RegexpTokenizer</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.tokenize <span class="im">import</span> word_tokenize</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.corpus <span class="im">import</span> stopwords</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>[nltk_data] Downloading package punkt to /root/nltk_data...
-[nltk_data]   Unzipping tokenizers/punkt.zip.</code></pre>
-</div>
-</div>
-<p>When analysing word frequencies, we can use stop word lists to ignore words that occur frequently but are not relevant to us. We can easily download such a list. However, this can also be individually adapted to the purpose.</p>
-<div class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Retrieve Stopwords from Github</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>sw_json <span class="op">=</span> requests.get(<span class="st">'https://github.com/stopwords-iso/stopwords-de/raw/master/stopwords-de.json'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Now we can tokenise the existing text, remove the stop words or punctuation marks they contain, convert the words to lower case, or use bi-grams in addition to single-word tokens.</p>
-<p>We then sum up the occurrences of the individual words and make the results available in a DataFrame.</p>
-<div class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> word_freq(text, punctuation<span class="op">=</span><span class="va">False</span>, stop_words <span class="op">=</span> <span class="va">False</span>, lowercasing <span class="op">=</span> <span class="va">False</span>, bigrams <span class="op">=</span> <span class="va">False</span>):</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> punctuation:</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Tokenizing, removing punctuation</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        tokens <span class="op">=</span> RegexpTokenizer(<span class="vs">r'\w+'</span>).tokenize(text) <span class="co"># https://regexr.com/</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Tokenizing, w/o removing punctuation</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>        <span class="co"># tokens = text.split()</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>        tokens <span class="op">=</span> word_tokenize(text)</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> stop_words:</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Removing Stopwords</span></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>        tokens <span class="op">=</span> [w <span class="cf">for</span> w <span class="kw">in</span> tokens <span class="cf">if</span> <span class="kw">not</span> w.lower() <span class="kw">in</span> stop_words]</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> lowercasing:</span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Lower-Casing</span></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>        tokens <span class="op">=</span> [w.lower() <span class="cf">for</span> w <span class="kw">in</span> tokens]</span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> bigrams:</span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Converting text tokens into bigrams</span></span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>        tokens <span class="op">=</span> nltk.bigrams(tokens)</span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Creating Data Frame</span></span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>    freq <span class="op">=</span> nltk.FreqDist(tokens) <span class="co"># display(freq)</span></span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> pd.DataFrame.from_dict(freq, orient<span class="op">=</span><span class="st">'index'</span>)</span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>    df.columns <span class="op">=</span> [<span class="st">'Frequency'</span>]</span>
-<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>    df.index.name <span class="op">=</span> <span class="st">'Term'</span></span>
-<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Here we calculate the total number of tokens in our Frequency List</span></span>
-<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>    total_tokens <span class="op">=</span> <span class="bu">sum</span>(freq.values()) <span class="co"># sum([2,3,4,5,6])</span></span>
-<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Here we add a new column `Relative` (*100 for percentage)</span></span>
-<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>    df[<span class="st">'Relative'</span>] <span class="op">=</span> (df[<span class="st">'Frequency'</span>] <span class="op">/</span> total_tokens) <span class="op">*</span> <span class="dv">100</span></span>
-<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell" data-cellview="form" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">#@markdown Do you want bigrams included?</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>bigrams <span class="op">=</span> <span class="va">True</span> <span class="co">#@param {type:"boolean"}</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co">#@markdown Should all words get lower cased before counting the occurances?</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>lowercasing <span class="op">=</span> <span class="va">True</span> <span class="co">#@param {type:"boolean"}</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co">#@markdown Do you want to exclude stopwords in your result list?</span></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>stopwords <span class="op">=</span> <span class="va">True</span> <span class="co">#@param {type:"boolean"}</span></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="co">#@markdown Do you want to remove punctuation before counting the occurances?</span></span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>punctuation <span class="op">=</span> <span class="va">True</span> <span class="co">#@param {type:"boolean"}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell" data-outputid="dc248b91-d657-4d0d-e55f-141fe7976329" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load stopwords file if necessary</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> stopwords:</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    stopwords <span class="op">=</span> sw_json.json()</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Read source file and concat all texts</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>text <span class="op">=</span> <span class="st">' '</span>.join(<span class="bu">list</span>(df[text_column]))</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Call word_freq() with specified parameters</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>df_freq <span class="op">=</span> word_freq(text, punctuation <span class="op">=</span> punctuation, stop_words <span class="op">=</span> stopwords, lowercasing <span class="op">=</span> lowercasing, bigrams <span class="op">=</span> bigrams)</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Sort results for descending values</span></span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>df_freq <span class="op">=</span> df_freq.sort_values(<span class="st">"Relative"</span>, ascending <span class="op">=</span> <span class="va">False</span>)</span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>display(df_freq[<span class="dv">0</span>:<span class="dv">10</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
+<div class="quarto-title-meta">
 
-  <div id="df-7472da9f-5cf9-4328-8248-82c3ae99036a" class="colab-df-container">
+    
+  
+    
+  </div>
+  
+
+</header>   <p>Install the <code>label-studio-sdk</code> package for programmatic control of Label Studio:</p>
+<div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [1]:</pre></div><div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip <span class="op">-</span>q install label<span class="op">-</span>studio<span class="op">-</span>sdk</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div>
+<p>Next, let’s read the text master from the previous sessions</p>
+<div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [5]:</pre></div><div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'/content/drive/MyDrive/2023-12-01-Export-Posts-Text-Master.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div>
+<p>In my <a href="https://youtu.be/QcYGwC4QzW0">video on GPT text classification</a> I mentioned the problem of the unique identifier, as we also need a unique identifier for the annotations. Use the code below in our text classification notebook when working with multidocument classifications!</p>
+<div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [7]:</pre></div><div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'identifier'</span>] <span class="op">=</span> df.<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="ss">f"</span><span class="sc">{</span>x[<span class="st">'shortcode'</span>]<span class="sc">}</span><span class="ss">-</span><span class="sc">{</span>x[<span class="st">'Text Type'</span>]<span class="sc">}</span><span class="ss">"</span>, axis<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div>
+<div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [8]:</pre></div><div class="cell" data-outputid="155af2da-17ca-46c4-947e-6565f40640de" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+
+  <div id="df-2c59a3eb-cae0-446b-a21d-3a49644eb089" class="colab-df-container">
     <div>
 
 
@@ -425,65 +383,59 @@ cookieconsent.run({
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">Frequency</th>
-<th data-quarto-table-cell-role="th">Relative</th>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">Term</th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Unnamed: 0</th>
+<th data-quarto-table-cell-role="th">shortcode</th>
+<th data-quarto-table-cell-role="th">Text</th>
+<th data-quarto-table-cell-role="th">Text Type</th>
+<th data-quarto-table-cell-role="th">Policy Issues</th>
+<th data-quarto-table-cell-role="th">identifier</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">(jüdisches, leben)</td>
-<td>5</td>
-<td>1.259446</td>
+<td data-quarto-table-cell-role="th">0</td>
+<td>0</td>
+<td>CyMAe_tufcR</td>
+<td>#Landtagswahl23 🤩🧡🙏 #FREIEWÄHLER #Aiwanger #Da...</td>
+<td>Caption</td>
+<td>['1. Political parties:\n- FREIEWÄHLER\n- Aiwa...</td>
+<td>CyMAe_tufcR-Caption</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">(allerheiligen, allerseelen)</td>
+<td data-quarto-table-cell-role="th">1</td>
+<td>1</td>
+<td>CyL975vouHU</td>
+<td>Die Landtagswahl war für uns als Liberale hart...</td>
+<td>Caption</td>
+<td>['Landtagswahl']</td>
+<td>CyL975vouHU-Caption</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>2</td>
+<td>CyL8GWWJmci</td>
+<td>Nach einem starken Wahlkampf ein verdientes Er...</td>
+<td>Caption</td>
+<td>['1. Wahlkampf und Wahlergebnis:\n- Wahlkampf\...</td>
+<td>CyL8GWWJmci-Caption</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>3</td>
+<td>CyL7wyJtTV5</td>
+<td>So viele Menschen am Odeonsplatz heute mit ein...</td>
+<td>Caption</td>
+<td>['Israel', 'Terrorismus', 'Hamas', 'Entwicklun...</td>
+<td>CyL7wyJtTV5-Caption</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
 <td>4</td>
-<td>1.007557</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">(ilse, aigner)</td>
-<td>3</td>
-<td>0.755668</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">(bayerischer, landtag)</td>
-<td>3</td>
-<td>0.755668</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">(klare, haltung)</td>
-<td>2</td>
-<td>0.503778</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">(wünschen, einfach)</td>
-<td>2</td>
-<td>0.503778</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">(vaters, freundschaftliche)</td>
-<td>2</td>
-<td>0.503778</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">(tod, vaters)</td>
-<td>2</td>
-<td>0.503778</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">(günter, tod)</td>
-<td>2</td>
-<td>0.503778</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">(schwiegervater, günter)</td>
-<td>2</td>
-<td>0.503778</td>
+<td>CyLxwHuvR4Y</td>
+<td>Herzlichen Glückwunsch zu diesem grandiosen Wa...</td>
+<td>Caption</td>
+<td>['1. Wahlsieg und Parlamentseinstieg\n- Wahlsi...</td>
+<td>CyLxwHuvR4Y-Caption</td>
 </tr>
 </tbody>
 </table>
@@ -493,7 +445,7 @@ cookieconsent.run({
     <div class="colab-df-buttons">
 
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-7472da9f-5cf9-4328-8248-82c3ae99036a')" title="Convert this dataframe to an interactive table." style="display:none;">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-2c59a3eb-cae0-446b-a21d-3a49644eb089')" title="Convert this dataframe to an interactive table." style="display:none;">
 
   <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 -960 960 960">
     <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
@@ -543,12 +495,12 @@ cookieconsent.run({
 
     <script>
       const buttonEl =
-        document.querySelector('#df-7472da9f-5cf9-4328-8248-82c3ae99036a button.colab-df-convert');
+        document.querySelector('#df-2c59a3eb-cae0-446b-a21d-3a49644eb089 button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-7472da9f-5cf9-4328-8248-82c3ae99036a');
+        const element = document.querySelector('#df-2c59a3eb-cae0-446b-a21d-3a49644eb089');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -568,8 +520,8 @@ cookieconsent.run({
   </div>
 
 
-<div id="df-121f3ee9-2e41-482b-b6c9-b1f54d97c51d">
-  <button class="colab-df-quickchart" onclick="quickchart('df-121f3ee9-2e41-482b-b6c9-b1f54d97c51d')" title="Suggest charts" style="display:none;">
+<div id="df-d1ba7831-9de2-4749-b87e-81da240e5126">
+  <button class="colab-df-quickchart" onclick="quickchart('df-d1ba7831-9de2-4749-b87e-81da240e5126')" title="Suggest charts" style="display:none;">
 
 <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 0 24 24" width="24px">
     <g>
@@ -685,7 +637,7 @@ cookieconsent.run({
     }
     (() => {
       let quickchartButtonEl =
-        document.querySelector('#df-121f3ee9-2e41-482b-b6c9-b1f54d97c51d button');
+        document.querySelector('#df-d1ba7831-9de2-4749-b87e-81da240e5126 button');
       quickchartButtonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
     })();
@@ -694,67 +646,103 @@ cookieconsent.run({
     </div>
   </div>
 </div>
+</div></div>
+<p>Please specify the the URL and API-Key for you LabelStudio Instance.</p>
+<div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [12]:</pre></div><div class="cell" data-cellview="form" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> google.colab <span class="im">import</span> userdata</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>labelstudio_key_name <span class="op">=</span> <span class="st">"label2-key"</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>labelstudio_key <span class="op">=</span> userdata.get(labelstudio_key_name)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>labelstudio_url <span class="op">=</span> <span class="st">"https://label2.digitalhumanities.io"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div>
+<section id="create-labelstudio-interface" class="level4 page-columns page-full">
+<h4 class="anchored" data-anchor-id="create-labelstudio-interface">Create LabelStudio Interface</h4>
+<p>Before creating the LabelStudio project you will need to define your labelling interface. Once the project is set up you will only be able to edit the interface in LabelStudio.</p>
+<div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [9]:</pre></div><div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>interface <span class="op">=</span> <span class="st">"""</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;View style="display:flex;"&gt;</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="st">  &lt;View style="flex:33%"&gt;</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="st">    &lt;Text name="Text" value="$Text"/&gt;</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="st">  &lt;/View&gt;</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="st">  &lt;View style="flex:66%"&gt;</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div>
+</section>
+<section id="add-a-simple-coding-interface" class="level4 page-columns page-full">
+<h4 class="anchored" data-anchor-id="add-a-simple-coding-interface">Add a simple coding interface</h4>
+<p>Do you want add codes (Classification) to the images? Please name your coding instance and add options. <br> <strong>By running this cell multiple times you’re able to add multiple variables (not recommended)</strong></p>
+<p>Add the variable name to <code>coding_name</code>, the checkbox labels in <code>coding_values</code>, and define whether to expect <code>single</code> choice or <code>multiple</code> choice input for this variable in <code>coding_choice</code>.</p>
+<div class="cell" data-cellview="form">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>coding_name <span class="op">=</span> <span class="st">"Sentiment"</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>coding_values <span class="op">=</span> <span class="st">"Positive,Neutral,Negative"</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>coding_choice <span class="op">=</span> <span class="st">"single"</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>coding_interface <span class="op">=</span> <span class="st">'&lt;Header value="</span><span class="sc">{}</span><span class="st">" /&gt;&lt;Choices name="</span><span class="sc">{}</span><span class="st">" choice="</span><span class="sc">{}</span><span class="st">" toName="Text"&gt;'</span>.<span class="bu">format</span>(coding_name, coding_name,coding_choice)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> value <span class="kw">in</span> coding_values.split(<span class="st">","</span>):</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  value <span class="op">=</span> value.strip()</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  coding_interface <span class="op">+=</span> <span class="st">'&lt;Choice value="</span><span class="sc">{}</span><span class="st">" /&gt;'</span>.<span class="bu">format</span>(value)</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>coding_interface <span class="op">+=</span> <span class="st">"&lt;/Choices&gt;"</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>interface <span class="op">+=</span> coding_interface</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Added </span><span class="sc">{}</span><span class="st">"</span>.<span class="bu">format</span>(coding_name))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><strong>Wordcloud</strong></p>
-<p>One way to visualise word frequencies and recurring themes of texts are word clouds. These basically show the most frequently occurring words in the text (similar to the table created earlier), but more frequently occurring words are depicted larger than less frequently occurring words.</p>
-<p>First, we have to install the necessary library <code>wordcloud</code>.</p>
-<div class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install <span class="op">-</span>q wordcloud</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Finally run the next line to close the XML of the annotation interface. <strong>Run this line even if you do not want to add any variables at the moment!</strong></p>
+<div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [10]:</pre></div><div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>interface <span class="op">+=</span> <span class="st">"""</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="st">        &lt;/View&gt;</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="st">    &lt;/View&gt;</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="st">    """</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div>
+</section>
+<section id="project-upload" class="level4 page-columns page-full">
+<h4 class="anchored" data-anchor-id="project-upload">Project Upload</h4>
+<p>This final step creates a LabelStudio project and configures the interface. Define a <code>project_name</code>, select the <code>text_column</code>, and <code>identifier_column</code>. Additionally, you may define a <code>sample_percentage</code> for sampling, we start with <span class="math inline">\(30\%\)</span>. When working with the Open Source version of Label Studio we need to create on project per annotator, enter the number of annotators in <code>num_copies</code> to create multiple copies at once.</p>
+<div class="cell-container column-page-left"><div class="cell-decorator"><pre>In [14]:</pre></div><div class="cell" data-cellview="form" data-outputid="3e0856ad-0bf7-42a1-9ee6-ea17887f83fb" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> label_studio_sdk <span class="im">import</span> Client</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> contextlib</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> io</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>project_name <span class="op">=</span> <span class="st">"vSMA Test 1"</span> </span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>text_column <span class="op">=</span> <span class="st">"Text"</span> </span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>identifier_column <span class="op">=</span> <span class="st">"identifier"</span> </span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>sample_percentage <span class="op">=</span> <span class="dv">30</span>  </span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>num_copies <span class="op">=</span> <span class="dv">1</span> </span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>sample_size <span class="op">=</span> <span class="bu">round</span>(<span class="bu">len</span>(df) <span class="op">*</span> (sample_percentage <span class="op">/</span> <span class="dv">100</span>))</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>ls <span class="op">=</span> Client(url<span class="op">=</span>labelstudio_url, api_key<span class="op">=</span>labelstudio_key)</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>df_tasks <span class="op">=</span> df[[identifier_column, text_column]]</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>df_tasks <span class="op">=</span> df_tasks.sample(sample_size)</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>df_tasks <span class="op">=</span> df_tasks.fillna(<span class="st">""</span>)</span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, num_copies):</span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>  project_name <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>project_name<span class="sc">}</span><span class="ss"> #</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Create the project</span></span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>  project <span class="op">=</span> ls.start_project(</span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>      title<span class="op">=</span>project_name,</span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>      label_config<span class="op">=</span>interface,</span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>      sampling<span class="op">=</span><span class="st">"Uniform sampling"</span></span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>  <span class="cf">with</span> contextlib.redirect_stdout(io.StringIO()):</span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>    project.import_tasks(</span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>          df_tasks.to_dict(<span class="st">'records'</span>)</span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="ss">f"All done, created project #</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">! Visit </span><span class="sc">{</span>labelstudio_url<span class="sc">}</span><span class="ss">/projects/</span><span class="sc">{</span>project<span class="sc">.</span><span class="bu">id</span><span class="sc">}</span><span class="ss">/ and get started labelling!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>All done, created project #0! Visit https://label2.digitalhumanities.io/projects/61/ and get started labelling!</code></pre>
 </div>
-<p>The actual implementation of this approach is relatively simple. We need to combine all the texts into a single text, as we did in the previous step with the frequency analysis, and pass it to the imported library.</p>
-<div class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> wordcloud <span class="im">import</span> WordCloud, STOPWORDS</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> generate_wordcloud(text, path):</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    text <span class="op">=</span> <span class="st">' '</span>.join(<span class="bu">list</span>(text))</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Generate a word cloud image</span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    wordcloud <span class="op">=</span> WordCloud(background_color<span class="op">=</span><span class="st">"white"</span>,width<span class="op">=</span><span class="dv">1920</span>, height<span class="op">=</span><span class="dv">1080</span>).generate(text)</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Dazugehörige Grafik erstellen</span></span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    plt.imshow(wordcloud, interpolation<span class="op">=</span><span class="st">"bilinear"</span>) <span class="co"># Auflösung/Interpolation der Grafik</span></span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>    plt.axis(<span class="st">"off"</span>)</span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>    plt.figtext(<span class="fl">0.5</span>, <span class="fl">0.1</span>, wordcloud_subcaption, wrap<span class="op">=</span><span class="va">True</span>, horizontalalignment<span class="op">=</span><span class="st">'center'</span>, fontsize<span class="op">=</span><span class="dv">12</span>)</span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>    plt.savefig(path, dpi<span class="op">=</span><span class="dv">300</span>)</span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>    plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Once again, we have the option of adjusting various parameters. Remember to specify the right file path, file name and column of your text data!</p>
-<div class="cell" data-cellview="form" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#@markdown Input for additional stopwords; whitespace separated</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>stopwords_extension_wc <span class="op">=</span> <span class="st">''</span> <span class="co">#@param {type: "string"}</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co">#@markdown Subcaption for the wordcloud, leave blank to ignore</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>wordcloud_subcaption <span class="op">=</span> <span class="st">'Markus S</span><span class="ch">\xF6</span><span class="st">der'</span> <span class="co">#@param {type: "string"}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Now all we have to do is load the stop word file, add our own additions and then trigger the creation of the word cloud using the function we created at the beginning.</p>
-<p>The result image is saved in the defined <code>data_path</code>.</p>
-<div class="cell" data-outputid="2ef03789-d358-46c4-d88b-650478847260" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Retrieve Stopwords from Github</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> requests.get(<span class="st">'https://github.com/stopwords-iso/stopwords-de/raw/master/stopwords-de.json'</span>)</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>stop_words <span class="op">=</span> r.json()</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert input into list</span></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>stopwords_extension_wc_list <span class="op">=</span> stopwords_extension_wc.split(<span class="st">' '</span>)</span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>stop_words.extend(stopwords_extension_wc_list)</span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Stopwörter in die WordCloud laden</span></span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>STOPWORDS.update(stop_words)</span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>generate_wordcloud(df[text_column], <span class="st">'wordcloud.png'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<p><img src="corpus-analysis-notebook_files/figure-html/cell-10-output-1.png" class="img-fluid"></p>
-</div>
-</div>
+</div></div>
 
 
-
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</section>
+     </main> <!-- /main -->  <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -1101,8 +1089,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script>
-</div> <!-- /content -->
+</script>  </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
@@ -1113,8 +1100,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       &nbsp;
     </div>
   </div>
-</footer>
-
-
+</footer> 
+  
 
 </body></html>

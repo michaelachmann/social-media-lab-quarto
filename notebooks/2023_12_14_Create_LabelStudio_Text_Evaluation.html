@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Michael Achmann-Denkler">
-<meta name="dcterms.date" content="2023-12-15">
 
-<title>Social Media Lab - Projects</title>
+<title>Social Media Lab - LabelStudio Setup</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -32,7 +64,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../evaluation/agreement.html" rel="prev">
 <link href="../images/favicon.ico" rel="icon">
 <script src="../site_libs/cookie-consent/cookie-consent.js"></script>
 <link href="../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
@@ -83,10 +114,15 @@ cookieconsent.run({
 });
 </script> 
   
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="../styles.css">
-<meta name="twitter:title" content="Social Media Lab - Projects">
+<meta name="twitter:title" content="Social Media Lab - LabelStudio Setup">
 <meta name="twitter:description" content="">
 <meta name="twitter:card" content="summary">
 </head>
@@ -137,7 +173,7 @@ cookieconsent.run({
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../projects/index.html">Projects</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">LabelStudio Setup</li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -277,7 +313,7 @@ cookieconsent.run({
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../projects/index.html" class="sidebar-item-text sidebar-link active">
+  <a href="../projects/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Projects</span></a>
   </div>
 </li>
@@ -287,49 +323,21 @@ cookieconsent.run({
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#publications" id="toc-publications" class="nav-link active" data-scroll-target="#publications">Publications</a></li>
-  <li><a href="#semester-projects" id="toc-semester-projects" class="nav-link" data-scroll-target="#semester-projects">Semester Projects</a>
-  <ul class="collapse">
-  <li><a href="#digital-humanities-winter-20222023" id="toc-digital-humanities-winter-20222023" class="nav-link" data-scroll-target="#digital-humanities-winter-20222023">Digital Humanities – Winter 2022/2023</a></li>
-  <li><a href="#computational-analysis-of-visual-social-media-winter-20232024" id="toc-computational-analysis-of-visual-social-media-winter-20232024" class="nav-link" data-scroll-target="#computational-analysis-of-visual-social-media-winter-20232024">Computational Analysis of Visual Social Media – Winter 2023/2024</a></li>
-  </ul></li>
-  <li><a href="#theses" id="toc-theses" class="nav-link" data-scroll-target="#theses">Theses</a>
-  <ul class="collapse">
-  <li><a href="#bachelor" id="toc-bachelor" class="nav-link" data-scroll-target="#bachelor">Bachelor</a></li>
-  <li><a href="#master" id="toc-master" class="nav-link" data-scroll-target="#master">Master</a></li>
-  </ul></li>
-  </ul>
-</nav>
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Projects</h1>
+<h1 class="title">LabelStudio Setup</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Michael Achmann-Denkler </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">December 15, 2023</p>
-    </div>
-  </div>
   
     
   </div>
@@ -337,148 +345,390 @@ cookieconsent.run({
 
 </header>
 
-<p>Starting in 2022, several student projects and bachelor and master theses have been exploring Social Media Analysis under my supervision. Each project approached the field with a unique research interest and questions, influenced by interdisciplinary questions and perspectives. On this page I keep track of past and current projects.</p>
-<section id="publications" class="level2">
-<h2 class="anchored" data-anchor-id="publications">Publications</h2>
-<ul>
-<li>Achmann, M., &amp; Wolff, C. (2023). Computergestützte Bildtypenanalyse durch Zero-Shot Klassifikation mit CLIP. In INFORMATIK 2023 - Designing Futures: Zukünfte gestalten, 821–830. Gesellschaft für Informatik e.V. <a href="https://doi.org/10.18420/inf2023_92">https://doi.org/10.18420/inf2023_92</a></li>
-<li>Achmann, M., &amp; Wolff, C. (2023). Policy issues vs.&nbsp;Documentation: Using BERTopic to gain insight in the political communication in Instagram stories and posts during the 2021 German Federal election campaign. Digital Humanities in the Nordic and Baltic Countries Publications, 5(1), 11–28. <a href="https://doi.org/10.5617/dhnbpub.10647">https://doi.org/10.5617/dhnbpub.10647</a></li>
-<li>Achmann, M., Hampel, L., Asabidi, R., &amp; Wolff, C. (2022). Studying the ephemeral, cultures of digital oblivion Identifying patterns in Instagram Stories. In M. Geierhos, P. Trilcke, I. Börner, S. Seifert, A. Busch, &amp; P. Helling (Eds.), DHd 2022 Kulturen des digitalen Gedächtnisses. 8. Tagung des Verbands “Digital Humanities im deutschsprachigen Raum” (DHd 2022). <a href="https://doi.org/10.5281/zenodo.6327901">https://doi.org/10.5281/zenodo.6327901</a></li>
-<li>Knierim, A., Achmann, M., &amp; Wolff, C. (2022). Zeitgeschichte untersuchen - Topic Modeling von #blackouttuesday-Inhalten auf Instagram. In M. Geierhos, P. Trilcke, I. Börner, S. Seifert, A. Busch, &amp; P. Helling (Eds.), DHd 2022 Kulturen des digitalen Gedächtnisses. 8. Tagung des Verbands “Digital Humanities im deutschsprachigen Raum” (DHd 2022). <a href="https://doi.org/10.5281/zenodo.6322516">https://doi.org/10.5281/zenodo.6322516</a></li>
-</ul>
-</section>
-<section id="semester-projects" class="level2">
-<h2 class="anchored" data-anchor-id="semester-projects">Semester Projects</h2>
-<section id="digital-humanities-winter-20222023" class="level3">
-<h3 class="anchored" data-anchor-id="digital-humanities-winter-20222023">Digital Humanities – Winter 2022/2023</h3>
-<ul>
-<li>“Trends in Visual Features of NFT Art from the Most Economically Successful Artists on OpenSea” (Ferah Noor, Mari McCarville)</li>
-<li>“Body Positivity auf Instagram – Eine qualitative Inhaltsanalyse” (Anna Ignjatovic, Adela Myslikova, Ronny Retschmeier)</li>
-<li>“Aktivismus oder Klimaterror? Die Kommentierung der Klimabewegung auf Twitter in der Analyse” (Marie Ederer, Sebastian Daniel)</li>
-<li>“Die Relevanz des Ukraine-Kriegs im nationalen Kontext BILD, SZ und Tagesschau im Vergleich” (Milena Bach, Tobias Ederer, Sebastian Mißler)</li>
-<li>“Die Verwendung naturverbundener Farben anhand ausgewählter Food-Influencerinnen” (Anna Zagel, Mona Meier-to-Krax, Chiara Rahe)</li>
-<li>“Instagram Beiträge zum Thema Ukraine von Nachrichtenkanälen aus verschiedenen Ländern (vor und während des Krieges im Vergleich)” (Philipp Pielmeier, Katharina Kampa, Johanna Grünler)</li>
-<li>“Die Vermarktung von ESN-Fitnessprodukten in den Stories auf der Plattform Instagram” (Kessler Julia, Nett Ellena, Ousseni Océane, Traßl-Wilterius Annika, Umbreit Janosch)</li>
-<li>“Politisches Posten im Rahmen des Krieges in der Ukraine” (Jakob Berg)</li>
-</ul>
-</section>
-<section id="computational-analysis-of-visual-social-media-winter-20232024" class="level3">
-<h3 class="anchored" data-anchor-id="computational-analysis-of-visual-social-media-winter-20232024">Computational Analysis of Visual Social Media – Winter 2023/2024</h3>
-<p><em>Work in Progress:</em> We will form groups with a final set of topics on October, 30th. <a href="https://app.mural.co/t/dh0000/m/dh0000/1696936861193/3ecf3d9c56ee7d6999a23b06a01877b377c32332?sender=u28bb3505e871d61e7f0b7425">We organize our groups and topics on mural.</a></p>
-</section>
-</section>
-<section id="theses" class="level2">
-<h2 class="anchored" data-anchor-id="theses">Theses</h2>
-<section id="bachelor" class="level3">
-<h3 class="anchored" data-anchor-id="bachelor">Bachelor</h3>
-<table class="table">
-<colgroup>
-<col style="width: 76%">
-<col style="width: 10%">
-<col style="width: 9%">
-<col style="width: 3%">
-</colgroup>
+<p>Install the <code>label-studio-sdk</code> package for programmatic control of Label Studio:</p>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip <span class="op">-</span>q install label<span class="op">-</span>studio<span class="op">-</span>sdk</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Next, let’s read the text master from the previous sessions</p>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'/content/drive/MyDrive/2023-12-01-Export-Posts-Text-Master.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>In my <a href="https://youtu.be/QcYGwC4QzW0">video on GPT text classification</a> I mentioned the problem of the unique identifier, as we also need a unique identifier for the annotations. Use the code below in our text classification notebook when working with multidocument classifications!</p>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'identifier'</span>] <span class="op">=</span> df.<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="ss">f"</span><span class="sc">{</span>x[<span class="st">'shortcode'</span>]<span class="sc">}</span><span class="ss">-</span><span class="sc">{</span>x[<span class="st">'Text Type'</span>]<span class="sc">}</span><span class="ss">"</span>, axis<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-outputid="155af2da-17ca-46c4-947e-6565f40640de" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+
+  <div id="df-2c59a3eb-cae0-446b-a21d-3a49644eb089" class="colab-df-container">
+    <div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
-<th>Title</th>
-<th>Author</th>
-<th>Status</th>
-<th>Year</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Unnamed: 0</th>
+<th data-quarto-table-cell-role="th">shortcode</th>
+<th data-quarto-table-cell-role="th">Text</th>
+<th data-quarto-table-cell-role="th">Text Type</th>
+<th data-quarto-table-cell-role="th">Policy Issues</th>
+<th data-quarto-table-cell-role="th">identifier</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Social Media Analyse von Instagram Stories am Beispiel politischer Akteure während der Bundestagswahl 2021</td>
-<td>Lisa Hampel</td>
-<td>Completed</td>
-<td>2021</td>
+<td data-quarto-table-cell-role="th">0</td>
+<td>0</td>
+<td>CyMAe_tufcR</td>
+<td>#Landtagswahl23 🤩🧡🙏 #FREIEWÄHLER #Aiwanger #Da...</td>
+<td>Caption</td>
+<td>['1. Political parties:\n- FREIEWÄHLER\n- Aiwa...</td>
+<td>CyMAe_tufcR-Caption</td>
 </tr>
 <tr class="even">
-<td>Sammlung und Auswertung eines Social-Media-Korpus durch Entwicklung eines Browser-Plugins zur Annotation von Instagram Stories</td>
-<td>Ruslan Asabidi</td>
-<td>Completed</td>
-<td>2021</td>
+<td data-quarto-table-cell-role="th">1</td>
+<td>1</td>
+<td>CyL975vouHU</td>
+<td>Die Landtagswahl war für uns als Liberale hart...</td>
+<td>Caption</td>
+<td>['Landtagswahl']</td>
+<td>CyL975vouHU-Caption</td>
 </tr>
 <tr class="odd">
-<td>Classification of Multimodal Social Media Crisis Data – Evaluation and Comparison of two Multimodal Machine Learning Models</td>
-<td>Markus Weinberger</td>
-<td>Completed</td>
-<td>2023</td>
+<td data-quarto-table-cell-role="th">2</td>
+<td>2</td>
+<td>CyL8GWWJmci</td>
+<td>Nach einem starken Wahlkampf ein verdientes Er...</td>
+<td>Caption</td>
+<td>['1. Wahlkampf und Wahlergebnis:\n- Wahlkampf\...</td>
+<td>CyL8GWWJmci-Caption</td>
 </tr>
 <tr class="even">
-<td>Reaktionen politischer Akteure auf den russischen Angriffskrieg in Instagram Stories &amp; Videos</td>
-<td>Franka Heinlein</td>
-<td>Completed</td>
-<td>2023</td>
+<td data-quarto-table-cell-role="th">3</td>
+<td>3</td>
+<td>CyL7wyJtTV5</td>
+<td>So viele Menschen am Odeonsplatz heute mit ein...</td>
+<td>Caption</td>
+<td>['Israel', 'Terrorismus', 'Hamas', 'Entwicklun...</td>
+<td>CyL7wyJtTV5-Caption</td>
 </tr>
 <tr class="odd">
-<td>Political stories – improving face recognition performance for political Instagram story analysis</td>
-<td>Philip Pirkl</td>
-<td>Completed</td>
-<td>2023</td>
-</tr>
-<tr class="even">
-<td>Data Donations and Ephemeral Content: Obtaining Instagram-Stories</td>
-<td>Tobias Lanzl</td>
-<td>Work in Progress</td>
-<td>2023</td>
-</tr>
-<tr class="odd">
-<td>Xu Hướng: An Analysis of Trending TikTok Videos in Vietnam</td>
-<td>Thuy-Linh Nguyen</td>
-<td>Work in Progress</td>
-<td>2023</td>
-</tr>
-<tr class="even">
-<td>Entwicklung eines interaktiven Dashboards zur Echtzeitauswertung der politischen Kommunikation auf Instagram im Landtagswahlkampf 2023</td>
-<td>Jonas Ernst</td>
-<td>Work in Progress</td>
-<td>2023</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="master" class="level3">
-<h3 class="anchored" data-anchor-id="master">Master</h3>
-<table class="table">
-<thead>
-<tr class="header">
-<th>Title</th>
-<th>Author</th>
-<th>Status</th>
-<th>Year</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Untersuchung der Telegram-Kanäle der “Querdenker”-Bewegung</td>
-<td>Theresa Strohmeier</td>
-<td>Completed</td>
-<td>2022</td>
-</tr>
-<tr class="even">
-<td>Investigating African American Writing and Thought by comparison of two corpora via Distant Reading</td>
-<td><a href="https://www.uni-hildesheim.de/fr/lsf/personen/person/?lsfid=7490&amp;cHash=bd707747c4efef797ffcdc987b6646a9">Aenne Knierim</a></td>
-<td>Completed</td>
-<td>2022</td>
-</tr>
-<tr class="odd">
-<td>Selbstoptimierung vs.&nbsp;Selbstliebe? Eine vergleichende Inhaltsanalyse von Fitspiration- und Bodypositivity-Bildern auf Instagram mit Methoden der automatischen Bildklassifikation</td>
-<td><a href="https://www.psy.lmu.de/ffp/persons/ag-fischer/glas-julia/index.html">Julia Glas</a></td>
-<td>Completed</td>
-<td>2022</td>
-</tr>
-<tr class="even">
-<td>Analyse visueller und textueller Kommunikationsaspekte von deutschen Lifestyle-Influencern auf Instagram und deren Einfluss auf das User Engagement</td>
-<td>Nina Dillinger</td>
-<td>Completed</td>
-<td>2023</td>
+<td data-quarto-table-cell-role="th">4</td>
+<td>4</td>
+<td>CyLxwHuvR4Y</td>
+<td>Herzlichen Glückwunsch zu diesem grandiosen Wa...</td>
+<td>Caption</td>
+<td>['1. Wahlsieg und Parlamentseinstieg\n- Wahlsi...</td>
+<td>CyLxwHuvR4Y-Caption</td>
 </tr>
 </tbody>
 </table>
 
 
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-2c59a3eb-cae0-446b-a21d-3a49644eb089')" title="Convert this dataframe to an interactive table." style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-2c59a3eb-cae0-446b-a21d-3a49644eb089 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-2c59a3eb-cae0-446b-a21d-3a49644eb089');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+<div id="df-d1ba7831-9de2-4749-b87e-81da240e5126">
+  <button class="colab-df-quickchart" onclick="quickchart('df-d1ba7831-9de2-4749-b87e-81da240e5126')" title="Suggest charts" style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 0 24 24" width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"></path>
+    </g>
+</svg>
+  </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+  <script>
+    async function quickchart(key) {
+      const quickchartButtonEl =
+        document.querySelector('#' + key + ' button');
+      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+      quickchartButtonEl.classList.add('colab-df-spinner');
+      try {
+        const charts = await google.colab.kernel.invokeFunction(
+            'suggestCharts', [key], {});
+      } catch (error) {
+        console.error('Error during call to suggestCharts:', error);
+      }
+      quickchartButtonEl.classList.remove('colab-df-spinner');
+      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+    }
+    (() => {
+      let quickchartButtonEl =
+        document.querySelector('#df-d1ba7831-9de2-4749-b87e-81da240e5126 button');
+      quickchartButtonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+    })();
+  </script>
+</div>
+    </div>
+  </div>
+</div>
+</div>
+<p>Please specify the the URL and API-Key for you LabelStudio Instance.</p>
+<div class="cell" data-cellview="form" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> google.colab <span class="im">import</span> userdata</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>labelstudio_key_name <span class="op">=</span> <span class="st">"label2-key"</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>labelstudio_key <span class="op">=</span> userdata.get(labelstudio_key_name)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>labelstudio_url <span class="op">=</span> <span class="st">"https://label2.digitalhumanities.io"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="create-labelstudio-interface" class="level4">
+<h4 class="anchored" data-anchor-id="create-labelstudio-interface">Create LabelStudio Interface</h4>
+<p>Before creating the LabelStudio project you will need to define your labelling interface. Once the project is set up you will only be able to edit the interface in LabelStudio.</p>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>interface <span class="op">=</span> <span class="st">"""</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;View style="display:flex;"&gt;</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="st">  &lt;View style="flex:33%"&gt;</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="st">    &lt;Text name="Text" value="$Text"/&gt;</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="st">  &lt;/View&gt;</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="st">  &lt;View style="flex:66%"&gt;</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
+<section id="add-a-simple-coding-interface" class="level4">
+<h4 class="anchored" data-anchor-id="add-a-simple-coding-interface">Add a simple coding interface</h4>
+<p>Do you want add codes (Classification) to the images? Please name your coding instance and add options. <br> <strong>By running this cell multiple times you’re able to add multiple variables (not recommended)</strong></p>
+<p>Add the variable name to <code>coding_name</code>, the checkbox labels in <code>coding_values</code>, and define whether to expect <code>single</code> choice or <code>multiple</code> choice input for this variable in <code>coding_choice</code>.</p>
+<div class="cell" data-cellview="form">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>coding_name <span class="op">=</span> <span class="st">"Sentiment"</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>coding_values <span class="op">=</span> <span class="st">"Positive,Neutral,Negative"</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>coding_choice <span class="op">=</span> <span class="st">"single"</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>coding_interface <span class="op">=</span> <span class="st">'&lt;Header value="</span><span class="sc">{}</span><span class="st">" /&gt;&lt;Choices name="</span><span class="sc">{}</span><span class="st">" choice="</span><span class="sc">{}</span><span class="st">" toName="Text"&gt;'</span>.<span class="bu">format</span>(coding_name, coding_name,coding_choice)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> value <span class="kw">in</span> coding_values.split(<span class="st">","</span>):</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  value <span class="op">=</span> value.strip()</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  coding_interface <span class="op">+=</span> <span class="st">'&lt;Choice value="</span><span class="sc">{}</span><span class="st">" /&gt;'</span>.<span class="bu">format</span>(value)</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>coding_interface <span class="op">+=</span> <span class="st">"&lt;/Choices&gt;"</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>interface <span class="op">+=</span> coding_interface</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Added </span><span class="sc">{}</span><span class="st">"</span>.<span class="bu">format</span>(coding_name))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Finally run the next line to close the XML of the annotation interface. <strong>Run this line even if you do not want to add any variables at the moment!</strong></p>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>interface <span class="op">+=</span> <span class="st">"""</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="st">        &lt;/View&gt;</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="st">    &lt;/View&gt;</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="st">    """</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="project-upload" class="level4">
+<h4 class="anchored" data-anchor-id="project-upload">Project Upload</h4>
+<p>This final step creates a LabelStudio project and configures the interface. Define a <code>project_name</code>, select the <code>text_column</code>, and <code>identifier_column</code>. Additionally, you may define a <code>sample_percentage</code> for sampling, we start with <span class="math inline">\(30\%\)</span>. When working with the Open Source version of Label Studio we need to create on project per annotator, enter the number of annotators in <code>num_copies</code> to create multiple copies at once.</p>
+<div class="cell" data-cellview="form" data-outputid="3e0856ad-0bf7-42a1-9ee6-ea17887f83fb" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> label_studio_sdk <span class="im">import</span> Client</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> contextlib</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> io</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>project_name <span class="op">=</span> <span class="st">"vSMA Test 1"</span> </span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>text_column <span class="op">=</span> <span class="st">"Text"</span> </span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>identifier_column <span class="op">=</span> <span class="st">"identifier"</span> </span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>sample_percentage <span class="op">=</span> <span class="dv">30</span>  </span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>num_copies <span class="op">=</span> <span class="dv">1</span> </span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>sample_size <span class="op">=</span> <span class="bu">round</span>(<span class="bu">len</span>(df) <span class="op">*</span> (sample_percentage <span class="op">/</span> <span class="dv">100</span>))</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>ls <span class="op">=</span> Client(url<span class="op">=</span>labelstudio_url, api_key<span class="op">=</span>labelstudio_key)</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>df_tasks <span class="op">=</span> df[[identifier_column, text_column]]</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>df_tasks <span class="op">=</span> df_tasks.sample(sample_size)</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>df_tasks <span class="op">=</span> df_tasks.fillna(<span class="st">""</span>)</span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, num_copies):</span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>  project_name <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>project_name<span class="sc">}</span><span class="ss"> #</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Create the project</span></span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>  project <span class="op">=</span> ls.start_project(</span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>      title<span class="op">=</span>project_name,</span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>      label_config<span class="op">=</span>interface,</span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>      sampling<span class="op">=</span><span class="st">"Uniform sampling"</span></span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>  <span class="cf">with</span> contextlib.redirect_stdout(io.StringIO()):</span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>    project.import_tasks(</span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>          df_tasks.to_dict(<span class="st">'records'</span>)</span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="ss">f"All done, created project #</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">! Visit </span><span class="sc">{</span>labelstudio_url<span class="sc">}</span><span class="ss">/projects/</span><span class="sc">{</span>project<span class="sc">.</span><span class="bu">id</span><span class="sc">}</span><span class="ss">/ and get started labelling!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>All done, created project #0! Visit https://label2.digitalhumanities.io/projects/61/ and get started labelling!</code></pre>
+</div>
+</div>
+
+
 </section>
 
 </main> <!-- /main -->
@@ -830,15 +1080,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="../evaluation/agreement.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Agreement &amp; Evaluation</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-  </div>
-</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
