@@ -1,5 +1,6 @@
 # Social Media Lab Website ![Social Media Lab Banner](images/favicon-32x32.png)
- [![](https://zenodo.org/badge/DOI/10.5281/zenodo.10039756.svg)](https://doi.org/10.5281/zenodo.10039756)
+
+[![](https://zenodo.org/badge/DOI/10.5281/zenodo.10039756.svg)](https://doi.org/10.5281/zenodo.10039756)
 
 ![Social Media Lab Banner](images/banner2.png)
 

@@ -1,7 +1,7 @@
 ---
 format: 
   html: default
-title: "Gold Standard Validation"    
+title: "Human Annotations"    
 date: 2023-12-18
 author:
   - name: Michael Achmann-Denkler

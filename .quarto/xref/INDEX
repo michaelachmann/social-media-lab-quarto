@@ -168,5 +168,16 @@
   "notebooks/2023_12_14_Create_LabelStudio_Text_Evaluation.ipynb": {
     "2023_12_14_Create_LabelStudio_Text_Evaluation.ipynb.html": "a3c5945b",
     "2023_12_14_Create_LabelStudio_Text_Evaluation.html": "f383400f"
+  },
+  "notebooks/2024_01_02_Compare_Measures.ipynb": {
+    "2024_01_02_Compare_Measures.ipynb.html": "d2861ee5"
+  },
+  "notebooks/2024_01_02_Interrater_Embedded.ipynb": {
+    "2024_01_02_Interrater_Embedded.ipynb.html": "d2f1cd4d",
+    "2024_01_02_Interrater_Embedded.html": "3cb5c7a6"
+  },
+  "notebooks/2024_01_04_Evaluation_Kurs.ipynb": {
+    "2024_01_04_Evaluation_Kurs.html": "13ce0927",
+    "2024_01_04_Evaluation_Kurs.ipynb.html": "a9e5bd2b"
   }
 }
