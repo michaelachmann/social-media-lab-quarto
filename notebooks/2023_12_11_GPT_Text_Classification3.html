@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Social Media Lab - From Documents to Markdown Tables</title>
+<title>Social Media Lab - Text Classification</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -121,7 +121,7 @@ cookieconsent.run({
 
 
 <link rel="stylesheet" href="../styles.css">
-<meta name="twitter:title" content="Social Media Lab - From Documents to Markdown Tables">
+<meta name="twitter:title" content="Social Media Lab - Text Classification">
 <meta name="twitter:description" content="">
 <meta name="twitter:image" content="https://social-media-lab.net/images/multidocument-join.png">
 <meta name="twitter:image-height" content="282">
@@ -175,7 +175,7 @@ cookieconsent.run({
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">From Documents to Markdown Tables</li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Text Classification</li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -302,7 +302,7 @@ cookieconsent.run({
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../evaluation/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Gold Standard Validation</span></a>
+ <span class="menu-text">Human Annotations</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -332,7 +332,7 @@ cookieconsent.run({
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">From Documents to Markdown Tables</h1>
+<h1 class="title">Text Classification</h1>
 </div>
 
 
@@ -358,6 +358,8 @@ cookieconsent.run({
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="st">Return a markdown table with the columns "shortcode" and "Classification"</span></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<section id="from-documents-to-markdown-tables" class="level4">
+<h4 class="anchored" data-anchor-id="from-documents-to-markdown-tables">From Documents to Markdown Tables</h4>
 <p>We use the <code>tabulate</code> python package to create markdown tables for as many tables as we manage to send within the model’s context window. Currently, the result_table token length (the mockup response) is calculated using the length of <code>False</code>. Replace the value if you expect longer classifications in this line:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>current_result_table <span class="op">=</span> tabulate(batched_data <span class="op">+</span> [(row[meta], <span class="va">False</span>)], headers<span class="op">=</span>[meta, <span class="st">"Classification"</span>], tablefmt<span class="op">=</span><span class="st">"pipe"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell" data-execution_count="28">
@@ -502,6 +504,7 @@ cookieconsent.run({
 </table>
 </div>
 </div>
+</section>
 <section id="run-the-multidocument-request" class="level4">
 <h4 class="anchored" data-anchor-id="run-the-multidocument-request">Run the Multidocument Request</h4>
 <p>he following code snippet uses my <a href="https://pypi.org/project/gpt-cost-estimator/">gpt-cost-estimator</a> package to simulate API requests and calculate a cost estimate. Please run the estimation whne possible to asses the price-tag before sending requests to OpenAI!</p>

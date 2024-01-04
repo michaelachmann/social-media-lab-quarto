@@ -60,3 +60,13 @@
   .cons .pro-con-list li:before {
     color: #990000; /* Red bullet for cons */
   }
+
+.interactive-widget {
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+.interactive-widget h4 {
+    margin-top: 0;
+  }

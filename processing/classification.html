@@ -323,7 +323,7 @@ cookieconsent.run({
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../evaluation/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Gold Standard Validation</span></a>
+ <span class="menu-text">Human Annotations</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -375,7 +375,7 @@ cookieconsent.run({
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">From Documents to Markdown Tables</h1>
+<h1 class="title">Text Classification</h1>
 </div>
 
 
@@ -487,12 +487,12 @@ Tip
 <div class="quarto-embed-nb-cell">
 <section id="lets-read-last-weeks-text-dataframe" class="level4">
 <h4 class="anchored" data-anchor-id="lets-read-last-weeks-text-dataframe">Let’s read last week’s Text DataFrame</h4>
-<div class="cell" data-execution_count="20">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'/content/drive/MyDrive/2023-12-01-Export-Posts-Text-Master.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-outputid="1c6cbd44-8924-4366-f8f1-8f4605203e4d" data-execution_count="21">
+<div class="cell" data-outputid="1c6cbd44-8924-4366-f8f1-8f4605203e4d">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="21">
 
@@ -765,7 +765,7 @@ Tip
 </section>
 <section id="setup-for-gpt" class="level4">
 <h4 class="anchored" data-anchor-id="setup-for-gpt">Setup for GPT</h4>
-<div class="cell" data-outputid="eb26a516-be39-4bab-ec0b-8d990085ba99" data-execution_count="1">
+<div class="cell" data-outputid="eb26a516-be39-4bab-ec0b-8d990085ba99">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install <span class="op">-</span>q openai backoff gpt<span class="op">-</span>cost<span class="op">-</span>estimator</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 221.4/221.4 kB 3.2 MB/s eta 0:00:00
@@ -778,7 +778,7 @@ llmx 0.0.15a0 requires cohere, which is not installed.</code></pre>
 </div>
 </div>
 <p>We’re using the new Colab Feature to store keys safely within the Colab Environment. Click on the key on the left to add your API key and enable it for this notebook. Enter the name of your API-Key in the <code>api_key_name</code> variable.</p>
-<div class="cell" data-cellview="form" data-execution_count="2">
+<div class="cell" data-cellview="form">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> openai</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> openai <span class="im">import</span> OpenAI</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> google.colab <span class="im">import</span> userdata</span>
@@ -2026,6 +2026,8 @@ Cost: $0.0010 | Total: $0.0278</code></pre>
 <span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="st">Return a markdown table with the columns "shortcode" and "Classification"</span></span>
 <span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<section id="from-documents-to-markdown-tables" class="level4">
+<h4 class="anchored" data-anchor-id="from-documents-to-markdown-tables">From Documents to Markdown Tables</h4>
 <p>We use the <code>tabulate</code> python package to create markdown tables for as many tables as we manage to send within the model’s context window. Currently, the result_table token length (the mockup response) is calculated using the length of <code>False</code>. Replace the value if you expect longer classifications in this line:</p>
 <div class="sourceCode" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>current_result_table <span class="op">=</span> tabulate(batched_data <span class="op">+</span> [(row[meta], <span class="va">False</span>)], headers<span class="op">=</span>[meta, <span class="st">"Classification"</span>], tablefmt<span class="op">=</span><span class="st">"pipe"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell" data-execution_count="28">
@@ -2170,6 +2172,7 @@ Cost: $0.0010 | Total: $0.0278</code></pre>
 </table>
 </div>
 </div>
+</section>
 <section id="run-the-multidocument-request" class="level4">
 <h4 class="anchored" data-anchor-id="run-the-multidocument-request">Run the Multidocument Request</h4>
 <p>he following code snippet uses my <a href="https://pypi.org/project/gpt-cost-estimator/">gpt-cost-estimator</a> package to simulate API requests and calculate a cost estimate. Please run the estimation whne possible to asses the price-tag before sending requests to OpenAI!</p>
@@ -3239,7 +3242,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
   <div class="nav-page nav-page-next">
       <a href="../evaluation/index.html" class="pagination-link">
-        <span class="nav-page-text">Gold Standard Validation</span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text">Human Annotations</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

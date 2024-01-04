@@ -302,7 +302,7 @@ cookieconsent.run({
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../evaluation/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Gold Standard Validation</span></a>
+ <span class="menu-text">Human Annotations</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -349,12 +349,12 @@ cookieconsent.run({
 
 <section id="lets-read-last-weeks-text-dataframe" class="level4">
 <h4 class="anchored" data-anchor-id="lets-read-last-weeks-text-dataframe">Let’s read last week’s Text DataFrame</h4>
-<div class="cell" data-execution_count="20">
+<div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'/content/drive/MyDrive/2023-12-01-Export-Posts-Text-Master.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-outputid="1c6cbd44-8924-4366-f8f1-8f4605203e4d" data-execution_count="21">
+<div class="cell" data-outputid="1c6cbd44-8924-4366-f8f1-8f4605203e4d">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="21">
 
@@ -627,7 +627,7 @@ cookieconsent.run({
 </section>
 <section id="setup-for-gpt" class="level4">
 <h4 class="anchored" data-anchor-id="setup-for-gpt">Setup for GPT</h4>
-<div class="cell" data-outputid="eb26a516-be39-4bab-ec0b-8d990085ba99" data-execution_count="1">
+<div class="cell" data-outputid="eb26a516-be39-4bab-ec0b-8d990085ba99">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install <span class="op">-</span>q openai backoff gpt<span class="op">-</span>cost<span class="op">-</span>estimator</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 221.4/221.4 kB 3.2 MB/s eta 0:00:00
@@ -640,7 +640,7 @@ llmx 0.0.15a0 requires cohere, which is not installed.</code></pre>
 </div>
 </div>
 <p>We’re using the new Colab Feature to store keys safely within the Colab Environment. Click on the key on the left to add your API key and enable it for this notebook. Enter the name of your API-Key in the <code>api_key_name</code> variable.</p>
-<div class="cell" data-cellview="form" data-execution_count="2">
+<div class="cell" data-cellview="form">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> openai</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> openai <span class="im">import</span> OpenAI</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> google.colab <span class="im">import</span> userdata</span>
