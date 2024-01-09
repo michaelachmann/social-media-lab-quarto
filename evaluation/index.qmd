@@ -147,3 +147,6 @@ The annotation manual is written, the data has been added to a label studio proj
 
 ## Conclusion
 @Baden2022-oe and @Birkenmaier2023-nt provide sound arguments for the need of validation when working with methods of computational text analysis. This chapter outlined the first practical steps towards an external validation of computational classifications: Creating an annotation manual, and setting up an annotation project. In the next session, we will take a look at the actual evaluation of computational classifications: First we are going to evaluate the quality of our human annotations through interrater agreement measurements. In an intermediary step we will derive ground truth data through majority decisions (following a common practiceto improve the quality of the final dataset [@Davani2022-nu]), before calculating the evaluation metrics (accuracy, refall, F1-scores) for our model comparing the gold standard dataset with the computational annotations. 
+
+## Further Reading
+* [Studies in Communication and Media: Special Issue on Content Analysis](https://www.nomos-elibrary.de/10.5771/2192-4007-2023-4/scm-studies-in-communication-and-media-jahrgang-12-2023-heft-4?page=1)

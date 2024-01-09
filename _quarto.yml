@@ -17,7 +17,6 @@ website:
           - getting-started/related-work.qmd
           - getting-started/tools.qmd
           - getting-started/literature-review-assistant.qmd
-    #  - section: "Theory & Related Work"
       - section: "Data Collection"
         contents:
           - data-collection/ig-posts.qmd
@@ -30,6 +29,8 @@ website:
           - processing/exploration.qmd
           - processing/classification.qmd
       - section: "Image Analysis"
+        contents:
+          - image-analysis/exploration.qmd
       - section: "Evaluation"
         contents:
           - evaluation/index.qmd
@@ -45,6 +46,7 @@ website:
     left:
       - href: index.qmd
         text: Home
+      #- blog.qmd
       - about.qmd
       - href: https://github.com/michaelachmann/social-media-lab
         text: Notebooks 

@@ -179,5 +179,14 @@
   "notebooks/2024_01_04_Evaluation_Kurs.ipynb": {
     "2024_01_04_Evaluation_Kurs.html": "13ce0927",
     "2024_01_04_Evaluation_Kurs.ipynb.html": "a9e5bd2b"
+  },
+  "image-analysis/exploration.qmd": {
+    "exploration.html": "12c064ec"
+  },
+  "posts.qmd": {
+    "posts.html": "15e989c8"
+  },
+  "blog.qmd": {
+    "blog.html": "441b76a0"
   }
 }

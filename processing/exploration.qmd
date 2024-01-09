@@ -47,6 +47,7 @@ Today's prompting marks the tip of the iceberg, over the course of the next week
 
 
 ## More Resources
+* [OpenAI Prompt Engineering Guide](https://platform.openai.com/docs/guides/prompt-engineering)
 * [Prompting Guide](https://www.promptingguide.ai/introduction/examples#information-extraction)
 * @Brown2020-il: Language Models are Few-Shot Learners
 * @Liu2023-ph: Pre-train, Prompt, and Predict: A Systematic Survey of Prompting Methods in Natural Language Processing
