@@ -30,6 +30,7 @@ website:
           - processing/classification.qmd
       - section: "Image Analysis"
         contents:
+          - image-analysis/index.qmd
           - image-analysis/exploration.qmd
       - section: "Evaluation"
         contents:

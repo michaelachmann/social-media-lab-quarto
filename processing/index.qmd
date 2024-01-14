@@ -79,6 +79,9 @@ Computational approaches for text analyses are established as part of computatio
 
 
 ### Automated Audio Transcription (Whisper)
+:::{.callout-note}
+OpenAI offers Whisper transcriptions as a service, see [their documentation](https://platform.openai.com/docs/guides/speech-to-text). The notebook below takes you step-by-step through using the Whisper model on your own computer / colab.
+:::
 
 {{< embed ../notebooks/whisper-notebook.ipynb echo=true >}}
 

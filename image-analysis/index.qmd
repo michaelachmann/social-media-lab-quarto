@@ -1,0 +1,72 @@
+---
+format: 
+  html: default
+title: "Images as Data"
+date: 2024-1-15
+author:
+  - name: Michael Achmann-Denkler
+    id: ma
+    orcid: 0000-0002-4754-7842
+    email: michael.achmann@informatik.uni-regensburg.de
+license: CC BY
+bibliography: ../literature.bib
+citation:
+  type: webpage
+  doi: 10.5281/zenodo.10039756
+---
+
+
+Within the computational social science community and their neighbouring disicplines, the concept of *Images as Data* is currently being established [@Peng2023-hi; @Joo2022-bj], equivalent to the [Text as Data](../processing/index.qmd#text-as-data) paradigm. From a Digital Humanities perspective @Arnold2023-ev have developed a concept of *Distant Viewing*. Both concepts deal with the theory and application of visual analyses using computational methods, with similar very similar ends: as with computational text analyses, computational visual analyses promise to open a new, quantitative, perspective incorporating volumes of data unfeasable for human processing.
+
+::: {.callout-caution}
+## Work-In-Progress
+This chapter is an early darft. The amout of literature is currently limited.
+:::
+
+
+## Automated Visual Analysis
+@Peng2023-hi regard images as data within the context of social media effect studies. Their perspective emphasizes the transformation of visual content into quantifiable insights through computational methods, enabling data-driven analysis. They highlight the application of computer vision and machine learning techniques to analyze various visual elements like color, texture, and object presence. Recognizing the mass of images on social media as rich data sets, they underline the importance of these images for the understanding of trends and cultural shifts in visual communication. However, they also acknowledge the complexities of analyzing images, including the need to understand the context and subtleties they embody. Additionally, they point out the potential of multimodal analysis, which combines text, visual, and audio components, to provide deeper insights into the complex interplay among different communication channels. Furthermore, they emphasize the critical importance of validating prediction, mapping theoretical relevance, and identifying biases in automated visual analysis. Overall, their approach integrates technical analysis with a deep understanding of the cultural and contextual aspects of images as data.
+
+## Distant Viewing
+Distant Viewing, according to Arnold and Tilton [@Arnold2023-ev, ch. 1], is a methodology for the computational exploration and analysis of large collections of digital images. This approach is rooted in theories from a range of disciplines, including visual semiotics, media studies, communication studies, information science, and data science. It represents a significant shift from traditional manual methods of image analysis to a more automated, data-driven approach. 
+
+In their conception, Distant Viewing is not just about the technical analysis of images through computer vision algorithms, but also about understanding and interpreting the cultural, social, and historical contexts of these images. Arnold and Tilton emphasize the importance of structured annotations in this process, as they serve as crucial mediators that help in decoding and interpreting visual data. They advocate for a critical and reflexive approach to the use of Distant Viewing, urging users to be aware of the biases and power dynamics inherent in the way we "look" at images and the technological tools used for this purpose. 
+
+Overall, Distant Viewing as conceptualized by Arnold and Tilton represents a comprehensive framework for the analytical engagement with visual materials, blending computational approach with theory to better understand the visual culture of the digital age.
+
+
+## Computer Vision Applications
+@Peng2023-hi list several computer vision applications useful for the analysis of social media in context of communication science. Let's quickly outline these, with regard to our projects and seminar:
+
+Object Detection
+: Many models and services return *bounding boxes* and *labels*: The bounding boxes are a polygon and its coordinates in relation to the image, the detectable objects are usually defined by a finite list of labels. Knowing about the presence of objects, or counting them, can already serve as a good foundation for classification tasks. Humans are occassionally regarded as objects. We will use object detection for both, [exploration](exploration.qmd) and [classification](#).
+
+Face Detection & Matching, Facial Attributes & Emotions
+: Several commercial APIs and open source models offer face detection. Similar to object detection, face detection usually returns a bounding box for each face located in an image. Some models return more landmarks (e.g. left eye, right eye, mouth, ...). Advanced systems (e.g. `deepface` for python) offer to compare faces with one another, by comparing faces on new images with labelled faces in our database, we can calculate the similarity and deduce who is pictured. I have experimented with face detection and matching for analyses in the context of political communication, notebooks and more are available upon request.
+
+Text Detection (OCR) 
+: We have already applied OCR in the [Text as Data](../processing/index.qmd) session. Commercial provides, like Google Vision AI, offer cheap OCR through their API, which is sometimes more useful than setting up your own notebook. In my (limited) experience, the quality between the commercial API and `easyocr` was very similar.
+
+Captioning
+: Is a rather new computer vision application. Using models like [vit-gpt2-image-captioning](https://huggingface.co/nlpconnect/vit-gpt2-image-captioning), based on technologies such as [CLIP](https://huggingface.co/sentence-transformers/clip-ViT-B-32) and large language models, we can generate textual description from images. These automated caption can be regarded [as text, opening up a world of NLP applications](../processing/index.qmd). We will use captioning as an intermediary for [image exploration](exploration.qmd) and [classification](#).
+
+Aesthetic Analyses & Pose Estimation
+: We can automatically measure extract aesthetic features, like dominat colors, or colour themes, of images and use them for downstream tasks. Similarly some technologies can estimate the pose of people or heads. Head positions have, for instance, been used as a proxy to estimate the camera angle in political communication [@Haim2021-bp]. I will provide a notebooks for simple colour analyses shortly, however aesthetics and poses are secondary in this semester.
+
+## Summary
+This brief overview of Images as Data and Distant Viewing in the Computational Social Science and Digital Humanities serves as a theoretical base for the next chapters, [Visual Exploration](exploration.qmd) and [Visual Classification](#). @Peng2023-hi's paper presents a wide variety of potential methods and tools, additionaly they have a particular perspective of political communication which aligns with several of our projects. Both materials emhasize the gap between theory and the pitfall of mistaking computational analyses for objective analyses, as the annotations used for validation and training of the computational models inherently have biases. @Arnold2023-ev's chapter is outstanding since they combine interests from the Digital Humanities and Computational Social Science, which reflects the motiviation of this seminar. 
+
+
+
+## Further Reading
+
+
+Arnold, T., & Tilton, L. (2023). Distant Viewing: Computational Exploration of Digital Images. MIT Press. 
+
+Peng, Y., Lock, I., & Ali Salah, A. (2023). Automated Visual Analysis for the Study of Social Media Effects: Opportunities, Approaches, and Challenges. Communication Methods and Measures, 1–23. https://doi.org/10.1080/19312458.2023.2277956
+
+Chen, Y., Sherren, K., Smit, M., & Lee, K. Y. (2023). Using social media images as data in social science research. New Media & Society, 25(4), 849–871. https://doi.org/10.1177/14614448211038761
+
+Joo, J., & Steinert-Threlkeld, Z. C. (2022). Image as data: Automated content analysis for visual presentations of political actors and events. Computational Communication Research, 4(1). https://doi.org/10.5117/ccr2022.1.001.joo
+
+Peng, Y. (2021). What Makes Politicians’ Instagram Posts Popular? Analyzing Social Media Strategies of Candidates and Office Holders with Computer Vision. The International Journal of Press/Politics, 26(1), 143–166. https://doi.org/10.1177/1940161220964769

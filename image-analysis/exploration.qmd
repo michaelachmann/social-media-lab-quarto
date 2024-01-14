@@ -2,7 +2,7 @@
 format: 
   html: default
 title: "Visual Exploration"
-date: 2023-12-04
+date: 2024-1-15
 author:
   - name: Michael Achmann-Denkler
     id: ma
@@ -22,13 +22,111 @@ citation:
   doi: 10.5281/zenodo.10039756
 ---
 
-## Theory
-* Distant Viewing   
+The previous chapter outlines some literature on [images as data](index.qmd), emphasizing them importance of evaluation and contextualisation of computer vision applications due to biases inherent to our *looking* at images. This chapter introduces several tools and approaches for exploring visual material. These unsupervised approaches are useful for exploring image datasets. The first approaches, [PixPlot](#pixplot) and [PicArrange](#picarrange) are ready-made tools, they are easy to use and display results quickly. On the downside they offer limited options to manipulate the clustering of images (i.e. what features we are interested in). Therefore we take a look at [commercial computer vision APIs](#commercial-computer-vision-apis) as middle ground between setting up your own notebook for using object detection models, and the fully automated approaches above. The labels derived through the APIs can be clustered in two approaches: Using network analysis and the modularity algorithm in Gephi for clustering, or using k-means in our own notebook. The network analysis is based on @Omena2021-gu's manuals and publications. This approach is complex to reproduce for the sheer interest in image exploration (in contrast to Omena et al.'s interests in studying the web entity networks and their evolutions). The k-means approach offers an easier solution for clustering images based on labels provided by a vision API, while being compatible with Memespector, a GUI tool for multiple vision APIs. Finally we will explore BERTopic's multimodal functionality: Using the [vit-gpt2-image-captioning](https://huggingface.co/nlpconnect/vit-gpt2-image-captioning) model, we generate captions for each image and use them for topic modeling. This captioning approach is one option, we will explore more options in union with image classification in the next session.
+
+ToDos für Abschluss:
+
+* k-Means für Vision API Labels
+* Links zu den Notebooks.
+* Notebooks auf GitHub hochladen.
+* Zusammenfassung. 
 
 ## PixPlot
+PixPlot is a visualization tool designed for clustering large numbers of images into a coherent projection. The tool uses Tensorflow's Inception model to analyze image content and employs a custom WebGL viewer for visualization. This approach allows for the grouping of similar images, aiding in the identification of patterns and relationships within large image datasets.
 
-## Google Vision API
+![Once installed, PixPlot can be invoked using the command line. We can also pass metadata, like timestamps, see the documentation.](../images/pixplot-0.png){width="75%"}
 
-## PicArrange
+PixPlot requires a Python 3.7 environment, which can be set up using Anaconda. After setting up the environment, PixPlot can be installed via pip. For visualizing the results, a WebGL-enabled browser is necessary. The process involves running a simple command to process a directory of images, and then starting a web server to view the visualization. Take a look [at the GitHub repository for instructions](https://github.com/YaleDHLab/pix-plot). The software is known for causing problems with newer MacBooks (based on the new M-Chips).
 
-## GPT / Captions / BERTopic
+![The result can be viewed in a webbrowser: A 2D mapping of images clustered by their content.](../images/pixplot-1.png)
+
+PixPlot has similarities with the k-means approach introduced in the next section. Both methods aim to categorize and cluster images based on their content. However, PixPlot automates this process by using an Inception model for image analysis and UMAP for dimensionality reduction, leading to the formation of clusters. For the approach below we first use the Google Vision API to retrieve a set of labels describing each images, and cluster afterwards. The manual approach is more difficult to start with, but possibly pays off as we progress towards image classification and the potential reuse of the labels retrieved from the API.
+
+## PicArrange 
+
+![A screenshot of PicArrange displaying an overview of my Instagram Story corpus. Note how the visual sorting arranged images with large embedded text close to one another, followed by text-centric screenshots of Twitter.](../images/picarrange.png)
+
+> PicArrange helps to find images on your Mac computer much easier than ever before. Opposed to the Finder app, PicArrange can sort images not only by name or date, but also by content and color. This visual sorting mode allows to inspect and search large amounts of images much faster. You can also view visually sorted images from several directories at the same time, making it easy to find duplicate images.
+>
+> Besides the visual sorting PicArrange offers a similarity search, thus allowing to find images similar to one or more example images. Image files can be deleted, copied or opened with Preview directly with PicArrange
+
+Available at [visual-computing.com](https://visual-computing.com/), for macOS only.
+
+
+
+## Commercial Computer Vision APIs
+Commercial services such as the [Google Vision API](https://cloud.google.com/vision/?hl=en) and [Microsoft Azure Vision](https://azure.microsoft.com/en-us/products/ai-services/ai-vision/) provide an excellent starting point for exploring large visual datasets. This recipe is based on Omena's work with labels and web entities from the Google Vision API [@Omena2021-gu]. Utilizing tools like [Memespector](https://github.com/jason-chao/memespector-gui) [@Chao_Memespector-GUI_Graphical_User_2023], [Table2Net](https://medialab.github.io/table2net/), and [Gephi](https://gephi.org/), we can analyze image graphs without any programming knowledge. Subsequently, we apply the same labels in a matrix-based approach, clustering images using the k-means algorithm.
+
+::: {.callout-important}
+## Warning: Black Boxes
+When using commercial services like Google Vision API or Microsoft Azure Vision, it's crucial to be aware of the "black box" nature of these tools. These services utilize proprietary algorithms whose internal workings and decision-making processes are not transparent to the users. This lack of transparency can lead to uncertainties about how and why certain results are generated, potentially affecting the reliability and interpretability of your analysis.
+
+Despite their ease of use, remember that these tools might not fully align with every research need, especially when interpretability and transparency are critical. As an alternative, open-source models are available, which, while more complex to set up and use, offer greater transparency and flexibility. These models allow for a deeper understanding and customization of the analysis process, aligning more closely with research principles that prioritize openness and reproducibility.
+:::
+
+In the matrix-based approach, each image is treated as a collection of features (labels), with algorithms like k-means clustering images by comparing these features. This method effectively identifies images with similar labels. Conversely, the network-based approach considers images and labels as interconnected nodes. Applying algorithms such as the modularity algorithm in Gephi, we can discern communities where images are more closely linked through shared labels. This method provides insights into complex relationships and the overarching context of these images. While the matrix-based technique is straightforward and excels in direct feature comparison, the network-based approach offers deeper analysis of the dataset's intricate connections. Each method has unique advantages, enhancing your understanding of data analysis in social science.
+
+Both methods begin with [Memespector](https://github.com/jason-chao/memespector-gui) [@Chao_Memespector-GUI_Graphical_User_2023]. The software employs commercial APIs like Google Vision AI to classify images with features such as labels or web entities. I recommend selecting Labels and Text initially. The results are stored in two files: a JSON file (which can be quite large) and a CSV file (used in subsequent steps). The CSV format employs a one row per image structure, with multiple labels per image recorded as semicolon-separated values in a single cell. Further details about obtaining a credential file will be provided in class.
+
+![A screenshot of [Memespector](https://github.com/jason-chao/memespector-gui), a graphical user interface for multiple computer vision APIs.](../images/memespector.png)
+
+![Each computer vision provides offers multiple models. For image explorations I suggest to invoke the labels. Additionally we can invoke the text (OCR) model for the later processing of embedded text.](../images/memespector-options.png){width="50%"}
+
+Once the API calls succeeded, we can go on and create [an image-label-network](#step-by-step-towards-a-graph), or [cluster the images based on their labels using k-means](#clustering-with-k-means). 
+
+### Step-By-Step towards a Graph
+:::{.column-screen-inset}
+![An example of a label-image-network. This example show images from TikTok collected during the farmers' demonstrations, the node colour signifies the modularity classes, communities within the network. Note: The resolution of the image is low on purpose, as the original image contains images of individuals.](../images/gephi-network-example.png){width="100%"}
+:::
+
+Follow the next steps in order to create your own label-image-network. Gephi is a powerful and complex tool, I omitted a few steps for clarity. Take a look at YouTube tutorials and web tutorials, for more information. 
+
+![First select the bipartite network.](../images/label2net-0.png){width="75%"}
+
+![Next, select `Image_BaseName` as the X Node. Additionally, let's add `Image_BaseName` *again* as an attribute, we will use this attribute to display images in Gephi.](../images/label2net-1.png){width="75%"}
+
+![Add the `GV_Label_Descriptions` column as the second (Y) nodes. Select *Semicolon Seperated* to split the values in the cell into seperate labels.](../images/label2net-2.png){width="75%"}
+
+![Finally hit *Build*.](../images/label2net-3.png){width="75%"}
+
+At this stage, after a few seconds of processing, the website should triger the download of a `gefx`file. Use [Gephi](https://gephi.org) to open this file. Follow these steps:
+
+![Open / Import the project. Click *OK*.](../images/gephi-0.png){width="75%"}
+
+![After the import Gephi should look like this. The graph structure is random, no clusters are visible. If you cannot see any network, check whether you're in the *Overview* tab.](../images/gephi-1.png){width="100%"}
+
+![Take a look at the left-hand of the window. Under *Layout* select *ForceAtlas2*. For the moment we can keep the defaults and hit *Start*. The nodes should move into distinct directions.](../images/gephi-2.png){width="50%"}
+
+![At this stage your graph might look like that.](../images/gephi-9.png){width="100%"}
+
+![Take a look at the right part of the window. Select *Statistics*, and there *Modularity*. Hit *Start*, keep the defaults. The algorithm should cluster you graph into distinc modularity classes.](../images/gephi-8.png){width="25%"}
+
+![At this point I suggest to export the clustered data. Enter the data laboratory tab and select "Export Table". Save the CSV file in your desired location and make it available for your Jupyter / Colab environment, e.g. by uploading the file to your Google Drive. Follow the next steps in python. Alternatively: Follow the link below to the rest of the Gephi recipe.](../images/gephi-11.png){width="75%"}
+
+The whole process towards a proper label-image-network contains even more steps, [I outsourced them into a document on its own, click here for the missing steps](gephi.qmd). It's important to note that working with Gephi, especially when dealing with images, can be demanding in terms of memory usage, and the resulting PDFs are sometimes challenging to handle. To address these issues, I've developed a Python script that simplifies the exploration of modularity classes. This script uses a CSV file exported from Gephi to display a selection of images from each class. While this method offers a more manageable way to quickly review samples within each modularity class and assess if we're on the right track, it's crucial to acknowledge that we lose certain details in this process. Specifically, this approach doesn't show the relationships between images and labels, nor does it reveal the spatial distribution of these images within the original network. It's a trade-off between ease of exploration and the depth of network information,
+
+
+![This image showcases the objective of using Gephi and networks: Labels and images are aranged spatially, zooming into each of the clusters we can name them based on their content. In my example the images in the displayed cluster all show streets or city-views, thus glimpses of the farmers' demonstrations with from a wide-angle perspective.](../images/gephi-close-look.png){width="75%"}
+
+Follow the next steps to visualize samples from your modularity classes:
+
+{{< embed ../notebooks/2024_01_12_Visualize_Mod_Classes.ipynb echo=true >}}
+
+
+![A screenshot of the same modularity class as above showing a sample of five images.](../images/mod-class-3.png){width="75%"}
+
+### Clustering with k-Means
+
+Exploring image corpora using labels or web-entities is just one way of using commercial APIs. Several providers offer models for text detection (OCR), face detection, and more. [Below](#image-captions) we will take a look at auto-generated image captions -- which coincidentally produce text, a data format compatible for [exploration](../processing/exploration.qmd) and [classification](../processing/classification.qmd) using methods established in past sessions.
+
+
+
+### BERTopic
+{{< embed ../notebooks/2024_01_12_Visual_BERTopic_Bauernproteste.ipynb >}}
+
+![Screenshots from the final table: BERTopic identified e.g. these two topics. The top topic appears to be text-centric posts, where the embedded text makes up a large portion of the content. The bottom topic, on the other hand, is all about faces, showing people in a selfie-perspective, often speaking to the screen, possibly resembling what @Sanchez-Querubin2023-zp titled "Playful Performance". Note: I defamiliarized the faces for privacy.](../images/vbertopic.png){width="85%"}
+
+
+## Summary
+
+I introduced several approaches to explore collections of visual (social media) data. 

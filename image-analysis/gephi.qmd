@@ -1,0 +1,41 @@
+---
+format: 
+  html: default
+title: "Image Exploration with Gephi"
+date: 2024-1-15
+author:
+  - name: Michael Achmann-Denkler
+    id: ma
+    orcid: 0000-0002-4754-7842
+    email: michael.achmann@informatik.uni-regensburg.de
+license: CC BY
+bibliography: ../literature.bib
+---
+
+This page lists the remaining step for [creating an image network based on labels from commercial computer vision APIs](exploration.qmd#commercial-computer-vision-apis). The process is rather complex, the steps below omit some intermediary steps, e.g. for filtering and adjusting the text labels for nodes and edges. 
+
+::: {.callout-important}
+These steps are based on @Omena2021-gu's approach. The first steps are located in the [exploration chapter](exploration.qmd#step-by-step-towards-a-graph).
+:::
+
+![We cannot see any changes in the graph yet. We need to change the appearance. Select *Nodes* > *Partition*, and select "Modularity Class". Hit *Apply* and your black network should turn into several colours.](../images/gephi-5.png){width="50%"}
+
+
+
+![An example for a network coloured by modularity class.](../images/gephi-4.png){width="100%"}
+
+![Next, move to the *Data Lab* tab. On the bottom of the window, use the *Duplicate Column* button, to copy the values from *Label* to a new column named *image*. **The name *image* is important!**](../images/gephi-14.png){width="25%"}
+
+![Make sure to have the *Image Preview* Plugin installed. **The plugin is not compatible with the latest Gephi version!**](../images/gephi-plugin.png){width="75%"}
+
+![Finally, move to the tab *Preview*. Scroll in the left pane to the bottom and cofigure your image folder. Hit *Refresh* to render the network including the images. In my experience it is best to export the final network to PDF and use a PDF reader for the actual exploration of the images.](../images/gephi-2.png){width="50%"}
+
+
+:::{.column-body-outset}
+![This is an example of such a network. I added some additional configuration here to display the labels. Gephi has many advanced features, I recommend a web- and YouTube search for more ideas how to explore your graph and how to render the data nicely.](../images/gephi-network-example.png){width="100%"}
+:::
+
+
+
+![At the end of the process we can take a look at the modularity classes (clusters). Zooming into each of the clusters we can name them based on their content. In my example the images in the displayed cluster all show streets or city-views, thus glimpses of the farmers' demonstrations with from a wide-angle perspective.](../images/gephi-close-look.png){width="75%"}
+

@@ -188,5 +188,19 @@
   },
   "blog.qmd": {
     "blog.html": "441b76a0"
+  },
+  "image-analysis/index.qmd": {
+    "index.html": "df3963cc"
+  },
+  "image-analysis/gephi.qmd": {
+    "gephi.html": "62afc7bd"
+  },
+  "notebooks/2024_01_12_Visual_BERTopic_Bauernproteste.ipynb": {
+    "2024_01_12_Visual_BERTopic_Bauernproteste.html": "b1600546",
+    "2024_01_12_Visual_BERTopic_Bauernproteste.ipynb.html": "f522678c"
+  },
+  "notebooks/2024_01_12_Visualize_Mod_Classes.ipynb": {
+    "2024_01_12_Visualize_Mod_Classes.ipynb.html": "d6605861",
+    "2024_01_12_Visualize_Mod_Classes.html": "d7e5f2fc"
   }
 }
