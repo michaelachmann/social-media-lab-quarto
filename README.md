@@ -137,3 +137,7 @@ Once you are satisfied with your changes and have committed them to your branch,
 ## Contact
 
 For any inquiries or further information, feel free to reach out to [Michael Achmann](mailto:michael.achmann@informatik.uni-regensburg.de).
+
+## LICENSE
+
+Social Media Lab Website © 2023 by Michael Achmann-Denkler is licensed under CC BY 4.0 
