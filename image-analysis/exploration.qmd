@@ -10,26 +10,26 @@ author:
     email: michael.achmann@informatik.uni-regensburg.de
 license: CC BY
 bibliography: ../literature.bib
-#notebook-view:
-#  - notebook: ../notebooks/2023_12_01_GPT_Text_Exploration.ipynb
-#    title: "Text Exploration Using GPT"
-#    url: https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/#2023_12_01_GPT_Text_Exploration.ipynb
-#  - notebook: ../notebooks/2023_12_01_BERTopic.ipynb
-#    title: "Topic Modeling Using BERTopic"
-#    url: https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/#2023_12_01_BERTopic.ipynb
+notebook-view:
+  - notebook: ../notebooks/2024_01_12_Visual_BERTopic_Bauernproteste.ipynb
+    title: "Visual BERTopic"
+    url: https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2024_01_12_Visual_BERTopic.ipynb
+  - notebook: ../notebooks/2024_01_12_kMeans.ipynb
+    title: "k-means"
+    url: https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2024_01_12_kMeans.ipynb
+  - notebook: ../notebooks/2024_01_12_Visualize_Mod_Classes.ipynb
+    title: "Quickly Visualize Mod Classes"
+    url: https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2024_01_12_Visualize_Mod_Classes.ipynb
 citation:
   type: webpage
   doi: 10.5281/zenodo.10039756
 ---
 
-The previous chapter outlines some literature on [images as data](index.qmd), emphasizing them importance of evaluation and contextualisation of computer vision applications due to biases inherent to our *looking* at images. This chapter introduces several tools and approaches for exploring visual material. These unsupervised approaches are useful for exploring image datasets. The first approaches, [PixPlot](#pixplot) and [PicArrange](#picarrange) are ready-made tools, they are easy to use and display results quickly. On the downside they offer limited options to manipulate the clustering of images (i.e. what features we are interested in). Therefore we take a look at [commercial computer vision APIs](#commercial-computer-vision-apis) as middle ground between setting up your own notebook for using object detection models, and the fully automated approaches above. The labels derived through the APIs can be clustered in two approaches: Using network analysis and the modularity algorithm in Gephi for clustering, or using k-means in our own notebook. The network analysis is based on @Omena2021-gu's manuals and publications. This approach is complex to reproduce for the sheer interest in image exploration (in contrast to Omena et al.'s interests in studying the web entity networks and their evolutions). The k-means approach offers an easier solution for clustering images based on labels provided by a vision API, while being compatible with Memespector, a GUI tool for multiple vision APIs. Finally we will explore BERTopic's multimodal functionality: Using the [vit-gpt2-image-captioning](https://huggingface.co/nlpconnect/vit-gpt2-image-captioning) model, we generate captions for each image and use them for topic modeling. This captioning approach is one option, we will explore more options in union with image classification in the next session.
+The previous chapter outlines some literature on [images as data](index.qmd), emphasizing them importance of evaluation and contextualisation of computer vision applications due to biases inherent to our *looking* at images. This chapter introduces several tools and approaches for exploring visual material. These unsupervised approaches are useful for exploring image datasets. The first approaches, [PixPlot](#pixplot) and [PicArrange](#picarrange) are ready-made tools, they are easy to use and display results quickly. On the downside they offer limited options to manipulate the clustering of images (i.e. what features we are interested in). Therefore we take a look at [commercial computer vision APIs](#commercial-computer-vision-apis) as middle ground between setting up your own notebook for using object detection models, and the fully automated approaches above. We approach the labels using two clustering approaches in this chapter: Using network analysis and the modularity algorithm in Gephi finding communities, or using k-means to find k-clusters in our own notebook. The network analysis is based on @Omena2021-gu's manuals and publications. This approach is complex to reproduce for the sheer interest in image exploration (in contrast to Omena et al.'s interests in studying the web entity networks and their evolutions). The k-means approach offers an easier solution for clustering images based on labels provided by a vision API, while being compatible with Memespector, a GUI tool for multiple vision APIs. Finally we will explore BERTopic's multimodal functionality: Using the [vit-gpt2-image-captioning](https://huggingface.co/nlpconnect/vit-gpt2-image-captioning) model, we generate captions for each image and use them for topic modeling. This captioning approach is one option, we will explore more options in union with image classification in the next session.
 
-ToDos für Abschluss:
-
-* k-Means für Vision API Labels
-* Links zu den Notebooks.
-* Notebooks auf GitHub hochladen.
-* Zusammenfassung. 
+::: {.callout-note}
+I removed several code cells for rendering the results from the recipes below. The notebooks hosted on GitHub (links below the code and on the top-right) include these cells. 
+:::
 
 ## PixPlot
 PixPlot is a visualization tool designed for clustering large numbers of images into a coherent projection. The tool uses Tensorflow's Inception model to analyze image content and employs a custom WebGL viewer for visualization. This approach allows for the grouping of similar images, aiding in the identification of patterns and relationships within large image datasets.
@@ -64,7 +64,7 @@ When using commercial services like Google Vision API or Microsoft Azure Vision,
 Despite their ease of use, remember that these tools might not fully align with every research need, especially when interpretability and transparency are critical. As an alternative, open-source models are available, which, while more complex to set up and use, offer greater transparency and flexibility. These models allow for a deeper understanding and customization of the analysis process, aligning more closely with research principles that prioritize openness and reproducibility.
 :::
 
-In the matrix-based approach, each image is treated as a collection of features (labels), with algorithms like k-means clustering images by comparing these features. This method effectively identifies images with similar labels. Conversely, the network-based approach considers images and labels as interconnected nodes. Applying algorithms such as the modularity algorithm in Gephi, we can discern communities where images are more closely linked through shared labels. This method provides insights into complex relationships and the overarching context of these images. While the matrix-based technique is straightforward and excels in direct feature comparison, the network-based approach offers deeper analysis of the dataset's intricate connections. Each method has unique advantages, enhancing your understanding of data analysis in social science.
+In the matrix-based approach, each image is treated as a collection of features (labels), with algorithms like k-means clustering images by comparing these features. This method effectively identifies images with similar labels. Conversely, the network-based approach considers images and labels as interconnected nodes. Applying algorithms such as the modularity algorithm in Gephi, we can find communities where images are more closely linked through shared labels. This method provides insights into complex relationships and the overarching context of these images. While the matrix-based technique is straightforward and excels in direct feature comparison, the network-based approach offers deeper analysis of the dataset's intricate connections. Each method has unique advantages, enhancing your understanding of data analysis in social science.
 
 Both methods begin with [Memespector](https://github.com/jason-chao/memespector-gui) [@Chao_Memespector-GUI_Graphical_User_2023]. The software employs commercial APIs like Google Vision AI to classify images with features such as labels or web entities. I recommend selecting Labels and Text initially. The results are stored in two files: a JSON file (which can be quite large) and a CSV file (used in subsequent steps). The CSV format employs a one row per image structure, with multiple labels per image recorded as semicolon-separated values in a single cell. Further details about obtaining a credential file will be provided in class.
 
@@ -74,7 +74,7 @@ Both methods begin with [Memespector](https://github.com/jason-chao/memespector-
 
 Once the API calls succeeded, we can go on and create [an image-label-network](#step-by-step-towards-a-graph), or [cluster the images based on their labels using k-means](#clustering-with-k-means). 
 
-### Step-By-Step towards a Graph
+## Visual Network Analysis
 :::{.column-screen-inset}
 ![An example of a label-image-network. This example show images from TikTok collected during the farmers' demonstrations, the node colour signifies the modularity classes, communities within the network. Note: The resolution of the image is low on purpose, as the original image contains images of individuals.](../images/gephi-network-example.png){width="100%"}
 :::
@@ -115,18 +115,26 @@ Follow the next steps to visualize samples from your modularity classes:
 
 ![A screenshot of the same modularity class as above showing a sample of five images.](../images/mod-class-3.png){width="75%"}
 
-### Clustering with k-Means
+## Clustering with k-Means
 
-Exploring image corpora using labels or web-entities is just one way of using commercial APIs. Several providers offer models for text detection (OCR), face detection, and more. [Below](#image-captions) we will take a look at auto-generated image captions -- which coincidentally produce text, a data format compatible for [exploration](../processing/exploration.qmd) and [classification](../processing/classification.qmd) using methods established in past sessions.
+Exploring image corpora using labels or web-entities is just one way of using commercial APIs. Several providers offer models for text detection (OCR), face detection, and more. [Below](#bertopic) we will take a look at auto-generated image captions -- which coincidentally produce text, a data format compatible for [exploration](../processing/exploration.qmd) and [classification](../processing/classification.qmd) using methods established in past sessions. For the k-means approach, we use the image labels and create a matrix with dummy variables: Each labels occupies a column, each image a row, and each cell in the matrix is marked as either `True` or `False`. Using this matrix we try to find k-clusters of similar images using the k-means algorithm. First of all I recommend the video below by one of my favorite YouTube channels, for an understanding of the k-means algorithm. Then we take a look at a practical implementation of the algorithm for our visual corpus. 
+
+{{< video https://www.youtube.com/watch?v=yR7k19YBqiw title="k-means explained on the Computerphile channel." >}}
+
+::: {.callout-caution}
+## Work-In-Progress
+The following notebook is fully functional. It is, however, hardly commented. I will update the notebook and page shortly. 
+:::
+
+### Hands-on k-means
+{{< embed ../notebooks/2024_01_12_kMeans.ipynb  echo=true >}}
 
 
-
-### BERTopic
-{{< embed ../notebooks/2024_01_12_Visual_BERTopic_Bauernproteste.ipynb >}}
+## BERTopic
+{{< embed ../notebooks/2024_01_12_Visual_BERTopic_Bauernproteste.ipynb  echo=true >}}
 
 ![Screenshots from the final table: BERTopic identified e.g. these two topics. The top topic appears to be text-centric posts, where the embedded text makes up a large portion of the content. The bottom topic, on the other hand, is all about faces, showing people in a selfie-perspective, often speaking to the screen, possibly resembling what @Sanchez-Querubin2023-zp titled "Playful Performance". Note: I defamiliarized the faces for privacy.](../images/vbertopic.png){width="85%"}
 
 
 ## Summary
-
-I introduced several approaches to explore collections of visual (social media) data. 
+I introduced several unsupervised approaches for exploring visual corpora. The first part of this article introduced commercial computer vision APIs as a source for labels describing the content of images, the second part derived the knowledge of image content by generating image captions. Using these captions we fit a topic model, that helped to cluster the images into classes. Overall, the approaches result in two or more groups of images, that show similarities. What makes an image similar, is based on the model we apply. PicArrange, for example, uses colours, while other approaches focus on detected objects and labels describing the content of images. These groups need human exploration in order to make sense of them. The exploration techniques can be useful for a first exploration of your visual corpus. In the next session we go one step further, we will classify images based on their content using different approaches, like CLIP and GPT-4.

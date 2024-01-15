@@ -202,5 +202,8 @@
   "notebooks/2024_01_12_Visualize_Mod_Classes.ipynb": {
     "2024_01_12_Visualize_Mod_Classes.ipynb.html": "d6605861",
     "2024_01_12_Visualize_Mod_Classes.html": "d7e5f2fc"
+  },
+  "notebooks/2024_01_12_kMeans.ipynb": {
+    "2024_01_12_kMeans.ipynb.html": "019fb545"
   }
 }
