@@ -86,7 +86,7 @@ div.csl-indent {
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
 <link href="../evaluation/agreement.html" rel="next">
-<link href="../processing/classification.html" rel="prev">
+<link href="../image-analysis/exploration.html" rel="prev">
 <link href="../images/favicon.ico" rel="icon">
 <script src="../site_libs/cookie-consent/cookie-consent.js"></script>
 <link href="../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
@@ -309,8 +309,27 @@ cookieconsent.run({
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Image Analysis</span></span>
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">Image Analysis</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../image-analysis/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Images as Data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../image-analysis/exploration.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Visual Exploration</span></a>
+  </div>
+</li>
+      </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
@@ -359,6 +378,7 @@ cookieconsent.run({
   </ul></li>
   <li><a href="#collect-annotations" id="toc-collect-annotations" class="nav-link" data-scroll-target="#collect-annotations">Collect Annotations</a></li>
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further Reading</a></li>
   </ul>
 <div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2023_12_14_Create_LabelStudio_Text_Evaluation.ipynb"><i class="bi bi-journal-code"></i>Create Label Studio Project</a></li></ul></div></nav>
     </div>
@@ -929,6 +949,12 @@ Tip
 <section id="conclusion" class="level2">
 <h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
 <p><span class="citation" data-cites="Baden2022-oe">Baden et al. (<a href="#ref-Baden2022-oe" role="doc-biblioref">2022</a>)</span> and <span class="citation" data-cites="Birkenmaier2023-nt">Birkenmaier, Lechner, and Wagner (<a href="#ref-Birkenmaier2023-nt" role="doc-biblioref">2023</a>)</span> provide sound arguments for the need of validation when working with methods of computational text analysis. This chapter outlined the first practical steps towards an external validation of computational classifications: Creating an annotation manual, and setting up an annotation project. In the next session, we will take a look at the actual evaluation of computational classifications: First we are going to evaluate the quality of our human annotations through interrater agreement measurements. In an intermediary step we will derive ground truth data through majority decisions (following a common practiceto improve the quality of the final dataset <span class="citation" data-cites="Davani2022-nu">(<a href="#ref-Davani2022-nu" role="doc-biblioref">Davani, Dı́az, and Prabhakaran 2022</a>)</span>), before calculating the evaluation metrics (accuracy, refall, F1-scores) for our model comparing the gold standard dataset with the computational annotations.</p>
+</section>
+<section id="further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<ul>
+<li><a href="https://www.nomos-elibrary.de/10.5771/2192-4007-2023-4/scm-studies-in-communication-and-media-jahrgang-12-2023-heft-4?page=1">Studies in Communication and Media: Special Issue on Content Analysis</a></li>
+</ul>
 
 
 
@@ -1315,8 +1341,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../processing/classification.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Text Classification</span>
+      <a href="../image-analysis/exploration.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Visual Exploration</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
