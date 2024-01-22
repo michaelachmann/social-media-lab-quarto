@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.547">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -24,7 +24,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -60,6 +60,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -78,7 +79,7 @@ div.csl-indent {
 }</style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -107,7 +108,13 @@ div.csl-indent {
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -116,6 +123,7 @@ div.csl-indent {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -133,18 +141,20 @@ cookieconsent.run({
   "notice_banner_reject_button_hide":false,
   "preferences_center_close_button_hide":false,
   "website_name":""
+  ,
+"language":"en"
   });
 });
 </script> 
   
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 <link rel="stylesheet" href="../styles.css">
 <meta name="twitter:title" content="Social Media Lab - Text as Data">
-<meta name="twitter:description" content="">
+<meta name="twitter:description" content="Notes on computational social media analysis">
 <meta name="twitter:image" content="https://social-media-lab.net/processing/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
 <meta name="twitter:card" content="summary_large_image">
 </head>
@@ -153,9 +163,9 @@ cookieconsent.run({
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a href="../index.html" class="navbar-brand navbar-brand-logo">
     <img src="../images/logo2.png" alt="" class="navbar-logo">
     </a>
@@ -170,41 +180,42 @@ cookieconsent.run({
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html" rel="" target="">
- <span class="menu-text">Home</span></a>
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../about.html" rel="" target="">
- <span class="menu-text">About</span></a>
+    <a class="nav-link" href="../about.html"> 
+<span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://github.com/michaelachmann/social-media-lab" rel="" target="">
- <span class="menu-text">Notebooks</span></a>
+    <a class="nav-link" href="https://github.com/michaelachmann/social-media-lab"> 
+<span class="menu-text">Notebooks</span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools ms-auto tools-wide">
-    <a href="https://twitter.com/michael_achmann" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-twitter"></i></a>
-    <a href="https://github.com/michaelachmann/social-media-lab-quarto" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools tools-wide">
+    <a href="https://www.threads.net/@chaichy" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-threads"></i></a>
+    <a href="https://twitter.com/michael_achmann" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-twitter"></i></a>
+    <a href="https://github.com/michaelachmann/social-media-lab-quarto" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
-          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../processing/index.html">Text Analysis</a></li><li class="breadcrumb-item"><a href="../processing/index.html">Text as Data</a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../processing/index.html">Text Analysis</a></li><li class="breadcrumb-item"><a href="../processing/index.html">Text as Data</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
     </div>
   </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item sidebar-item-section">
@@ -242,7 +253,7 @@ cookieconsent.run({
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../getting-started/literature-review-assistant.html" class="sidebar-item-text sidebar-link">
+  <a href="../notebooks/literature-review.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">GPT Literature Review Assistant</span></a>
   </div>
 </li>
@@ -327,6 +338,12 @@ cookieconsent.run({
  <span class="menu-text">Visual Exploration</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../image-analysis/classification.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Image Classification</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -361,7 +378,7 @@ cookieconsent.run({
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -379,12 +396,12 @@ cookieconsent.run({
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
   <li><a href="#more-resources" id="toc-more-resources" class="nav-link" data-scroll-target="#more-resources">More Resources</a></li>
   </ul>
-<div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2023_11_24_OCR.ipynb"><i class="bi bi-journal-code"></i>OCR using easyocr</a></li><li><a href="https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2023_11_24_Whisper.ipynb"><i class="bi bi-journal-code"></i>Transcription using Whisper</a></li><li><a href="https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2023_11_24_Simple_Corpus_Analysis.ipynb"><i class="bi bi-journal-code"></i>Introduction to Corpus Analysis</a></li></ul></div></nav>
+<div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="../notebooks/ocr-notebook-preview.html"><i class="bi bi-journal-code"></i>OCR using easyocr</a></li><li><a href="../notebooks/whisper-notebook-preview.html"><i class="bi bi-journal-code"></i>Transcription using Whisper</a></li><li><a href="../notebooks/corpus-analysis-notebook-preview.html"><i class="bi bi-journal-code"></i>Introduction to Corpus Analysis</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../processing/index.html">Text Analysis</a></li><li class="breadcrumb-item"><a href="../processing/index.html">Text as Data</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Text as Data</h1>
 </div>
@@ -396,7 +413,7 @@ cookieconsent.run({
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Michael Achmann-Denkler <a href="https://orcid.org/0000-0002-4754-7842" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+             <p>Michael Achmann-Denkler <a href="mailto:michael.achmann@informatik.uni-regensburg.de" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> <a href="https://orcid.org/0000-0002-4754-7842" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
           </div>
   </div>
     
@@ -411,7 +428,9 @@ cookieconsent.run({
   </div>
   
 
+
 </header>
+
 
 <p>The analysis of texutal data has a long tradition under the term <a href="https://en.wikipedia.org/wiki/Natural_language_processing"><em>Natural Language Processing</em> (NLP)</a>. As noted by <span class="citation" data-cites="Bengfort2018-nr">Bengfort, Bilbro, and Ojeda (<a href="#ref-Bengfort2018-nr" role="doc-biblioref">2018</a>)</span>, “Language is <em>unstructured</em> data that has been produced by people to be understood by other people”. This characterization of language as unstructured data highlights its contrast with <em>structured</em> or <em>semi-structured</em> data. Unlike structured data, which is organized in a way that computers can easily parse and analyze, unstructured data like language requires more complex methods to be processed and understood. In the context of e.g.&nbsp;Instagram, CrowdTangle exports contain <em>structured data</em> columns such as ‘User Name’, ‘Like Count’, or ‘Comment Count’. These pieces of data are quantifiable and can be easily sorted, filtered, or counted, e.g.&nbsp;using tools like Excel or Python’s <code>pandas</code> library. For instance, we can quickly determine the most active users by counting the number of rows associated with each username. In contrast, <em>unstructured</em> data is not organized in a predefined manner and is typically more challenging to process and analyze. The ‘Description’ column in our dataset, which contains the captions of Instagram posts, is a prime example of unstructured data. These captions, composed of paragraphs or sentences, require different analytical approaches to extract meaningful insights. Unlike structured data, we cannot simply count or sort these texts in a straightforward manner. In our context, we often refer to the collection of texts we analyze as a “Corpus”. Each individual piece of text is called a “Document”. Each document can be broken down into smaller units known as “features”. Features can be words, phrases, or even patterns of words, which we then use to quantify and analyze the text <span class="citation" data-cites="Haim2023-or">(compare p.&nbsp;230 <a href="#ref-Haim2023-or" role="doc-biblioref">Haim 2023</a>)</span>. For the goal of our research seminar, we can follow the three technical perspectives inspired by <span class="citation" data-cites="Haim2023-or">Haim (<a href="#ref-Haim2023-or" role="doc-biblioref">2023</a>)</span>: 1. Frequency Analysis, 2. Contextual Analysis, and 3. Content Analysis.</p>
 <section id="schedule" class="level2">
@@ -435,7 +454,7 @@ cookieconsent.run({
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../images/tidy-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Visualization of the tidy data components, source: <a href="https://r4ds.had.co.nz/tidy-data.html">R for Data Science</a>.</figcaption>
+<figcaption>Visualization of the tidy data components, source: <a href="https://r4ds.had.co.nz/tidy-data.html">R for Data Science</a>.</figcaption>
 </figure>
 </div>
 <p>What, in context of social media data, is an obersavtion? Is it a post? I suggest to start by seeing posts as observations, i.e.&nbsp;rows. Thus, we have one table for our corpus, consisting of one row per post with multiple columns for different variables, including an <code>ID</code>, possibly a link, a referrence to the image / video, and one or more text variables for each post. When dealing with Instagram or TikTok posts, we might have three text columns: caption / description, OCR, and transcription. When dealing with stories two: OCR and transcription.</p>
@@ -456,7 +475,7 @@ Note
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../images/loom.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Keeping track of Colab notebooks with Obsidian and the <a href="https://github.com/trey-wallis/obsidian-dataloom">Dataloom</a> plugin.</figcaption>
+<figcaption>Keeping track of Colab notebooks with Obsidian and the <a href="https://github.com/trey-wallis/obsidian-dataloom">Dataloom</a> plugin.</figcaption>
 </figure>
 </div>
 <p>The <code>CSV</code> files contain only metadata, the actual media files (images / videos) are saved to different locations. The OCR and Transcription notebooks below contain code to import media files from 4CAT and Zeeschuimer-F. I suggest to save the files to <code>media/videos</code> or <code>media/images</code>. Both notebooks introduce a column <code>image_file</code> or <code>video_file</code> where the relative location of the media files is written to. Creating a new <code>ZIP</code> file using the new folder structure and saving the file to Google Drive allows us to use the media files in future notebooks (e.g.&nbsp;for image classification) without modifying the <code>image_file</code> or <code>video_file</code> columns again.</p>
@@ -494,7 +513,7 @@ Note
 <h3 class="anchored" data-anchor-id="ocr">OCR</h3>
 <div class="quarto-embed-nb-cell">
 <p>We’re using <a href="https://github.com/JaidedAI/EasyOCR">easyocr</a>. See the documentation for more complex configurations. Using CPU only this process takes from minutes to hours (depends on the amount of images). OCR may also be outsourced (e.g.&nbsp;using Google Vision API), see future sessions (and Memespector) for this.</p>
-<div class="cell" data-outputid="866bf65a-6a8a-4af6-90cc-17190b7eaaeb" data-execution_count="6">
+<div id="cell-1" class="cell" data-outputid="866bf65a-6a8a-4af6-90cc-17190b7eaaeb" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip <span class="op">-</span>q install easyocr</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.9/2.9 MB 29.7 MB/s eta 0:00:00
@@ -502,7 +521,7 @@ Note
      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 307.2/307.2 kB 29.6 MB/s eta 0:00:00</code></pre>
 </div>
 </div>
-<div class="cell" data-outputid="27992ada-4a27-4590-f9a3-fc38cb61eb3f" data-execution_count="7">
+<div id="cell-2" class="cell" data-outputid="27992ada-4a27-4590-f9a3-fc38cb61eb3f" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Imports for OCR</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> easyocr</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>reader <span class="op">=</span> easyocr.Reader([<span class="st">'de'</span>,<span class="st">'en'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -512,7 +531,7 @@ Note
 </div>
 <p>We define a very simple method to receive one string for all text recognized: The <code>readtext</code>method returns a list of text areas, in this example we concatenate the string, therefore the order of words is sometimes not correct.</p>
 <p>Also, we save the file to Google Drive to save our results.</p>
-<div class="cell" data-execution_count="8">
+<div id="cell-4" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> run_ocr(image_path):</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    ocr_result <span class="op">=</span> reader.readtext(image_path, detail <span class="op">=</span> <span class="dv">0</span>)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    ocr_text <span class="op">=</span> <span class="st">" "</span>.join(ocr_result)</span>
@@ -523,7 +542,7 @@ Note
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Saving Results to Drive</span></span>
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>df.to_csv(<span class="st">'/content/drive/MyDrive/2022-11-09-Stories-Exported.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-outputid="2ca5efb5-4254-4c36-a001-fe1a0bb5e8b5" data-execution_count="27">
+<div id="cell-5" class="cell" data-outputid="2ca5efb5-4254-4c36-a001-fe1a0bb5e8b5" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="27">
 
@@ -681,7 +700,6 @@ Note
 </tr>
 </tbody>
 </table>
-
 
 <p>5 rows × 21 columns</p>
 </div>
@@ -890,7 +908,7 @@ Note
   </div>
 </div>
 </div>
-<a class="quarto-notebook-link" id="nblink-1" href="https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2023_11_24_OCR.ipynb">Source: OCR using easyocr</a></div>
+<a class="quarto-notebook-link" id="nblink-1" href="../notebooks/ocr-notebook-preview.html#cell-0">Source: OCR using easyocr</a></div>
 </section>
 <section id="automated-audio-transcription-whisper" class="level3">
 <h3 class="anchored" data-anchor-id="automated-audio-transcription-whisper">Automated Audio Transcription (Whisper)</h3>
@@ -910,10 +928,10 @@ Note
 <div class="quarto-embed-nb-cell">
 <p><strong>Extract Audio from Video File</strong></p>
 <p>After loading the metadta and media files from the Google Drive, we extract the audio from each video file to prepare the automated transcription.</p>
-<div class="cell" data-execution_count="8">
+<div id="cell-1" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install <span class="op">-</span>q moviepy</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="9">
+<div id="cell-2" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Set audio directory path</span></span>
@@ -924,7 +942,7 @@ Note
 <span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Create the directory if it does not exist</span></span>
 <span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    os.makedirs(audio_path)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-outputid="5dcf27b3-c6d4-4548-f9e4-657635c9bac0" data-execution_count="10">
+<div id="cell-3" class="cell" data-outputid="5dcf27b3-c6d4-4548-f9e4-657635c9bac0" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> moviepy.editor <span class="im">import</span> <span class="op">*</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> index, row <span class="kw">in</span> df.iterrows():</span>
@@ -962,7 +980,7 @@ MoviePy - Done.</code></pre>
 </div>
 </div>
 <p>We’ve extracted the audio content of each video file to a <code>mp3</code> file in the <code>media/audio</code> folder. The files keep the name of the video file. We added new columns to the metadata for audio duration and sampling_rate. In case the video did not include an audio file, <code>smapling_rate</code>is set to <code>-1</code>, which we use to filter the <code>df</code> when transcribing the files.</p>
-<div class="cell" data-outputid="46950938-f26d-4c6d-b933-dcefdcc23c26" data-execution_count="11">
+<div id="cell-5" class="cell" data-outputid="46950938-f26d-4c6d-b933-dcefdcc23c26" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>df[df[<span class="st">'video_file'</span>] <span class="op">!=</span> <span class="st">""</span>].head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
 
@@ -1024,7 +1042,6 @@ MoviePy - Done.</code></pre>
 </tr>
 </tbody>
 </table>
-
 
 <p>1 rows × 24 columns</p>
 </div>
@@ -1110,7 +1127,7 @@ MoviePy - Done.</code></pre>
 </div>
 </div>
 <p>Let’s update the <code>ZIP</code>ed folder to include the audio files.</p>
-<div class="cell" data-outputid="d5a1ced4-f1aa-4bab-fdb7-1363c61cfcdd" data-execution_count="12">
+<div id="cell-7" class="cell" data-outputid="d5a1ced4-f1aa-4bab-fdb7-1363c61cfcdd" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span><span class="bu">zip</span> <span class="op">-</span>r <span class="op">/</span>content<span class="op">/</span>drive<span class="op">/</span>MyDrive<span class="op">/</span><span class="dv">2023</span><span class="op">-</span><span class="dv">11</span><span class="op">-</span><span class="dv">24</span><span class="op">-</span><span class="dv">4</span><span class="er">CAT</span><span class="op">-</span>Images<span class="op">-</span>Clean.<span class="bu">zip</span> media</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>updating: media/ (stored 0%)
@@ -1121,7 +1138,7 @@ updating: media/videos/CzD93SEIi-E.mp4 (deflated 0%)
 </div>
 </div>
 <p>And save the updated metadata file. <strong>Change filename when importing stories here!</strong></p>
-<div class="cell" data-execution_count="14">
+<div id="cell-9" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>df.to_csv(four_cat_file_path)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>Transcriptions using Whisper</strong></p>
@@ -1137,12 +1154,12 @@ updating: media/videos/CzD93SEIi-E.mp4 (deflated 0%)
 </blockquote>
 </blockquote>
 <p>– https://huggingface.co/docs/transformers/model_doc/whisper</p>
-<div class="cell" data-execution_count="15">
+<div id="cell-11" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install <span class="op">-</span>q transformers</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The next code snippet initializes the Whisper model. The <code>transcribe_aduio</code> method is applied to each row of the dataframe where <code>sampling_rate</code> &gt; <code>0</code>, thus only to those lines with referencees to audio files. Each audio file is transcribed using Whisper, the result, one text string, is saved to the <code>transcript</code> column.</p>
 <p><strong>Adjust the language variable according to your needs!</strong> The model is also capable of automated translation, e.g.&nbsp;setting <code>language</code> to english when processing German content results in an English translation of the speech. (Additionally, the <code>task</code> variable accepts <code>translate</code>).</p>
-<div class="cell" data-outputid="8400ca21-c56c-422f-c4ae-c1f036647d9f" data-execution_count="19">
+<div id="cell-13" class="cell" data-outputid="8400ca21-c56c-422f-c4ae-c1f036647d9f" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> transformers <span class="im">import</span> pipeline, WhisperProcessor, WhisperForConditionalGeneration</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> librosa</span>
@@ -1194,7 +1211,7 @@ updating: media/videos/CzD93SEIi-E.mp4 (deflated 0%)
 <span id="cb16-49"><a href="#cb16-49" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply the transcription function to each row in the filtered DataFrame</span></span>
 <span id="cb16-50"><a href="#cb16-50" aria-hidden="true" tabindex="-1"></a>df.loc[filtered_index, <span class="st">'transcript'</span>] <span class="op">=</span> df.loc[filtered_index, <span class="st">'audio_file'</span>].<span class="bu">apply</span>(transcribe_audio)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-outputid="6ba00b74-ad5e-4def-9bbb-d5d69ac399be" data-execution_count="20">
+<div id="cell-14" class="cell" data-outputid="6ba00b74-ad5e-4def-9bbb-d5d69ac399be" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>df[df[<span class="st">'video_file'</span>] <span class="op">!=</span> <span class="st">""</span>].head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="20">
 
@@ -1256,7 +1273,6 @@ updating: media/videos/CzD93SEIi-E.mp4 (deflated 0%)
 </tr>
 </tbody>
 </table>
-
 
 <p>1 rows × 25 columns</p>
 </div>
@@ -1341,21 +1357,21 @@ updating: media/videos/CzD93SEIi-E.mp4 (deflated 0%)
   </div>
 </div>
 </div>
-<div class="cell" data-outputid="547cdf2d-3e04-441c-d99f-4ea291390324" data-execution_count="21">
+<div id="cell-15" class="cell" data-outputid="547cdf2d-3e04-441c-d99f-4ea291390324" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>df.loc[<span class="dv">4</span>, <span class="st">'transcript'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="21">
 <pre><code>'Ich bitte auf den abgelagerten Vortrag der Maaßen-Söder-Entfühlen ein.  Erfüllung meiner Amtspflichten, so wahr mir Gott helfe. Ich schwöre Treue der Verfassung des Freistaates Bayern, Gehorsam den Gesetzen und gewissenhafte Erfüllung meiner Amtspflichten, so wahr mir Gott helfe. Herr Ministerpräsident, ich darf Ihnen im Namen des ganzen Hauses ganz persönlich die herzlichsten Glückwünsche aussprechen und wünsche Ihnen viel Erfolg und gute Nerven auch bei Ihrer Aufgabe. Herzlichen Dank.  Applaus'</code></pre>
 </div>
 </div>
 <p>Overall, the transcriptions work well. The first sentence above, however, shows that we still can expect misinterpretations.</p>
-<a class="quarto-notebook-link" id="nblink-2" href="https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2023_11_24_Whisper.ipynb">Source: Transcription using Whisper</a></div>
+<a class="quarto-notebook-link" id="nblink-2" href="../notebooks/whisper-notebook-preview.html#cell-0">Source: Transcription using Whisper</a></div>
 </section>
 <section id="analyzing-corpus-and-word-frequencies" class="level3">
 <h3 class="anchored" data-anchor-id="analyzing-corpus-and-word-frequencies">Analyzing Corpus and Word Frequencies</h3>
 <div class="quarto-embed-nb-cell">
 <p>Among a variety of possibilities, we can, for example, look at the frequencies of the words contained in the corpus or examine the corpus for recurring themes it contains.</p>
 <p>First we need to import all the required libraries once again. The <a href="https://www.nltk.org/howto.html">Natural Language Toolkit (NLTK)</a> gives us access to a variety of natural language processing functions (e.g.&nbsp;tokenisation, stop word removal, part-of-speech tagging, …).</p>
-<div class="cell" data-outputid="0a4c7fe9-0768-4e96-b888-680b2e1c6f35" data-execution_count="4">
+<div id="cell-3" class="cell" data-outputid="0a4c7fe9-0768-4e96-b888-680b2e1c6f35" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> nltk</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>nltk.download(<span class="st">'punkt'</span>)</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.tokenize <span class="im">import</span> RegexpTokenizer</span>
@@ -1365,13 +1381,13 @@ updating: media/videos/CzD93SEIi-E.mp4 (deflated 0%)
 <span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>When analysing word frequencies, we can use stop word lists to ignore words that occur frequently but are not relevant to us. We can easily download such a list. However, this can also be individually adapted to the purpose.</p>
-<div class="cell" data-execution_count="5">
+<div id="cell-5" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Retrieve Stopwords from Github</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>sw_json <span class="op">=</span> requests.get(<span class="st">'https://github.com/stopwords-iso/stopwords-de/raw/master/stopwords-de.json'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now we can tokenise the existing text, remove the stop words or punctuation marks they contain, convert the words to lower case, or use bi-grams in addition to single-word tokens.</p>
 <p>We then sum up the occurrences of the individual words and make the results available in a DataFrame.</p>
-<div class="cell" data-execution_count="7">
+<div id="cell-7" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> word_freq(text, punctuation<span class="op">=</span><span class="va">False</span>, stop_words <span class="op">=</span> <span class="va">False</span>, lowercasing <span class="op">=</span> <span class="va">False</span>, bigrams <span class="op">=</span> <span class="va">False</span>):</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> punctuation:</span>
@@ -1408,7 +1424,7 @@ updating: media/videos/CzD93SEIi-E.mp4 (deflated 0%)
 <span id="cb22-34"><a href="#cb22-34" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-35"><a href="#cb22-35" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-cellview="form" data-execution_count="17">
+<div id="cell-8" class="cell" data-cellview="form" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1424,7 +1440,7 @@ updating: media/videos/CzD93SEIi-E.mp4 (deflated 0%)
 <span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a><span class="co">#@markdown Do you want to remove punctuation before counting the occurances?</span></span>
 <span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>punctuation <span class="op">=</span> <span class="va">True</span> <span class="co">#@param {type:"boolean"}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-outputid="dc248b91-d657-4d0d-e55f-141fe7976329" data-execution_count="18">
+<div id="cell-9" class="cell" data-outputid="dc248b91-d657-4d0d-e55f-141fe7976329" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load stopwords file if necessary</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> stopwords:</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    stopwords <span class="op">=</span> sw_json.json()</span>
@@ -1511,7 +1527,6 @@ updating: media/videos/CzD93SEIi-E.mp4 (deflated 0%)
 </tr>
 </tbody>
 </table>
-
 
 </div>
     <div class="colab-df-buttons">
@@ -1722,11 +1737,11 @@ updating: media/videos/CzD93SEIi-E.mp4 (deflated 0%)
 <p><strong>Wordcloud</strong></p>
 <p>One way to visualise word frequencies and recurring themes of texts are word clouds. These basically show the most frequently occurring words in the text (similar to the table created earlier), but more frequently occurring words are depicted larger than less frequently occurring words.</p>
 <p>First, we have to install the necessary library <code>wordcloud</code>.</p>
-<div class="cell" data-execution_count="10">
+<div id="cell-11" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install <span class="op">-</span>q wordcloud</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The actual implementation of this approach is relatively simple. We need to combine all the texts into a single text, as we did in the previous step with the frequency analysis, and pass it to the imported library.</p>
-<div class="cell" data-execution_count="11">
+<div id="cell-13" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> wordcloud <span class="im">import</span> WordCloud, STOPWORDS</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> generate_wordcloud(text, path):</span>
@@ -1744,7 +1759,7 @@ updating: media/videos/CzD93SEIi-E.mp4 (deflated 0%)
 <span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a>    plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Once again, we have the option of adjusting various parameters. Remember to specify the right file path, file name and column of your text data!</p>
-<div class="cell" data-cellview="form" data-execution_count="12">
+<div id="cell-15" class="cell" data-cellview="form" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co">#@markdown Input for additional stopwords; whitespace separated</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>stopwords_extension_wc <span class="op">=</span> <span class="st">''</span> <span class="co">#@param {type: "string"}</span></span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1753,7 +1768,7 @@ updating: media/videos/CzD93SEIi-E.mp4 (deflated 0%)
 </div>
 <p>Now all we have to do is load the stop word file, add our own additions and then trigger the creation of the word cloud using the function we created at the beginning.</p>
 <p>The result image is saved in the defined <code>data_path</code>.</p>
-<div class="cell" data-outputid="2ef03789-d358-46c4-d88b-650478847260" data-execution_count="14">
+<div id="cell-17" class="cell" data-outputid="2ef03789-d358-46c4-d88b-650478847260" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1771,10 +1786,14 @@ updating: media/videos/CzD93SEIi-E.mp4 (deflated 0%)
 <span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a>generate_wordcloud(df[text_column], <span class="st">'wordcloud.png'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="index_files/figure-html/cell-10-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/..-notebooks-corpus-analysis-notebook-cell-10-output-1.png" class="img-fluid figure-img"></p>
+</figure>
 </div>
 </div>
-<a class="quarto-notebook-link" id="nblink-3" href="https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2023_11_24_Simple_Corpus_Analysis.ipynb">Source: Introduction to Corpus Analysis</a></div>
+</div>
+<a class="quarto-notebook-link" id="nblink-3" href="../notebooks/corpus-analysis-notebook-preview.html#cell-0">Source: Introduction to Corpus Analysis</a></div>
 </section>
 </section>
 <section id="conclusion" class="level2">
@@ -1802,7 +1821,7 @@ updating: media/videos/CzD93SEIi-E.mp4 (deflated 0%)
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-Baden2022-oe" class="csl-entry" role="listitem">
 Baden, Christian, Christian Pipal, Martijn Schoonvelde, and Mariken A C G van der Velden. 2022. <span>“<span class="nocase">Three Gaps in Computational Text Analysis Methods for Social Sciences: A Research Agenda</span>.”</span> <em>Communication Methods and Measures</em> 16 (1): 1–18. <a href="https://doi.org/10.1080/19312458.2021.2015574">https://doi.org/10.1080/19312458.2021.2015574</a>.
 </div>
@@ -1815,7 +1834,7 @@ Haim, Mario. 2023. <em><span class="nocase">Computational Communication Science:
 <div id="ref-Wickham2014-bz" class="csl-entry" role="listitem">
 Wickham, Hadley. 2014. <span>“<span>Tidy Data</span>.”</span> <em>Journal of Statistical Software, Articles</em> 59 (10): 1–23. <a href="https://doi.org/10.18637/jss.v059.i10">https://doi.org/10.18637/jss.v059.i10</a>.
 </div>
-</div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></div></section></div></main> <!-- /main -->
+</div></section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -1857,6 +1876,33 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       } else {
         el.classList.add('notransition');
       }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
     }
   }
   const toggleColorMode = (alternate) => {
@@ -1925,13 +1971,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  let localAlternateSentinel = 'default';
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
     // Read the current dark / light value 
     let toAlternate = !hasAlternateSentinel();
     toggleColorMode(toAlternate);
     setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
   };
   // Ensure there is a toggle, if there isn't float one in the top right
   if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -2010,10 +2058,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -2023,8 +2070,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -2037,6 +2093,125 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -2080,6 +2255,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -2105,6 +2281,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -2166,12 +2368,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../data-collection/ig-stories.html" class="pagination-link">
+      <a href="../data-collection/ig-stories.html" class="pagination-link  aria-label=" instagram="" stories"="">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Instagram Stories</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../processing/exploration.html" class="pagination-link">
+      <a href="../processing/exploration.html" class="pagination-link" aria-label="Text Exploration">
         <span class="nav-page-text">Text Exploration</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
@@ -2182,12 +2384,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-left">
       &nbsp;
     </div>   
-    <div class="nav-footer-center"><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+    <div class="nav-footer-center">
+
+<div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
   </div>
 </footer>
+
 
 
 
