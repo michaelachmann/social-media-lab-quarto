@@ -6,7 +6,7 @@ sidebar: false
 
 ## Website Owner
 
-**Michael Achmann** <br/>
+**Michael Achmann-Denkler** <br/>
 Universitätsstr. 31 <br/>
 93053 Regensburg <br/>
 Email: michael.achmann@informatik.uni-regensburg.de <br/>
@@ -14,10 +14,10 @@ Phone: 0941 / 943 5098
 
 
 ## Copyright Information
-Copyright © Michael Achmann 2023. The text-content and supplement materials are licensed unter [GNU GPL 3.0](https://github.com/michaelachmann/social-media-lab/blob/main/LICENSE). 
+&copy; Michael Achmann-Denkler 2023-24.  All text content on this website is published under [the creative commons attribution (CC-BY) license](https://creativecommons.org/licenses/by/4.0/). All code is released under the [GNU GPLv3](https://github.com/michaelachmann/social-media-lab/blob/v0.0.1/LICENSE).
 
 ### Citation
-Citing information for the website will follow soon.
+ Please use the citation data provided at the bottom of each page when quoting parts of this website in academic work. The website repository is available on [GitHub](https://github.com/michaelachmann/social-media-lab-quarto) and registered with [Zenodo](https://doi.org/10.5281/zenodo.10039756) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10039756.svg)](https://zenodo.org/doi/10.5281/zenodo.10039756). Code examples and computational notebooks are published on the [supplement repository](https://github.com/michaelachmann/social-media-lab), which is also registered with [Zenodo](https://doi.org/10.5281/zenodo.8199901) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.8199901.svg)](https://doi.org/10.5281/zenodo.8199901).
 
 ## Disclaimer
 The information contained on this website is for general informational purposes only. While we make every effort to keep the information up to date and accurate, we make no representations or warranties of any kind, express or implied, about the completeness, accuracy, reliability, suitability, or availability concerning the website or the information, products, services, or related graphics contained on the website for any purpose. Any reliance you place on such information is strictly at your own risk.
@@ -26,7 +26,7 @@ The information contained on this website is for general informational purposes 
 This website may contain links to third-party websites. These links are provided solely for your convenience and do not imply any endorsement, sponsorship, or recommendation by us. We have no control over the content of these websites and assume no responsibility for their accuracy, legality, or content.
 
 ## Data Protection
-This [Quarto](https://quarto.org/) website is hosted on [GitHub](https://github.com/). While this website does not use any analytics software, GitHub may store cookies on your device. You can change the [cookie preferences]{#open_preferences_center} at any time.
+This [Quarto](https://quarto.org/) website is hosted on [GitHub](https://github.com/). While this website does not use any analytics software, GitHub may store cookies on your device. You can change the <u>[cookie preferences (click here!)]{#open_preferences_center}</u> at any time.
 
 ## Trademark Notice
 All trademarks and logos used on this website are the property of their respective owners.

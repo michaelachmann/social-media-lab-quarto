@@ -1,0 +1,48 @@
+---
+format: 
+  html: default
+title: "Image Classification"
+date: 2024-1-22
+author:
+  - name: Michael Achmann-Denkler
+    id: ma
+    orcid: 0000-0002-4754-7842
+    email: michael.achmann@informatik.uni-regensburg.de
+license: CC BY
+bibliography: ../literature.bib
+notebook-view:
+  - notebook: ../notebooks/2024_01_22_Classification_With_multimodal_GPT.ipynb
+    title: "Multimodal GPT-4"
+    url: https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2024_01_22_Classification_With_multimodal_GPT.ipynb
+  - notebook: ../notebooks/2024_01_19_Classification_With_CLIP.ipynb
+    title: "CLIP Classification"
+    url: https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2024_01_19_Classification_With_CLIP.ipynb
+citation:
+  type: webpage
+  doi: 10.5281/zenodo.10039756
+---
+
+As outlined in the [Images as Data chapter](index.qmd), multiple approaches towards image classification exist. In the current version of this chapter I would like to concentrate on zero-shot classifications using [CLIP](https://openai.com/research/clip), a neural network desigend by OpenAI, and multimodal [GPT-4](https://openai.com/research/gpt-4). The first notebook, based on CLIP, experiments with image-type classification for the analysis of political communication. Image types have been used for the analysis of Alexander Van der Bellen's storytelling in his Instagram campaign [@Liebhart2017-wf], and for the analysis of the 2017 German election of Instagram [@Haim2021-bp]. Through my experiments I have found some shortcomings of the image types in combination with computational analyses, as they require the annotator to have a deeper understanding beyond the knowledge of presence or absence of singular items. Additionally, the image types from the literature have overlaps, which is not exactly compatible with theory behind image type analysis [@Grittmann2011-au], nor visual content analysis [@Rose2016-qb], which suggest categories to be mutually exclusive. So, in short, expect the classification results in this case to be mixed!  
+
+For the second experiment, the classification using multimodal GPT-4, I'm showcasing some items from the visual frame analysis [@Grabe2009-pe], which has been applied in several social media and Instagram studies. Our experiments are based on the adaption by @Gordillo-Rodriguez2023-lu, who created a comprehensive overview of items and their theoretical grounding. For GPT-4 we will classify multiple items at the same time. The notebook keeps track of the classification cost, though not as sophisticated as for the textual classification (once more: Work in Progress!). 
+
+A third approach towards the classification of visual material is the [Ensemble](https://en.wikipedia.org/wiki/Ensemble_learning) approach, where we combine e.g. multiple model outputs for a final classification. I have experimented with the combination of automatically generated image captions, the output object detection, and the textual content of images. Combining each of these variables per image into one final classification using GPT, I have obtained promising results in first (informal) experiments. A proper validation and comparison to other classification approaches is yet needed.
+
+## CLIP for Image Type Classification
+
+{{< embed ../notebooks/2024_01_19_Classification_With_CLIP.ipynb echo=true >}}
+
+## Multimodal GPT-4 for Visual Frame Classification
+
+{{< embed ../notebooks/2024_01_22_Classification_With_multimodal_GPT.ipynb echo=true >}}
+
+## Ensemble
+::: {.callout-caution}
+## Work-In-Progress
+Will be added for the session on 29th of January.
+:::
+
+
+
+## Conclusion
+All image classification approaches introduced in this chapter have some experimental characters. They show promising results for some applications, but we will need to keep experimenting and evaluating the approaches, to compare the approaches with one another, to find the best, and especially most valid of all! Your projects are going to be good test cases to try and see which classification approach works (best). In the next session we will come back to the [Agreement & Evaluation](../evaluation/agreement.qmd) chapter and update the notebooks to include images in our annotations studies. 

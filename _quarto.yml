@@ -32,6 +32,7 @@ website:
         contents:
           - image-analysis/index.qmd
           - image-analysis/exploration.qmd
+          - image-analysis/classification.qmd
       - section: "Evaluation"
         contents:
           - evaluation/index.qmd
@@ -40,10 +41,12 @@ website:
   navbar:
     logo: images/logo2.png
     tools:
+        - icon: threads
+          href: https://www.threads.net/@chaichy
         - icon: twitter
           href: https://twitter.com/michael_achmann
         - icon: github
-          href:  https://github.com/michaelachmann/social-media-lab-quarto
+          href: https://github.com/michaelachmann/social-media-lab-quarto
     left:
       - href: index.qmd
         text: Home
