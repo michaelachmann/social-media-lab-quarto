@@ -208,7 +208,7 @@ cookieconsent.run({
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../getting-started/theory.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Introduction to SMA</span></a>
+ <span class="menu-text">Interdisciplinary Approaches to Social Media Analysis</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -372,7 +372,7 @@ cookieconsent.run({
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Project Creation</h1>
+<h1 class="title">Instagram Stories</h1>
 </div>
 
 
@@ -485,7 +485,10 @@ Blocked Accounts (<em>very</em> quickly)
 </section>
 <section id="the-firebase-interface-notebook" class="level3">
 <h3 class="anchored" data-anchor-id="the-firebase-interface-notebook">The Firebase Interface Notebook</h3>
+</section>
 <div class="quarto-embed-nb-cell">
+<section id="project-creation" class="level3">
+<h3 class="anchored" data-anchor-id="project-creation">Project Creation</h3>
 <p>The following lines of code assume that the firebase <em>Credential File</em> has been downloaded from GRIPS and uploaded to Colab / your Jupyter project path. First of all install the necessary packages:</p>
 <div class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip <span class="op">-</span>q install firebase<span class="op">-</span>admin</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -501,8 +504,9 @@ Blocked Accounts (<em>very</em> quickly)
 <span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>firebase_admin.initialize_app(cred)</span>
 <span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>db <span class="op">=</span> firestore.client()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="project-creation" class="level3">
-<h3 class="anchored" data-anchor-id="project-creation">Project Creation</h3>
+</section>
+<section id="project-creation-1" class="level3">
+<h3 class="anchored" data-anchor-id="project-creation-1">Project Creation</h3>
 <p>Please provide an <code>alert_email</code> and <code>project_name</code> to create a new project on the backend. The backend checks hourly when the last stories have been uploaded to a project. If no story has been uploaded for more than 12 hours, an email alert will be triggered.</p>
 <p>Run the cell to create the new project on the backend. When successfull, the <em>project id</em> and <em>api key</em> will be displayed.</p>
 <div class="cell" data-cellview="form" data-outputid="b7c520af-4dc7-4534-fe0d-fdb162c13ea6" data-execution_count="10">
@@ -1092,7 +1096,6 @@ Work-In-Progress
 </div>
 </section>
 <a class="quarto-notebook-link" id="nblink-1" href="https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2023_11_07_Firebase_Interface.ipynb">Source: Firebase Interface Notebook</a></div>
-</section>
 <div class="pros-cons-container">
 <section id="pros-1" class="level3 pros">
 <h3 class="anchored" data-anchor-id="pros-1">Pros:</h3>
