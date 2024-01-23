@@ -53,6 +53,14 @@ Captioning
 Aesthetic Analyses & Pose Estimation
 : We can automatically measure extract aesthetic features, like dominat colors, or colour themes, of images and use them for downstream tasks. Similarly some technologies can estimate the pose of people or heads. Head positions have, for instance, been used as a proxy to estimate the camera angle in political communication [@Haim2021-bp]. I will provide a notebooks for simple colour analyses shortly, however aesthetics and poses are secondary in this semester.
 
+
+## Visual Analysis of Videos
+::: {.callout-caution}
+## Work-In-Progress
+Videos consists of multiple images (frames) per second. One workaround for video exploration and classification is to use e.g. every n-th frame from the video. 
+:::
+
+
 ## Summary
 This brief overview of Images as Data and Distant Viewing in the Computational Social Science and Digital Humanities serves as a theoretical base for the next chapters, [Visual Exploration](exploration.qmd) and [Visual Classification](#). @Peng2023-hi's paper presents a wide variety of potential methods and tools, additionaly they have a particular perspective of political communication which aligns with several of our projects. Both materials emhasize the gap between theory and the pitfall of mistaking computational analyses for objective analyses, as the annotations used for validation and training of the computational models inherently have biases. @Arnold2023-ev's chapter is outstanding since they combine interests from the Digital Humanities and Computational Social Science, which reflects the motiviation of this seminar. 
 
