@@ -9,7 +9,9 @@ Welcome to this collection of notes on social media analysis with a special focu
 ## Content
 
 * [Course Organization](getting-started/index.qmd): Introduction to the course including the course schedule.
-* [Introduction to Social Media Analysis](getting-started/theory.qmd):  Overview of Social Media Analysis (SMA) in academic and professional contexts, focusing on its intersection with communication science, political science, and computational methods. 
+* [Interdisciplinary Approaches to Social Media Analysis](getting-started/theory.qmd):  Overview of Social Media Analysis (SMA) in academic and professional contexts, focusing on its intersection with communication science, political science, and computational methods. 
+* [Related Work](getting-started/related-work.qmd): An overview of literature reviews on the (computational) analysis of social media, with a special focus on Instagram. Additionally some hands-on advice for writing your own literature reviews.
+* [GPT Literature Assistant](getting-started/literature-review-assistant.qmd): A simple notebook showcasing some possibilities of OpenAI's GPT API and how to use it to support your literature selection. 
 * [Tools](getting-started/tools.qmd): A short guide for tools and software beneficial for visual social media analysis. Key tools discussed include Colab, a Google platform for collaborative work using Python and Jupyter notebooks, and Obsidian, a versatile note-taking app with plugins for task organization and literature notes.
 * [Data Collection: Instagram Posts](data-collection/ig-posts.qmd): Code examples and notebooks to collect Instagram posts using instaloader, CrowdTangle, or Zeeschuimer & 4CAT.
 * [Data Collection: Instagram Stories](data-collection/ig-stories.qmd):  Code examples and notebooks to collect Instagram posts using instaloader or Zeeschuimer-F. 

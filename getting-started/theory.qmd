@@ -1,7 +1,7 @@
 ---
 format: 
   html: default
-title: "Introduction to SMA"
+title: "Interdisciplinary Approaches to Social Media Analysis"
 date: 2023-10-23
 bibliography: ../literature.bib
 author:
