@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.539">
+<meta name="generator" content="quarto-1.3.433">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -24,7 +24,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -60,7 +60,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
-  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -79,7 +78,7 @@ div.csl-indent {
 }</style>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -108,13 +107,7 @@ div.csl-indent {
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 50,
-  "keyboard-shortcut": [
-    "f",
-    "/",
-    "s"
-  ],
-  "show-item-context": false,
+  "limit": 20,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -123,7 +116,6 @@ div.csl-indent {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
-    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -141,8 +133,6 @@ cookieconsent.run({
   "notice_banner_reject_button_hide":false,
   "preferences_center_close_button_hide":false,
   "website_name":""
-  ,
-"language":"en"
   });
 });
 </script> 
@@ -150,43 +140,16 @@ cookieconsent.run({
 <script type="module" src="../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
 <link href="../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 <script src="https://unpkg.com/@jupyter-widgets/html-manager@*/dist/embed-amd.js" crossorigin="anonymous"></script>
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
 <link rel="stylesheet" href="../styles.css">
 <meta name="twitter:title" content="Social Media Lab - Agreement &amp; Evaluation">
-<meta name="twitter:description" content="Notes on computational social media analysis">
+<meta name="twitter:description" content="">
 <meta name="twitter:image" content="https://social-media-lab.net/evaluation/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
 <meta name="twitter:card" content="summary_large_image">
 </head>
@@ -195,9 +158,9 @@ window.Quarto = {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container mx-auto">
+      <div class="navbar-brand-container">
     <a href="../index.html" class="navbar-brand navbar-brand-logo">
     <img src="../images/logo2.png" alt="" class="navbar-logo">
     </a>
@@ -212,42 +175,42 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
-<span class="menu-text">Home</span></a>
+    <a class="nav-link" href="../index.html" rel="" target="">
+ <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../about.html"> 
-<span class="menu-text">About</span></a>
+    <a class="nav-link" href="../about.html" rel="" target="">
+ <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://github.com/michaelachmann/social-media-lab"> 
-<span class="menu-text">Notebooks</span></a>
+    <a class="nav-link" href="https://github.com/michaelachmann/social-media-lab" rel="" target="">
+ <span class="menu-text">Notebooks</span></a>
   </li>  
 </ul>
-          </div> <!-- /navcollapse -->
-          <div class="quarto-navbar-tools tools-wide">
-    <a href="https://www.threads.net/@chaichy" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-threads"></i></a>
-    <a href="https://twitter.com/michael_achmann" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-twitter"></i></a>
-    <a href="https://github.com/michaelachmann/social-media-lab-quarto" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
+            <div class="quarto-navbar-tools ms-auto tools-wide">
+    <a href="https://www.threads.net/(chaichy?)" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-threads"></i></a>
+    <a href="https://twitter.com/michael_achmann" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-twitter"></i></a>
+    <a href="https://github.com/michaelachmann/social-media-lab-quarto" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
+          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../evaluation/index.html">Evaluation</a></li><li class="breadcrumb-item"><a href="../evaluation/agreement.html">Agreement &amp; Evaluation</a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../evaluation/index.html">Evaluation</a></li><li class="breadcrumb-item"><a href="../evaluation/agreement.html">Agreement &amp; Evaluation</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
     </div>
   </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item sidebar-item-section">
@@ -285,7 +248,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../notebooks/literature-review.html" class="sidebar-item-text sidebar-link">
+  <a href="../getting-started/literature-review-assistant.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">GPT Literature Review Assistant</span></a>
   </div>
 </li>
@@ -410,7 +373,7 @@ window.Quarto = {
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -433,12 +396,12 @@ window.Quarto = {
   <li><a href="#conclusion-prompt-optimization" id="toc-conclusion-prompt-optimization" class="nav-link" data-scroll-target="#conclusion-prompt-optimization">Conclusion: Prompt Optimization</a></li>
   <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further Reading</a></li>
   </ul>
-<div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="../notebooks/2024_01_02_Interrater_Embedded-preview.html"><i class="bi bi-journal-code"></i>-</a></li><li><a href="../notebooks/2024_01_04_Evaluation_Kurs-preview.html"><i class="bi bi-journal-code"></i>Evaluation Notebook</a></li></ul></div></nav>
+<div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="#"><i class="bi bi-journal-code"></i>-</a></li><li><a href="https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2024_01_04_Evaluation_Kurs.ipynb"><i class="bi bi-journal-code"></i>Evaluation Notebook</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content page-columns page-full" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../evaluation/index.html">Evaluation</a></li><li class="breadcrumb-item"><a href="../evaluation/agreement.html">Agreement &amp; Evaluation</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Agreement &amp; Evaluation</h1>
 </div>
@@ -450,7 +413,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Michael Achmann-Denkler <a href="mailto:michael.achmann@informatik.uni-regensburg.de" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> <a href="https://orcid.org/0000-0002-4754-7842" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+             <p>Michael Achmann-Denkler <a href="https://orcid.org/0000-0002-4754-7842" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
           </div>
   </div>
     
@@ -465,9 +428,7 @@ window.Quarto = {
   </div>
   
 
-
 </header>
-
 
 <p>The <a href="../evaluation/index.html">previous chapter</a> focused on the creation of a Ground Truth dataset using human annotations. In this chapter we pick up on the annotated data and will first assess the quality of the annotations before adopting them as a gold standard. The integrity of the dataset directly influences the validity of our model evaluations. To this end, we take a look at two interrater agreement measures: Cohen’s Kappa and Krippendorff’s Alpha. These metrics are important for quantifying the level of agreement among annotators, thereby ensuring that our dataset is not only reliable but also representative of the diverse perspectives inherent in social media analysis. Once we established the quality of our annotations, we will use them as ground truth to determine how well our computational approach performs when applied to real-world data. The performance of machine learning models is typically assessed using a variety of metrics, each offering a different perspective on the model’s effectiveness. In this chapter, we will take a look at four fundamental metrics: Accuracy, Precision, Recall, and F1 Score.</p>
 <p>In the first part of the chapter we will take a look at <a href="#interrater-agreement">interrater agreements</a> and <a href="#machine-learning-evaluation-metrics">machine learning evaluation measures</a>. In the <a href="#application">application part</a> I provide the notebooks to:</p>
@@ -660,21 +621,17 @@ Static Example
 Calculating the Krippendorff Alpha is more complex than Cohen’s kappa. The example below is static, use the code below to calculate Krippendorff’s Alpha in your Jupyter Notebook.
 </p>
 <div class="quarto-embed-nb-cell">
-<div id="cell-2" class="cell" data-outputid="55eb486d-38d2-4d72-fd44-62e846013cbf" data-execution_count="88">
+<div class="cell" data-outputid="55eb486d-38d2-4d72-fd44-62e846013cbf" data-execution_count="88">
 <div class="cell-output cell-output-stdout">
 <pre><code>n: 65
 Disagreement: 10%
 Krippendorff's Alpha: 0.8164136622390892</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="agreement_files/figure-html/..-notebooks-2024_01_02_Interrater_Embedded-cell-4-output-2.png" class="img-fluid figure-img"></p>
-</figure>
+<p><img src="agreement_files/figure-html/cell-4-output-2.png" class="img-fluid"></p>
 </div>
 </div>
-</div>
-<a class="quarto-notebook-link" id="nblink-1" href="../notebooks/2024_01_02_Interrater_Embedded-preview.html#cell-0">Source: -</a></div>
+<a class="quarto-notebook-link" id="nblink-1" href="#">Source: -</a></div>
 </div>
 <p>In order to calculate Krippendorff’s Alpha using python we need to install the <code>krippendorff</code> package: <code>pip install krippendorff</code>. Calculating the <span class="math inline">\(\alpha\)</span> value using python is straightforward – as long as the codings are provided as integers.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> krippendorff</span>
@@ -1003,7 +960,7 @@ Adjust the values of the confusion matrix to see how they affect accuracy, preci
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../images/confusion-matrix.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<figcaption>An example of a confusion matrix for a complex classification task: Face Recognition on Social Media images. The matrix shows an abundance of false negatives, see right-hand <em>Unknown</em> column: The value shows for each row how many faces for a specific person have not been recognized.</figcaption>
+<figcaption class="figure-caption">An example of a confusion matrix for a complex classification task: Face Recognition on Social Media images. The matrix shows an abundance of false negatives, see right-hand <em>Unknown</em> column: The value shows for each row how many faces for a specific person have not been recognized.</figcaption>
 </figure>
 </div>
 <p>The color intensity in each cell corresponds to the count, with darker cells indicating higher numbers. This visual gradation allows for quick identification of which classes are being predicted accurately and which are not.</p>
@@ -1081,44 +1038,44 @@ Adjust the values of the confusion matrix to see how they affect accuracy, preci
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../images/annotation-interface-text.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<figcaption>The annotation interface for the annotation of multiple binary variables.</figcaption>
+<figcaption class="figure-caption">The annotation interface for the annotation of multiple binary variables.</figcaption>
 </figure>
 </div>
 <p>Exporting the annotations is straightforward: On the dashboard of your project, click “Export”:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../images/ls-export1.png" class="img-fluid figure-img"></p>
-<figcaption>Click on “Export” in the top-right corner.</figcaption>
+<figcaption class="figure-caption">Click on “Export” in the top-right corner.</figcaption>
 </figure>
 </div>
 <p>Next, choose “Create New Snapshot” (Step 1). When creating the snapshot we may keep the original settings, click “Create Snapshot”. The application takes you back to the previous screen. Now we’re ready to click “Download” (Step 3). Your browser starts downloading a JSON file. Depending on the amount of annotations, it may take a while to open the file.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../images/ls-export2.png" class="img-fluid figure-img"></p>
-<figcaption>The interface to create and download snapshots.</figcaption>
+<figcaption class="figure-caption">The interface to create and download snapshots.</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../images/ls-export3.png" class="img-fluid figure-img" style="width:50.0%"></p>
-<figcaption>Create a snapshot. We can keep the default values for the moment.</figcaption>
+<figcaption class="figure-caption">Create a snapshot. We can keep the default values for the moment.</figcaption>
 </figure>
 </div>
 <p>The JSON file can be quite overwhelming. I’ve used <a href="https://jsoncrack.com/editor">this tool</a> to illustrate as a graph for a better understanding:</p>
-<div class="page-columns page-full">
-<div class="quarto-figure quarto-figure-center page-columns page-full">
-<figure class="figure page-columns page-full">
-<p class="page-columns page-full"><img src="../images/json-overview.png" class="img-fluid figure-img column-body-outset"></p>
-<figcaption>An overview of <strong>one</strong> item with its annotations.</figcaption>
+<div class="column-body-outset">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/json-overview.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">An overview of <strong>one</strong> item with its annotations.</figcaption>
 </figure>
 </div>
 </div>
 <p>The annotations are a list of JSON objects. Each object deals with one item (e.g.&nbsp;one of the texts / images provided for annotation). Each object contains metadata about the annotated items, as well a list of annotation objects (in our case we expect three items).</p>
-<div class="page-columns page-full">
-<div class="quarto-figure quarto-figure-center page-columns page-full">
-<figure class="figure page-columns page-full">
-<p class="page-columns page-full"><img src="../images/one-annotation.png" class="img-fluid figure-img column-body-outset"></p>
-<figcaption>An overview of <strong>one</strong> item with its annotations.</figcaption>
+<div class="column-body-outset">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/one-annotation.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">An overview of <strong>one</strong> item with its annotations.</figcaption>
 </figure>
 </div>
 </div>
@@ -1126,7 +1083,7 @@ Adjust the values of the confusion matrix to see how they affect accuracy, preci
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../images/one-item-annotation.png" class="img-fluid figure-img"></p>
-<figcaption>An overview of a <strong>singular</strong> coding.</figcaption>
+<figcaption class="figure-caption">An overview of a <strong>singular</strong> coding.</figcaption>
 </figure>
 </div>
 <p>With this structure in mind, we can start importing our annotations. The intention behind the following notebook is to work with one coding at a time. We want to create one dataframe per coding, with one row per item (=annotated text / image object), and one column per annnotator. Later on we will add another column for our computational classifications.</p>
@@ -1163,7 +1120,7 @@ Warning
 <p>This version has been tested with binary classifications. Other types of nominal data should work out of the box for interrater agreement, <strong>model evaluation</strong> needs some refactoring!</p>
 </div>
 </div>
-<div id="cell-2" class="cell" data-cellview="form" data-outputid="27a3ed2b-795c-4506-da6e-dbc3ff37e9de" data-execution_count="31">
+<div class="cell" data-cellview="form" data-outputid="27a3ed2b-795c-4506-da6e-dbc3ff37e9de" data-execution_count="31">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>human_annotations_json <span class="op">=</span> <span class="st">'/content/drive/MyDrive/2024-01-04-Text-Annotation-Sample.json'</span> <span class="co"># @param {type:"string"}</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
@@ -1226,7 +1183,7 @@ Warning
 </script>
 </div>
 </div>
-<div id="cell-3" class="cell" data-outputid="e4c74892-c83b-4fba-f55b-9c0da9a51206" data-execution_count="32">
+<div class="cell" data-outputid="e4c74892-c83b-4fba-f55b-9c0da9a51206" data-execution_count="32">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check the dataframe</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>all_annotations_df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="32">
@@ -1301,6 +1258,7 @@ Warning
 </tr>
 </tbody>
 </table>
+
 
 </div>
     <div class="colab-df-buttons">
@@ -1513,7 +1471,7 @@ Warning
 <h3 class="anchored" data-anchor-id="contingency-table">Contingency Table</h3>
 <p>We select one coding in this step (e.g.&nbsp;Positioning) and create a contingency table where each annotated item (text, image) occupies one row and each coder one column. The <code>identifier</code> should be set to a unique column, like <code>uuid</code> or <code>Filename</code>.</p>
 <p>Enter the <code>from_name</code> for the variable you’re interested in at the moment. (Refer to your LabelStudio Interface for the right <code>from_name</code>).</p>
-<div id="cell-5" class="cell" data-cellview="form" data-execution_count="99">
+<div class="cell" data-cellview="form" data-execution_count="99">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1536,7 +1494,7 @@ Warning
 <span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>contingency_matrix <span class="op">=</span> pd.crosstab(filtered_df[identifier], filtered_df[<span class="st">'coder'</span>], values<span class="op">=</span>filtered_df[<span class="st">'value'</span>], aggfunc<span class="op">=</span><span class="st">'first'</span>)</span>
 <span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>contingency_matrix <span class="op">=</span> contingency_matrix.reindex(identifier_values)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-6" class="cell" data-outputid="751692ea-3075-474f-8cbf-255f7297ca41" data-execution_count="100">
+<div class="cell" data-outputid="751692ea-3075-474f-8cbf-255f7297ca41" data-execution_count="100">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Let's take a look at the contigency table. We refer to each coder using a pseudonymous number.</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>contingency_matrix.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="100">
@@ -1600,6 +1558,7 @@ Warning
 </tr>
 </tbody>
 </table>
+
 
 </div>
     <div class="colab-df-buttons">
@@ -1811,7 +1770,7 @@ Warning
 <section id="calculate-pairwise-kappa" class="level3">
 <h3 class="anchored" data-anchor-id="calculate-pairwise-kappa">Calculate Pairwise <span class="math inline">\(\kappa\)</span></h3>
 <p>Let’s calculate Cohen’s Kappa for each coder pair.</p>
-<div id="cell-8" class="cell" data-execution_count="101">
+<div class="cell" data-execution_count="101">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> cohen_kappa_score</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to calculate Cohen's Kappa for each pair of raters</span></span>
@@ -1838,7 +1797,7 @@ Warning
 <span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>kappa_scores <span class="op">=</span> calculate_kappa(contingency_matrix)</span>
 <span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>kappa_scores_df <span class="op">=</span> pd.DataFrame(kappa_scores)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-9" class="cell" data-outputid="5841ca2a-d780-456b-e0a8-d7fd5568563e" data-execution_count="102">
+<div class="cell" data-outputid="5841ca2a-d780-456b-e0a8-d7fd5568563e" data-execution_count="102">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Let's display the pairwise Kappa agreements.</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>kappa_scores_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="102">
@@ -1901,6 +1860,7 @@ Warning
 </tr>
 </tbody>
 </table>
+
 
 </div>
     <div class="colab-df-buttons">
@@ -2112,7 +2072,7 @@ Warning
 <section id="overall-agreement-krippendorffs-alpha" class="level3">
 <h3 class="anchored" data-anchor-id="overall-agreement-krippendorffs-alpha">Overall Agreement: Krippendorff’s <span class="math inline">\(\alpha\)</span></h3>
 <p>Next, we calculate the overall agreement using Krippendorffs Alpha. First we need to install the package.</p>
-<div id="cell-11" class="cell" data-outputid="d91a653b-0789-4fac-8c79-7f0e2a257761" data-execution_count="25">
+<div class="cell" data-outputid="d91a653b-0789-4fac-8c79-7f0e2a257761" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install krippendorff</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Collecting krippendorff
@@ -2122,7 +2082,7 @@ Installing collected packages: krippendorff
 Successfully installed krippendorff-0.6.1</code></pre>
 </div>
 </div>
-<div id="cell-12" class="cell" data-outputid="3c60a6d0-64c0-45a9-c176-93b8836668a0" data-execution_count="103">
+<div class="cell" data-outputid="3c60a6d0-64c0-45a9-c176-93b8836668a0" data-execution_count="103">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> krippendorff</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -2148,7 +2108,7 @@ Successfully installed krippendorff-0.6.1</code></pre>
 <h3 class="anchored" data-anchor-id="majority-decision">Majority Decision</h3>
 <p>One approach to assess the quality of machine labelled data is the comparison between machine-generated labels and human-generated labels, commonly known as “gold standard” labels. This process is called “label agreement” or “inter-rater agreement” and is widely used in various fields, including natural language processing, machine learning, and computational social science.</p>
 <p>We are going to use create a <code>majority_decision</code> column using the human annotations: We have chosen an uneven number of annotators in order to find a majority for each label. First, we are going to create a contingency table (or matrix), then we can determine the majority decision.</p>
-<div id="cell-14" class="cell" data-execution_count="104">
+<div class="cell" data-execution_count="104">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -2181,7 +2141,7 @@ Successfully installed krippendorff-0.6.1</code></pre>
 <span id="cb18-30"><a href="#cb18-30" aria-hidden="true" tabindex="-1"></a><span class="co"># This column now represents the aggregated decision from the annotators per item.</span></span>
 <span id="cb18-31"><a href="#cb18-31" aria-hidden="true" tabindex="-1"></a>contingency_matrix[<span class="st">'Majority Decision'</span>] <span class="op">=</span> majority_decisions</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-15" class="cell" data-outputid="bd9f4a42-64da-4295-c18d-b299730dd17f" data-execution_count="105">
+<div class="cell" data-outputid="bd9f4a42-64da-4295-c18d-b299730dd17f" data-execution_count="105">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>contingency_matrix.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="105">
 
@@ -2251,6 +2211,7 @@ Successfully installed krippendorff-0.6.1</code></pre>
 </tr>
 </tbody>
 </table>
+
 
 </div>
     <div class="colab-df-buttons">
@@ -2459,14 +2420,14 @@ Successfully installed krippendorff-0.6.1</code></pre>
 </div>
 </div>
 <p><strong>Import computational annotations</strong> Reading the GPT annotations. Enter the correct file path below. <code>coding_column</code> needs to point to the column with you computational annotations, <code>annotated_identifier</code> to an id / filename that has been passed to LabelStudio project. The annotations are merged with the classifications based on <code>annotated_identifier</code>, in my case <code>uuid</code>.</p>
-<div id="cell-17" class="cell" data-execution_count="122">
+<div class="cell" data-execution_count="122">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>annotated_file <span class="op">=</span> <span class="st">'/content/drive/MyDrive/2024-01-04-Text-Annotation-Sample.csv'</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>coding_column <span class="op">=</span> <span class="st">'Positioning'</span></span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>annotated_identifier <span class="op">=</span> <span class="st">'uuid'</span> </span>
 <span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>annotated_df <span class="op">=</span> pd.read_csv(annotated_file)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-18" class="cell" data-outputid="88d7c23e-9595-404f-aaba-26647fe27571" data-execution_count="123">
+<div class="cell" data-outputid="88d7c23e-9595-404f-aaba-26647fe27571" data-execution_count="123">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>annotated_df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="123">
 
@@ -2528,6 +2489,7 @@ Successfully installed krippendorff-0.6.1</code></pre>
 </tr>
 </tbody>
 </table>
+
 
 </div>
     <div class="colab-df-buttons">
@@ -2735,11 +2697,11 @@ Successfully installed krippendorff-0.6.1</code></pre>
   </div>
 </div>
 </div>
-<div id="cell-19" class="cell" data-execution_count="139">
+<div class="cell" data-execution_count="139">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>contingency_table <span class="op">=</span> pd.merge(contingency_matrix, annotated_df[[<span class="st">'uuid'</span>, coding_column]], left_on<span class="op">=</span>identifier, right_on<span class="op">=</span>annotated_identifier, how<span class="op">=</span><span class="st">'left'</span>)</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>contingency_table.rename(columns<span class="op">=</span>{coding_column: <span class="st">"Model"</span>}, inplace<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-20" class="cell" data-outputid="92c0dee4-ad0c-43a5-c24c-3ac5a8bf4065" data-execution_count="140">
+<div class="cell" data-outputid="92c0dee4-ad0c-43a5-c24c-3ac5a8bf4065" data-execution_count="140">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>contingency_table.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="140">
 
@@ -2813,6 +2775,7 @@ Successfully installed krippendorff-0.6.1</code></pre>
 </tr>
 </tbody>
 </table>
+
 
 </div>
     <div class="colab-df-buttons">
@@ -3034,7 +2997,7 @@ Note
 <p>The cell below needs refactoring for different type of data. In case of nominal data inside strings it might be enough to skip the cell below. A custom solution is needed for more complex use cases. Additionally, make sure to adopt the majority decision cells to any changes down here and vice versa.</p>
 </div>
 </div>
-<div id="cell-22" class="cell" data-execution_count="141">
+<div class="cell" data-execution_count="141">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to convert a column to boolean if it's not already</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> convert_to_bool(column):</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> contingency_table[column].dtype <span class="op">!=</span> <span class="st">'bool'</span>:</span>
@@ -3047,7 +3010,7 @@ Note
 <span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>contingency_table[<span class="st">'Model'</span>] <span class="op">=</span> convert_to_bool(<span class="st">'Model'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Let’s quickly check pairwise agreement between the Model and Majority Decision using Cohen’s Kappa:</p>
-<div id="cell-24" class="cell" data-outputid="eab6c82c-07be-465a-d4a2-62a5df05dae6" data-execution_count="142">
+<div class="cell" data-outputid="eab6c82c-07be-465a-d4a2-62a5df05dae6" data-execution_count="142">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>kappa_scores <span class="op">=</span> calculate_kappa(contingency_table[[<span class="st">'Majority Decision'</span>, <span class="st">'Model'</span>]])</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>pd.DataFrame(kappa_scores).head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="142">
@@ -3078,6 +3041,7 @@ Note
 </tr>
 </tbody>
 </table>
+
 
 </div>
     <div class="colab-df-buttons">
@@ -3165,7 +3129,7 @@ Note
 <section id="machine-learning-metrics" class="level2">
 <h2 class="anchored" data-anchor-id="machine-learning-metrics">Machine Learning Metrics</h2>
 <p>Finally, let’s calculate Accuracy, Precision, and F1 Score and plot a confusion matrix.</p>
-<div id="cell-26" class="cell" data-outputid="a7713009-3b23-41fa-9e62-c538ea53e967" data-execution_count="145">
+<div class="cell" data-outputid="a7713009-3b23-41fa-9e62-c538ea53e967" data-execution_count="145">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> accuracy_score, precision_score, recall_score, f1_score</span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> display, Markdown</span>
@@ -3222,6 +3186,7 @@ Note
 </tr>
 </tbody>
 </table>
+
 
 </div>
     <div class="colab-df-buttons">
@@ -3429,7 +3394,7 @@ Note
   </div>
 </div>
 </div>
-<div id="cell-27" class="cell" data-outputid="f1473ae5-ea49-4f4e-b2a0-6963d5f89823" data-execution_count="147">
+<div class="cell" data-outputid="f1473ae5-ea49-4f4e-b2a0-6963d5f89823" data-execution_count="147">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> confusion_matrix</span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -3445,15 +3410,11 @@ Note
 <span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'True Label'</span>)</span>
 <span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="agreement_files/figure-html/..-notebooks-2024_01_04_Evaluation_Kurs-cell-19-output-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
+<p><img src="agreement_files/figure-html/cell-19-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 </section>
-<a class="quarto-notebook-link" id="nblink-2" href="../notebooks/2024_01_04_Evaluation_Kurs-preview.html#cell-0">Source: Evaluation Notebook</a></div>
+<a class="quarto-notebook-link" id="nblink-2" href="https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2024_01_04_Evaluation_Kurs.ipynb">Source: Evaluation Notebook</a></div>
 </section>
 <section id="conclusion-prompt-optimization" class="level2">
 <h2 class="anchored" data-anchor-id="conclusion-prompt-optimization">Conclusion: Prompt Optimization</h2>
@@ -3492,7 +3453,7 @@ Warning
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
 <div id="ref-Flach2019-hj" class="csl-entry" role="listitem">
 Flach, Peter. 2019. <span>“<span class="nocase">Performance Evaluation in Machine Learning: The Good, the Bad, the Ugly, and the Way Forward</span>.”</span> <em>Proceedings of the AAAI Conference on Artificial Intelligence</em> 33 (01): 9808–14. <a href="https://doi.org/10.1609/aaai.v33i01.33019808">https://doi.org/10.1609/aaai.v33i01.33019808</a>.
 </div>
@@ -3502,7 +3463,7 @@ Haim, Mario. 2023. <em><span class="nocase">Computational Communication Science:
 <div id="ref-Resnik2010-oc" class="csl-entry" role="listitem">
 Resnik, Philip, and Jimmy Lin. 2010. <span>“<span class="nocase">Evaluation of NLP Systems</span>.”</span> In <em><span class="nocase">The Handbook of Computational Linguistics and Natural Language Processing</span></em>, 271–95. Oxford, UK: Wiley-Blackwell. <a href="https://doi.org/10.1002/9781444324044.ch11">https://doi.org/10.1002/9781444324044.ch11</a>.
 </div>
-</div></section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{achmann-denkler2024,
+</div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{achmann-denkler2024,
   author = {Achmann-Denkler, Michael},
   title = {Agreement \&amp; {Evaluation}},
   date = {2024-01-08},
@@ -3514,8 +3475,9 @@ Resnik, Philip, and Jimmy Lin. 2010. <span>“<span class="nocase">Evaluation of
 Achmann-Denkler, Michael. 2024. <span>“Agreement &amp;
 Evaluation.”</span> January 8, 2024. <a href="https://doi.org/10.5281/zenodo.10039756">https://doi.org/10.5281/zenodo.10039756</a>.
 </div></div></section></div></main> <!-- /main -->
+
 <script type="ojs-module-contents">
-eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IlxuLy8gRnVuY3Rpb24gdG8gZHJhdyB0aGUgcGxvdFxuZnVuY3Rpb24gZHJhd0NvZGluZ1Bsb3QoY29kZXIxLCBjb2RlcjIpIHtcbiAgICBjb25zdCBzdmdXaWR0aCA9IGNvZGVyMS5sZW5ndGggKiAxMCArIDEwMDsgLy8gQWRqdXN0IHRoZSB3aWR0aCBiYXNlZCBvbiB0aGUgbnVtYmVyIG9mIGl0ZW1zIGFuZCBzcGFjZSBmb3IgbGFiZWxzXG4gICAgY29uc3Qgc3ZnSGVpZ2h0ID0gNTA7IC8vIEZpeGVkIGhlaWdodCwgdHdvIHJvd3NcbiAgICBjb25zdCBzdmcgPSBkMy5jcmVhdGUoXCJzdmdcIilcbiAgICAgICAgICAgICAgICAgIC5hdHRyKFwid2lkdGhcIiwgc3ZnV2lkdGgpXG4gICAgICAgICAgICAgICAgICAuYXR0cihcImhlaWdodFwiLCBzdmdIZWlnaHQpO1xuXG4gICAgLy8gQWRkaW5nIGxhYmVscyBmb3IgQ29kZXJzXG4gICAgc3ZnLmFwcGVuZChcInRleHRcIilcbiAgICAgICAuYXR0cihcInhcIiwgNDApXG4gICAgICAgLmF0dHIoXCJ5XCIsIDIwKVxuICAgICAgIC50ZXh0KFwiQ29kZXIgMVwiKVxuICAgICAgIC5hdHRyKFwiZm9udC1zaXplXCIsIFwiMTBweFwiKVxuICAgICAgIC5hdHRyKFwidGV4dC1hbmNob3JcIiwgXCJlbmRcIik7XG5cbiAgICBzdmcuYXBwZW5kKFwidGV4dFwiKVxuICAgICAgIC5hdHRyKFwieFwiLCA0MClcbiAgICAgICAuYXR0cihcInlcIiwgNDApXG4gICAgICAgLnRleHQoXCJDb2RlciAyXCIpXG4gICAgICAgLmF0dHIoXCJmb250LXNpemVcIiwgXCIxMHB4XCIpXG4gICAgICAgLmF0dHIoXCJ0ZXh0LWFuY2hvclwiLCBcImVuZFwiKTtcblxuICAgIC8vIERyYXdpbmcgY2lyY2xlcyBmb3IgY29kaW5nc1xuICAgIGNvZGVyMS5mb3JFYWNoKChjb2RlLCBpbmRleCkgPT4ge1xuICAgICAgICBzdmcuYXBwZW5kKFwiY2lyY2xlXCIpXG4gICAgICAgICAgIC5hdHRyKFwiY3hcIiwgNjAgKyAxMCAqIGluZGV4KVxuICAgICAgICAgICAuYXR0cihcImN5XCIsIDE1KVxuICAgICAgICAgICAuYXR0cihcInJcIiwgNClcbiAgICAgICAgICAgLnN0eWxlKFwiZmlsbFwiLCBjb2RlID09PSAxID8gXCJibGFja1wiIDogXCJub25lXCIpXG4gICAgICAgICAgIC5zdHlsZShcInN0cm9rZVwiLCBcImJsYWNrXCIpO1xuICAgIH0pO1xuXG4gICAgY29kZXIyLmZvckVhY2goKGNvZGUsIGluZGV4KSA9PiB7XG4gICAgICAgIHN2Zy5hcHBlbmQoXCJjaXJjbGVcIilcbiAgICAgICAgICAgLmF0dHIoXCJjeFwiLCA2MCArIDEwICogaW5kZXgpXG4gICAgICAgICAgIC5hdHRyKFwiY3lcIiwgMzUpXG4gICAgICAgICAgIC5hdHRyKFwiclwiLCA0KVxuICAgICAgICAgICAuc3R5bGUoXCJmaWxsXCIsIGNvZGUgPT09IDEgPyBcImJsYWNrXCIgOiBcIm5vbmVcIilcbiAgICAgICAgICAgLnN0eWxlKFwic3Ryb2tlXCIsIFwiYmxhY2tcIik7XG4gICAgfSk7XG5cbiAgICByZXR1cm4gc3ZnLm5vZGUoKTtcbn1cblxuXG4vLyBGdW5jdGlvbiB0byBnZW5lcmF0ZSBjb250cm9sbGVkIGNvZGluZ3NcbmZ1bmN0aW9uIGdlbmVyYXRlQ29udHJvbGxlZENvZGluZyhuSXRlbXMsIGRpc2FncmVlbWVudFJhdGUpIHtcbiAgICBsZXQgY29kZXIxID0gQXJyYXkuZnJvbSh7bGVuZ3RoOiBuSXRlbXN9LCAoKSA9PiBNYXRoLnJhbmRvbSgpIDwgMC41ID8gMCA6IDEpO1xuICAgIGxldCBjb2RlcjIgPSBbLi4uY29kZXIxXTtcbiAgICBkaXNhZ3JlZW1lbnRSYXRlID0gZGlzYWdyZWVtZW50UmF0ZSAvIDEwMFxuICAgIGxldCBuRGlzYWdyZWVtZW50cyA9IE1hdGguZmxvb3Iobkl0ZW1zICogZGlzYWdyZWVtZW50UmF0ZSk7XG4gICAgZm9yIChsZXQgaSA9IDA7IGkgPCBuRGlzYWdyZWVtZW50czsgaSsrKSB7XG4gICAgICAgIGxldCBpbmRleCA9IE1hdGguZmxvb3IoTWF0aC5yYW5kb20oKSAqIG5JdGVtcyk7XG4gICAgICAgIGNvZGVyMltpbmRleF0gPSAxIC0gY29kZXIyW2luZGV4XTtcbiAgICB9XG4gICAgcmV0dXJuIFtjb2RlcjEsIGNvZGVyMl07XG59XG5cbi8vIEZ1bmN0aW9uIHRvIGNhbGN1bGF0ZSBDb2hlbidzIEthcHBhXG5mdW5jdGlvbiBjYWxjdWxhdGVDb2hlbnNLYXBwYShjb2RlcjEsIGNvZGVyMikge1xuICAgIGxldCB0b3RhbEl0ZW1zID0gY29kZXIxLmxlbmd0aDtcbiAgICBsZXQgYWdyZWUgPSAwO1xuICAgIGxldCBjb2RlcjFZZXMgPSAwO1xuICAgIGxldCBjb2RlcjJZZXMgPSAwO1xuXG4gICAgZm9yIChsZXQgaSA9IDA7IGkgPCB0b3RhbEl0ZW1zOyBpKyspIHtcbiAgICAgICAgaWYgKGNvZGVyMVtpXSA9PT0gY29kZXIyW2ldKSB7XG4gICAgICAgICAgICBhZ3JlZSsrO1xuICAgICAgICB9XG4gICAgICAgIGlmIChjb2RlcjFbaV0gPT09IDEpIHtcbiAgICAgICAgICAgIGNvZGVyMVllcysrO1xuICAgICAgICB9XG4gICAgICAgIGlmIChjb2RlcjJbaV0gPT09IDEpIHtcbiAgICAgICAgICAgIGNvZGVyMlllcysrO1xuICAgICAgICB9XG4gICAgfVxuXG4gICAgbGV0IFBvID0gYWdyZWUgLyB0b3RhbEl0ZW1zO1xuICAgIGxldCBQZSA9IChjb2RlcjFZZXMgLyB0b3RhbEl0ZW1zKSAqIChjb2RlcjJZZXMgLyB0b3RhbEl0ZW1zKSArIFxuICAgICAgICAgICAgICgodG90YWxJdGVtcyAtIGNvZGVyMVllcykgLyB0b3RhbEl0ZW1zKSAqICgodG90YWxJdGVtcyAtIGNvZGVyMlllcykgLyB0b3RhbEl0ZW1zKTtcblxuICAgIHJldHVybiAoUG8gLSBQZSkgLyAoMSAtIFBlKTtcbn1cblxudmlld29mIGRpc2FncmVlbWVudF9yYXRlID0gSW5wdXRzLnJhbmdlKFswLCAxMDBdLCB7c3RlcDogMS4wLCB2YWx1ZTogMTAsIGxhYmVsOiBcIkRpc2FncmVlbWVudFwifSlcbnZpZXdvZiBuSXRlbXMgPSBJbnB1dHMucmFuZ2UoWzExLCA2NV0sIHtzdGVwOiAxLjAsIHZhbHVlOiA2NS4wLCBsYWJlbDogXCJuXCJ9KVxuXG4vLyBNYWluIGNhbGN1bGF0aW9uIGFuZCBkaXNwbGF5XG57XG4gICAgY29uc3QgW2NvZGVyMSwgY29kZXIyXSA9IGdlbmVyYXRlQ29udHJvbGxlZENvZGluZyhuSXRlbXMsIGRpc2FncmVlbWVudF9yYXRlKTtcbiAgICBjb25zdCBrYXBwYSA9IGNhbGN1bGF0ZUNvaGVuc0thcHBhKGNvZGVyMSwgY29kZXIyKTtcblxuICAgIC8vIERyYXcgdGhlIGNvZGluZyBwbG90XG4gICAgY29uc3QgY29kaW5nUGxvdCA9IGRyYXdDb2RpbmdQbG90KGNvZGVyMSwgY29kZXIyKTtcblxuICAgIHJldHVybiBodG1sYDxkaXY+Q29oZW4ncyBLYXBwYTogJHtrYXBwYS50b0ZpeGVkKDIpfTwvZGl2PlxuICAgICAgICAgICAgICAgICAgPGRpdj4ke2NvZGluZ1Bsb3R9PC9kaXY+YDtcbn1cblxuXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTIiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJcbi8vIFN0eWxpbmcgZm9yIHRoZSBpbnRlcmFjdGl2ZSBlbGVtZW50cyBhbmQgdGhlIGNvbmZ1c2lvbiBtYXRyaXhcbmh0bWxgPHN0eWxlPlxuICAubWwtbWV0cmljcy13aWRnZXQge1xuICAgIGJvcmRlcjogMXB4IHNvbGlkICNkZGQ7XG4gICAgcGFkZGluZzogMTVweDtcbiAgICBib3JkZXItcmFkaXVzOiA4cHg7XG4gICAgbWFyZ2luLWJvdHRvbTogMjBweDtcbiAgfVxuICAubWwtbWV0cmljcy13aWRnZXQgaDQge1xuICAgIG1hcmdpbi10b3A6IDA7XG4gIH1cbiAgLmNvbmZ1c2lvbi1tYXRyaXgge1xuICAgIG1hcmdpbi10b3A6IDIwcHg7XG4gICAgYm9yZGVyLWNvbGxhcHNlOiBjb2xsYXBzZTtcbiAgfVxuICAuY29uZnVzaW9uLW1hdHJpeCB0ZCwgLmNvbmZ1c2lvbi1tYXRyaXggdGgge1xuICAgIGJvcmRlcjogMXB4IHNvbGlkICNkZGQ7XG4gICAgcGFkZGluZzogOHB4O1xuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgfVxuICAuaGVhdG1hcCB7XG4gICAgbWFyZ2luLXRvcDogMjBweDtcbiAgfVxuPC9zdHlsZT5gO1xuXG4vLyBJbnRlcmFjdGl2ZSBpbnB1dHMgZm9yIGNvbmZ1c2lvbiBtYXRyaXggdmFsdWVzXG52aWV3b2YgdHAgPSBJbnB1dHMucmFuZ2UoWzAsIDEwMF0sIHtzdGVwOiAxLCB2YWx1ZTogNTAsIGxhYmVsOiBcIlRydWUgUG9zaXRpdmVzIChUUClcIn0pXG52aWV3b2YgZnAgPSBJbnB1dHMucmFuZ2UoWzAsIDEwMF0sIHtzdGVwOiAxLCB2YWx1ZTogMTAsIGxhYmVsOiBcIkZhbHNlIFBvc2l0aXZlcyAoRlApXCJ9KVxudmlld29mIHRuID0gSW5wdXRzLnJhbmdlKFswLCAxMDBdLCB7c3RlcDogMSwgdmFsdWU6IDUwLCBsYWJlbDogXCJUcnVlIE5lZ2F0aXZlcyAoVE4pXCJ9KVxudmlld29mIGZuID0gSW5wdXRzLnJhbmdlKFswLCAxMDBdLCB7c3RlcDogMSwgdmFsdWU6IDEwLCBsYWJlbDogXCJGYWxzZSBOZWdhdGl2ZXMgKEZOKVwifSlcblxuLy8gRnVuY3Rpb24gdG8gY2FsY3VsYXRlIG1ldHJpY3NcbmZ1bmN0aW9uIGNhbGN1bGF0ZU1ldHJpY3ModHAsIGZwLCB0biwgZm4pIHtcbiAgICBsZXQgYWNjdXJhY3kgPSAodHAgKyB0bikgLyAodHAgKyBmcCArIHRuICsgZm4pO1xuICAgIGxldCBwcmVjaXNpb24gPSB0cCAvICh0cCArIGZwKTtcbiAgICBsZXQgcmVjYWxsID0gdHAgLyAodHAgKyBmbik7IC8vIFJlY2FsbCBpcyB0aGUgc2FtZSBhcyBTZW5zaXRpdml0eVxuICAgIGxldCBmMVNjb3JlID0gMiAqIChwcmVjaXNpb24gKiByZWNhbGwpIC8gKHByZWNpc2lvbiArIHJlY2FsbCk7XG5cbiAgICAvLyBDaGVjayBmb3IgTmFOIGFuZCByZXR1cm4gMCBpbiBzdWNoIGNhc2VzXG4gICAgYWNjdXJhY3kgPSBpc05hTihhY2N1cmFjeSkgPyAwIDogYWNjdXJhY3k7XG4gICAgcHJlY2lzaW9uID0gaXNOYU4ocHJlY2lzaW9uKSA/IDAgOiBwcmVjaXNpb247XG4gICAgZjFTY29yZSA9IGlzTmFOKGYxU2NvcmUpID8gMCA6IGYxU2NvcmU7XG5cbiAgICByZXR1cm4geyBhY2N1cmFjeSwgcHJlY2lzaW9uLCBmMVNjb3JlIH07XG59XG5cbi8vIEZ1bmN0aW9uIHRvIGRyYXcgdGhlIGhlYXRtYXAgcGxvdCB3aXRoIGFkanVzdGVkIGxhYmVsc1xuZnVuY3Rpb24gZHJhd0hlYXRtYXAodHAsIGZwLCB0biwgZm4pIHtcbiAgICAvLyBDcmVhdGUgYW4gYXJyYXkgdG8gcmVwcmVzZW50IHRoZSBjb25mdXNpb24gbWF0cml4XG4gICAgbGV0IG1hdHJpeCA9IFtcbiAgICAgICAgW3RwLCBmbl0sXG4gICAgICAgIFtmcCwgdG5dXG4gICAgXTtcblxuICAgIC8vIERlZmluZSBkaW1lbnNpb25zIGFuZCBjb2xvcnMgZm9yIHRoZSBoZWF0bWFwXG4gICAgbGV0IGNlbGxTaXplID0gNTA7IC8vIFNpemUgb2YgZWFjaCBjZWxsIGluIHRoZSBoZWF0bWFwXG4gICAgbGV0IGxhYmVsU3BhY2UgPSA0MDsgLy8gU3BhY2UgZm9yIGxhYmVsc1xuICAgIGxldCB3aWR0aCA9IDIgKiBjZWxsU2l6ZSArIGxhYmVsU3BhY2UsIGhlaWdodCA9IDIgKiBjZWxsU2l6ZSArIGxhYmVsU3BhY2U7XG5cbiAgICBsZXQgY29sb3JzID0gZDMuc2NhbGVTZXF1ZW50aWFsKGQzLmludGVycG9sYXRlQmx1ZXMpLmRvbWFpbihbMCwgTWF0aC5tYXgodHAsIGZwLCB0biwgZm4pXSk7XG5cbiAgICAvLyBDcmVhdGUgYW4gU1ZHIGZvciB0aGUgaGVhdG1hcFxuICAgIGxldCBzdmcgPSBkMy5jcmVhdGUoXCJzdmdcIilcbiAgICAgICAgICAgICAgICAuYXR0cihcIndpZHRoXCIsIHdpZHRoKVxuICAgICAgICAgICAgICAgIC5hdHRyKFwiaGVpZ2h0XCIsIGhlaWdodClcbiAgICAgICAgICAgICAgICAuYXR0cihcImNsYXNzXCIsIFwiaGVhdG1hcFwiKTtcblxuICAgIC8vIENyZWF0ZSBoZWF0bWFwIHNxdWFyZXNcbiAgICBzdmcuc2VsZWN0QWxsKFwicmVjdFwiKVxuICAgICAgIC5kYXRhKG1hdHJpeC5mbGF0KCkpXG4gICAgICAgLmVudGVyKClcbiAgICAgICAuYXBwZW5kKFwicmVjdFwiKVxuICAgICAgIC5hdHRyKFwieFwiLCAoZCwgaSkgPT4gbGFiZWxTcGFjZSArIGNlbGxTaXplICogKGkgJSAyKSlcbiAgICAgICAuYXR0cihcInlcIiwgKGQsIGkpID0+IGxhYmVsU3BhY2UgKyBjZWxsU2l6ZSAqIE1hdGguZmxvb3IoaSAvIDIpKVxuICAgICAgIC5hdHRyKFwid2lkdGhcIiwgY2VsbFNpemUpXG4gICAgICAgLmF0dHIoXCJoZWlnaHRcIiwgY2VsbFNpemUpXG4gICAgICAgLnN0eWxlKFwiZmlsbFwiLCBkID0+IGNvbG9ycyhkKSk7XG5cbiAgICAvLyBBZGQgY2F0ZWdvcnkgbGFiZWxzXG4gICAgY29uc3QgdGV4dEFuY2hvciA9IFwibWlkZGxlXCI7XG4gICAgc3ZnLmFwcGVuZChcInRleHRcIikudGV4dChcIlByZWRpY3RlZCBQb3NpdGl2ZVwiKS5hdHRyKFwieFwiLCBsYWJlbFNwYWNlICsgY2VsbFNpemUgLyAyKS5hdHRyKFwieVwiLCBsYWJlbFNwYWNlIC8gMikuYXR0cihcInRleHQtYW5jaG9yXCIsIHRleHRBbmNob3IpO1xuICAgIHN2Zy5hcHBlbmQoXCJ0ZXh0XCIpLnRleHQoXCJQcmVkaWN0ZWQgTmVnYXRpdmVcIikuYXR0cihcInhcIiwgbGFiZWxTcGFjZSArIDEuNSAqIGNlbGxTaXplKS5hdHRyKFwieVwiLCBsYWJlbFNwYWNlIC8gMikuYXR0cihcInRleHQtYW5jaG9yXCIsIHRleHRBbmNob3IpO1xuICAgIHN2Zy5hcHBlbmQoXCJ0ZXh0XCIpLnRleHQoXCJBY3R1YWwgUG9zaXRpdmVcIikuYXR0cihcInhcIiwgbGFiZWxTcGFjZSAvIDIpLmF0dHIoXCJ5XCIsIGxhYmVsU3BhY2UgKyBjZWxsU2l6ZSAvIDIpLmF0dHIoXCJ0ZXh0LWFuY2hvclwiLCB0ZXh0QW5jaG9yKS5hdHRyKFwiYWxpZ25tZW50LWJhc2VsaW5lXCIsIFwiY2VudHJhbFwiKTtcbiAgICBzdmcuYXBwZW5kKFwidGV4dFwiKS50ZXh0KFwiQWN0dWFsIE5lZ2F0aXZlXCIpLmF0dHIoXCJ4XCIsIGxhYmVsU3BhY2UgLyAyKS5hdHRyKFwieVwiLCBsYWJlbFNwYWNlICsgMS41ICogY2VsbFNpemUpLmF0dHIoXCJ0ZXh0LWFuY2hvclwiLCB0ZXh0QW5jaG9yKS5hdHRyKFwiYWxpZ25tZW50LWJhc2VsaW5lXCIsIFwiY2VudHJhbFwiKTtcblxuICAgIHJldHVybiBzdmcubm9kZSgpO1xufVxuLy8gTWFpbiBjYWxjdWxhdGlvbiBhbmQgZGlzcGxheVxue1xuICAgIGNvbnN0IG1ldHJpY3MgPSBjYWxjdWxhdGVNZXRyaWNzKHRwLCBmcCwgdG4sIGZuKTtcblxuICAgIHJldHVybiBodG1sYDxociAvPjxkaXYgc3R5bGU9XCJkaXNwbGF5OiBmbGV4OyBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWFyb3VuZDsgd2lkdGg6IDEwMCU7XCI+XG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPGRpdj5cbiAgICAgICAgICAgICAgICAgIDxoND5FdmFsdWF0aW9uIE1ldHJpY3M8L2g0PlxuICAgICAgICAgICAgICAgICAgPHRhYmxlIGNsYXNzPVwiY29uZnVzaW9uLW1hdHJpeFwiPlxuICAgICAgICAgICAgICAgICAgICA8dHI+XG4gICAgICAgICAgICAgICAgICAgICAgPHRoPkFjY3VyYWN5OjwvdGg+XG4gICAgICAgICAgICAgICAgICAgICAgPHRkPiR7bWV0cmljcy5hY2N1cmFjeS50b0ZpeGVkKDIpfTwvdGQ+XG4gICAgICAgICAgICAgICAgICAgIDwvdHI+XG4gICAgICAgICAgICAgICAgICAgIDx0cj5cbiAgICAgICAgICAgICAgICAgICAgICA8dGg+UHJlY2lzaW9uOjwvdGg+XG4gICAgICAgICAgICAgICAgICAgICAgPHRkPiR7bWV0cmljcy5wcmVjaXNpb24udG9GaXhlZCgyKX08L3RkPlxuICAgICAgICAgICAgICAgICAgICA8L3RyPlxuICAgICAgICAgICAgICAgICAgICA8dHI+XG4gICAgICAgICAgICAgICAgICAgICAgPHRoPkYxLVNjb3JlOjwvdGg+XG4gICAgICAgICAgICAgICAgICAgICAgPHRkPiR7bWV0cmljcy5mMVNjb3JlLnRvRml4ZWQoMil9PC90ZD5cbiAgICAgICAgICAgICAgICAgICAgPC90cj5cbiAgICAgICAgICAgICAgICAgIDwvdGFibGU+XG4gICAgICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgICAgICA8ZGl2PlxuICAgICAgICAgICAgICAgICAgPGg0PkNvbmZ1c2lvbiBNYXRyaXg8L2g0PlxuICAgICAgICAgICAgICAgICAgPHRhYmxlIGNsYXNzPVwiY29uZnVzaW9uLW1hdHJpeFwiPlxuICAgICAgICAgICAgICAgICAgICA8dHI+XG4gICAgICAgICAgICAgICAgICAgICAgPHRoPjwvdGg+PHRoPlByZWRpY3RlZCBQb3NpdGl2ZTwvdGg+PHRoPlByZWRpY3RlZCBOZWdhdGl2ZTwvdGg+XG4gICAgICAgICAgICAgICAgICAgIDwvdHI+XG4gICAgICAgICAgICAgICAgICAgIDx0cj5cbiAgICAgICAgICAgICAgICAgICAgICA8dGg+QWN0dWFsIFBvc2l0aXZlPC90aD48dGQ+JHt0cH08L3RkPjx0ZD4ke2ZufTwvdGQ+XG4gICAgICAgICAgICAgICAgICAgIDwvdHI+XG4gICAgICAgICAgICAgICAgICAgIDx0cj5cbiAgICAgICAgICAgICAgICAgICAgICA8dGg+QWN0dWFsIE5lZ2F0aXZlPC90aD48dGQ+JHtmcH08L3RkPjx0ZD4ke3RufTwvdGQ+XG4gICAgICAgICAgICAgICAgICAgIDwvdHI+XG4gICAgICAgICAgICAgICAgICA8L3RhYmxlPlxuICAgICAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICAgICAgPC9kaXY+YDtcbn1cblxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdkaXNhZ3JlZW1lbnRfcmF0ZScpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCduSXRlbXMnKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgndHAnKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgnZnAnKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgndG4nKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgnZm4nKSJ9XX0=
+{"contents":[{"methodName":"interpret","cellName":"ojs-cell-1","inline":false,"source":"\n// Function to draw the plot\nfunction drawCodingPlot(coder1, coder2) {\n    const svgWidth = coder1.length * 10 + 100; // Adjust the width based on the number of items and space for labels\n    const svgHeight = 50; // Fixed height, two rows\n    const svg = d3.create(\"svg\")\n                  .attr(\"width\", svgWidth)\n                  .attr(\"height\", svgHeight);\n\n    // Adding labels for Coders\n    svg.append(\"text\")\n       .attr(\"x\", 40)\n       .attr(\"y\", 20)\n       .text(\"Coder 1\")\n       .attr(\"font-size\", \"10px\")\n       .attr(\"text-anchor\", \"end\");\n\n    svg.append(\"text\")\n       .attr(\"x\", 40)\n       .attr(\"y\", 40)\n       .text(\"Coder 2\")\n       .attr(\"font-size\", \"10px\")\n       .attr(\"text-anchor\", \"end\");\n\n    // Drawing circles for codings\n    coder1.forEach((code, index) => {\n        svg.append(\"circle\")\n           .attr(\"cx\", 60 + 10 * index)\n           .attr(\"cy\", 15)\n           .attr(\"r\", 4)\n           .style(\"fill\", code === 1 ? \"black\" : \"none\")\n           .style(\"stroke\", \"black\");\n    });\n\n    coder2.forEach((code, index) => {\n        svg.append(\"circle\")\n           .attr(\"cx\", 60 + 10 * index)\n           .attr(\"cy\", 35)\n           .attr(\"r\", 4)\n           .style(\"fill\", code === 1 ? \"black\" : \"none\")\n           .style(\"stroke\", \"black\");\n    });\n\n    return svg.node();\n}\n\n\n// Function to generate controlled codings\nfunction generateControlledCoding(nItems, disagreementRate) {\n    let coder1 = Array.from({length: nItems}, () => Math.random() < 0.5 ? 0 : 1);\n    let coder2 = [...coder1];\n    disagreementRate = disagreementRate / 100\n    let nDisagreements = Math.floor(nItems * disagreementRate);\n    for (let i = 0; i < nDisagreements; i++) {\n        let index = Math.floor(Math.random() * nItems);\n        coder2[index] = 1 - coder2[index];\n    }\n    return [coder1, coder2];\n}\n\n// Function to calculate Cohen's Kappa\nfunction calculateCohensKappa(coder1, coder2) {\n    let totalItems = coder1.length;\n    let agree = 0;\n    let coder1Yes = 0;\n    let coder2Yes = 0;\n\n    for (let i = 0; i < totalItems; i++) {\n        if (coder1[i] === coder2[i]) {\n            agree++;\n        }\n        if (coder1[i] === 1) {\n            coder1Yes++;\n        }\n        if (coder2[i] === 1) {\n            coder2Yes++;\n        }\n    }\n\n    let Po = agree / totalItems;\n    let Pe = (coder1Yes / totalItems) * (coder2Yes / totalItems) + \n             ((totalItems - coder1Yes) / totalItems) * ((totalItems - coder2Yes) / totalItems);\n\n    return (Po - Pe) / (1 - Pe);\n}\n\nviewof disagreement_rate = Inputs.range([0, 100], {step: 1.0, value: 10, label: \"Disagreement\"})\nviewof nItems = Inputs.range([11, 65], {step: 1.0, value: 65.0, label: \"n\"})\n\n// Main calculation and display\n{\n    const [coder1, coder2] = generateControlledCoding(nItems, disagreement_rate);\n    const kappa = calculateCohensKappa(coder1, coder2);\n\n    // Draw the coding plot\n    const codingPlot = drawCodingPlot(coder1, coder2);\n\n    return html`<div>Cohen's Kappa: ${kappa.toFixed(2)}</div>\n                  <div>${codingPlot}</div>`;\n}\n\n\n"},{"methodName":"interpret","cellName":"ojs-cell-2","inline":false,"source":"\n// Styling for the interactive elements and the confusion matrix\nhtml`<style>\n  .ml-metrics-widget {\n    border: 1px solid #ddd;\n    padding: 15px;\n    border-radius: 8px;\n    margin-bottom: 20px;\n  }\n  .ml-metrics-widget h4 {\n    margin-top: 0;\n  }\n  .confusion-matrix {\n    margin-top: 20px;\n    border-collapse: collapse;\n  }\n  .confusion-matrix td, .confusion-matrix th {\n    border: 1px solid #ddd;\n    padding: 8px;\n    text-align: center;\n  }\n  .heatmap {\n    margin-top: 20px;\n  }\n</style>`;\n\n// Interactive inputs for confusion matrix values\nviewof tp = Inputs.range([0, 100], {step: 1, value: 50, label: \"True Positives (TP)\"})\nviewof fp = Inputs.range([0, 100], {step: 1, value: 10, label: \"False Positives (FP)\"})\nviewof tn = Inputs.range([0, 100], {step: 1, value: 50, label: \"True Negatives (TN)\"})\nviewof fn = Inputs.range([0, 100], {step: 1, value: 10, label: \"False Negatives (FN)\"})\n\n// Function to calculate metrics\nfunction calculateMetrics(tp, fp, tn, fn) {\n    let accuracy = (tp + tn) / (tp + fp + tn + fn);\n    let precision = tp / (tp + fp);\n    let recall = tp / (tp + fn); // Recall is the same as Sensitivity\n    let f1Score = 2 * (precision * recall) / (precision + recall);\n\n    // Check for NaN and return 0 in such cases\n    accuracy = isNaN(accuracy) ? 0 : accuracy;\n    precision = isNaN(precision) ? 0 : precision;\n    f1Score = isNaN(f1Score) ? 0 : f1Score;\n\n    return { accuracy, precision, f1Score };\n}\n\n// Function to draw the heatmap plot with adjusted labels\nfunction drawHeatmap(tp, fp, tn, fn) {\n    // Create an array to represent the confusion matrix\n    let matrix = [\n        [tp, fn],\n        [fp, tn]\n    ];\n\n    // Define dimensions and colors for the heatmap\n    let cellSize = 50; // Size of each cell in the heatmap\n    let labelSpace = 40; // Space for labels\n    let width = 2 * cellSize + labelSpace, height = 2 * cellSize + labelSpace;\n\n    let colors = d3.scaleSequential(d3.interpolateBlues).domain([0, Math.max(tp, fp, tn, fn)]);\n\n    // Create an SVG for the heatmap\n    let svg = d3.create(\"svg\")\n                .attr(\"width\", width)\n                .attr(\"height\", height)\n                .attr(\"class\", \"heatmap\");\n\n    // Create heatmap squares\n    svg.selectAll(\"rect\")\n       .data(matrix.flat())\n       .enter()\n       .append(\"rect\")\n       .attr(\"x\", (d, i) => labelSpace + cellSize * (i % 2))\n       .attr(\"y\", (d, i) => labelSpace + cellSize * Math.floor(i / 2))\n       .attr(\"width\", cellSize)\n       .attr(\"height\", cellSize)\n       .style(\"fill\", d => colors(d));\n\n    // Add category labels\n    const textAnchor = \"middle\";\n    svg.append(\"text\").text(\"Predicted Positive\").attr(\"x\", labelSpace + cellSize / 2).attr(\"y\", labelSpace / 2).attr(\"text-anchor\", textAnchor);\n    svg.append(\"text\").text(\"Predicted Negative\").attr(\"x\", labelSpace + 1.5 * cellSize).attr(\"y\", labelSpace / 2).attr(\"text-anchor\", textAnchor);\n    svg.append(\"text\").text(\"Actual Positive\").attr(\"x\", labelSpace / 2).attr(\"y\", labelSpace + cellSize / 2).attr(\"text-anchor\", textAnchor).attr(\"alignment-baseline\", \"central\");\n    svg.append(\"text\").text(\"Actual Negative\").attr(\"x\", labelSpace / 2).attr(\"y\", labelSpace + 1.5 * cellSize).attr(\"text-anchor\", textAnchor).attr(\"alignment-baseline\", \"central\");\n\n    return svg.node();\n}\n// Main calculation and display\n{\n    const metrics = calculateMetrics(tp, fp, tn, fn);\n\n    return html`<hr /><div style=\"display: flex; justify-content: space-around; width: 100%;\">\n                                  <div>\n                  <h4>Evaluation Metrics</h4>\n                  <table class=\"confusion-matrix\">\n                    <tr>\n                      <th>Accuracy:</th>\n                      <td>${metrics.accuracy.toFixed(2)}</td>\n                    </tr>\n                    <tr>\n                      <th>Precision:</th>\n                      <td>${metrics.precision.toFixed(2)}</td>\n                    </tr>\n                    <tr>\n                      <th>F1-Score:</th>\n                      <td>${metrics.f1Score.toFixed(2)}</td>\n                    </tr>\n                  </table>\n                  </div>\n                <div>\n                  <h4>Confusion Matrix</h4>\n                  <table class=\"confusion-matrix\">\n                    <tr>\n                      <th></th><th>Predicted Positive</th><th>Predicted Negative</th>\n                    </tr>\n                    <tr>\n                      <th>Actual Positive</th><td>${tp}</td><td>${fn}</td>\n                    </tr>\n                    <tr>\n                      <th>Actual Negative</th><td>${fp}</td><td>${tn}</td>\n                    </tr>\n                  </table>\n                  </div>\n                </div>`;\n}\n\n"},{"methodName":"interpretQuiet","source":"shinyInput('disagreement_rate')"},{"methodName":"interpretQuiet","source":"shinyInput('nItems')"},{"methodName":"interpretQuiet","source":"shinyInput('tp')"},{"methodName":"interpretQuiet","source":"shinyInput('fp')"},{"methodName":"interpretQuiet","source":"shinyInput('tn')"},{"methodName":"interpretQuiet","source":"shinyInput('fn')"}]}
 </script>
 <script type="module">
 if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
@@ -3569,33 +3531,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       } else {
         el.classList.add('notransition');
       }
-    }
-  }
-  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
-    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
-    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
-    let newTheme = '';
-    if(darkModeDefault) {
-      newTheme = isAlternate ? baseTheme : alternateTheme;
-    } else {
-      newTheme = isAlternate ? alternateTheme : baseTheme;
-    }
-    const changeGiscusTheme = () => {
-      // From: https://github.com/giscus/giscus/issues/336
-      const sendMessage = (message) => {
-        const iframe = document.querySelector('iframe.giscus-frame');
-        if (!iframe) return;
-        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
-      }
-      sendMessage({
-        setConfig: {
-          theme: newTheme
-        }
-      });
-    }
-    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
-    if (isGiscussLoaded) {
-      changeGiscusTheme();
     }
   }
   const toggleColorMode = (alternate) => {
@@ -3664,15 +3599,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  const darkModeDefault = false;
-  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  let localAlternateSentinel = 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
     // Read the current dark / light value 
     let toAlternate = !hasAlternateSentinel();
     toggleColorMode(toAlternate);
     setStyleSentinel(toAlternate);
-    toggleGiscusIfUsed(toAlternate, darkModeDefault);
   };
   // Ensure there is a toggle, if there isn't float one in the top right
   if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -3751,9 +3684,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+  function tippyHover(el, contentFn) {
     const config = {
       allowHTML: true,
+      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -3763,17 +3697,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start',
+      placement: 'bottom-start'
     };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -3786,120 +3711,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
-        }
-      }
-    }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
-          }
-        }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
-        }
-        return container.innerHTML
-      } else {
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(note);
-        }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      return note.innerHTML;
-    }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
-          }
-        } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
-          .then(res => res.text())
-          .then(html => {
-            const parser = new DOMParser();
-            const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
-            if (note !== null) {
-              const html = processXRef(id, note);
-              instance.setContent(html);
-            } 
-          }).finally(() => {
-            instance.enable();
-            instance.show();
-          });
-        }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -3943,7 +3754,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
-            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -3969,32 +3779,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -4056,12 +3840,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../evaluation/index.html" class="pagination-link  aria-label=" human="" annotations"="">
+      <a href="../evaluation/index.html" class="pagination-link">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Human Annotations</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../projects/index.html" class="pagination-link" aria-label="Projects">
+      <a href="../projects/index.html" class="pagination-link">
         <span class="nav-page-text">Projects</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
@@ -4072,15 +3856,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-left">
       &nbsp;
     </div>   
-    <div class="nav-footer-center">
-
-<div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+    <div class="nav-footer-center"><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
   </div>
 </footer>
-
 
 
 
