@@ -16,7 +16,7 @@ citation:
   doi: 10.5281/zenodo.10039756
 notebook-view:
   - notebook: ../notebooks/2024_01_04_Evaluation_Kurs.ipynb 
-    title: "Evaluation Notebook"
+    title: "Evaluation Notebook (V1)"
     url: https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2024_01_04_Evaluation_Kurs.ipynb
   - notebook: ../notebooks/2024_01_02_Interrater_Embedded.ipynb
     title: "-"
@@ -510,6 +510,11 @@ Each of these annotation objects contains one object for each coding variable, e
 With this structure in mind, we can start importing our annotations. The intention behind the following notebook is to work with one coding at a time. We want to create one dataframe per coding, with one row per item (=annotated text / image object), and one column per annnotator. Later on we will add another column for our computational classifications.
 
 ## The Evaluation Notebook
+
+::: {.callout-important}
+## Update (29. Jan. 2024)
+The original notebook (below) works well with Label Studio Enterprise, where we have one annotation project handling multiple annotations per item. I created an updated second version of this notebook which handles multiple JSON files. We can use the open source version of Label Studio and create one project per annotator. Once the annotaitons were created, we export the results and use multiple JSON files in [the updated notebook](https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2024_01_26_Evaluation_Kurs_V2.ipynb). Additionally, this version handles `labels`, annotations of bounding boxes for images. 
+:::
 
 {{< embed ../notebooks/2024_01_04_Evaluation_Kurs.ipynb echo=true >}}
 

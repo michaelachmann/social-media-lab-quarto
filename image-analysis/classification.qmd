@@ -37,12 +37,9 @@ A third approach towards the classification of visual material is the [Ensemble]
 {{< embed ../notebooks/2024_01_22_Classification_With_multimodal_GPT.ipynb echo=true >}}
 
 ## Ensemble
-::: {.callout-caution}
-## Work-In-Progress
-Will be added for the session on 29th of January.
-:::
 
+I'm currently experimenting with [ensemble classification](https://en.wikipedia.org/wiki/Ensemble_learning) approaches. The ensemble classification might quite possibly be obsolete with the introduction of multimodal LLMs, yet a comparison and evaluation between the approaches might still be interesting. Our approach to ensemble models combines multiple data types — *Captions*, *Objects*, and *OCR* — to enhance image classification with GPT models. For a detailed understanding and practical application of this technique, I created the [seperate ensemble chapter](ensemble.qmd), which includes a notebook for the practical steps involved in its implementation using Google Vision APIs.
 
 
 ## Conclusion
-All image classification approaches introduced in this chapter have some experimental characters. They show promising results for some applications, but we will need to keep experimenting and evaluating the approaches, to compare the approaches with one another, to find the best, and especially most valid of all! Your projects are going to be good test cases to try and see which classification approach works (best). In the next session we will come back to the [Agreement & Evaluation](../evaluation/agreement.qmd) chapter and update the notebooks to include images in our annotations studies. 
+All image classification approaches introduced in this chapter have some experimental characters. They show promising results for some applications, but we will need to keep experimenting and evaluating the approaches, to compare the approaches with one another, to find the best, and especially most valid of all! Your projects are going to be good test cases to try and see which classification approach works (best). In the next session we will come back to the [Agreement & Evaluation](../evaluation/agreement.qmd) chapter and take a look at the [updated notebooks for image annotation using Label Studio](../evaluation/label-studio-images.qmd).

@@ -1,0 +1,44 @@
+---
+format: 
+  html: default
+title: "Label Studio for Visual Annotations"    
+date: 2024-1-29
+author:
+  - name: Michael Achmann-Denkler
+    id: ma
+    orcid: 0000-0002-4754-7842
+    email: michael.achmann@informatik.uni-regensburg.de
+license: CC BY
+bibliography: ../literature.bib
+citation:
+  type: webpage
+  doi: 10.5281/zenodo.10039756
+notebook-view:
+  - notebook: ../notebooks/2024_01_26_Create_LabelStudio_Image_Evaluation.ipynb
+    title: "Create Label Studio Project (Images)"
+    url: https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2024_01_26_Create_LabelStudio_Image_Evaluation.ipynb
+---
+
+The setup for visual annotation projects (as well as videos and audio), includes an additional step: We need to store our media files somewhere accessible for labelstudio. My choice is Google Cloud Buckets, as the setup is (relatively) easy. Additionally, the [coupons provided by Google](https://cloud.google.com/billing/docs/how-to/edu-grants) are sufficient to pay for the expenses of hosting our images on the Google Cloud. The manual below is almost identical to [my Medium story "How to Accelerate your Annotation Process for Visual Social Media Analysis with Label Studio"](https://achmann.dev/how-to-accelerate-your-annotation-process-for-visual-social-media-analysis-with-label-studio-24c980a909f6). Please follow the steps outline in the story (first paragraphs and screenshots) to obtain your cloud credential `json` file. Alternatively use the credentials provided on GRIPS for our course. 
+
+## Cloud Bucket Setup & IAM
+
+**Important** in contrast to the medium story, one additional step is necessary [as pointed out by the Label Studio manual:](https://labelstud.io/guide/storage.html#Google-Cloud-Storage) we still need to configure the CORS of our bucket. 
+
+![Open any page inside your cloud project. Click on the right hand terminal symbol (yellow, 1) first. The terminal opens and takes a moment to spin up. In the meantime visit the Label Studio manual to copy the values.](../images/terminal.png)
+
+![Copy the values from the documentation into the terminal. Hit Enter. Replace the bucketname with yours in the second step.](../images/terminal2.png)
+
+![Grant acces. Wait a few seconds. Your images are now accessible from Label Studio](../images/terminal3.png)
+
+## Creating the Annotation Project
+
+{{< embed ../notebooks/2024_01_26_Create_LabelStudio_Image_Evaluation.ipynb echo=true >}}
+
+## Annotation Interface
+
+The interface created using the notebook above is very basic. [Refer to this manual for creating sophisticated labelling interfaces](index.qmd#designing-an-interface). In contrast to textual annotations, we need to add the `<Image name="Image" value="$Image"/>` tag as an object to be annotated. The `$Image` variable should be equal to the column name where we add the Google Cloud Bucket URL in the dataframe (see above).
+
+## Conclusion
+
+This article provided additional information to automatically create image annotation projects. The provided notebook may easily be modified to handle videos and audio files. The code to upload the media files to the cloud bucket would stay the same, we'd have to modify the filenames (for the proper suffixes), and change the labelling interface to be compatible with video or audio files (see Label Studio documentation). This article is an alternative path of [my annotation manual](index.qmd), which offers more background information on human annotations.

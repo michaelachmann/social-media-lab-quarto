@@ -254,5 +254,19 @@
     "2024_01_22_Classification_With_multimodal_GPT.out.ipynb": "aee9ee81",
     "2024_01_22_Classification_With_multimodal_GPT-preview.html": "2ade47f0",
     "2024_01_22_Classification_With_multimodal_GPT.html": "3a3879da"
+  },
+  "evaluation/label-studio-images.qmd": {
+    "label-studio-images.html": "e4761887"
+  },
+  "notebooks/2024_01_26_Create_LabelStudio_Image_Evaluation.ipynb": {
+    "2024_01_26_Create_LabelStudio_Image_Evaluation.html": "7ffc39e1",
+    "2024_01_26_Create_LabelStudio_Image_Evaluation.ipynb.html": "b52e3ae9"
+  },
+  "image-analysis/ensemble.qmd": {
+    "ensemble.html": "2ea48c92"
+  },
+  "notebooks/2024_01_22_Ensemble_Classification.ipynb": {
+    "2024_01_22_Ensemble_Classification.ipynb.html": "8e1bd06d",
+    "2024_01_22_Ensemble_Classification.html": "e1a45305"
   }
 }

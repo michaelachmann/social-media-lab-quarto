@@ -42,7 +42,7 @@ website:
     logo: images/logo2.png
     tools:
         - icon: threads
-          href: https://www.threads.net/@chaichy
+          href: https://www.threads.net/chaichy
         - icon: twitter
           href: https://twitter.com/michael_achmann
         - icon: github
