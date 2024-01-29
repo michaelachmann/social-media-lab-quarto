@@ -188,7 +188,7 @@ cookieconsent.run({
   </li>  
 </ul>
             <div class="quarto-navbar-tools ms-auto tools-wide">
-    <a href="https://www.threads.net/(chaichy?)" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-threads"></i></a>
+    <a href="https://www.threads.net/chaichy" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-threads"></i></a>
     <a href="https://twitter.com/michael_achmann" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-twitter"></i></a>
     <a href="https://github.com/michaelachmann/social-media-lab-quarto" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
@@ -396,7 +396,7 @@ cookieconsent.run({
   <li><a href="#conclusion-prompt-optimization" id="toc-conclusion-prompt-optimization" class="nav-link" data-scroll-target="#conclusion-prompt-optimization">Conclusion: Prompt Optimization</a></li>
   <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further Reading</a></li>
   </ul>
-<div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="#"><i class="bi bi-journal-code"></i>-</a></li><li><a href="https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2024_01_04_Evaluation_Kurs.ipynb"><i class="bi bi-journal-code"></i>Evaluation Notebook</a></li></ul></div></nav>
+<div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="#"><i class="bi bi-journal-code"></i>-</a></li><li><a href="https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2024_01_04_Evaluation_Kurs.ipynb"><i class="bi bi-journal-code"></i>Evaluation Notebook (V1)</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content page-columns page-full" id="quarto-document-content">
@@ -1090,6 +1090,19 @@ Adjust the values of the confusion matrix to see how they affect accuracy, preci
 </section>
 <section id="the-evaluation-notebook" class="level2">
 <h2 class="anchored" data-anchor-id="the-evaluation-notebook">The Evaluation Notebook</h2>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Update (29. Jan.&nbsp;2024)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The original notebook (below) works well with Label Studio Enterprise, where we have one annotation project handling multiple annotations per item. I created an updated second version of this notebook which handles multiple JSON files. We can use the open source version of Label Studio and create one project per annotator. Once the annotaitons were created, we export the results and use multiple JSON files in <a href="https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2024_01_26_Evaluation_Kurs_V2.ipynb">the updated notebook</a>. Additionally, this version handles <code>labels</code>, annotations of bounding boxes for images.</p>
+</div>
+</div>
 <div class="quarto-embed-nb-cell">
 <section id="read-the-labelstudio-annotations-from-file" class="level3">
 <h3 class="anchored" data-anchor-id="read-the-labelstudio-annotations-from-file">Read the LabelStudio Annotations from file</h3>
@@ -3414,7 +3427,7 @@ Note
 </div>
 </div>
 </section>
-<a class="quarto-notebook-link" id="nblink-2" href="https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2024_01_04_Evaluation_Kurs.ipynb">Source: Evaluation Notebook</a></div>
+<a class="quarto-notebook-link" id="nblink-2" href="https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2024_01_04_Evaluation_Kurs.ipynb">Source: Evaluation Notebook (V1)</a></div>
 </section>
 <section id="conclusion-prompt-optimization" class="level2">
 <h2 class="anchored" data-anchor-id="conclusion-prompt-optimization">Conclusion: Prompt Optimization</h2>

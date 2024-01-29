@@ -185,7 +185,7 @@ cookieconsent.run({
   </li>  
 </ul>
             <div class="quarto-navbar-tools ms-auto tools-wide">
-    <a href="https://www.threads.net/(chaichy?)" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-threads"></i></a>
+    <a href="https://www.threads.net/chaichy" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-threads"></i></a>
     <a href="https://twitter.com/michael_achmann" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-twitter"></i></a>
     <a href="https://github.com/michaelachmann/social-media-lab-quarto" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
@@ -480,6 +480,19 @@ cookieconsent.run({
 <h2 class="anchored" data-anchor-id="setup-an-annotation-project">Setup an annotation project</h2>
 <p>We are going to use <a href="https://labelstud.io/">Label Studio</a> as an annotation interface. While we do not need to use a specialized software, Label Studio makes the process of setting up annotation projects, inviting and organizing annotators, and the actual annotation a lot easier. A low resource alternative to specialized annotation software is Excel: Convert your text DataFrame to an Excel sheet, delete all but the text columns, add columns for your variables, and write a detailed annotation manual for your coders how to fill in your Excel sheet. These steps are easy to reproduce and quick to implement, yet the specialized software makes sure that annotator input follows your standard as you may define a detailed interface, it shuffles the order of annotations, and it offers keyboard shortcuts to speed up annotations. Additionally (when using the Enterprise version which is free for researchers), it tracks time spent on annotations and calculates first scores to estimate interrater reliability. <a href="https://achmann.dev/how-to-accelerate-your-annotation-process-for-visual-social-media-analysis-with-label-studio-24c980a909f6">My Medium story “How to Accelerate your Annotation Process for Visual Social Media Analysis with Label Studio”</a> goes into more detail.</p>
 <p>For our seminar, we are going to use a self-hosted version of Label Studio. The biggest draw back is the limitation of one annotation per document. We can, however, overcome this limitation by setting up the same project three times and calculating interrater agreement measures ourselves (we are, of course, going to use standardized measures like Cohen’s <span class="math inline">\(\kappa\)</span>, see <a href="../evaluation/agreement.html">Agreement &amp; Evaluation</a>).</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The paragraphs below showcase the setup of a text annotation project. <a href="../evaluation/label-studio-images.html">Please follow this link for the specialized instructions when working with images</a>!</p>
+</div>
+</div>
 <section id="setup-a-label-studio-project" class="level3">
 <h3 class="anchored" data-anchor-id="setup-a-label-studio-project">Setup a Label Studio project</h3>
 <p>The <a href="https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2023_12_14_Create_LabelStudio_Text_Evaluation.ipynb">Label Studio Text Evaluation Notebook</a> guides you step by step through the automated creation of a labelstudio project:</p>
