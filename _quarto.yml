@@ -37,6 +37,7 @@ website:
         contents:
           - evaluation/index.qmd
           - evaluation/agreement.qmd
+      - reporting/index.qmd
       - projects/index.qmd
   navbar:
     logo: images/logo2.png

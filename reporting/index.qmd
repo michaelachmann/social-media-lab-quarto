@@ -1,0 +1,55 @@
+---
+format: 
+  html: default
+title: "Reporting"
+date: 2024-02-05
+author:
+  - name: Michael Achmann-Denkler
+    id: ma
+    email: michael.achmann@informatik.uni-regensburg.de
+citation:
+  type: webpage
+  doi: 10.5281/zenodo.10039756
+notebook-view:
+  - notebook: ../notebooks/2024_02_05_Statistical_Analysis.ipynb
+    title: "Reporting Notebook"
+    url: https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2024_02_05_Reporting.ipynb
+
+---
+This chapter showcases several approaches to testing and reporting the results of your research questions. The first section, statistical analysis, takes a look at $\chi^2$ tests to check for statistically significant differences between groups. This example can easily converted for different questions and scenarios. In the second section we take a look at descriptive analysis, creating plots using `matplotlib` and RAWGraphs. The last section takes a look at the data analysis GPT available to ChatGPT Plus subscribers.
+
+## Statistical Analysis
+{{< embed ../notebooks/2024_02_05_Statistical_Analysis.ipynb echo=true >}}
+
+### RAWGraphs
+[RAWGraphs](https://www.rawgraphs.io/) offers a graphical user interface to create appealing data visualizations. Additionally, charts may be downloaded in vector formats, making the files losslessly compatible with software like Gimp or Photoshop. Follow the steps below to import our fake data into RAWGraphs to create a bumpcharts of policy issues mentioned over time. As with the statistical analysis, this is just one example of many possibilities for data visualization! `matplotlib` is still a powerful tool, capable of creating complex visualizations. Additionally, since its available in our python environment, `matplotlib` is often the go-to tool for quick visualizations. RAWGraphs, on the other hand, has a shallower learning curve, and the export to graphic editors facilitates the design of information graphics. 
+
+![Import the CSV file into RAWGraphs](../images/rawgraphs4.png)
+
+![Select the chart type, e.g. *Bumpchart*](../images/rawgraphs3.png)
+
+![Select the columns.](../images/rawgraphs2.png)
+
+![Take a look at the plot](../images/fake-policy-issues)
+
+![... and download it!](../images/rawgraphs1.png)
+
+
+## Experimental: Analysis using ChatGPT
+The ChatGPT Plus subscription offers access to custom GPTs and the Data Analysis functionalities. I created a [very shallow example using the fake data above](https://chat.openai.com/share/f5ce1293-ed8a-47c6-8258-8688fabc5894). We import the `CSV` file into a chat session to interactively ask questions about the dataset. GPT generates the python code necessary to answer our questions and processes the data in the background, eventually presenting the results as a paragraph of text contextualizing the results. Additionally, the python code for every step is available. 
+
+![First of all we import the CSV file. The first prompt gives some background information on the data and first hints at what columns might be of interest.](../images/chatgpt-analysis-3.png)
+
+
+![Using this prompt, the model generates a first overview of our data.](../images/chatgpt-analysis-2.png)
+
+
+![Over the course of a few messages I have asked the model to investigate daily trends of policy issues in the data. (*Mind you: the issues have been randomly assigned, I do not expect any trends in the synthetic data!*)](../images/chatgpt-analysis-0.png)
+
+![The source code for each computational step is available. On the one hand we can use check the code for obvious flaws, on the other hand we can copy the code into our notebook to recreate the analyiss locally.](../images/chatgpt-analysis-5.png)
+
+Personally, I would warn against an excess use of the data analysis GPT: It is useful and helps to cut down time for many mundane tasks (like cleaning or reshaping dataframes). Lots of questions are answered correctly and the dialog with the model may reveal some new insights. Yet, the longer the dialog and the deeper and more complex the analysis, the accuracy of the model and its analysis starts to crumble. This will probably happen less and less with time and updated. 
+
+
+## Conclusion
+This chapter introduced one exemplar approach for testing research questions and several ideas for exploring and reporting on your data and insights. The *Descriptive Analysis* section is usually part of your *Results* chapter: Provide an overview of your collected data, provide some measures, maybe some plots describing your corpus. The *statistical tests*, on the other hand, are your analysis, as such add them to your *Analysis* section. A timeline analysis, as showcased with the bumpchart, may be motivated by a research question and hypothesis, as such I would expect it in the *Analysis* section as well. Overall, a proper project report includes both, descriptive and statistical analysis. Finally we took a look at the data analysis GPT. I do recommend to *test* the data analysis GPT, however for the moment I'd recommend to conduct your own analysis using your own jupyter notebooks to guarantee correctness of your tests.
