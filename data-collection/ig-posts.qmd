@@ -62,6 +62,10 @@ Instaloader is a stand-alone piece of software: It offers options to download mo
 ## CrowdTangle
 ![Screenshot of the [CrowdTangle](https://www.crowdtangle.com/) interface.](/images/crowdtangle.png){width="600"}
 
+::: {.callout-warning}
+Meta shut down CrowdTangle in August 2024. The tool has been replaced by the [Meta Content Library](https://transparency.meta.com/de-de/researchtools/meta-content-library/). Researchers can apply for access, a third party now moderates access, the Inter-university Consortium for Political and Social Research (ICPSR). I will update this page shortly.
+:::
+
 [CrowdTangle](https://www.crowdtangle.com/) is the best option to collect IG posts -- in theory. It provides legal access to Instagram data and offers several tools to export large amount of data. For a current project we've exported more than 500.000 public posts through a hashtag query. Unfortunately there are several restrictions: CrowdTangle is the best tool to export metadata of public posts, and captions. The abilty to collect images through the platform is limited: Image links expire after a certain amount of time, thus we need to use some makeshift approach to download the images. When we can download the images, it's always just one per post, no matter if it's a gallery or a single image. And let's not talk about videos. I have written [another Medium story with a step-by-step guide to CrowdTangle](https://achmann.dev/crowdtangle-for-instagram-analysis-a-step-by-step-guide-for-beginners-6d4f1f8cb0a3).
 
 <div class="pros-cons-container">

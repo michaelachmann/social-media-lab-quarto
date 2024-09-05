@@ -20,7 +20,7 @@ notebook-view:
     url: https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2023_11_07_Firebase_Interface.ipynb
 ---
 
-Instagram stories, characterized by their ephemeral nature, expire after 24 hours. Therefore, it's crucial to collect them in a timely manner, as retrospective data collection is not an option with this format. There are two feasible methods: The Tidal Tales Plugin and Instaloader. Additionally, commercial tools such as [4k Stogram](https://www.4kdownload.com/de/products/stogram-2) are also available.
+Instagram stories, characterized by their ephemeral nature, expire after 24 hours. Therefore, it's crucial to collect them in a timely manner, as retrospective data collection is not an option with this format. There are two feasible methods: The [Tidal Tales Plugin](https://tidaltal.es) and Instaloader. Additionally, commercial tools such as [4k Stogram](https://www.4kdownload.com/de/products/stogram-2) are also available.
 
 ![A screenshot of stories by \@tagesschau opened in the firefox browser](/images/stories-screenshot.png)
 
@@ -32,7 +32,7 @@ Overall, the ephemeral nature of stories necessitates our continuous monitoring 
 ![](/images/logo-blue.png)
 :::
 
-This method is based on the [Zeeschuimer Firefox Plugin](https://github.com/digitalmethodsinitiative/zeeschuimer). I have adapted the original plugin to create the Tidal Tales Plugin [@achmanndenkler2024preservingephemeralinstagramstory], which is specifically tailored for collecting Instagram stories for real-time data collection. The plugin is [available on GitHub](http://github.com/michaelachmann/tidal-tales-plugin). To use it, download the latest version via [Firefox](https://www.mozilla.org/firefox/new/) and install the plugin. Follow these steps to download stories using the Tidal Tales Plugin:
+This method is based on the [Zeeschuimer Firefox Plugin](https://github.com/digitalmethodsinitiative/zeeschuimer). I have adapted the original plugin to create the [Tidal Tales Plugin](https://tidaltal.es) [@achmanndenkler2024preservingephemeralinstagramstory], which is specifically tailored for collecting Instagram stories for real-time data collection. The plugin is [available on GitHub](http://github.com/michaelachmann/tidal-tales-plugin). To use it, download the latest version via [Firefox](https://www.mozilla.org/firefox/new/) and install the plugin. Follow these steps to download stories using the Tidal Tales Plugin:
 
 1. Download and install the plugin.
 4. Regularly view stories in Firefox to collect them.
