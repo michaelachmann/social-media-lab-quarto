@@ -2,14 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.433">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Michael Achmann-Denkler">
 <meta name="dcterms.date" content="2024-01-15">
 
-<title>Social Media Lab - Visual Exploration</title>
+<title>Visual Exploration – Social Media Lab</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -24,7 +24,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -35,7 +35,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -60,6 +60,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -78,7 +79,7 @@ div.csl-indent {
 }</style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -107,7 +108,13 @@ div.csl-indent {
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -116,6 +123,7 @@ div.csl-indent {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -133,18 +141,20 @@ cookieconsent.run({
   "notice_banner_reject_button_hide":false,
   "preferences_center_close_button_hide":false,
   "website_name":""
+  ,
+"language":"en"
   });
 });
 </script> 
   
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 <link rel="stylesheet" href="../styles.css">
-<meta name="twitter:title" content="Social Media Lab - Visual Exploration">
-<meta name="twitter:description" content="">
+<meta name="twitter:title" content="Visual Exploration – Social Media Lab">
+<meta name="twitter:description" content="Notes on computational social media analysis">
 <meta name="twitter:image" content="https://social-media-lab.net/image-analysis/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
 <meta name="twitter:card" content="summary_large_image">
 </head>
@@ -153,9 +163,9 @@ cookieconsent.run({
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a href="../index.html" class="navbar-brand navbar-brand-logo">
     <img src="../images/logo2.png" alt="" class="navbar-logo">
     </a>
@@ -164,55 +174,55 @@ cookieconsent.run({
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html" rel="" target="">
- <span class="menu-text">Home</span></a>
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../about.html" rel="" target="">
- <span class="menu-text">About</span></a>
+    <a class="nav-link" href="../about.html"> 
+<span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://github.com/michaelachmann/social-media-lab" rel="" target="">
- <span class="menu-text">Notebooks</span></a>
+    <a class="nav-link" href="https://github.com/michaelachmann/social-media-lab"> 
+<span class="menu-text">Notebooks</span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools ms-auto tools-wide">
-    <a href="https://www.threads.net/chaichy" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-threads"></i></a>
-    <a href="https://twitter.com/michael_achmann" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-twitter"></i></a>
-    <a href="https://github.com/michaelachmann/social-media-lab-quarto" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools tools-wide">
+    <a href="https://www.threads.net/chaichy" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-threads"></i></a>
+    <a href="https://twitter.com/michael_achmann" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-twitter"></i></a>
+    <a href="https://github.com/michaelachmann/social-media-lab-quarto" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
-          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../image-analysis/index.html">Image Analysis</a></li><li class="breadcrumb-item"><a href="../image-analysis/exploration.html">Visual Exploration</a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../image-analysis/index.html">Image Analysis</a></li><li class="breadcrumb-item"><a href="../image-analysis/exploration.html">Visual Exploration</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
     </div>
   </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">Getting Started</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -243,7 +253,7 @@ cookieconsent.run({
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../getting-started/literature-review-assistant.html" class="sidebar-item-text sidebar-link">
+  <a href="../notebooks/literature-review.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">GPT Literature Review Assistant</span></a>
   </div>
 </li>
@@ -251,9 +261,9 @@ cookieconsent.run({
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
  <span class="menu-text">Data Collection</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -280,9 +290,9 @@ cookieconsent.run({
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
  <span class="menu-text">Text Analysis</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -309,9 +319,9 @@ cookieconsent.run({
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
  <span class="menu-text">Image Analysis</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -338,9 +348,9 @@ cookieconsent.run({
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
  <span class="menu-text">Evaluation</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -374,7 +384,7 @@ cookieconsent.run({
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -392,12 +402,12 @@ cookieconsent.run({
   <li><a href="#bertopic" id="toc-bertopic" class="nav-link" data-scroll-target="#bertopic">BERTopic</a></li>
   <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
   </ul>
-<div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2024_01_12_Visualize_Mod_Classes.ipynb"><i class="bi bi-journal-code"></i>Quickly Visualize Mod Classes</a></li><li><a href="https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2024_01_12_kMeans.ipynb"><i class="bi bi-journal-code"></i>k-means</a></li><li><a href="https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2024_01_12_Visual_BERTopic.ipynb"><i class="bi bi-journal-code"></i>Visual BERTopic</a></li></ul></div></nav>
+<div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="../notebooks/2024_01_12_kMeans-preview.html"><i class="bi bi-journal-code"></i>k-means</a></li><li><a href="../notebooks/2024_01_12_Visualize_Mod_Classes-preview.html"><i class="bi bi-journal-code"></i>Quickly Visualize Mod Classes</a></li><li><a href="../notebooks/2024_01_12_Visual_BERTopic_Bauernproteste-preview.html"><i class="bi bi-journal-code"></i>Visual BERTopic</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content page-columns page-full" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../image-analysis/index.html">Image Analysis</a></li><li class="breadcrumb-item"><a href="../image-analysis/exploration.html">Visual Exploration</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Visual Exploration</h1>
 </div>
@@ -409,7 +419,7 @@ cookieconsent.run({
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Michael Achmann-Denkler <a href="https://orcid.org/0000-0002-4754-7842" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+             <p>Michael Achmann-Denkler <a href="mailto:michael.achmann@informatik.uni-regensburg.de" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> <a href="https://orcid.org/0000-0002-4754-7842" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
           </div>
   </div>
     
@@ -424,7 +434,9 @@ cookieconsent.run({
   </div>
   
 
+
 </header>
+
 
 <p>The previous chapter outlines some literature on <a href="../image-analysis/index.html">images as data</a>, emphasizing them importance of evaluation and contextualisation of computer vision applications due to biases inherent to our <em>looking</em> at images. This chapter introduces several tools and approaches for exploring visual material. These unsupervised approaches are useful for exploring image datasets. The first approaches, <a href="#pixplot">PixPlot</a> and <a href="#picarrange">PicArrange</a> are ready-made tools, they are easy to use and display results quickly. On the downside they offer limited options to manipulate the clustering of images (i.e.&nbsp;what features we are interested in). Therefore we take a look at <a href="#commercial-computer-vision-apis">commercial computer vision APIs</a> as middle ground between setting up your own notebook for using object detection models, and the fully automated approaches above. We approach the labels using two clustering approaches in this chapter: Using network analysis and the modularity algorithm in Gephi finding communities, or using k-means to find k-clusters in our own notebook. The network analysis is based on <span class="citation" data-cites="Omena2021-gu">Omena et al. (<a href="#ref-Omena2021-gu" role="doc-biblioref">2021</a>)</span>’s manuals and publications. This approach is complex to reproduce for the sheer interest in image exploration (in contrast to Omena et al.’s interests in studying the web entity networks and their evolutions). The k-means approach offers an easier solution for clustering images based on labels provided by a vision API, while being compatible with Memespector, a GUI tool for multiple vision APIs. Finally we will explore BERTopic’s multimodal functionality: Using the <a href="https://huggingface.co/nlpconnect/vit-gpt2-image-captioning">vit-gpt2-image-captioning</a> model, we generate captions for each image and use them for topic modeling. This captioning approach is one option, we will explore more options in union with image classification in the next session.</p>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -446,14 +458,14 @@ Note
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../images/pixplot-0.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<figcaption class="figure-caption">Once installed, PixPlot can be invoked using the command line. We can also pass metadata, like timestamps, see the documentation.</figcaption>
+<figcaption>Once installed, PixPlot can be invoked using the command line. We can also pass metadata, like timestamps, see the documentation.</figcaption>
 </figure>
 </div>
 <p>PixPlot requires a Python 3.7 environment, which can be set up using Anaconda. After setting up the environment, PixPlot can be installed via pip. For visualizing the results, a WebGL-enabled browser is necessary. The process involves running a simple command to process a directory of images, and then starting a web server to view the visualization. Take a look <a href="https://github.com/YaleDHLab/pix-plot">at the GitHub repository for instructions</a>. The software is known for causing problems with newer MacBooks (based on the new M-Chips).</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../images/pixplot-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">The result can be viewed in a webbrowser: A 2D mapping of images clustered by their content.</figcaption>
+<figcaption>The result can be viewed in a webbrowser: A 2D mapping of images clustered by their content.</figcaption>
 </figure>
 </div>
 <p>PixPlot has similarities with the k-means approach introduced in the next section. Both methods aim to categorize and cluster images based on their content. However, PixPlot automates this process by using an Inception model for image analysis and UMAP for dimensionality reduction, leading to the formation of clusters. For the approach below we first use the Google Vision API to retrieve a set of labels describing each images, and cluster afterwards. The manual approach is more difficult to start with, but possibly pays off as we progress towards image classification and the potential reuse of the labels retrieved from the API.</p>
@@ -463,7 +475,7 @@ Note
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../images/picarrange.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">A screenshot of PicArrange displaying an overview of my Instagram Story corpus. Note how the visual sorting arranged images with large embedded text close to one another, followed by text-centric screenshots of Twitter.</figcaption>
+<figcaption>A screenshot of PicArrange displaying an overview of my Instagram Story corpus. Note how the visual sorting arranged images with large embedded text close to one another, followed by text-centric screenshots of Twitter.</figcaption>
 </figure>
 </div>
 <blockquote class="blockquote">
@@ -494,24 +506,24 @@ Warning: Black Boxes
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../images/memespector.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">A screenshot of <a href="https://github.com/jason-chao/memespector-gui">Memespector</a>, a graphical user interface for multiple computer vision APIs.</figcaption>
+<figcaption>A screenshot of <a href="https://github.com/jason-chao/memespector-gui">Memespector</a>, a graphical user interface for multiple computer vision APIs.</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../images/memespector-options.png" class="img-fluid figure-img" style="width:50.0%"></p>
-<figcaption class="figure-caption">Each computer vision provides offers multiple models. For image explorations I suggest to invoke the labels. Additionally we can invoke the text (OCR) model for the later processing of embedded text.</figcaption>
+<figcaption>Each computer vision provides offers multiple models. For image explorations I suggest to invoke the labels. Additionally we can invoke the text (OCR) model for the later processing of embedded text.</figcaption>
 </figure>
 </div>
 <p>Once the API calls succeeded, we can go on and create <a href="#step-by-step-towards-a-graph">an image-label-network</a>, or <a href="#clustering-with-k-means">cluster the images based on their labels using k-means</a>.</p>
 </section>
 <section id="visual-network-analysis" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="visual-network-analysis">Visual Network Analysis</h2>
-<div class="column-screen-inset">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../images/gephi-network-example.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<figcaption class="figure-caption">An example of a label-image-network. This example show images from TikTok collected during the farmers’ demonstrations, the node colour signifies the modularity classes, communities within the network. Note: The resolution of the image is low on purpose, as the original image contains images of individuals.</figcaption>
+<div class="page-columns page-full">
+<div class="quarto-figure quarto-figure-center page-columns page-full">
+<figure class="figure page-columns page-full">
+<p class="page-columns page-full"><img src="../images/gephi-network-example.png" class="img-fluid figure-img column-screen-inset" style="width:100.0%"></p>
+<figcaption>An example of a label-image-network. This example show images from TikTok collected during the farmers’ demonstrations, the node colour signifies the modularity classes, communities within the network. Note: The resolution of the image is low on purpose, as the original image contains images of individuals.</figcaption>
 </figure>
 </div>
 </div>
@@ -519,79 +531,79 @@ Warning: Black Boxes
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../images/label2net-0.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<figcaption class="figure-caption">First select the bipartite network.</figcaption>
+<figcaption>First select the bipartite network.</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../images/label2net-1.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<figcaption class="figure-caption">Next, select <code>Image_BaseName</code> as the X Node. Additionally, let’s add <code>Image_BaseName</code> <em>again</em> as an attribute, we will use this attribute to display images in Gephi.</figcaption>
+<figcaption>Next, select <code>Image_BaseName</code> as the X Node. Additionally, let’s add <code>Image_BaseName</code> <em>again</em> as an attribute, we will use this attribute to display images in Gephi.</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../images/label2net-2.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<figcaption class="figure-caption">Add the <code>GV_Label_Descriptions</code> column as the second (Y) nodes. Select <em>Semicolon Seperated</em> to split the values in the cell into seperate labels.</figcaption>
+<figcaption>Add the <code>GV_Label_Descriptions</code> column as the second (Y) nodes. Select <em>Semicolon Seperated</em> to split the values in the cell into seperate labels.</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../images/label2net-3.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<figcaption class="figure-caption">Finally hit <em>Build</em>.</figcaption>
+<figcaption>Finally hit <em>Build</em>.</figcaption>
 </figure>
 </div>
 <p>At this stage, after a few seconds of processing, the website should triger the download of a <code>gefx</code>file. Use <a href="https://gephi.org">Gephi</a> to open this file. Follow these steps:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../images/gephi-0.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<figcaption class="figure-caption">Open / Import the project. Click <em>OK</em>.</figcaption>
+<figcaption>Open / Import the project. Click <em>OK</em>.</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../images/gephi-1.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<figcaption class="figure-caption">After the import Gephi should look like this. The graph structure is random, no clusters are visible. If you cannot see any network, check whether you’re in the <em>Overview</em> tab.</figcaption>
+<figcaption>After the import Gephi should look like this. The graph structure is random, no clusters are visible. If you cannot see any network, check whether you’re in the <em>Overview</em> tab.</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../images/gephi-2.png" class="img-fluid figure-img" style="width:50.0%"></p>
-<figcaption class="figure-caption">Take a look at the left-hand of the window. Under <em>Layout</em> select <em>ForceAtlas2</em>. For the moment we can keep the defaults and hit <em>Start</em>. The nodes should move into distinct directions.</figcaption>
+<figcaption>Take a look at the left-hand of the window. Under <em>Layout</em> select <em>ForceAtlas2</em>. For the moment we can keep the defaults and hit <em>Start</em>. The nodes should move into distinct directions.</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../images/gephi-9.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<figcaption class="figure-caption">At this stage your graph might look like that.</figcaption>
+<figcaption>At this stage your graph might look like that.</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../images/gephi-8.png" class="img-fluid figure-img" style="width:25.0%"></p>
-<figcaption class="figure-caption">Take a look at the right part of the window. Select <em>Statistics</em>, and there <em>Modularity</em>. Hit <em>Start</em>, keep the defaults. The algorithm should cluster you graph into distinc modularity classes.</figcaption>
+<figcaption>Take a look at the right part of the window. Select <em>Statistics</em>, and there <em>Modularity</em>. Hit <em>Start</em>, keep the defaults. The algorithm should cluster you graph into distinc modularity classes.</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../images/gephi-11.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<figcaption class="figure-caption">At this point I suggest to export the clustered data. Enter the data laboratory tab and select “Export Table”. Save the CSV file in your desired location and make it available for your Jupyter / Colab environment, e.g.&nbsp;by uploading the file to your Google Drive. Follow the next steps in python. Alternatively: Follow the link below to the rest of the Gephi recipe.</figcaption>
+<figcaption>At this point I suggest to export the clustered data. Enter the data laboratory tab and select “Export Table”. Save the CSV file in your desired location and make it available for your Jupyter / Colab environment, e.g.&nbsp;by uploading the file to your Google Drive. Follow the next steps in python. Alternatively: Follow the link below to the rest of the Gephi recipe.</figcaption>
 </figure>
 </div>
 <p>The whole process towards a proper label-image-network contains even more steps, <a href="../image-analysis/gephi.html">I outsourced them into a document on its own, click here for the missing steps</a>. It’s important to note that working with Gephi, especially when dealing with images, can be demanding in terms of memory usage, and the resulting PDFs are sometimes challenging to handle. To address these issues, I’ve developed a Python script that simplifies the exploration of modularity classes. This script uses a CSV file exported from Gephi to display a selection of images from each class. While this method offers a more manageable way to quickly review samples within each modularity class and assess if we’re on the right track, it’s crucial to acknowledge that we lose certain details in this process. Specifically, this approach doesn’t show the relationships between images and labels, nor does it reveal the spatial distribution of these images within the original network. It’s a trade-off between ease of exploration and the depth of network information,</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../images/gephi-close-look.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<figcaption class="figure-caption">This image showcases the objective of using Gephi and networks: Labels and images are aranged spatially, zooming into each of the clusters we can name them based on their content. In my example the images in the displayed cluster all show streets or city-views, thus glimpses of the farmers’ demonstrations with from a wide-angle perspective.</figcaption>
+<figcaption>This image showcases the objective of using Gephi and networks: Labels and images are aranged spatially, zooming into each of the clusters we can name them based on their content. In my example the images in the displayed cluster all show streets or city-views, thus glimpses of the farmers’ demonstrations with from a wide-angle perspective.</figcaption>
 </figure>
 </div>
 <p>Follow the next steps to visualize samples from your modularity classes:</p>
 <div class="quarto-embed-nb-cell">
 <p>Unzip the image files, e.g.&nbsp;from your Drive.</p>
-<div class="cell">
+<div id="cell-2" class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span><span class="bu">zip</span> <span class="op">-</span>r <span class="op">/</span>content<span class="op">/</span>drive<span class="op">/</span>MyDrive<span class="op">/</span><span class="dv">2024</span><span class="op">-</span><span class="dv">0</span><span class="er">1</span><span class="op">-</span><span class="dv">0</span><span class="er">9</span><span class="op">-</span>Bauernproteste<span class="op">/</span><span class="dv">2024</span><span class="op">-</span><span class="dv">0</span><span class="er">1</span><span class="op">-</span><span class="dv">0</span><span class="er">9</span><span class="op">-</span>Images<span class="op">-</span>Clean.<span class="bu">zip</span> media</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Import the CSV-File exported from Gephi. Set <code>sample_size</code> to your desired number, I recommend a low number, e.g.&nbsp;5.</p>
-<div class="cell" data-cellview="form" data-execution_count="54">
+<div id="cell-4" class="cell" data-cellview="form" data-execution_count="54">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>gephi_file <span class="op">=</span> <span class="st">"/content/drive/MyDrive/2024-01-09-Bauernproteste/2024-01-11-Google-Vision-Graph-w-modclasses.csv"</span>  <span class="co">#@param {type:"string"}</span></span>
@@ -599,14 +611,14 @@ Warning: Black Boxes
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>gephi_df <span class="op">=</span> pd.read_csv(gephi_file)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Render the Sample: Hit run for the next cell to create an HTML view of image classifications. The HTML will also be saved to file, check the files in the left pane for a file named <code>{formatted_date}-Gephi-Mod-Classes-Visualisation.html</code> to download the document to your computer. The file includes the <code>base64</code> encoded images.</p>
-<div class="cell" data-cellview="form">
+<div id="cell-6" class="cell" data-cellview="form">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># See linked notebook for code.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<a class="quarto-notebook-link" id="nblink-1" href="https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2024_01_12_Visualize_Mod_Classes.ipynb">Source: Quickly Visualize Mod Classes</a></div>
+<a class="quarto-notebook-link" id="nblink-1" href="../notebooks/2024_01_12_Visualize_Mod_Classes-preview.html#cell-0">Source: Quickly Visualize Mod Classes</a></div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../images/mod-class-3.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<figcaption class="figure-caption">A screenshot of the same modularity class as above showing a sample of five images.</figcaption>
+<figcaption>A screenshot of the same modularity class as above showing a sample of five images.</figcaption>
 </figure>
 </div>
 </section>
@@ -630,7 +642,7 @@ Work-In-Progress
 <section id="hands-on-k-means" class="level3">
 <h3 class="anchored" data-anchor-id="hands-on-k-means">Hands-on k-means</h3>
 <div class="quarto-embed-nb-cell">
-<div class="cell" data-execution_count="1">
+<div id="cell-1" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the CSV file</span></span>
@@ -655,7 +667,7 @@ Work-In-Progress
 <span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Now 'matrix' has a single level of column headers with only the label names</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-outputid="9b2fbc27-82b1-4b34-e008-fbecf5841b47" data-execution_count="2">
+<div id="cell-2" class="cell" data-outputid="9b2fbc27-82b1-4b34-e008-fbecf5841b47" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>matrix</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 
@@ -663,7 +675,7 @@ Work-In-Progress
     <div>
 
 
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -982,7 +994,6 @@ Work-In-Progress
 </tbody>
 </table>
 
-
 <p>982 rows × 681 columns</p>
 </div>
     <div class="colab-df-buttons">
@@ -1190,7 +1201,7 @@ Work-In-Progress
   </div>
 </div>
 </div>
-<div class="cell" data-execution_count="3">
+<div id="cell-3" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.decomposition <span class="im">import</span> PCA</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.cluster <span class="im">import</span> KMeans</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -1208,7 +1219,7 @@ Work-In-Progress
 <span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="co"># If needed, you can create a DataFrame from the PCA-reduced matrix and reattach the 'Image_BaseName' column</span></span>
 <span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>matrix_reduced_df <span class="op">=</span> pd.DataFrame(matrix_reduced, index<span class="op">=</span>image_base_names)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-outputid="ce27bed9-3828-4113-9bbb-25d920574bb8" data-execution_count="4">
+<div id="cell-4" class="cell" data-outputid="ce27bed9-3828-4113-9bbb-25d920574bb8" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>matrix_reduced_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 
@@ -1216,7 +1227,7 @@ Work-In-Progress
     <div>
 
 
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -1535,7 +1546,6 @@ Work-In-Progress
 </tbody>
 </table>
 
-
 <p>982 rows × 242 columns</p>
 </div>
     <div class="colab-df-buttons">
@@ -1743,7 +1753,7 @@ Work-In-Progress
   </div>
 </div>
 </div>
-<div class="cell" data-outputid="ad978bab-0987-44bb-ade1-d824a550f184" data-execution_count="5">
+<div id="cell-5" class="cell" data-outputid="ad978bab-0987-44bb-ade1-d824a550f184" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Elbow method to determine optimal number of clusters</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>inertia <span class="op">=</span> []</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>range_values <span class="op">=</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">20</span>)  <span class="co"># Checking for 1 to 10 clusters</span></span>
@@ -1761,10 +1771,14 @@ Work-In-Progress
 <span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Inertia'</span>)</span>
 <span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="exploration_files/figure-html/cell-6-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="exploration_files/figure-html/..-notebooks-2024_01_12_kMeans-cell-6-output-1.png" class="img-fluid figure-img"></p>
+</figure>
 </div>
 </div>
-<div class="cell" data-outputid="63ec4548-c0a2-4f6f-83bd-efcd97672e34" data-execution_count="11">
+</div>
+<div id="cell-6" class="cell" data-outputid="63ec4548-c0a2-4f6f-83bd-efcd97672e34" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.cluster <span class="im">import</span> KMeans</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> silhouette_score</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -1793,10 +1807,14 @@ Work-In-Progress
 <span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>    plt.ylabel(<span class="st">'Silhouette Score'</span>)</span>
 <span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>    plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="exploration_files/figure-html/cell-7-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="exploration_files/figure-html/..-notebooks-2024_01_12_kMeans-cell-7-output-1.png" class="img-fluid figure-img"></p>
+</figure>
 </div>
 </div>
-<div class="cell" data-execution_count="8">
+</div>
+<div id="cell-7" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Final k-means clustering using n clusters</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>kmeans_final <span class="op">=</span> KMeans(n_clusters<span class="op">=</span><span class="dv">11</span>, n_init<span class="op">=</span><span class="dv">10</span>, random_state<span class="op">=</span><span class="dv">0</span>)</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>clusters <span class="op">=</span> kmeans_final.fit_predict(matrix_reduced)</span>
@@ -1804,7 +1822,7 @@ Work-In-Progress
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Adding the cluster information back to the original dataframe</span></span>
 <span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>matrix[<span class="st">'Cluster'</span>] <span class="op">=</span> clusters</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-outputid="441ed3aa-0dce-4718-b5ee-6a974e09c110" data-execution_count="12">
+<div id="cell-8" class="cell" data-outputid="441ed3aa-0dce-4718-b5ee-6a974e09c110" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Displaying the first few rows of the dataframe with cluster information</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>matrix.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
@@ -1813,7 +1831,7 @@ Work-In-Progress
     <div>
 
 
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -1987,7 +2005,6 @@ Work-In-Progress
 </tr>
 </tbody>
 </table>
-
 
 <p>5 rows × 682 columns</p>
 </div>
@@ -2196,20 +2213,20 @@ Work-In-Progress
   </div>
 </div>
 </div>
-<div class="cell">
+<div id="cell-9" class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>unzip <span class="op">/</span>content<span class="op">/</span>drive<span class="op">/</span>MyDrive<span class="op">/</span><span class="dv">2024</span><span class="op">-</span><span class="dv">0</span><span class="er">1</span><span class="op">-</span><span class="dv">0</span><span class="er">9</span><span class="op">-</span>Bauernproteste<span class="op">/</span><span class="dv">2024</span><span class="op">-</span><span class="dv">0</span><span class="er">1</span><span class="op">-</span><span class="dv">0</span><span class="er">9</span><span class="op">-</span>Images<span class="op">-</span>Clean.<span class="bu">zip</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-cellview="form">
+<div id="cell-10" class="cell" data-cellview="form">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the result. See linked notebook for code.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<a class="quarto-notebook-link" id="nblink-2" href="https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2024_01_12_kMeans.ipynb">Source: k-means</a></div>
+<a class="quarto-notebook-link" id="nblink-2" href="../notebooks/2024_01_12_kMeans-preview.html#cell-0">Source: k-means</a></div>
 </section>
 </section>
 <section id="bertopic" class="level2">
 <h2 class="anchored" data-anchor-id="bertopic">BERTopic</h2>
 <div class="quarto-embed-nb-cell">
 <p>For this notebook we use a 4CAT corpus collected from TikTok about the <a href="https://de.wikipedia.org/wiki/Bauernproteste_in_Deutschland_ab_Dezember_2023">2024 Farmers’ Protest in Germany</a>. Let’s take a look at all relevant columns. We’re mostly dealing with the <code>image_file</code> column. Additionally, the images files should be extracted to the <code>/content/media/images/</code> path. (See linked notebook for the conversion from the original 4CAT files).</p>
-<div class="cell" data-outputid="a5a048b2-82db-42c8-a697-12ae3780e51f" data-execution_count="77">
+<div id="cell-2" class="cell" data-outputid="a5a048b2-82db-42c8-a697-12ae3780e51f" data-execution_count="77">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>df[[<span class="st">'id'</span>, <span class="st">'body'</span>, <span class="st">'Transcript'</span>, <span class="st">'image_file'</span>]].head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="77">
 
@@ -2217,7 +2234,7 @@ Work-In-Progress
     <div>
 
 
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -2265,7 +2282,6 @@ Work-In-Progress
 </tr>
 </tbody>
 </table>
-
 
 </div>
     <div class="colab-df-buttons">
@@ -2489,14 +2505,14 @@ Note
 <p>The following code has been taken from the <a href="https://maartengr.github.io/BERTopic/getting_started/multimodal/multimodal.html">BERTopic documentation</a> and was only slightly changed.</p>
 </div>
 </div>
-<div class="cell">
+<div id="cell-4" class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install bertopic[vision]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="images-only" class="level3">
 <h3 class="anchored" data-anchor-id="images-only">Images Only</h3>
 <p>Next, we prepare the pipeline for an image-only model: We want to fit the Topic Model on the image content only. We follow <a href="https://maartengr.github.io/BERTopic/getting_started/multimodal/multimodal.html#images-only">the BERTOpic Multimodal Manual</a>, and generate image captions using the <code>vit-gpt2-image-captioning</code>package. The documentation offers a lot of different options, we can incorporate textual content for the topic modeling, or fit the model on textual information only and look for the best matching images for each cluster and display them.</p>
 <p>In our example we focus on image-only topics models.</p>
-<div class="cell" data-outputid="cf1460e5-f669-4ffe-bf45-82447c60fb49">
+<div id="cell-6" class="cell" data-outputid="cf1460e5-f669-4ffe-bf45-82447c60fb49">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bertopic.representation <span class="im">import</span> KeyBERTInspired, VisualRepresentation</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bertopic.backend <span class="im">import</span> MultiModalBackend</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -2509,12 +2525,12 @@ Note
 <span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Next, select the column with the path of your images files, in my example <code>image_file</code>. Convert it to a python <code>list</code>.</p>
-<div class="cell" data-execution_count="74">
+<div id="cell-8" class="cell" data-execution_count="74">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>image_only_df <span class="op">=</span> df.copy()</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>images <span class="op">=</span> image_only_df[<span class="st">'image_file'</span>].to_list()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now it’s time to fit the model.</p>
-<div class="cell" data-outputid="987c265b-f792-47bd-9647-4309e316fe75" data-execution_count="75">
+<div id="cell-10" class="cell" data-outputid="987c265b-f792-47bd-9647-4309e316fe75" data-execution_count="75">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bertopic <span class="im">import</span> BERTopic</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Train our model with images only</span></span>
@@ -2522,16 +2538,16 @@ Note
 <span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>topics, probs <span class="op">=</span> topic_model.fit_transform(documents<span class="op">=</span><span class="va">None</span>, images<span class="op">=</span>images)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Finally let’s display the topics. <strong>Remember:</strong> Topic <code>-1</code> is a collection of documenst that do not fit into any topic.</p>
-<div class="cell" data-outputid="2055f300-6d85-40b5-d675-791fe0609990">
+<div id="cell-12" class="cell" data-outputid="2055f300-6d85-40b5-d675-791fe0609990">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># See linked notebook for code.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
-<a class="quarto-notebook-link" id="nblink-3" href="https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2024_01_12_Visual_BERTopic.ipynb">Source: Visual BERTopic</a></div>
+<a class="quarto-notebook-link" id="nblink-3" href="../notebooks/2024_01_12_Visual_BERTopic_Bauernproteste-preview.html#cell-0">Source: Visual BERTopic</a></div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../images/vbertopic.png" class="img-fluid figure-img" style="width:85.0%"></p>
-<figcaption class="figure-caption">Screenshots from the final table: BERTopic identified e.g.&nbsp;these two topics. The top topic appears to be text-centric posts, where the embedded text makes up a large portion of the content. The bottom topic, on the other hand, is all about faces, showing people in a selfie-perspective, often speaking to the screen, possibly resembling what <span class="citation" data-cites="Sanchez-Querubin2023-zp">Sánchez-Querubı́n et al. (<a href="#ref-Sanchez-Querubin2023-zp" role="doc-biblioref">2023</a>)</span> titled “Playful Performance”. Note: I defamiliarized the faces for privacy.</figcaption>
+<figcaption>Screenshots from the final table: BERTopic identified e.g.&nbsp;these two topics. The top topic appears to be text-centric posts, where the embedded text makes up a large portion of the content. The bottom topic, on the other hand, is all about faces, showing people in a selfie-perspective, often speaking to the screen, possibly resembling what <span class="citation" data-cites="Sanchez-Querubin2023-zp">Sánchez-Querubı́n et al. (<a href="#ref-Sanchez-Querubin2023-zp" role="doc-biblioref">2023</a>)</span> titled “Playful Performance”. Note: I defamiliarized the faces for privacy.</figcaption>
 </figure>
 </div>
 </section>
@@ -2543,7 +2559,7 @@ Note
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-Chao_Memespector-GUI_Graphical_User_2023" class="csl-entry" role="listitem">
 Chao, Jason. 2023. <span>“<span class="nocase">Memespector-GUI: Graphical User Interface Client for Computer Vision APIs</span>.”</span> <a href="https://doi.org/10.5281/zenodo.7704877">https://doi.org/10.5281/zenodo.7704877</a>.
 </div>
@@ -2553,7 +2569,7 @@ Omena, Janna Joceli, Pilipets Elena, Beatrice Gobbo, and Chao Jason. 2021. <span
 <div id="ref-Sanchez-Querubin2023-zp" class="csl-entry" role="listitem">
 Sánchez-Querubı́n, Natalia, Shuaishuai Wang, Briar Dickey, and Andrea Benedetti. 2023. <span>“<span class="nocase">Political TikTok: Playful performance, ambivalent critique and event-commentary</span>.”</span> In <em><span class="nocase">The Propagation of Misinformation in Social Media</span></em>, edited by Richard Rogers, 187–206. A Cross-Platform Analysis. Amsterdam University Press. <a href="https://doi.org/10.2307/jj.1231864.12">https://doi.org/10.2307/jj.1231864.12</a>.
 </div>
-</div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div id="quarto-reuse" class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></div></div></section><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{achmann-denkler2024,
+</div></section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{achmann-denkler2024,
   author = {Achmann-Denkler, Michael},
   title = {Visual {Exploration}},
   date = {2024-01-15},
@@ -2606,6 +2622,33 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       } else {
         el.classList.add('notransition');
       }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
     }
   }
   const toggleColorMode = (alternate) => {
@@ -2674,13 +2717,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  let localAlternateSentinel = 'default';
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
     // Read the current dark / light value 
     let toAlternate = !hasAlternateSentinel();
     toggleColorMode(toAlternate);
     setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
   };
   // Ensure there is a toggle, if there isn't float one in the top right
   if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -2715,18 +2760,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -2758,11 +2792,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/social-media-lab\.net");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -2772,8 +2845,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -2785,7 +2867,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -2829,6 +3034,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -2854,6 +3060,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -2915,12 +3147,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../image-analysis/index.html" class="pagination-link">
+      <a href="../image-analysis/index.html" class="pagination-link" aria-label="Images as Data">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Images as Data</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../image-analysis/classification.html" class="pagination-link">
+      <a href="../image-analysis/classification.html" class="pagination-link" aria-label="Image Classification">
         <span class="nav-page-text">Image Classification</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
@@ -2931,12 +3163,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-left">
       &nbsp;
     </div>   
-    <div class="nav-footer-center"><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+    <div class="nav-footer-center">
+
+<div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
   </div>
 </footer>
+
 
 
 

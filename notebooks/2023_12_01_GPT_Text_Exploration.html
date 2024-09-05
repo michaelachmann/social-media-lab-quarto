@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.433">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Social Media Lab - Text Exploration</title>
+<title>Text Exploration – Social Media Lab</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -57,7 +57,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -84,7 +84,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -93,6 +99,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -110,30 +117,31 @@ cookieconsent.run({
   "notice_banner_reject_button_hide":false,
   "preferences_center_close_button_hide":false,
   "website_name":""
+  ,
+"language":"en"
   });
 });
 </script> 
   
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 <script src="https://unpkg.com/@jupyter-widgets/html-manager@*/dist/embed-amd.js" crossorigin="anonymous"></script>
 
 
 <link rel="stylesheet" href="../styles.css">
-<meta name="twitter:title" content="Social Media Lab - Text Exploration">
-<meta name="twitter:description" content="">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/michaelachmann/social-media-lab/main/images/workflow-topic-modeling.png">
-<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Text Exploration – Social Media Lab">
+<meta name="twitter:description" content="Notes on computational social media analysis">
+<meta name="twitter:card" content="summary">
 </head>
 
 <body class="nav-sidebar floating nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a href="../index.html" class="navbar-brand navbar-brand-logo">
     <img src="../images/logo2.png" alt="" class="navbar-logo">
     </a>
@@ -142,55 +150,55 @@ cookieconsent.run({
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html" rel="" target="">
- <span class="menu-text">Home</span></a>
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../about.html" rel="" target="">
- <span class="menu-text">About</span></a>
+    <a class="nav-link" href="../about.html"> 
+<span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://github.com/michaelachmann/social-media-lab" rel="" target="">
- <span class="menu-text">Notebooks</span></a>
+    <a class="nav-link" href="https://github.com/michaelachmann/social-media-lab"> 
+<span class="menu-text">Notebooks</span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools ms-auto tools-wide">
-    <a href="https://www.threads.net/chaichy" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-threads"></i></a>
-    <a href="https://twitter.com/michael_achmann" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-twitter"></i></a>
-    <a href="https://github.com/michaelachmann/social-media-lab-quarto" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools tools-wide">
+    <a href="https://www.threads.net/chaichy" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-threads"></i></a>
+    <a href="https://twitter.com/michael_achmann" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-twitter"></i></a>
+    <a href="https://github.com/michaelachmann/social-media-lab-quarto" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
-          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Text Exploration</li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Text Exploration</li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
     </div>
   </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">Getting Started</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -221,7 +229,7 @@ cookieconsent.run({
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../getting-started/literature-review-assistant.html" class="sidebar-item-text sidebar-link">
+  <a href="../notebooks/literature-review.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">GPT Literature Review Assistant</span></a>
   </div>
 </li>
@@ -229,9 +237,9 @@ cookieconsent.run({
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
  <span class="menu-text">Data Collection</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -258,9 +266,9 @@ cookieconsent.run({
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
  <span class="menu-text">Text Analysis</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -287,9 +295,9 @@ cookieconsent.run({
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
  <span class="menu-text">Image Analysis</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -316,9 +324,9 @@ cookieconsent.run({
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
  <span class="menu-text">Evaluation</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -352,7 +360,7 @@ cookieconsent.run({
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -384,7 +392,9 @@ cookieconsent.run({
   </div>
   
 
+
 </header>
+
 
 <section id="data-import" class="level3">
 <h3 class="anchored" data-anchor-id="data-import">Data Import</h3>
@@ -397,17 +407,17 @@ cookieconsent.run({
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://raw.githubusercontent.com/michaelachmann/social-media-lab/main/images/workflow-topic-modeling.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">An example for a GPT based “Topic Modeling” approach. I have used this approach in a current research project, the process is not perfect yet.</figcaption>
+<figcaption>An example for a GPT based “Topic Modeling” approach. I have used this approach in a current research project, the process is not perfect yet.</figcaption>
 </figure>
 </div>
-<div class="cell" data-execution_count="50">
+<div id="cell-2" class="cell" data-execution_count="50">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install <span class="op">-</span>q openai backoff gpt<span class="op">-</span>cost<span class="op">-</span>estimator</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="setup-for-the-openai-api" class="level3">
 <h3 class="anchored" data-anchor-id="setup-for-the-openai-api">Setup for the OpenAI API</h3>
 <p>We’re using the new Colab Feature to store keys safely within the Colab Environment. Click on the key on the left to add your API key and enable it for this notebook. Enter the name fpr your API-Key in the <code>api_key_name</code> variable below.</p>
-<div class="cell" data-cellview="form" data-execution_count="64">
+<div id="cell-4" class="cell" data-cellview="form" data-execution_count="64">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> openai</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> openai <span class="im">import</span> OpenAI</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> google.colab <span class="im">import</span> userdata</span>
@@ -459,7 +469,7 @@ cookieconsent.run({
 <li>…</li>
 </ul>
 <p>Do not forget the <strong><a href="https://uniregensburg-my.sharepoint.com/:x:/g/personal/acm53421_ads_uni-regensburg_de/EVgX8Avwyx5DvRUGugboTCkBMnp-faFsnKhhKvNH34tB-A?e=sYUY9K">Prompt Archive</a></strong> when experimenting. Share your successfull prompt with us!</p>
-<div class="cell" data-execution_count="19">
+<div id="cell-6" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>system_prompt <span class="op">=</span> <span class="st">"""</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="st">You are a helpful assistant, an expert for German politics.</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="st">**Objective:** Extract policy issues from German language social media texts. Policy issues refer to specific topics or subjects that are the focus of public or governmental debate, analysis, and decision-making. Elections themselves and party slogans or their performance are no policy issues.</span></span>
@@ -478,7 +488,7 @@ cookieconsent.run({
 <li><code>COLUMN</code>: What’s the column name to save the results of the data extraction task to?</li>
 <li><code>SAMPLE_SIZE</code>: Do you want to run the request on a smaller sample of the whole data? (Useful for testing). Enter 0 to run on the whole dataset.</li>
 </ul>
-<div class="cell" data-cellview="form" data-outputid="34fdb9be-670f-4873-ea2b-4a333336c1ff">
+<div id="cell-8" class="cell" data-cellview="form" data-outputid="34fdb9be-670f-4873-ea2b-4a333336c1ff">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tqdm.auto <span class="im">import</span> tqdm</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>MOCK <span class="op">=</span> <span class="va">True</span></span>
@@ -534,77 +544,84 @@ cookieconsent.run({
 {"model_id":"02cf19426fa947868a46a228cbf25aee","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
 </script>
 </div>
+<div class="cell-output cell-output-stdout">
+<pre><code></code></pre>
 </div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Save Results</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>new_df.to_csv(<span class="st">'/content/drive/MyDrive/2023-12-01-Export-Posts-Text-Master.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-9" class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Save Results</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>new_df.to_csv(<span class="st">'/content/drive/MyDrive/2023-12-01-Export-Posts-Text-Master.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Next we create a <code>set</code> of Policy Issues. Sets are similar to lists in that they are used to store multiple items, but each unique item in a set appears only once, regardless of how many times it is added, as sets inherently enforce uniqueness and do not allow duplicates. Unlike lists, sets are unordered, meaning they do not record element position or order of insertion. This property makes sets highly efficient for checking membership and eliminating repeated entries. We create the list <code>policy_issues</code> to generate a word cloud.</p>
-<div class="cell" data-outputid="53d53eab-e218-40b1-a9be-59a7a06cc670" data-execution_count="90">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>unique_policy_issues <span class="op">=</span> <span class="bu">set</span>()</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>policy_issues <span class="op">=</span> []</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> issues <span class="kw">in</span> new_df[<span class="st">'Policy Issues'</span>]:</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> issues <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>        unique_policy_issues.update(issues)</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> issue <span class="kw">in</span> issues:</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>            policy_issues.append(issue)</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(unique_policy_issues)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-11" class="cell" data-outputid="53d53eab-e218-40b1-a9be-59a7a06cc670" data-execution_count="90">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>unique_policy_issues <span class="op">=</span> <span class="bu">set</span>()</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>policy_issues <span class="op">=</span> []</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> issues <span class="kw">in</span> new_df[<span class="st">'Policy Issues'</span>]:</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> issues <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>        unique_policy_issues.update(issues)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> issue <span class="kw">in</span> issues:</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>            policy_issues.append(issue)</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(unique_policy_issues)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>{'faires Verfahren', 'Straßen', 'EU-Kommission', 'Zusammenhalt unserer Gesellschaft', 'migrationswende', 'bayernliebe', 'Thema Migration nicht unkontrolliert weiterlaufen lassen', 'Sprache', 'FREIHEITfürBayern', 'Freistaat Bayern', 'rezession', 'Hilfe', 'Mehrwertsteuer', 'tv', 'Lügen', 'Bayern stark und stabil bleibt', 'Baumfreiflächen', 'BAföG-Höchstsatz', 'Online Antrag', 'Zurückweisungen an Binnengrenzen', 'Autoverbot', 'wohnungskonzerne enteignen', 'Infrastrukturausbau', 'Reformierbarkeit des öffentlich-rechtlichen Rundfunks', 'bayerische Antidiskriminierungsstelle', 'Baden-Württemberg', 'Strompreiszonen', 'Streit und Chaos', 'linke Inhalte', 'Soldatenberuf', 'bezahlbare Energie', 'Verkaufszahlen bei Heizungssystemen', 'Forschung und Entwicklung', 'Ölheizungen', 'Situation an den Aussengrenzen', 'Leitungen', 'Verbotsorgien', 'Kriminalität', 'CDU/CSU', 'Sprachen und Kultur', 'deutsche Universität', 'bezahlbares Bayern für alle', 'Souveränität', 'wiedervereinigung', 'Landwirte', 'Rechtsstaat', 'moderne Lernumgebung', 'Iran', 'Hebammen', 'Tierschutz', 'Baumwipfelpfad', 'politische Einflüsse', 'bayrisches Brauchtum', 'Mitbestimmung', 'Linksextremisten', 'landtagbayern', 'BayernsOpposition', 'ddr', 'ltw', 'Parteidisziplin', 'Planungs- und Genehmigungsprozesse', 'Wirtschaft fördern', 'Energiepreis', 'Personalschlüssel', 'Bestandsgebäude', 'gleichwertige Lebensverhältnisse', 'Energiepreise', 'Sparen', 'bezahlbarer Wohnraum für alle', 'Jugendzentren', 'Wassersparen', 'niedrigere Standards', 'Sorgen und Nöte', 'Migrationswende', 'junge Männer', 'Haus- und Fachärzte', 'Landwirtschaftspolitik', 'unserezukunft', 'Faschist*innen', 'wegenmorgen', 'konservative Werte', 'innenminister', 'Politik', 'Bundeswehr', 'Startchancen für Kinder', 'Kulturlandschaft', 'umsteuern', 'Klimaschutzziele erreichen', 'Führerscheinrichtlinie', 'Kita-Betreuungsplätze', 'politischer Wechsel', 'Kaufnebenkosten', 'Obergrenze für Bargeldzahlungen', 'heimatliebe', 'Zivilist*innen', 'Glaubwürdigkeit', 'Mehrwertsteuer für die Gastronomie', 'unkontrollierte Zuwanderung', 'LOSvonBerlin', 'Anti-Atom-Ideologie', 'Ausbau der Erneuerbaren Energien', 'Mehr Platz für das Rad und die Öffis', 'Biodiversität', 'linke Medien', 'afdwählen', 'Sozialwohnungen', 'bayerischerlandtag', 'Grenzen', 'Migrationskatastrophe', 'rechtsradikale Parteien', 'Ego-Show', 'Bildungswende', 'Fach- und Ergänzungskräfte', 'Terroristen der Hamas', 'anpackenstattankleben', 'Nachtfahrverbot', 'unsereverantwortung', 'illegale Einwanderung', 'Hotel', 'erfolg', 'Deutschlandticket', 'Unterschleißheim', 'Wirtschafts- und Standortpolitik', 'Startchancen-Programm', 'Personal- und Sachmittel', 'Landtag Bayern', 'Grenzschutz', 'Dampfheizkraftwerk', 'Geflüchtete', 'Bayernpartei', 'Exportwirtschaft', 'Rechte der Bürger', 'Zivilgesellschaft', 'Ernsthaftigkeit', 'BürgerlicheMitte', 'pseudowissenschaftliche Gender-Ideologie', 'sichere Herkunftsstaaten', 'haustürwahlkampf', 'Bayern lebt es sich einfach besser', 'Wahlklatsche', 'Mittelstand', 'Diesel', 'Förderkürzungen', 'Deutschlandpakt', 'Stigmatisierung', 'Befreiung land- und forstwirtschaftlicher Fahrzeuge von der KfZ-Steuer', 'Mobilitätsmix', 'Innere &amp; transnationale Sicherheit', 'LOSvonRom', 'Hetze', '8Oktober', 'MINT-Fächer', 'Stillstand', 'Beteiligung', 'Bevormundung aus Berlin', 'Finanzierungen', 'Technologieoffenheit bewahren', 'illegale Migration', 'islamistischer Terror', 'Auto-Verbot', 'oberfranken', 'Ampel-Regierung', 'GesunderMenschenverstand', 'Perspektiven', 'Arztsitze', 'Terrorangriffe der Hamas auf Israel', 'SPD', 'Bau einer weiteren Betonpiste', 'Bezirksvorsitzender für Unterfranken', 'sommertour', 'Sach- statt Geldleistungen', 'deutschegeschichte', 'ehrenamt', 'Sprachfeststellungstests', 'Klarheit bei Heizungsgesetz', 'opposition', 'bayerischen Steuerzahler entlasten', 'Kinderbetreuung', 'stationäre Versorgung', 'Überforderung', 'LTWBayern', 'Selbstbestimmungsgesetz', 'Interessen', 'landespolitische Fragen', 'Ausländer', 'Unternehmenssteuern', 'CO2-Maut für LKW', 'Öffentlich-rechtlicher Rundfunk', 'Bezirkstage', 'missionunion', 'Abgabe', 'Weltoffenheit', 'Waldbauern', 'Elster Zertifikat', 'Hohenwart', 'Meinungen aus', 'Terrororganisation', 'Aufbaugeneration', 'rechtskonform', 'Meisterausbildung', 'digitale Strategie', 'wichtige Themen', 'energiewende', 'Briefwahl', 'Umweltschutz', 'christlich', 'Kaputt gesparte Kommunen', 'Lebensmittel- und Energiepreise', 'kommende Wahlen', 'Chancengerechtigkeit', 'Entlastung', 'Geldleistungen', 'Bezahlbare Wohnungen und faire Mieten für 7 Mio. Mieter', 'Unterstützung', 'Wirtschaftswachstum', 'Heizungsverbote', 'Haushaltspolitik', 'jüdischer Staat', 'Wasserstoff-Region', 'Flurneuordnung', 'eigene Zukunft', 'Fachkräfte', 'Kontrolle', 'Biomassedeckel', 'Verkehr', 'Mehrwertsteuer auf Grundnahrungsmittel', 'Zuwanderung', 'Zahnsanierungen', 'soziale Leistungen', 'Entwicklungshilfe', 'Benachteiligungen des ländlichen Raums', 'Digitale Bildung', 'Chancenbereitung', 'Abschiebung', 'Einfluss der ideologisierten und politisierten „Klimaforschung“', 'LosvonBerlin', 'Tanz', 'Unterstützung für Familien', 'Weltsicht', 'Kahlschlag in der Krankenhauslandschaft', 'Heizgesetz', 'Klimasparbuch', 'Zahnarzt', 'grundsatzprogramm', 'Städten', 'Steuergeschenke für Konzerne', 'Gesundheitspolitik', 'steuerliche Entlastungen', 'Anpacken', 'Wiedereinzug in den Bayerischen Landtag', 'Teamgeist', 'Numerus Clausus', 'Inklusion', 'Verteidigungspolitik', 'Heimatliebe', 'ausrüsten', 'Ehrenamtlicher Einsatz', 'gefährdungslage', 'Gender', 'Beschränkungen der Bargeldnutzung', 'Stabilität', 'München', 'Dr. Markus Büchler', 'bevormundung', 'selbstbestimmtes Europa', 'Asylbewerberleistungsgesetz', 'wirtschaftspolitik', 'Waldstilllegungen', 'beschränkt gültiger Führerschein ab 60', 'Bayerns Wälder', 'Gräuel', 'Abschieben', 'islamistischer Terror der Hamas', 'Arbeit', 'MWST in der Gastronomie', 'bezahlbar', '8. Oktober', 'Katastrophenschutz', 'Nahverkehrsangebote', 'Mitmach-Aktionen', 'zivilgesellschaftliche Kräfte', 'Fernsehbosse', 'Brenner-Nordzulauf', 'Einigkeit', 'Gewalt', 'Parteiarbeit', 'Abtreibungen', 'Tanken', 'Privateigentumsschutz', 'politische und gesellschaftliche (Fehl-)Entwicklungen', 'Expertenkommission', 'Bayern selbst entscheiden können', 'Ideen', 'aktueller Rechtsruck', 'Asyl-Lobbyisten', 'Biotechnologie', 'starke Stimme', 'Klimaschutz', 'Kontoverbindung', 'bezahlbares Wohnen', 'bürgerliche Koalition', 'Klimawandel', 'Migranten', 'ungewollt schwangere Frauen', 'NGO', 'zeitgemäße Führung', 'gewöhnlicher Aufenthalt', 'Tourismus', 'Bürger', 'Interessen Italiens', 'Terror', 'Mietpreissteigerungen', 'Impfzwang', 'Batteriespeicher', 'Kahlschlag', 'Lärm', 'frühzeitiges Erlernen der deutschen Sprache', 'Bayern liebt', 'internationale Gemeinschaft', 'Maximilianeum', 'EUCH bewegen', 'Ausbildungsreform für die Kinderpflege', 'innovative Bauverfahren', 'Ehrenamt', 'Bildungsoffensive für Deutschland', 'antisemitische Sachverhalte', 'wirtschaft', 'Zusammenarbeit mit dem Regime', 'Pharmazie', 'mittelfranken', 'Abschiebungen', 'Ampel-Chaos', 'gesellschaftliche Unterstützung', 'Frieden in Europa', 'Übernahme nach dem Studium', 'Stimmung gegenüber Geflüchteten', 'Miete', 'Natur erhalten', 'Familien mit Kindern', 'BayernZuerst', 'Bezahlbare Wohnungen und faire Mieten', 'Mitarbeitenden', 'digitale Beantragung', 'Opfer rechter Gewalt', 'Wasserversorgung', 'Pflegegeld', 'Wohnungsoffensive', 'FürDieZukunft', 'Gesetz', 'praktische Übungsstunde', 'Verkehrsträger', 'Ideologiefreiheit an den Hochschulen', 'Jugendparlament', 'neonazistische Gruppen', 'Hessenweiterführen', 'Fahrverbote', 'Sachleistungen', 'Rechtsrutsch', 'Schutz vor Gefahren', 'Landwirtinnen', 'CO2-Bepreisung', 'Modlareuth', 'Bayernwahl', 'Weniger Bürokratie und eine digitale Verwaltung', 'Petition', 'Herausforderungen unserer Zeit', 'deutsche Richterbund', 'ltwby23', 'Klimafreundliches Heizen', 'Kunst', 'zweite Legislatur', 'Gesundheitswesen', 'H2-Heizung', 'Künstliche Intelligenz', 'Universität', 'Migrationsabkommen', 'E-Fuels', 'Politiker', 'bayerische Städtebauförderung', 'Rassismus', 'wählherzstatthetze', 'Länderfinanzausgleich reformieren', 'Medizin', 'Krimbrücke', 'landtagswahl', 'Wasserstoff massiv ausbauen', 'Führerschein für schwere PKWs', 'demokratische Werte', 'politisch Verfolgte', 'Verantwortung', 'Grenzpolizei', 'Leistung', 'Gute Pflege', 'recht', 'Leistungen', 'grüne Klimakonto', 'Ärmsten der Bevölkerung', 'gute Schulen', 'Geflüchtetenpolitik', 'Soldatischer Dienst', 'Stolz', 'Elterngeld', 'regionale Spezialitäten', 'soziale Sicherheit', 'klare Positionen', 'LKW', 'eigenständiges Fahren ab 16 Jahren', 'Bayerns Opposition', 'Klimakollaps', 'Tempolimit', 'einheit', 'CO2-Bilanz', 'heimat', 'friedliches Europa', 'EU-Außengrenzen', 'Grünen', 'Glasindustrie', 'ErbschaftsteuerAbschaffen', 'pro-palästinensische Terrororganisationen', 'Finanzierung', 'Umwelt', 'Schutz von Jüdinnen und Juden', 'Krankenhausreform', 'EU-Eliten', 'Windkraftausbau', 'DIELINKE', 'Bildungs- und Betreuungseinrichtungen', 'Einheimische Bevölkerung', 'steigende Mieten', 'Kostenlosen und ticketfreien ÖPNV', 'kleidung', 'Wochenmarkt', 'Verantwortungsvolle Regierung', 'unabhängige Justiz', 'Solarenergie-Anlage für Balkon oder Dach', 'Pflege', 'Hürden', 'Mehrwertsteuer auf Speisen in der Gastronomie', 'kathaunterwegs', 'Motor für Deutschland und Europa', 'Integration', 'Lehrstühle', 'Wiedervereinigung', 'Männern und Kindern in Israel', 'Asylrecht aushöhlen', 'Bildungsangebote von Verbänden', 'kostenloser Nahverkehr', 'Hürden für den Führerscheinerwerb', 'individuelle Mobilität', 'Halbzeitbilanz der Ampel', 'Gewerbe', 'Planungshoheit der Länder', 'Riedenburg', 'Gebäudeenergiegesetz', 'ökonomie', 'Diskriminierung bei Nichtverwendung der „Gendersprache“', 'Aiwanger', 'Sonderaufnahmeprogramme', 'Landtagswahlen', 'Taurusmarschflugkörper', 'Partei der Mitte', 'frühkindliche Bildung', 'Geiseln', 'Mobilität für alle', 'Vergesellschaftung großer profitorientierter Wohnungskonzerne', 'Apotheke', 'politische Bildung', 'Landräte', 'Wirtschaftlichkeit', 'Absenkung der Mehrwertsteuer', 'Ökomodellregionen', 'Leichenmisshandlung', 'Rückführungsabkommen', 'Unsicherheiten für Studierende', 'Sympathiekundgebungen für den Terror in Israel', 'bayerischerrundfunk', 'Corona-Bußgelder', 'Parteien', 'Dorferneuerung', 'Kernfusion', 'Werte', 'Krankenhausversorgung auf dem Land', 'Sauerlach', 'Bürgerinteresse', 'Bayern wird Wasserstoffland Nummer 1', 'Krankenhäuser', 'mauerfall', 'Genehmigungsprozesse', 'Schwarz-Grün', 'Atomkraftwerken', 'Hofsterben', 'Ausländer-Gewalt', 'Versorgung', 'Drittstaatsangehörige', 'Festung Europa', 'Unterfranken', 'Heimat', 'natürlicher Rohstoff Holz', 'Lösungen', 'Abgabelast pro gefahrenen km', 'gegen grüne Ideologie', 'Gegenpositionen zum herrschenden Zeitgeist', 'Hilfe und Arbeitsmigration', 'Sitzen bleiben', 'Familienbetriebe stärken', 'Landtagskandidat*innen', 'fossile Energieträger', 'europäische Regelung', 'CSU-Versprechen im Wahlkampf', 'palästinensische Terroristen', 'Grüne', 'Klimakonto', 'Menschenrechtsverletzungen', 'Verkehrsbelastung', 'autoritäre Gesundheitspolitik', 'Israel', 'wirtschaftliche Entwicklung des Freistaates', 'staatliche Verwaltung', 'tradition', 'gestiegene Kosten für Heizung', 'Zukunftsvertrag zur Landwirtschaft in Bayern', 'Kürzungshammer', 'Soziale Politik', 'grüne', 'Maghreb-Staaten', 'Förderrunde', 'gesellschaftliches Wohlergehen', 'Bewusstsein', 'Gewinnung von Arbeits- und Fachkräften', 'Bandenkriminalität', 'Stellenabbau', 'Fördergelder', 'Pflegeversorgung in der Heimat sicherstellen', 'Richtungsentscheidung', 'bezahlbare Wohnungen', 'Gelder für Freiwilligendienste', 'bayerische Volkspartei', 'Geburtsstationen', 'landtag', 'Bayerntour', 'konsequente Rückführung krimineller Straftäter', 'Gesundheitsversorgung', 'Bus und Bahn', 'Schweden', 'Regeln', 'kostenlose Kitas', 'Wahl am 8.10.', 'bayerische Grenzpolizei', 'Populistische Politik', 'Klimakleber', 'Leichenschändigung', 'vereint', 'EU-Sanktionen', 'Innere Sicherheit', 'konservative Opposition', 'Breitbandversorgung', 'Lebensqualität', 'Ausbildungskosten', 'bezahlbarkeit', 'Vertrauen in demokratische Institutionen', 'Minderheit im eigenen Land', 'Wasserstoffdrehkreuz', 'CO2-Preis', 'Erdgasheizungen', 'Erbschaftsteuer', 'Abkommen', 'landtagswahlen', 'Mobilfunk', 'Fakten', 'Lebensverhältnisse', 'Bayernliebe', 'DRG-Fallpauschal-Finanzierung abschaffen', 'Parteivorsitzende', 'Demokrat*innen', 'Demonstranten', 'Investition in Ausstattung der Schulen', 'EU stoppen', 'russischer Angriffskrieg gegen die Ukraine', 'politische Gefangene', 'FREIHEITfürBAYERN', 'Wirtschaftspolitik', 'Forschung an KI', 'gebührenfreie Kitas', 'Gesundheit', 'Familienpolitik', 'Ideologie', 'Handeln', 'Jugend', 'Rechtsstaatlichkeit', 'Startchancen', 'sinkender Strompreis', 'kostenfreie Bildung', 'Forschung', 'Gefahrenstellen', 'Schule und Berufsleben', 'Kommunen', 'Haft', 'Schlaganfall-Versorgung', 'straffällig', 'Heizungsgesetz', 'Grenze', 'ltwby', 'Selbstbestimmung', 'Geld', 'tagderdeutscheneinheit', 'ländliche Räume', 'Respekt', 'Bürgerenergie-Genossenschaften', 'Antisemitismus', 'EU-Asylkompromiss', 'Automobilindustrie', 'Markus Söder und die CSU', 'Immobilienhaie', 'Kandidierenden', 'Sanierungsbedarf', 'Kurs', 'Vernichtung', 'Wissenschaft', 'Kitaplätze', 'Wirtschafts- und Sozialpolitik', 'Rente', 'EWERG eG', 'Grüne raus aus der Regierung', 'Strompreise von Umlagen und Steuern', 'Arbeitsvertrag', 'Politik für die eigenen Leute', 'PolitikFürUnsereZukunft', 'Beseitigung von Weltraumschrott', 'Rundfunkrat', 'künftige Generationen', 'GEAS', 'Bezahlung in der Pflege', 'Spaltung', 'Verbeamtung', 'international', 'nürnberg', 'Strompreise', 'faire Bezahlung von Pflegekräften', 'rechte Politik', 'Wirtschaftszweig', 'Kandidatinnen und Kandidaten', 'Satellitendaten', 'Verkehrsentlastung', 'Nationaler Sicherheitsrat', 'begleitetes Fahren', 'starkes und bezahlbares Bayern', 'Migrationspolitik', 'NGOs', 'Umwidmung von Parkplätzen', 'heimische obst- und nahrungsmittel', 'Seenotrettung', 'Betonfundamente', 'CSU', 'Technologie-Offenheit', 'Datenschutz', 'öffentlich-rechtlichen Medien', 'Erhalt der heimischen Lebensmittelproduktion', 'politikmitverstand', 'Landwirtschaft', 'Nationale Raumfahrtstrategie', 'Hightech', 'Arbeitslosenquote', 'Artenvielfalt', 'Kassenleistungen', 'Wirtschaft', 'Wohlstand', 'PIN', 'Zukunftskurs', 'einheitliche Regelungen', 'EU', 'Wohnung', 'staatliche Betriebskostenförderung', 'neoliberale Wirtschafts- und Finanzpolitik', 'antisemitische Einstellungen', 'Lebensmittel', 'Dorfentwicklung', 'Wasserstoff', 'CO2-Bindung', 'Biomasse', 'handlungsfähiger Staat', 'Vergütung', 'starke Bildungspolitik', 'Judenhass', 'Privatsphäre', 'Wasserstoff-Tankstelle', 'Schienen', 'sauberes und bezahlbares Zuhause', 'Geschichte', 'bayerisches Familiengeld', 'Betriebskostenförderung', 'gemeinnützige Arbeit', 'LTWBy', 'Lärmschutz', 'Förderung von Ideen zur Verbesserung von Unterricht und Schule', 'Elektrolyseur', 'Kostenlose Kitas', 'versorgungsrelevant', 'WHO', 'HolDirDeineZukunftZurück', 'Rundfunkbeitrag', 'Photovoltaik', 'Gemeinschaftsschule', 'Mieten', 'Bau- und Wohnwirtschaft', 'Energie', 'Abgase', 'Wissenschaftsfreiheit', 'Terror der Hamas', 'BAföG Reform', 'Gedichte', 'Machen statt Niedermachen', 'Hüterin der Bürgerrechte', 'Chancen', 'Tariftreue-Paket', 'flächendeckende Notfallversorgung', 'Umweltfreundliche Mobilitätsformen stärken', 'Kliniken', 'Bildungssystem', 'Feindbilder', 'Landes-Antidiskriminierungsgesetz', 'Radio', 'Abrechnung der Arztkosten', 'Anmaßungen des EuGH', 'Eigentum', 'Eltern- und Schüler*innenvertretungen', 'Windkraft', 'Senioren', 'Ungleichheit', 'Liberalismus in Europa', 'Ausbau des mobilen Internets', 'Lauterbach', 'Abwehr dieses Terrorangriffs', 'Politik für Leistung und Eigentum', 'teambayern', 'Verbindungsachsen', 'exzellente Ausbildung', 'Demokratie-Dialog', 'Wasserstoffnetz', 'krise', 'Wohnraum', 'politik', 'Energieversorgung', 'Eigentum in Familienbesitz schützen', 'FreistaatBayern', 'praktische Berufe', 'Werkswohnungen', 'Europawahl 2024', 'Quiz-Spiel', 'Nancy Faeser', 'GemeinsamStark', 'Haft für Schutzsuchende', 'Ordnung und Sicherheit', 'Lieferung von schweren Waffen', 'Biotech-Standort', 'Grenzschutzoffensive Bayern', 'sittenwidrig', 'Energiewende', 'Abhängigkeit vom Ausland', 'Arbeit im Rentenalter', 'Engagement für Demokratie', 'queere Menschen', 'Holzwachstum', 'Durchforstungsholz', 'Ingolstadt', 'Pflegekrise', 'Grundnahrungsmittel', 'Versorgungssicherheit', 'attraktive Bedingungen für deutsche Weltraumunternehmen', 'Bildungspolitik', 'Effizienz', 'Straßengroßprojekt', 'Demoskopen', 'Mutter', 'LTW', 'linke', 'Pflegegesellschaft', 'Rechtsterrorismus', 'Hass und Hetze', 'Kartellamt', 'Zwang', 'Rundfunkgebühren abschaffen', 'Arbeitsmarktpolitik', 'Merz', 'Patient', 'Partei', 'Krisen', 'GRÜN', 'heimatmitherz', 'Frieden', 'bürokratischer Mehraufwand', 'Netto', 'bezahlbare Lebensmittel', 'Desinformation', 'Schulen', 'bildungsgerechtigkeit', 'Freilassung aller Geiseln', 'Oberbayern', 'MedizinischeVersorgung', 'Energie-Mix', 'Lebenshaltungskosten', 'Postleitzahl', 'Geothermie', 'Bayern', 'Wirtschaftsfreundlichere Rahmenbedingungen', 'starke Wirtschaft und bezahlbare Energie', 'regierung', 'geschichte', 'Wille', 'Europawahlen', 'ltw2023', 'Anstalten', '2023', 'Lieferkettengesetz', 'Verwaltung', 'Bildung und Forschung', 'sexuelle Gewalt', 'HerzStattHetze', 'Manifest für Freiheit in Europa', 'Fremdbestimmung', 'Steuersenkungen', 'Menschen in Israel', 'Schwaben', 'rechte Gewalt', 'Mietpreisbremse', 'würdevoll', 'EnergiewendeMitVerstand', 'Ländlichen Raum stärken', 'CDUParteitag', 'Zukunftsvertrag für die Landwirtschaft', 'DeineStimmeZählt', 'Gegenwehr gegenüber einer übergriffigen EU-Bürokratie', 'Bruder', 'freistaatbayern', 'Bürgergeldreform', 'Familie', 'ständige Hetze von Söder', 'Förderung innovativer Start-ups', 'demokratie', 'Wärmewende', 'rechte Szene', 'gute Pflege', 'Friedensbewegung', 'Windräder', 'Prinzipien', 'Tätern', 'Verbindungen', 'Sturm', 'Tauruslieferung', 'Kernkraft', 'Kleinkrafträder', 'soziale Gerechtigkeit', 'Hass und Antisemitismus', 'Drogenlegalisierung', 'einigkeit', 'klimaschutz', 'radikale Bewegungen in Österreich und Deutschland', 'wiederverwenden', 'Familien', 'Mangel an Kita- und Pflegeplätzen', 'Kraft der Vernunft', 'faire Mieten', 'Land Israel', 'Region', 'Rundfunk', 'Heizungspolitik', 'Migrationskrise', 'DIE LINKE', 'Sozialepolitik', 'Wohnungsbau', 'Flüchtende', 'Bewirtschaftete Wälder', 'gute Löhne', 'Ganztagsplätze', 'sicherer Strom', 'Grenzen kontrollieren', 'Gegenrechts', 'Chatkontrolle', 'Technologieoffenheit', 'Menschen in Armut', 'Weiden', 'Förderung des Ökolandbaus und der Biologischen Vielfalt', 'Europäische Staaten', 'Innenministerin Faeser', 'Zugangscode', 'Strompreis', 'Forschungspolitik', 'Mullah Regime', 'Verteidigung Israels', 'Situation in den Aufnahmekommunen', 'Klimakrise', 'Opfer', 'Ausbildungsstätte', 'Rechtsmittel', 'Streit', 'Bildungsprotest2023', 'heimatbayern', 'katrinebnersteiner', 'Kraft', 'Forschungsbedingungen', 'Verwaltungsrat', 'EU-Gängelung', 'Impuls', 'Produktionsverlagerung', 'Industrie', 'kriminelle Ausländer', 'Staatswald', 'Nazis', 'sachsenanhalt', 'Babys in Bayern', 'Spitzenkandidat', 'Überlänge von 16,50 m auf 17,40 m zulassen', 'Einwanderungs- und Asylpolitik', 'Spritpreisbremse', 'Fördermittelkürzungen', 'gemeinsame Sprache', 'Immatrikulation', 'U18-Wahl', 'mobilität', 'None', 'Kinder- und Jugendplan', 'Krisenverordnung', 'Pflegekonzepte', 'Bürokratieabbau', 'BayernSPD', 'bildung', 'Tradition', 'oberbayern', 'wählen', 'Zugang zur Justiz', 'Wälder', 'Gericht', 'Beste Bildung und weniger Unterrichtsausfall', 'Visionen', 'Terrorism', 'Asylrecht', 'Lernmittelfreiheit', 'Präventionsangebote', 'schlechter ÖPNV', 'Studis', 'humanitäre Verantwortung', 'Ampelpläne', 'Asylpolitik', 'br', 'Mopedführerschein', 'Abschaffung der ungerechten Erbschaftssteuer', 'Demokratieförderung', 'Landärzte', 'traditionelle Studiengänge', 'Enteignung', 'AfD-Wahlergebnisse', 'Holzöfen', 'Nationale Sicherheit', 'bayerische Bezirkstage', 'Bildungswende jetzt', 'Erbschaftssteuer', 'Volksentscheid', 'Landtags- und Bezirkstagswahl', 'Intoleranz', 'Abschaffung des Asylrechts', 'deutschland', 'ErbschaftssteuerAbschaffen', 'Gerechtigkeit', 'Größenwahn', 'Gewalt und Terror in Israel', 'Familienkasse', 'Atomwaffen', 'Wahl', 'GegenRechts', 'Wochen', 'Rücktritt', 'bayerische Staatsangehörigkeit', 'ehemalige SED-Partei', 'Wohnen', 'Mitgliedsstaaten', 'Kultursommer mit Links', 'arbeitsplätze', 'Kernkraftwerke', 'CSU Parteivorstand', 'Terrorismus', 'Anti-Demokrat*innen', 'Sorgen der Bürger ernst nehmen', 'bayerische Interessen im Bund und in Europa', 'die das Klima schützt', 'soziale Politik für Bayern', 'Tarifbindung', 'Bürger*innen-Energiegenossenschaft', 'Abschaffung der CO2-Steuer', 'linksextremistischen Gruppen', 'bayerische Staatlichkeit', 'EEG-Förderung', 'extremisten', 'Leistung und Eigentum', 'Durchhaltevermögen', 'oberpfalz', 'gerechter Freistaat', 'Verbrechen an unschuldigen Frauen', 'Grundsicherung', 'Verlässlichkeit und Kompetenz statt Beliebigkeit und Populismus', 'Los von Berlin', 'ambulante Anlaufstellen', 'AKW-Verteufelung', 'rechnen', 'Herangehensweisen', 'Bezahlbares Wohnen für 7 Mio. Mieter', 'Existenzrecht des jüdischen Staates Israel', 'staatliche Grundfinanzierung von Universitäten und Hochschulen ohne ideologische Vorgaben', 'Stärke', 'Kraftstoff', 'Wasserstoffinfrastruktur', 'vernünftige Mitte', 'Verträge mit Staaten in Nordafrika und Türkei', 'Landtagswahlen in Hessen und Bayern', 'Tempolimit auf Autobahnen', 'pädagogische Qualität von Kitas', 'Gewerkschaften', 'Polizei', 'Russland', 'FlurNatur-Struktur und Landschaftselemente', 'Arbeitsmigration', 'Verbrennungsmotoren', 'Arbeits- und Fachkräfte', 'Bürokratie', 'Kostenlose Kitas für 780 000 Kinder', 'schlechte Bildung', 'Enteignen', 'Steuersätze', 'soziale Probleme', 'Einreisekontrolle an den EU-Außengrenzen', 'israelische Städte und Dörfer', 'FDP', 'Rechtspopulismus', 'Krieg', 'Steuermodelle', 'Schule', 'alleinerziehend', 'buntes Kinderprogramm', 'VPN', 'Anstand', 'Staatsanwaltschaften', 'Arbeitskräftemangel', 'LandtagBayern', 'Verteilungsfragen', 'Souveränitätsverlust', 'Menschenrechte', 'Oberpfalz', 'Einkommensteuer', 'kostenfreie Kitas', 'lebenswertes Bayern', 'Investitionen in die Zukunft', 'sichere Stromversorgung', 'Staatsräson', 'sozialepolitikfürdich', 'Gute Pflege für 2,7 Mio. Senioren', 'Anerkennung', 'Kinder', 'ingolstadt', 'schlanker und effizienter Staat', 'Förderung', 'ausbau', 'Anpacken für Bayern', 'Persönlichkeitsrechte', 'Zuwanderungspolitik', 'Umweltschützer', 'erneuerbare Energien', 'Krankenhaus', 'Deutsche Stromkunden', 'Lehrer', 'Antragsprozess', 'Italianisierung', 'Gegenrassismus', 'inklusives Bildungssystem', 'Stromversorgung', 'Bundesregierung', 'Krankenhaus-Milliarde', 'MitDir', 'heimatschutz', 'Die Konfrontation', 'Toleranz', 'Freibeträge', 'fernsehen', 'freiberufliche Apotheken', 'Leerstandsabgabe', 'Stromleitungen', 'Zahlen', 'FreiheitfürSüdTirol', 'lpt2023', 'Deutschland-Pakt gegen unkontrollierte Zuwanderung', 'Lehrerinnen', 'Mehrsprachigkeit', 'Digitalministerin', 'Vereine und das Ehrenamt stärken', 'anpacken', 'Bevormundung', 'Identität und Nation', 'Kostenlose Bildung', 'Biotopen', 'Sprit sparen', 'Regierungsform', 'Katharina und Ludwig', 'Versorgungsstraßen', 'ÖPNV', 'Blockabfertigungen', 'Lohnersatzleistungen für pflegende Angehörige', 'Ladenschlussgesetz', 'Einbürgerung', 'sozialpolitik', 'Rathausplatz', 'Belebung von Ortszentren und Dorferneuerung', 'Mietendeckel', 'FREIE WÄHLER', 'Privatversicherte', 'Standort', 'Wiedervereinigung Deutschlands', 'Mindestlohn', 'Rückführung von kriminellen Straftätern', 'Insolvenzen', 'Mehr Personal und bessere Zusammenarbeit und Vernetzung', 'Einstellung von Richtern und Staatsanwälten', 'vereinbarkeit', 'Gendern', 'Erhaltung von Dörfern', 'Kinderzukunftsprogramm', 'Pelletheizung', 'Sicherheitsvorkehrungen', 'gute Bildung', 'Gesellschaft', 'landwirtschaft', 'Einzelleistungsvergütung', 'Verdoppelung Kapazität', 'Habeck', 'Naturpark', 'Übergriffigkeiten der EU-Eliten', 'Druck', 'Hausbesitzer', 'Verkehrspolitik', 'Gastronomie', 'starke Wirtschaft', 'Agieren und Finanzierung palästinensischer und propalästinensischer Terrororganisationen', 'kostenlosem ÖPNV für Kinder und Jugendliche', 'Ganzjahrestourismus', 'Schule für alle', 'Erdbeobachtungen', 'Vergesslichkeit', 'Pessimismus', 'Online Ausweis', 'klimaneutraler Wohnraum', 'Kinder und Jugendliche', 'innovativ', 'Ausbau der Windkraft', 'Landespflegegeld', 'besseres Europa', 'Sozialpolitik', 'Asyl', 'ampel', 'individuelle Förderung', 'BP', 'wahlprogramm', 'Menschen mit Behinderung', 'LINKE', 'internationale Wettbewerbsfähigkeit', 'mangelndem Wohnraum', 'Kinder und Jugendliche mit Migrationshintergrund', 'Wasserstoff-Gipfel', 'flächendeckend', 'junge Grüne Abgeordnete', 'Herausforderungen in der Migrationspolitik', 'Zwangsimpfungen', 'Freiheit für Bayern', 'Förderungen für Holz- und Pellets-Heizungen', 'Kindergrundsicherung', 'bayerische Arbeitsplätze', 'Innovation', 'Naturschutz', 'sozialer Aufstieg', 'aktuelle Lage', 'Mittelmeer', 'Gelder', 'innenministerherrmann', 'CO2-Einsparung im deutschen Strommix', 'grüne AKW-Heuchelei', 'Mobilität egal wo du hin willst', 'Italien', 'Deutschland', 'bayern', 'Berliner Senat', 'Gesundheitsreform', 'kostenloses Mittagessen', 'sauberer Strom', 'progressive', 'Mehrwertsteuer in der Gastronomie', 'Steuererhöhung', 'Finanzierung islamistischer Organisationen', 'Staat Israel', 'Begleitetes Fahren ab 15 Jahren', 'Ignoranz', 'Musik', 'kostenfreier Schulweg', 'Windrad', 'Kapazitäten', 'energie', 'konfrontation', 'Stromerzeugung', 'Studieren', 'wissenschaft', 'Menschen vor Ort', 'Haushaltsmittel zur Kofinanzierung der Gemeinschaftsaufgabe Agrarstruktur und Küstenschutz', 'Jugendhaus', 'Streuobstpakt', 'freiheit', 'staatlich subventionierter Industriestrompreis', 'Freie Wähler', 'Medienbildung', 'Antisemitismus-Beauftragter der Bayerischen Staatsregierung', 'Amberg', 'Bevölkerung', 'Rechtsextremismus', 'Trinkwasserschutz', 'dritter Nationalpark', 'Digitalisierung', 'Fachschüler*innen', 'Asylsystem', 'den Grünen und den linkslastigen Medien', 'Vielfalt', 'Humanität', 'Augsburg', 'neue Stromleitungen', 'Jom Kippur', 'Prost', 'stationäre Grenzkontrollen', 'grünklingelt', 'nachhaltigere Raumfahrt', 'Hackschnitzel', 'kostenloser Meister', 'kostenlosen ÖPNV', 'optimistische zukunftsorientierte Politik', 'Sparerpauschbetrag', 'Bargeldnutzung', 'Soziale Gerechtigkeit', 'Märkte', 'bayerisches Förderprogramm', 'Umgang mit Unternehmen', 'höherer Mindestlohn', 'Lebensgrundlagen', 'Handwerk', 'Kooperationsverträge mit der Bundespolizei', 'Flächenverbrauch', 'gleiche Chancen', 'psychische Gesundheit', 'Steuersenkung', 'Ausbildung', 'Grundwasserschutz', 'Institutionen', 'national strukturierteres Abschiebeverfahren', 'angriff', 'Oberfranken', 'Kommunale Krankenhäuser erhalten', 'Anti-Auto-Haltung', 'Rückführung', 'Wohnungsnot', 'finanzielle Förderung von Grundschulen', 'kostenfreie Meisterausbildung', 'Berlin', 'medizinische Versorgung', 'ökologie', 'Modernität', 'Innenentwicklung und die Vermeidung von Flächenverbrauch', 'brauchtum', 'Propagandafernsehen', 'Zeltlager', 'jungeunion', 'Mobilitätswende', 'Nutzung', 'Sozialdemokratie', 'Bayerischer Landtag', 'Genehmigungen', 'Soziale Politik Für Dich', 'Fachkräftemangel', 'Drogenkonsumräume', 'dezentrale Bevorratung in Bayern und Deutschland', 'unterfranken', 'Geburtshilfe', 'Azubis', 'Fallpauschalensystem', 'gute Pflege für 2,7 Mio. Senioren', 'Kitas', 'Druck auf die Ampel', 'rechtsrutschstoppen', 'Abdeckungs-Offensive', 'Kommerzialisierung', 'Solaranlage', 'rechte Ausschreitungen', 'bezahlbares Bayern', 'Landschaftswasserhaushalt', 'Bildungsorganisationen', 'echte Beteiligung', 'Mauerfall', 'Kampf gegen Rechts', 'Konkurrenz', 'AnpackenFürBayern', 'moedlareuth', 'klimaschädlicher Flugverkehr', 'Finanzen', 'Wahlalter 16', 'wichtige soziale Themen', 'Tempolimit auf deutschen Autobahnen', 'Umweltzerstörungen', 'Vorhaben', 'fachkräftemangel', 'Stellenwert in der Gesellschaft', 'Weltraummanagement', 'Fichtenbestand', 'Veränderungen', 'Dieselfahrverbot', 'Umwelt- und Naturschutz', 'Energie- und Industriepolitik', 'Technik', 'Ticketfreiheit', 'Unterstützung der Schulen bei der Umsetzung von Programmen', 'Chancengleichheit', 'Erhöhung der LKW Maut', 'Europawahlprogramm', 'Schutz der Zivilbevölkerung', 'Schleuserkriminalität', 'selbstverwaltete Justiz', 'EU-Gerichtshof', 'Verbotspolitik', 'LTWby23', 'Antragsberechtigung', 'generationengerechte Politik', 'demokratieverteidigen', 'Todesstrafe', 'Jährlichen Stellenaufbau bis 2029 verlängern', 'Holzheizung', 'klarer Kurs', 'Exekutive', 'Asyl-Migration', 'Schutzgrund', 'Recht', 'Nationalismus', 'Wende in der Migrationspolitik', 'Stromnetzausbau', 'Brauchtum', 'lesen', 'Unterdrückung im Iran', 'Waldschädlinge', 'Technologie', 'Ferienangebote', 'Landes- und Bündnisverteidigung', 'AUSSENGRENZEN', 'Entführungen', 'Tag der Deutschen Einheit', 'Markus Söder', 'herrmann', 'Benzin', 'Bayern-Energie', 'Klimaneutralität', 'Politsystem', 'Autonomie für Süd-Tirol', 'Erzeugerpreise', 'deutsche Staatsbürgerschaft', 'Heizen', 'inneresicherheit', 'Brandmauern', 'Bürgergeld', 'bezahlbare Mieten', 'Arbeitnehmerrechte', 'Bürgerinnen und Bürger', 'CO2', 'Grünen Partei', 'Kinderhaus', 'völkerrechtswidriger Angriff', 'Student', 'Zinsen', 'bezahlbarer Wohnraum', 'Wohnungsmangel', 'Safe Abortion Day', 'Einkommen', 'Diskutieren wir', 'Europäische Kommission', 'freistaat', 'Frieden und Freiheit', 'Kulturkampf', 'Spoken words', 'Produktion ins Ausland', 'Mödlareuth', 'Einheit', 'tvtipp', 'ländlicher Raum', 'angehobene Altersgrenzen', 'Schulsozialarbeit', 'Schutz', 'allestimmengrün', 'zukunft', 'Migration', 'Grünen wollen das ganze Land bevormunden', 'Grundschule', 'zweitehand', 'Massenmigration', 'Anpacken für unsere Bürger', 'organisiertes', 'Bürgerrechte', 'CO2-neutraler Kraftstoff', 'zielgerichtete Leistungen', 'Ampel', 'Life Science Campus', 'Steuerfreibeträge im Monat pro Arbeitnehmer auf 2000 Euro', 'europäische Zukunft', 'schwaben', 'Rückführungen', 'FSJ-Plätze', 'Wasserkraft', 'Grüne in der Landesregierung', 'Rechtsruck', 'Selbstbewusstsein', 'gemeinsames Lernen', 'Dürre', 'Wohnsitz', 'sicherheit', 'Wirtschaftsstrompreis', 'Heimatbewusstsein', 'Bodentruppen', 'DeutscheGeschichte', 'Bus', 'Verbote', 'Abschaffung Erbschaftssteuer', 'Förderung der ländlichen Entwicklung', 'Krankenhausversorgung', 'Legislative', 'Existenzrecht Israels', 'regensburg', 'durchgrüntes Berlin', 'Finanzierung des ÖPNVs', 'Heimatvertriebene', 'chrupalla', 'LTW23', 'Landschaftspfleger', 'Sommer', 'illegale Einreisen', 'heimische Energiewelt', 'Neonazi-Strukturen', 'Demokratiebildung', 'bundesweite Grenzpolizei', 'Deregulierung', 'Inflation', 'Zukunftsfinanzierungsgesetz', 'Herz statt Hetze', 'Bezahlbare Energie', 'gesellschaftliche Teilhabe', 'volle Unterstützung für die Ukraine', 'bayerische Interessen', 'Elternhaus', 'bessere Taktung', 'Abgaben', 'antisemitische Propaganda', 'ländliche Krankenhäuser', 'Grundversorgung', 'Bayerns erneuerbare Energie', 'Entlastungen', 'Auflösung des öffentlich-rechtlichen Rundfunks', 'grüne Dogmen', 'effektiver Grenzschutz', 'Erdgas', 'Kriminelle Straftaten', 'Rendite', 'Regensburg', 'Diskriminierung', 'AfD-Erfolgswelle', 'Mobilität', 'Erneuerbare', 'Windenergie', 'Kernwegenetzbau', 'Energieversorgung in Bayern', 'Vitalität', 'staatliche Wohnheime', 'Kinder und Jugendliche in den Fokus', 'Engagement für die Heimat', 'Löhne', 'Hochschule', 'Revolutionsgarden', 'Weltfriedenstag', 'Covid-Maßnahmen', 'Bildung für Bayern', 'Barrierefreiheit', 'Zwangsgebühren', 'bezahlbare und saubere Energie', 'Baupolitik', 'Wahnsinn des Nationalsozialismus', 'Genuss', 'einseitigen Wärmepumpen-Träume der Ampel', 'Selbstregierung', 'kostenlose Meisterausbildung', 'Hisbollah', 'Menschen mit Fluchtgeschichte', 'Zukunftsvertrag zwischen der Staatsregierung und dem Bayerischen Bauernverband', 'Mittelstand schützen', 'Kernfusions-Kraftwerk', 'Erhalt aller Schulstandorte', 'Landtagswahl', 'legale Zuwanderung', 'Gerichte', 'Länderfinanzausgleich', 'rechts', 'Mut', 'LTWby2023', 'bücher', 'Remigration', 'Bayerische Grenzpolizei', 'Freiheit', 'hohe Energiepreise', 'Klimakatastrophe', 'Existenz- und Altersabsicherung', 'Vernunft statt Ideologie', 'Zusammenleben', 'Asylanträge', 'ortsnahe Versorgung', 'Kontinuität', 'Zahlungen an Palästinenser', 'kostendeckende Schulstarthilfe', 'Aufnahmestopp für junge Männer', 'Inntal', 'Mieterschutz', 'Normalverdiener', 'KEINE dritte Startbahn am Flughafen München', 'gendern', 'bayernsOpposition', 'Ärztemangel', 'Zeitenwende', 'Haltung', 'LTW2023', 'Holzheizungen', 'Hilfe für Betroffene von Terrorismus', 'Sicherheit und Ordnung', 'Übergriffe des italienischen Staates', 'Online-Petition', 'Wirtschaftsminister', 'Theoriestunden', 'Schwangerschaftsabbrüche', 'Erneuerbare Energien', 'Terrorangriff der Hamas', 'Rechenschaft', 'br24wahl', 'Stärkung von Landschaften', 'Studierende', 'Artenschutz', 'Grundwasser', 'Wasserschutz', 'Auflagen', 'Zusammenhalt', 'Situation der Studierenden in Bayern', 'LudwigUntrwegs', 'Türkei', 'Nürnberg', 'Deutsche Einheit', 'Energiewende vor Ort', 'Hitze', 'Wertschätzung für ältere Menschen', 'Bezahlbare Wohnungen', 'Wahlprogramm', 'Bildung für alle unsere Kinder', 'nachhaltigkeit', 'Vorschriften', 'starke Infrastruktur', 'Organisationsbereiche', 'Gazastreifen', 'Steigerwaldzentrum', 'Außenpolitik', 'saubere Energie', 'Renten', 'Keine Grünen in der Regierung', 'duales Studium als Bildungsweg stärken', 'Löhne in Ostdeutschland', 'augsburg', 'Medikamente', 'anfängliche Fehler', 'Bund ID Konto', 'Unternehmen', 'Sicherheit bei Lebensplanung', 'Schnitzel', 'Mitglieder-Anteile', 'Richter', 'Stallbauvorschriften', 'Bildung unabhängig vom Geldbeutel', 'Bayern bleibt', 'Pflegekräfte', 'remigration', 'Klima', 'deutschlandfest', 'Aufgaben unserer Zeit', 'flächendeckende Gesundheitsversorgung', 'Chaos', 'Abschiebe-Zahlen', 'Ethos', 'Kampagne finanziert sich', 'Schutzversprechen für jüdisches Leben in Bayern', 'Energie und Treibstoffe', 'Steuerliche Förderungen', 'Bauern', 'Lehrstühle für „Genderforschung“', 'zukunftsfähiges Bildungssystem', 'Wasserstoff-Land Nummer 1 werden', 'Multimillllionäre', 'sozialpolitische Maßnahmen', 'Wärmepumpe', 'brzahlbares Wohnen', 'Niederbayern', 'Wohnen als Grundrecht', 'Bürgermeister', 'Chancengerechtigkeit in Deutschland', 'Schutz des ungeborenen Lebens', 'Ukraine', 'den Automobilstandort Deutschland stärken', 'Reform des Gesundheitswesens', 'Energiegewinnung', 'Landkreis München', 'ärztliche Versorgung', 'Akutsprechstunden', 'Kürzungspolitik', 'Vertrauen', 'Entlastungen für Sparerinnen und Sparer', 'Wohnungs- und Mietmarkt', 'Misstrauen', 'Erbschaftssteuer abschaffen', 'Steuerpolitik', 'Volksbegehren', 'EEG-Umlage', 'Ausbildungs- oder Studienstart', 'Zusatzleistungen', 'Bavarian Fusion Cluster', 'Investorenbetriebene Medizinische Versorgungszentren (MVZ)', 'Spitzenmedizin', 'Wahlkampf', 'Kirchen', 'Energiekosten', 'Hessen', 'Verbrennerverbot', 'Marktwirtschaft', 'Landtags- und Kommunalwahlen', 'Stil', 'Verwaltungsdirektor', 'deutsche Staatsräson', 'Nationalsozialismus', 'Europa', 'Grundlastfähigkeit', 'saubere und bezahlbare Energie', 'Bus und Bahn ins ganze Land bringen', 'Asylbewerber*innen', 'Hilfe und Fürsorge des Staates und der Gesellschaft', 'Hilfe in sozialen Fragen', 'Elektrolyseur-Förderprogramm', 'Familiengeld', 'Opposition', 'niederbayern', 'Sicherheit des Staates Israel', 'Führungspositionen', 'Wohnungsgemeinnützigkeit', 'Medien', 'soziale Herkunft', 'Fernsehen', 'CDU', 'Anpacken statt Ankündigen', 'GEZ abschaffen', 'Arbeitsplätze', 'soziale Politik', 'Wasserentnahme', 'Kinderarmut', 'Filz', 'saisonalität', 'Gesellschaften', 'staatliche Energieunternehmen', 'Heimatenergie', 'Süden', 'kreislauf', 'Energiepolitik', 'Bildung für alle', 'Finanzminister', 'steigende Preise', 'LOSvonBERLIN', 'Wahlerfolge für Boris Rhein und die CDU Hessen', 'mittelschicht', 'Deckelung der Mieten', 'Mitte-rechts', 'volle Unterstützung für Israel', 'Benachteiligung von Menschen mit psychischen Problemen', 'TeamBayern', 'beste Bildung', 'Altparteien', 'nächste Wahlen', 'günstiger ÖPNV', 'CO2-freier Strom', 'Bezirkstag', 'Hamas-Terror', 'Schienenverkehr ausbauen', 'Heimische Produktion von Arzneimittel stärken', 'Anteile', 'Stärkung der Demokratie', 'Ruhegehalt', 'Vergabeverfahren von Medizin-Studienplätzen', 'DeshalbAfD', 'Energiesparen', 'Holznutzung', 'dezentrale Unterbringungen', 'BayerischerLandtag', 'Verhältnis zur Partei', 'Identität', 'Abwärme', 'Wohnraumförderung', 'Grenzschutzbayern', 'Bildung', 'Freie und selbstbestimmte Entscheidung der Patienten', 'junge Generation', 'politiker', 'klimaneutrales Wirtschaften', 'Auto', 'Arbeitszeitflexibilisierung', 'H2-Tankstellen', 'AfD verspricht', 'umsetzen', 'Allgemeinbildung', 'ltwbayern', 'Bezahlbare und saubere Energie', 'Einkommensunterschiede', 'infostand', 'forschung', 'unserlandzuerst', 'Migrationsstopp', 'Freiheit und weniger Kontrollen für bayerische Landwirte', 'Bundestag', 'Sprachkurse', 'Hessenwahl', 'afd', 'gute Ganztagsbetreuung', 'Stromsteuer', 'Hamas', 'primetime', 'Jugendherberge', 'FREIEWÄHLER', 'Veranstaltung', 'wehrhafte Demokratie', 'Ursula von der Leyen', 'Mehr Kontrolle und Steuerung bei der Migration', 'Freistaat', 'Angriffe', 'Mieterinnen und Mieter', 'Abschottungswahnsinn', 'Medizinische Versorgung', 'Solidarität', 'Borkenkäfer', 'Hightech Agenda Bayern', 'Erhöhung der Steuerfreibeträge im Monat pro Arbeitnehmer auf 2000 Euro', 'Kommunen bei der Aufnahme von Geflüchteten unterstützen', 'Gesetzesvolksentscheid', 'Selbstverteidigung', 'Chancenbudget', 'Transportwege', 'familienfreundlicher', 'Wahlniederlage', 'Bayerischer Härtefallfonds', 'münchen', 'Tempo 90 für Fahranfänger', 'Belastungs-Stopp', 'Stromspeicher', 'Seniorinnen und Senioren', 'Artenschwund', 'AfD', 'strukturschwachen Kommunen', 'Vereine', 'Festanstellung', 'Krankenhausinvestitionen', 'Zukunft', 'Gewalttaten', 'Hausbau', 'schlafen', 'Notendruck', 'afdbayern', 'Energieversorgung der Zukunft', 'Kraftstoffpreis', 'Solidarität mit Israel', 'BAföG', 'Strom und Lebensmittel', 'Cannabis-Legalisierung', 'nächste Landtagswahl', 'Häuser', 'Profite mit unserer Miete', 'Frühe Hilfen', 'Regierungsbildung', 'individuelle Mobilität ermöglichen', 'LandtagswahlBayern', 'Bezahlbare und saubere Energie für Bayern', 'leistungsorientierte Bezahlung von Lehrkräften', 'Kinder eine Zukunft', 'Investitionen', 'Durchforstung', 'Binnengrenzen', 'Radwege', 'Vernichtung von Kultur', 'Verkehrssicherheit', 'Unterschriften Sammeln', 'Wärmenetz', 'Steuererleichterung für Agrardiesel', 'grüne Politik', 'Wartezeiten für Therapieplätze', 'Nahversorgung im ländlichen Raum stärken', 'kompetente Politik', 'Urteile', 'Waffenrecht', 'illegale Zuwanderung', 'mangelnde Mobilität', 'online', 'Stärkung von Regionen', 'Spitzenkandidaten', 'hightech', 'Steuern', 'Außenwirtschaft', 'startups', 'Benutzername &amp; Passwort', 'Mobilität junger Menschen', 'illegaleMigration', 'gute gesundheitliche Versorgung', 'Direktkandidatin für den Bayerischen Landtag', 'mörderischer Angriff auf unseren Bundesvorsitzenden', 'Bauvorschriften', 'Grenzkontrollen', 'Alternative zu Deutschland', 'Bescheid', 'Heizungs-Lotsen', 'Massenzuwanderung', 'Asylbewerber', 'steigende Mietpreise', 'Grenzsicherung', 'Rechtsruck in Bayern', 'kostenlose Kitaplätze', 'Claudia Köhler', 'gesellschaftlicher Zusammenhalt', 'Integrationsfähigkeit', 'Militär', 'selbstbestimmt', 'Demokratie', 'juxcsu', 'bayernwahl', 'Staatssekretär für Inneres', 'Süd-Tirol-Autonomie', 'Landtagswahl in Bayern', 'Verweisung nichtdeutscher Staatsbürger', 'Armut', 'Mittelfranken', 'Studium', 'Hightech Agenda', 'Sicherheitsbehörden', 'politikmitherz', 'Windpark', 'Gesundheitsschutz', 'Wiedereinzug', 'Aktivrente', 'geringes Einkommen', 'ausländische Fachkräfte', 'Landtag', 'Terror stoppen', 'gerechte Politik', 'Erosionsschutz', 'Speicher', 'regionale Wertschöpfung', 'Unterbringung', 'marktwirtschaftliches Gewissen', 'Austausch mit den Bürgerinnen und Bürgern', 'wohnen', 'Umbau zu stabileren Wäldern', 'innenministerium', 'Bahn', 'Gesundheitsvorsorge', 'Entwicklung in Deutschland', 'Gemeinschaftsaufgabe „Verbesserung der Agrarstruktur und des Küstenschutzes“', 'Sicherheit', 'duales Studium verbessern', 'Integrationsgrenze', 'Ganztag', 'Süd-Tiroler Freiheit', 'CO2-Steuer abschaffen', 'Steuerverschwendung', 'Teambayern', 'Einwanderung', 'Kostenlose Kitas für 780.000 Kinder', 'interessierte Bürger', 'terroristischer Überfall', 'Klimapolitik', 'israelisches Volk', 'Dreigliedriges Schulsystem'}</code></pre>
 </div>
 </div>
 <p>Let’s quickly generate a wordcloud to check for patterns. See the <a href="https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2023_11_24_Simple_Corpus_Analysis.ipynb">Simple Corpus Analysis Notebook</a> for more information.</p>
-<div class="cell" data-execution_count="92">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install <span class="op">-</span>q wordcloud</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-13" class="cell" data-execution_count="92">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install <span class="op">-</span>q wordcloud</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-outputid="d932975b-dfdc-44ea-8539-fe96db8db835" data-execution_count="99">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> wordcloud <span class="im">import</span> WordCloud, STOPWORDS</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Retrieve Stopwords from Github</span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> requests.get(<span class="st">'https://github.com/stopwords-iso/stopwords-de/raw/master/stopwords-de.json'</span>)</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>stop_words <span class="op">=</span> r.json()</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Stopwörter in die WordCloud laden</span></span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>STOPWORDS.update(stop_words)</span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> generate_wordcloud(text):</span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>    text <span class="op">=</span> <span class="st">' '</span>.join(<span class="bu">list</span>(text))</span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Generate a word cloud image</span></span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>    wordcloud <span class="op">=</span> WordCloud(background_color<span class="op">=</span><span class="st">"white"</span>,width<span class="op">=</span><span class="dv">1920</span>, height<span class="op">=</span><span class="dv">1080</span>).generate(text)</span>
-<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Dazugehörige Grafik erstellen</span></span>
-<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>    plt.imshow(wordcloud, interpolation<span class="op">=</span><span class="st">"bilinear"</span>)</span>
-<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>    plt.axis(<span class="st">"off"</span>)</span>
-<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>    plt.figtext(<span class="fl">0.5</span>, <span class="fl">0.1</span>, <span class="st">"Policy Issues"</span>, wrap<span class="op">=</span><span class="va">True</span>, horizontalalignment<span class="op">=</span><span class="st">'center'</span>, fontsize<span class="op">=</span><span class="dv">12</span>)</span>
-<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>    plt.show()</span>
-<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>generate_wordcloud(policy_issues)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-14" class="cell" data-outputid="d932975b-dfdc-44ea-8539-fe96db8db835" data-execution_count="99">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> wordcloud <span class="im">import</span> WordCloud, STOPWORDS</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Retrieve Stopwords from Github</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> requests.get(<span class="st">'https://github.com/stopwords-iso/stopwords-de/raw/master/stopwords-de.json'</span>)</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>stop_words <span class="op">=</span> r.json()</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Stopwörter in die WordCloud laden</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>STOPWORDS.update(stop_words)</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> generate_wordcloud(text):</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>    text <span class="op">=</span> <span class="st">' '</span>.join(<span class="bu">list</span>(text))</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Generate a word cloud image</span></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>    wordcloud <span class="op">=</span> WordCloud(background_color<span class="op">=</span><span class="st">"white"</span>,width<span class="op">=</span><span class="dv">1920</span>, height<span class="op">=</span><span class="dv">1080</span>).generate(text)</span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Dazugehörige Grafik erstellen</span></span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>    plt.imshow(wordcloud, interpolation<span class="op">=</span><span class="st">"bilinear"</span>)</span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>    plt.axis(<span class="st">"off"</span>)</span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>    plt.figtext(<span class="fl">0.5</span>, <span class="fl">0.1</span>, <span class="st">"Policy Issues"</span>, wrap<span class="op">=</span><span class="va">True</span>, horizontalalignment<span class="op">=</span><span class="st">'center'</span>, fontsize<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>    plt.show()</span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>generate_wordcloud(policy_issues)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2023_12_01_GPT_Text_Exploration_files/figure-html/cell-9-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023_12_01_GPT_Text_Exploration_files/figure-html/cell-9-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Now we’re ready to pass the list to GPT to extract a manageable amount of topics. <strong>Note</strong> the list might be too long to fit into the GPT context window. In this case we have to split the list into several shorter lists and iterate over them.</p>
 <p>This time we are not interested in a specific formatting for the response. We want to print the result for human interpretation.</p>
-<div class="cell" data-execution_count="83">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>system_prompt <span class="op">=</span> <span class="st">"""</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="st">You are a helpful assistant, an expert for German politics. Derive 15 topics of policy issues from this list of keywords provided by the user. Concentrate on overarching topics and avoid overlapping topics. Provide a set of 10 keywords per topic.</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-16" class="cell" data-execution_count="83">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>system_prompt <span class="op">=</span> <span class="st">"""</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="st">You are a helpful assistant, an expert for German politics. Derive 15 topics of policy issues from this list of keywords provided by the user. Concentrate on overarching topics and avoid overlapping topics. Provide a set of 10 keywords per topic.</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-outputid="7da09483-56ac-4966-90a6-644de3bc4d39" data-execution_count="84">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>keyword_string <span class="op">=</span> <span class="st">", "</span>.join(unique_policy_issues)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> run_request(system_prompt, row[<span class="st">'Text'</span>], <span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-17" class="cell" data-outputid="7da09483-56ac-4966-90a6-644de3bc4d39" data-execution_count="84">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>keyword_string <span class="op">=</span> <span class="st">", "</span>.join(unique_policy_issues)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> run_request(system_prompt, row[<span class="st">'Text'</span>], <span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Cost: $0.0010 | Total: $0.3431</code></pre>
 </div>
 </div>
-<div class="cell" data-outputid="95f73710-c5f3-414d-873c-9e280a1a06c0" data-execution_count="85">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(response.choices[<span class="dv">0</span>].message.content)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-18" class="cell" data-outputid="95f73710-c5f3-414d-873c-9e280a1a06c0" data-execution_count="85">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(response.choices[<span class="dv">0</span>].message.content)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>1. Sicherheit
 - Polizei
@@ -728,6 +745,33 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       }
     }
   }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
   const toggleColorMode = (alternate) => {
     // Switch the stylesheets
     const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
@@ -794,13 +838,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  let localAlternateSentinel = 'default';
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
     // Read the current dark / light value 
     let toAlternate = !hasAlternateSentinel();
     toggleColorMode(toAlternate);
     setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
   };
   // Ensure there is a toggle, if there isn't float one in the top right
   if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -835,18 +881,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -878,11 +913,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/social-media-lab\.net");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -892,8 +966,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -905,7 +988,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -949,6 +1155,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -974,6 +1181,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1039,12 +1272,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-left">
       &nbsp;
     </div>   
-    <div class="nav-footer-center"><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+    <div class="nav-footer-center">
+
+<div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
   </div>
 </footer>
+
 
 
 
