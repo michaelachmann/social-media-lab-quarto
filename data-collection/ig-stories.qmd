@@ -2,12 +2,17 @@
 format: 
   html: default
 title: "Instagram Stories"
-date: 2023-11-13
+date: 2024-09-05
+bibliography: ../literature.bib
 author:
   - name: Michael Achmann-Denkler
     id: ma
     orcid: 0000-0002-4754-7842
+    doi: 10.5281/zenodo.10039756
     email: michael.achmann@informatik.uni-regensburg.de
+citation:
+  type: webpage
+  doi: 10.5281/zenodo.10039756
 license: CC BY
 notebook-view:
   - notebook: ../notebooks/firebase-interface-notebook.ipynb
@@ -15,11 +20,58 @@ notebook-view:
     url: https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2023_11_07_Firebase_Interface.ipynb
 ---
 
-Instagram stories, characterized by their ephemeral nature, expire after 24 hours. Therefore, it's crucial to collect them in a timely manner, as retrospective data collection is not an option with this format. There are two feasible methods: Instaloader and Zeeschuimer-F. Additionally, commercial tools such as [4k Stogram](https://www.4kdownload.com/de/products/stogram-2) are also available.
+Instagram stories, characterized by their ephemeral nature, expire after 24 hours. Therefore, it's crucial to collect them in a timely manner, as retrospective data collection is not an option with this format. There are two feasible methods: The Tidal Tales Plugin and Instaloader. Additionally, commercial tools such as [4k Stogram](https://www.4kdownload.com/de/products/stogram-2) are also available.
 
-![A screenshot of stories by @tagesschau opened in the firefox browser](/images/stories-screenshot.png)
+![A screenshot of stories by \@tagesschau opened in the firefox browser](/images/stories-screenshot.png)
 
-Overall, the ephemeral nature of stories necessitates our continuous monitoring and data collection from our targeted profiles. To ensure that we capture **every** story item, I recommend collecting stories twice daily, approximately 12 hours apart. This method accounts for potential inaccuracies in timing, as the intervals overlap. Data can be gathered manually or through computational means. The manual approach, especially in conjunction with Zeeschuimer-F, is preferable as it does not violate the Terms of Service (TOS). For this method, we would install the plugin and view all stories in our browser twice daily. Alternatively, using Instaloader involves simply initiating the command and waiting for the software to gather all the data. Optimally, we could utilize tools like [Cron](https://de.wikipedia.org/wiki/Cron) to automate this process.
+Overall, the ephemeral nature of stories necessitates our continuous monitoring and data collection from our targeted profiles. To ensure that we capture **every** story item, I recommend collecting stories twice daily, approximately 12 hours apart. This method accounts for potential inaccuracies in timing, as the intervals overlap. Data can be gathered manually or through computational means. The manual approach, especially in conjunction with the Tidal Tales Plugin, is preferable as we do not circumvent any technical measures to collect our data. For this method, we would install the plugin and view all stories in our browser twice daily. Alternatively, using Instaloader involves simply initiating the command and waiting for the software to gather all the data. Optimally, we could utilize tools like [Cron](https://de.wikipedia.org/wiki/Cron) to automate this process.
+
+
+## Tidal Tales Plugin
+::: {.column-margin}
+![](/images/logo-blue.png)
+:::
+
+This method is based on the [Zeeschuimer Firefox Plugin](https://github.com/digitalmethodsinitiative/zeeschuimer). I have adapted the original plugin to create the Tidal Tales Plugin [@achmanndenkler2024preservingephemeralinstagramstory], which is specifically tailored for collecting Instagram stories for real-time data collection. The plugin is [available on GitHub](http://github.com/michaelachmann/tidal-tales-plugin). To use it, download the latest version via [Firefox](https://www.mozilla.org/firefox/new/) and install the plugin. Follow these steps to download stories using the Tidal Tales Plugin:
+
+1. Download and install the plugin.
+4. Regularly view stories in Firefox to collect them.
+5. Save the CSV file for the collected data.
+
+### Plugin Installation
+To install the plugin:
+
+1. Use Firefox to visit the latest release [page on GitHub](https://github.com/michaelachmann/tidal-tales-plugin/releases/latest).
+2. Download the `.xpi` file, and Firefox will ask permission to install the extension.
+3. Allow the installation, and you are good to go!
+
+The plugin adds a button to the browser's menu bar. Click on the Tidal Tales logo to check the progress of the current collection. 
+
+![Screenshot of the Tidal Tales interface opened in Firefox](/images/screenshot-tidal-tales.png){width=50%}
+
+Visit Instagram as usual. Open the first stories, and the plugin captures all data in the background. The media files (images, videos) are stored in your downloads folder, along with all metadata (JSON files). At the same time, the metadata is stored in a database inside your local Firefox browser. Once the collection is done, open the Tidal Tales interface and click the "Export as CSV" button. The plugin converts the metadata of each collected story into a table with columns like `Username`, `image_path` or `Time of Posting`. This table can easily be integrated into the following chapters' computational analyses.
+
+
+<div class="pros-cons-container">
+
+<div class="pros">
+### Pros:
+<ul class="pro-con-list pro">
+<li>We do not circumvent any technical measures: We view the stories as a normal user und archive the data exchanged between our browser and the server.</li>
+<li>Collects all data: metadata, images, videos</li>
+<li>Collection takes place on the local machine. No servers / external services needed.</li>
+</ul>
+</div>
+
+<div class="cons">
+### Cons:
+<ul class="pro-con-list con">
+<li>We need to manually browse the stories twice a day (*can* be automated using [Selenium](https://www.selenium.dev/))</li>
+</ul>
+</div>
+
+</div>
+
 
 
 ## Instaloader
@@ -86,53 +138,6 @@ Start cron by entering `crontab -e` on your terminal and add a line pointing to 
 </div>
 
 
-## Zeeschuimer-F
-![](/images/zeeschuimer-f.png)
-
-This method is based on the [Zeeschuimer Firefox Plugin](https://github.com/digitalmethodsinitiative/zeeschuimer). I have adapted the original plugin to create Zeeschuimer-F, which is specifically tailored for collecting Instagram stories and interfacing with the [Zeeschuimer-Firebase-Backend](https://github.com/michaelachmann/zeeschuimer-firebase-backend) for real-time data collection. You can find [Zeeschuimer-F on GitHub](https://github.com/michaelachmann/zeeschuimer-f). To use it, download the latest version via [Firefox](https://www.mozilla.org/firefox/new/) and install the plugin. For our seminar, I'll provide a backend instance; refer to the `README.md` on GitHub for guidance on setting up your own instance on Firebase. **Credentials for our seminar will be distributed through GRIPS**. Follow these steps to download stories using Zeeschuimer-F:
-
-1. Download and install the plugin.
-2. Create a project on the backend (via Notebook).
-3. Configure the plugin.
-4. Regularly view stories in Firefox to collect them.
-5. Download the collected data (via Notebook).
-
-### Plugin Installation
-To install the plugin, download the latest release `.xpi` file from [GitHub](https://github.com/michaelachmann/zeeschuimer-f) using Firefox. After downloading, click on the file in Firefox and confirm the installation of the extension.
-
-![Screenshot of Firefox with the open extensions menu](/images/plugins.png)
-
-Verify the extension's installation by checking the right-hand menu in Firefox. We will return to the browser shortly.
-
-
----
-
-### The Firebase Interface Notebook
-
-{{< embed ../notebooks/firebase-interface-notebook.ipynb echo=true >}}
-
-
-<div class="pros-cons-container">
-
-<div class="pros">
-### Pros:
-<ul class="pro-con-list pro">
-<li>We do not infringe the TOS</li>
-<li>Collects all data: metadata, images, videos</li>
-<li>The firebase backend handles alert emails</li>
-</ul>
-</div>
-
-<div class="cons">
-### Cons:
-<ul class="pro-con-list con">
-<li>Current solution relies on the firebase backend</li>
-<li>We need to manually browse the stories twice a day (*can* be automated using [Selenium](https://www.selenium.dev/))</li>
-<li>Data is collected on firebase storage, we need to export to use it</li>
-</ul>
-</div>
-
-</div>
 
 
 ## Conclusion
