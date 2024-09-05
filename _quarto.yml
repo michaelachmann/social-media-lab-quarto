@@ -16,7 +16,7 @@ website:
           - getting-started/theory.qmd
           - getting-started/related-work.qmd
           - getting-started/tools.qmd
-          - getting-started/literature-review-assistant.qmd
+          - notebooks/literature-review.ipynb
       - section: "Data Collection"
         contents:
           - data-collection/ig-posts.qmd
