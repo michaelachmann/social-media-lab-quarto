@@ -15,7 +15,7 @@ website:
           - getting-started/index.qmd
           - getting-started/theory.qmd
           - getting-started/related-work.qmd
-          - notebooks/literature-review-2.ipynb
+          - notebooks/literature-review-v2.ipynb
       - section: "Basics"
         contents:
           - basics/tools.qmd
