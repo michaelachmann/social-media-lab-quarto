@@ -33,28 +33,28 @@
     <lastmod>2024-09-05T07:10:46.918Z</lastmod>
   </url>
   <url>
-    <loc>https://social-media-lab.net/notebooks/2024_01_22_Ensemble_Classification.html</loc>
-    <lastmod>2024-09-05T07:10:46.926Z</lastmod>
-  </url>
-  <url>
-    <loc>https://social-media-lab.net/notebooks/2023_12_01_GPT_Text_Exploration.html</loc>
-    <lastmod>2024-09-05T07:10:46.918Z</lastmod>
-  </url>
-  <url>
-    <loc>https://social-media-lab.net/notebooks/2024_01_19_Classification_With_CLIP.html</loc>
+    <loc>https://social-media-lab.net/notebooks/2024_01_04_Evaluation_Kurs.html</loc>
     <lastmod>2024-09-05T07:10:46.922Z</lastmod>
   </url>
   <url>
-    <loc>https://social-media-lab.net/notebooks/2024_01_22_Classification_With_multimodal_GPT.html</loc>
+    <loc>https://social-media-lab.net/notebooks/ig-instaloader.html</loc>
     <lastmod>2024-09-05T07:10:46.926Z</lastmod>
   </url>
   <url>
-    <loc>https://social-media-lab.net/blog.html</loc>
-    <lastmod>2024-09-05T07:10:46.650Z</lastmod>
+    <loc>https://social-media-lab.net/notebooks/2024_01_26_Create_LabelStudio_Image_Evaluation.html</loc>
+    <lastmod>2024-09-05T07:10:46.926Z</lastmod>
   </url>
   <url>
-    <loc>https://social-media-lab.net/getting-started/index.html</loc>
-    <lastmod>2024-09-05T07:10:46.658Z</lastmod>
+    <loc>https://social-media-lab.net/notebooks/2023_12_14_Create_LabelStudio_Text_Evaluation.html</loc>
+    <lastmod>2024-09-05T07:10:46.918Z</lastmod>
+  </url>
+  <url>
+    <loc>https://social-media-lab.net/notebooks/whisper-notebook.html</loc>
+    <lastmod>2024-09-05T07:10:46.930Z</lastmod>
+  </url>
+  <url>
+    <loc>https://social-media-lab.net/projects/index.html</loc>
+    <lastmod>2024-09-05T07:10:46.930Z</lastmod>
   </url>
   <url>
     <loc>https://social-media-lab.net/getting-started/theory.html</loc>
@@ -93,6 +93,14 @@
     <lastmod>2024-09-05T07:10:46.650Z</lastmod>
   </url>
   <url>
+    <loc>https://social-media-lab.net/basics/tools.html</loc>
+    <lastmod>2024-10-28T09:46:18.843Z</lastmod>
+  </url>
+  <url>
+    <loc>https://social-media-lab.net/basics/openai.html</loc>
+    <lastmod>2024-10-28T10:27:37.051Z</lastmod>
+  </url>
+  <url>
     <loc>https://social-media-lab.net/evaluation/agreement.html</loc>
     <lastmod>2024-09-05T07:10:46.654Z</lastmod>
   </url>
@@ -122,35 +130,35 @@
   </url>
   <url>
     <loc>https://social-media-lab.net/getting-started/related-work.html</loc>
-    <lastmod>2024-09-05T07:10:46.658Z</lastmod>
+    <lastmod>2024-10-28T10:38:57.555Z</lastmod>
   </url>
   <url>
-    <loc>https://social-media-lab.net/getting-started/tools.html</loc>
-    <lastmod>2024-09-05T07:10:46.658Z</lastmod>
+    <loc>https://social-media-lab.net/getting-started/index.html</loc>
+    <lastmod>2024-10-28T09:45:36.763Z</lastmod>
   </url>
   <url>
-    <loc>https://social-media-lab.net/projects/index.html</loc>
-    <lastmod>2024-09-05T07:10:46.930Z</lastmod>
+    <loc>https://social-media-lab.net/blog.html</loc>
+    <lastmod>2024-09-05T07:10:46.650Z</lastmod>
   </url>
   <url>
-    <loc>https://social-media-lab.net/notebooks/whisper-notebook.html</loc>
-    <lastmod>2024-09-05T07:10:46.930Z</lastmod>
+    <loc>https://social-media-lab.net/notebooks/2024_01_22_Classification_With_multimodal_GPT.html</loc>
+    <lastmod>2024-09-05T07:10:46.926Z</lastmod>
   </url>
   <url>
-    <loc>https://social-media-lab.net/notebooks/2023_12_14_Create_LabelStudio_Text_Evaluation.html</loc>
+    <loc>https://social-media-lab.net/notebooks/2024_01_19_Classification_With_CLIP.html</loc>
+    <lastmod>2024-09-05T07:10:46.922Z</lastmod>
+  </url>
+  <url>
+    <loc>https://social-media-lab.net/notebooks/2023_12_01_GPT_Text_Exploration.html</loc>
     <lastmod>2024-09-05T07:10:46.918Z</lastmod>
   </url>
   <url>
-    <loc>https://social-media-lab.net/notebooks/2024_01_26_Create_LabelStudio_Image_Evaluation.html</loc>
+    <loc>https://social-media-lab.net/notebooks/2024_01_22_Ensemble_Classification.html</loc>
     <lastmod>2024-09-05T07:10:46.926Z</lastmod>
   </url>
   <url>
-    <loc>https://social-media-lab.net/notebooks/ig-instaloader.html</loc>
-    <lastmod>2024-09-05T07:10:46.926Z</lastmod>
-  </url>
-  <url>
-    <loc>https://social-media-lab.net/notebooks/2024_01_04_Evaluation_Kurs.html</loc>
-    <lastmod>2024-09-05T07:10:46.922Z</lastmod>
+    <loc>https://social-media-lab.net/notebooks/literature-review-v2.html</loc>
+    <lastmod>2024-10-28T10:40:55.655Z</lastmod>
   </url>
   <url>
     <loc>https://social-media-lab.net/notebooks/2024_01_12_Visualize_Mod_Classes.html</loc>
@@ -170,7 +178,7 @@
   </url>
   <url>
     <loc>https://social-media-lab.net/notebooks/literature-review.html</loc>
-    <lastmod>2024-09-05T07:42:33.442Z</lastmod>
+    <lastmod>2024-10-28T08:57:51.799Z</lastmod>
   </url>
   <url>
     <loc>https://social-media-lab.net/notebooks/corpus-analysis-notebook.html</loc>
