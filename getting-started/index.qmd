@@ -120,7 +120,7 @@ The following expectations and criteria must be met to pass the course:
 
 ## Getting Started: Tools
 
--   Installation & Configuration of [different tools](tools.qmd).
+-   Installation & Configuration of [different tools](../basics/tools.qmd).
     -   Google Colab / Jupyter Notebooks
     -   Quarto & Markdown for project documentation
     -   Git & GitHub

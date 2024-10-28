@@ -3,6 +3,7 @@ format:
   html: default
 title: "Related Work"
 date: 2023-10-23
+last-modified: today
 bibliography: ../literature.bib
 author:
   - name: Michael Achmann-Denkler
@@ -95,7 +96,7 @@ The aim of our project paper diverges somewhat from a comprehensive literature r
 
 ::: {.callout-caution}
 ## Work-In-Progress
-As a warm-up with ChatGPT / GPT we will extract information from abstracts in out tools session. The notebook will be added shortly, you will be able to use this approach with Publish or Perish lists.
+As a warm-up with ChatGPT / GPT we will extract information from abstracts in our tools session. [Take a look at the notebook.](../notebooks/literature-review-v2.ipynb)
 :::
 
 ### Publish or Perish

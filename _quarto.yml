@@ -15,8 +15,11 @@ website:
           - getting-started/index.qmd
           - getting-started/theory.qmd
           - getting-started/related-work.qmd
-          - getting-started/tools.qmd
-          - notebooks/literature-review.ipynb
+          - notebooks/literature-review-2.ipynb
+      - section: "Basics"
+        contents:
+          - basics/tools.qmd
+          - basics/openai.qmd
       - section: "Data Collection"
         contents:
           - data-collection/ig-posts.qmd
