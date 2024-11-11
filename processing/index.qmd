@@ -72,6 +72,10 @@ This page and all referenced notebooks deal with 4CAT and Zeeschuimer-F metadata
 ## From Images / Videos to Text
 Computational approaches for text analyses are established as part of computational sociales science research [@Baden2022-oe], which we may utilize when dealing with visual and multimodal social media. Instagram posts often contain embedded text, TikTok posts often contain an audio layer, both of which we can transform to computer readable text. For the first, we are going to use OCR, for the second we apply Whisper. The following subchapters demonstrate the application of these technique in order to extract textual content from images and videos. In the thirs subchapter, I demonstrate a simple application of corpus analytics for a first analysis of the social media content based on word frequencies.
 
+::: {.callout-important}
+**Update 2024:** [I created an updated Notebook](https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2024_11_11_Preprocessing.ipynb) that uses the OpenAI API for Whisper and [Tidal Tales](https://tidaltal.es) format. I am going to update this page shortly. 
+:::
+
 ### OCR
 
 {{< embed ../notebooks/ocr-notebook.ipynb echo=true >}}
