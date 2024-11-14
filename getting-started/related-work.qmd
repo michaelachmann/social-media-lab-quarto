@@ -3,7 +3,7 @@ format:
   html: default
 title: "Related Work"
 date: 2023-10-23
-last-modified: today
+modified: 2024-10-28
 bibliography: ../literature.bib
 author:
   - name: Michael Achmann-Denkler

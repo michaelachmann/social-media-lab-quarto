@@ -29,6 +29,7 @@ website:
       - section: "Text Analysis"
         contents:
           - processing/index.qmd
+          - processing/preprocessing.qmd
           - processing/exploration.qmd
           - processing/classification.qmd
       - section: "Image Analysis"

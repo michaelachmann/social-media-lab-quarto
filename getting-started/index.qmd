@@ -2,7 +2,7 @@
 format: 
   html: default
 title: "About the Seminar"    
-date: 2023-10-09
+date: 2024-11-14
 author:
   - name: Michael Achmann-Denkler
     id: ma
@@ -10,222 +10,59 @@ author:
     email: michael.achmann@informatik.uni-regensburg.de
 license: CC BY
 ---
+# About the Course: Computational Analysis of Visual Social Media (Winter 2024/25)
+
+This project-centered research seminar focuses on group work, lectures, and practical sessions. The seminar introduces students to various research methodologies, including data collection, content analysis, and machine learning techniques. Students will work with tools such as Whisper for video transcription, GPT, fine-tuning BERT variants, and multimodal models like GPT-4o. Groups will explore diverse research topics and datasets, such as political communication on social media, influencer content, and misinformation, guided by an interdisciplinary approach that integrates media studies, political science, and communication science. The seminar is designed for master students with basic programming experience.
+
+Taught by [Michael Achmann-Denkler](https://go.ur.de/michael-achmann), a PhD candidate at the University of Regensburg, pursuing a PhD titled "Decoding Digital Campaigns: Computational Insights into Multimodal Political Communication on Social Media." This seminar is closely linked to his research, aiming to test approaches, methods, and ideas on a broader scale
+
+### Course Outcomes
+
+**Theoretical Skills**:
+- Accessibility of social media data for researchers
+- Concepts of text and images as data
+- Ethical and legal limitations
+- Understanding social media as trace data
+
+**Practical Skills**:
+- Collecting Instagram and TikTok content
+- Applying OCR and video transcription
+- Exploring and classifying text and images computationally
+- Evaluating and optimizing classifications using human annotations
+- Presenting research findings effectively
+
+### Requirements
+- Engage independently with literature, formulate research questions, and develop operationalizations
+- Willingness to master new tools via practical exercises and provided Jupyter Notebooks
+- Active and regular collaboration within your project team
+- Continuous documentation of progress through a project wiki
+- Submit a project report by the end of the semester
+
+### Project Documentation
+- Documentation will follow an Open Science approach
+- Use the [project report template](https://docs.google.com/document/d/1hCMQlDF85S5ua9dzhJ280gQzbbheo4zJvoVUwYAIdqg/edit?usp=sharing) for your final report
+- Reports will be published on [social-media-lab.net](https://social-media-lab.net)
+
+### Project Report
+- Submit a collaborative report (approx. 20 pages)
+- Follow the IMRAD structure: Introduction, Method, Results, and Discussion
+- Use [APA citation style](https://apastyle.apa.org/)
+- Deadline: **31.03.2025**
+
+### Project Ideas
+- **Video Analysis**: Apply existing analysis approaches to video content
+- **Replication Study**: Replicate Peng (2021) on a German/European dataset
+- **Scalability Study**: Test how well methods tested on small datasets scale with large data
+
+### Materials & Tools
+- Course materials are available on [social-media-lab.net](https://social-media-lab.net).
+- Collaborative editing through [GitHub](https://github.com/) using [Quarto](https://quarto.org/) and Markdown
+- All content will be under [GPL-3](https://www.gnu.de/documents/gpl.en.html)
+
+### Schedule Highlights
+- **October**: Introduction & Tool Setup (Colab, GitHub)
+- **November**: Data Collection (Instagram, TikTok)
+- **December**: Text Analysis & Operationalization, Text Classification using BERT
+- **January**: Evaluation & Image Analysis, Visual Data Exploration with LLMs and Clustering
+- **February**: Data Analysis as a Conversation, Visual Presentation of Results (RAWGraphs, Figma)
 
-# Introduction
-
-The research seminar [*Computational Analysis of Visual Social Media*](https://campusportal.uni-regensburg.de:443/qisserver/pages/startFlow.xhtml?_flowId=detailView-flow&unitId=46591&periodId=361) consists of project-centred work in groups, lectures on theory and practical sessions. Each group will follow their own research interests and datasets. Groups will be formed in the third session, together with preliminary topics. We have participants from different fields, the topics will mirror this interdisciplinarity, roughly drawn from the interesctions of media studies, political science, and communication science. The seminar aims at master students with first knowledge of at least one programming language.
-
-## What to Expect (Theoretical Skills)
-
-By the end of the semester you should know more about:
-
--   The state of Social Media Research,
--   interesting questions to answer with social media data,
--   ethical and legal restrictions,
--   develop operationalizations for visual and textual data,
-
-## What to Expect (Practical Skills)
-
-By the end of the semester you will be able to:
-
--   Collect Instagram stories, posts and TikTok videos,
--   apply OCR and automatically transcribe videos,
--   computationally classify text and images using GPT and CLIP,
--   evaluate and optimize your classifications using human annotations,
--   present your results.
-
-## Class Requirements
-
-The following expectations and criteria must be met to pass the course:
-
--   Independent familiarization with your own scientific topic: Literature research, formulation of research questions, and operationalization.
--   Willingness to master new tools (supported by practical units and some provided Jupyter Notebooks).
--   Active and regular team collaboration on the individual project.
--   Continuous documentation of current progress through a project wiki.
--   Writing a project report at the end of the semester.
-
-## Project Documentation
-
--   We will openly document our project progress, incorporating a strong [Open Science](https://en.wikipedia.org/wiki/Open_science) stance.
--   [The project report template](https://docs.google.com/document/d/1hCMQlDF85S5ua9dzhJ280gQzbbheo4zJvoVUwYAIdqg/edit?usp=sharing) is a good starting point for your report and continuous documentation.
--   Through the semester we will come back to the draft and extend it towards the final report.
--   The goal is to publish the report on [social-media-lab.net](https://social-media-lab.net).
-
-## Project Report
-
--   The project report will be handed in collaboratively,
--   consists of app. 20 pages,
--   follows the *IMRAD*[^1] principle,
--   uses [APA](https://apastyle.apa.org/) citation style,
--   needs to be handed in no later than **31.03.2024**.
-
-[^1]: Introduction, Method, Result, Analaysis, Discussion
-
-## Project Ideas
-
--   Suggest your own project
--   Possible Projects:
-    -   Landtagswahl BY 2023
-        -   IG Stories & Posts
-        -   TikTok
-        -   Jugendorganisationen
-    -   Politische Influencer auf TikTok
-    -   War in Sozialen Medien:
-        -   Ukraine Invasion
-        -   Hamas Angriff auf Israel
-    -   Falschinformationen & KI-Generierte Inhalte
-
-## Social Media Lab
-
--   Most course material will be available on [social-media-lab.net](https://social-media-lab.net).
--   Additional material will be provided via [GRIPS](https://elearning.uni-regensburg.de/course/view.php?id=63813).
--   We will work collaboratively on the website through the semester.
--   The content is edited using [Quarto](https://quarto.org/) and [Markdown](https://en.wikipedia.org/wiki/Markdown), you will need a [GitHub Account](https://github.com/).
--   Please provide your GitHub username to get access to the repository.
--   All content will be published under [GPL-3](https://www.gnu.de/documents/gpl.en.html).
-
-# Course Plan
-
-| Date     | Content                                                               |
-|:-------------|:---------------------------------------------------------|
-| 16.10.23 | Course Organization                                                   |
-| 23.10.23 | Introduction to Social Media Analysis                  |
-| 30.10.23 | Projects & Groups, <br/> Getting Started: Tools         |
-| 06.11.23 | Data Collection: IG Posts & Stories                                   |
-| 13.11.23 | Data Collection: TikTok                                               |
-| 20.11.23 | - entfallen - |
-| 27.11.23 | Data Preprocessing: OCR & Whisper                                     |
-| 04.12.23 | Exploration of Textual Data using GPT                                 |
-| 11.12.23 | Operationalization I & Computational Text Classification using GPT    |
-| 18.12.23 | Data Annotation: LabelStudio & Annotation Guides                      |
-| 08.01.24 | Evaluation I: Optimizing Text Classification                          |
-| 15.01.24 | Exploration of Visual Data                                            |
-| 22.01.24 | Operationalization II & Computational Image Classification using CLIP |
-| 29.01.24 | Evaluation II: Optimizing Image Classification                        |
-| 05.02.24 | Data Analysis as a Conversation: Exploring trends using ChatGPT <br />Visual Presentation of your Data & Results: RAWGraphs and more. |
-
-
-
-: Overview of our sessions
-
-## Introduction to Social Media Analysis
-
--   Overview of social media studies
-    -   Which academic disciplines are interested in plattforms like Instagram?
-    -   What is their interest, how do they study the user generated content?
-    -   Special focus: Political Communication on Instagram
--   How to conduct your own literature review
--   Theory: Digital Methods & Cultural Analytics
--   A short word about ethics & laws
-
-## Getting Started: Tools
-
--   Installation & Configuration of [different tools](../basics/tools.qmd).
-    -   Google Colab / Jupyter Notebooks
-    -   Quarto & Markdown for project documentation
-    -   Git & GitHub
-    -   Firefox Plugins
-    -   Figma
-    -   and more
-
-## Data Collection: IG Posts & Stories
-
--   Post types and platform affordances of Instagram
--   How to use [Instaloader](https://instaloader.github.io/)
--   How to use [CrowdTangle](https://www.crowdtangle.com/)[^2]
--   Collecting Stories using [Zeeschuimer-F](https://github.com/michaelachmann/zeeschuimer-f) and the [firebase backend](https://github.com/michaelachmann/zeeschuimer-firebase-backend).
--   Collecting Posts using [Zeeschuimer](https://github.com/digitalmethodsinitiative/zeeschuimer) and [4CAT](https://4cat.digitalhumanities.io/)
-
-[^2]: I will not be able to provide access to the tool. We can, however, export data for our projects from the platform and you will learn how to use the exported data.
-
-![Screenshot of the [CrowdTangle](https://www.crowdtangle.com/) interface.](/images/crowdtangle.png){width="600"}
-
-## Data Collection: TikTok
-
--   Post types and platform affordances of TikTok
--   Collecting TikToks using [Zeeschuimer](https://github.com/digitalmethodsinitiative/zeeschuimer) and [4CAT](https://4cat.digitalhumanities.io/)
-
-![Screenshot of the [Firebase Backend](https://github.com/michaelachmann/zeeschuimer-firebase-backend) and [Zeeschuimer-F](https://github.com/michaelachmann/zeeschuimer-f).](/images/fire.png){width="600"}
-
-
-## Data Preprocessing
-
--   OCR
--   We are going to use [easyocr](https://github.com/JaidedAI/EasyOCR) to detect and recognize text embedded in images, such as posts and stories.
--   We will export the first frame of videos for OCR and further analyses.
--   Automated Transcription
-    -   We will extract any audio from collected videos.
-    -   We will use [whisper](https://huggingface.co/openai/whisper-large-v2) to transcribe the audio content of videos
-
-## Textual Exploration
-
--   We will first take a look at the textual data using simple frequency analyses and wordclouds.
--   We will use the [GPT-API](https://platform.openai.com/docs/guides/gpt/chat-completions-api) to explore the textual content of our data.
--   *Optional* we might use [BERTopic](https://maartengr.github.io/BERTopic/index.html) to explore our textual data.
-
-## Operationalization I
-
--   This session depends on your own research: By december you should have developed an initial research request and explored related work in order to develop the first operationalization for content analysis.
--   We will learn more about content analysis in this session.
--   Based on your research, and the explorations of the previous sesssion, we will develop the first annotation guide.
--   Through the session we will explore how to (efficiently) use [GPT](https://platform.openai.com/docs/guides/gpt/chat-completions-api) for text data annotation.
-
-## Data Annotation
-
--   In this session we will import our data into LabelStudio and develop a final annotation manual.
--   Using the manuals and LabelStudio projects we will annotate the data.
--   We will shuffle annotators: Everyone will annotate for another group.
-
-## Evaluation I
-
--   Using the human annotations we will evaluate the performance of our computational text annotations / information extractions.
--   We can fine-tune our prompts using the annotation data to improve the annotation quality.
--   We will learn how to present and visualize the quality of the model.
-
-
-## Exploration of Visual Data
-
--   We will explore different tools to visualize images:
--   [ImageJ](https://imagej.nih.gov/ij/download.html)
--   [PixPlot](https://github.com/YaleDHLab/pix-plot)
--   [Memespector](https://github.com/jason-chao/memespector-gui) and [Gephi](https://gephi.org/)[^3]
--   The visualization forms the basis for image classification: In this stage we want to find similarities and differences.
-
-[^3]: following Omena's concept for cloud vision labels, see [related work]().
-
-![Example of image exploration using PixPlot.](/images/pixplot.png){width="600"}
-
-
-## Operationalization II
-
--   Once more a dive in the literature: This time on visual content analysis.
--   Combining the results of our exploration, reserach interest and related work with content analysis, we will develop an annotation manual for the images.
--   We will learn how to use [CLIP](https://openai.com/research/clip) for image classification
--   Based on your previous experience you will create human annotations.
--   We will shuffle annotators: Everyone will annotate for another group.
-
-![Decomposition of different layers in a Story by @gruenebayern during the 2023 Bavarian state elections.](/images/ebenen.png){width="600"}
-
-
-## Evaluation II
-
--   Once more we will evaluate the quality of our model,
--   and fine-tune our prompts.
--   *Work in Progress:* We might organize this session differently on short notice, depending on the outcomes of my current research project.
--   *Waiting in Progress:* In case of visual GPT being published we might have to adapt.
-
-![Example of a visual inspection of classification results: Intermediary results of image types classifications using CLIP for the 2021 federal election. Two out of five stories posted by differnt parties have been misclassified.](/images/events.png){width="600"}
-
-
-## Data Wrangling as a Conversation
-
--   The *Advanced Data Analysis* mode of [ChatGPT](https://chat.openai.com/) is a powerful tool to (quickly) analyze metadata (and more) of social media data.
--   We will give it a shot with some simple analyses, like trends over time.
--   *Experimental* in case we have enough time left, we might try to create a workflow with [LangChain](https://www.langchain.com/) and [LlamaIndex](https://www.llamaindex.ai/) to chat with our data.
-
-## Visual Presentation of your Data
-
--   Our last session of the semester will be all about telling a story with your data.
--   We will use Python (Jupyter Notebooks) to transform our data in CSV files.
--   We will import the data into [RAWGraphs](https://www.rawgraphs.io/) to create convincing plots
--   We will use [Figma](https://www.figma.com/) to collaboratively sketch the layout of your project report website.

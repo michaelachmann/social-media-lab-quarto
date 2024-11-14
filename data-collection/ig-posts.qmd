@@ -3,7 +3,7 @@ title: "Instagram Posts"
 format: 
   html: 
     css: ../styles.css
-date: 2023-11-06
+date: 2024-11-14
 bibliography: ../literature.bib
 author:
   - name: Michael Achmann-Denkler
@@ -11,6 +11,9 @@ author:
     orcid: 0000-0002-4754-7842
     email: michael.achmann@informatik.uni-regensburg.de
 license: CC BY
+citation:
+  type: webpage
+  doi: 10.5281/zenodo.10039756
 notebook-view:
   - notebook: ../notebooks/ig-instaloader.ipynb
     title: "Collecting Posts with Instaloader"
@@ -63,6 +66,15 @@ Zeeschuimer [@Peeters_undated-ee] and 4CAT [@Peeters_undated-ow] are two tools d
 
 </div>
 
+### Working with Python
+Data collected using Zeeschuimer can also be exported as *ndjson* files. The [Zeeschuimer Import Notebook]((https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2024_11_11_Preprocessing.ipynb) ) provides a code example for reading the files and converting them to either 4CAT format, or a table format compatible with the above notebooks for CrowdTangle and instaloader.
+
+The old version of the [Notebook](https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2023_11_03_Zeeschuimer_Import.ipynb) still exists. This version downloads only one image per post.
+
+::: {.callout-tip}
+This is our preferred approach for the research seminar. We take a closer look at the [Data Structure](../processing/index.qmd) and [Preprocessing](../processing/preprocessing.qmd) of Zeeschuimer data through custom notebooks over the course of the next weeks.
+:::
+
 ### Working with 4CAT
 ![Screenshot of 4CAT](/images/4cat-screenshot.png)
 
@@ -75,17 +87,7 @@ Once the images have been downloaded more analysis options are available when cl
 The authors of Zeeschuimer and 4CAT [have published a manual here](https://docs.google.com/document/d/19MAiqX7Vx1FcNJ44K-vSdnKDVC5gcFwtrSQiewnwW8A/edit?pli=1).
 
 
-### Working with Python
-Data collected using Zeeschuimer can also be exported as *ndjson* files. The [Zeeschuimer Import](https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2023_11_03_Zeeschuimer_Import.ipynb) notebook provides a code example for reading the files and converting them to either 4CAT format, or a table format compatible with the above notebooks for CrowdTangle and instaloader.
-
-::: {.callout-caution}
-## Work-In-Progress
-We could download multiple images / videos for albums with little refactoring. We will work on an update if necessary.
-:::
-
-
-
-## Instaloader
+## Instaloader -- NOT RECOMMENDED
 [Instaloader](https://instaloader.github.io/) is a python package for downloading instagram pictures and videos along with their metadata. I have written a [getting started tutorial on Medium](https://achmann.dev/getting-started-with-instagram-analysis-instaloader-bbf686cb6e3b). It is, together with [the provided notebook](https://github.com/michaelachmann/ig-tutorial/blob/main/01_DataCollection.ipynb), the basis for this chapter.
 
 ::: {.callout-note}
@@ -119,7 +121,7 @@ Instaloader is a stand-alone piece of software: It offers options to download mo
 </div>
 
 
-## CrowdTangle
+## CrowdTangle -- OUTDATED
 ![Screenshot of the [CrowdTangle](https://www.crowdtangle.com/) interface.](/images/crowdtangle.png){width="600"}
 
 ::: {.callout-warning}

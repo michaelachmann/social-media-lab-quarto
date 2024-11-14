@@ -2,7 +2,7 @@
 format: 
   html: default
 title: "Instagram Stories"
-date: 2024-09-05
+date: 2024-11-14
 bibliography: ../literature.bib
 author:
   - name: Michael Achmann-Denkler
@@ -20,9 +20,9 @@ notebook-view:
     url: https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2023_11_07_Firebase_Interface.ipynb
 ---
 
-Instagram stories, characterized by their ephemeral nature, expire after 24 hours. Therefore, it's crucial to collect them in a timely manner, as retrospective data collection is not an option with this format. There are two feasible methods: The [Tidal Tales Plugin](https://tidaltal.es) and Instaloader. Additionally, commercial tools such as [4k Stogram](https://www.4kdownload.com/de/products/stogram-2) are also available.
+Instagram stories, characterized by their ephemeral nature, expire after 24 hours. Therefore, it's crucial to collect them in a timely manner, as retrospective data collection is not an option with this format. There are two feasible methods: The [Tidal Tales Plugin](https://tidaltal.es) and Instaloader. Additionally, commercial tools such as ~~[4k Stogram](https://www.4kdownload.com/de/products/stogram-2)~~[^1] [PhantomBuster](https://phantombuster.com/) are also available.
 
-![A screenshot of stories by \@tagesschau opened in the firefox browser](/images/stories-screenshot.png)
+![A screenshot of stories by \@tagesschau opened in the firefox brow~er](/images/stories-screenshot.png)
 
 Overall, the ephemeral nature of stories necessitates our continuous monitoring and data collection from our targeted profiles. To ensure that we capture **every** story item, I recommend collecting stories twice daily, approximately 12 hours apart. This method accounts for potential inaccuracies in timing, as the intervals overlap. Data can be gathered manually or through computational means. The manual approach, especially in conjunction with the Tidal Tales Plugin, is preferable as we do not circumvent any technical measures to collect our data. For this method, we would install the plugin and view all stories in our browser twice daily. Alternatively, using Instaloader involves simply initiating the command and waiting for the software to gather all the data. Optimally, we could utilize tools like [Cron](https://de.wikipedia.org/wiki/Cron) to automate this process.
 
@@ -148,3 +148,5 @@ The second approach adopts a less invasive strategy. It involves capturing the d
 
 To facilitate this process, I have provided a notebook for project creation, a manual for configuring the plugin, and additional code to export the captured stories via a Jupyter notebook.
 
+
+[^1]: Discontinued.

@@ -2,7 +2,7 @@
 format: 
   html: default
 title: "Text as Data"
-date: 2023-11-27
+date: 2024-11-14
 author:
   - name: Michael Achmann-Denkler
     id: ma
@@ -10,96 +10,111 @@ author:
     email: michael.achmann@informatik.uni-regensburg.de
 license: CC BY
 bibliography: ../literature.bib
-notebook-view:
-  - notebook: ../notebooks/ocr-notebook.ipynb
-    title: "OCR using easyocr"
-    url: https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2023_11_24_OCR.ipynb
-  - notebook: ../notebooks/whisper-notebook.ipynb
-    title: "Transcription using Whisper"
-    url: https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2023_11_24_Whisper.ipynb
-  - notebook: ../notebooks/corpus-analysis-notebook.ipynb
-    title: "Introduction to Corpus Analysis"
-    url: https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2023_11_24_Simple_Corpus_Analysis.ipynb
+citation:
+  type: webpage
+  doi: 10.5281/zenodo.10039756
 ---
 
 The analysis of texutal data has a long tradition under the term [*Natural Language Processing* (NLP)](https://en.wikipedia.org/wiki/Natural_language_processing). As noted by @Bengfort2018-nr, "Language is *unstructured* data that has been produced by people to be understood by other people". This characterization of language as unstructured data highlights its contrast with *structured* or *semi-structured* data. Unlike structured data, which is organized in a way that computers can easily parse and analyze, unstructured data like language requires more complex methods to be processed and understood. In the context of e.g. Instagram, CrowdTangle exports contain *structured data* columns such as 'User Name', 'Like Count', or 'Comment Count'. These pieces of data are quantifiable and can be easily sorted, filtered, or counted, e.g. using tools like Excel or Python's `pandas` library. For instance, we can quickly determine the most active users by counting the number of rows associated with each username. In contrast, *unstructured* data is not organized in a predefined manner and is typically more challenging to process and analyze. The 'Description' column in our dataset, which contains the captions of Instagram posts, is a prime example of unstructured data. These captions, composed of paragraphs or sentences, require different analytical approaches to extract meaningful insights. Unlike structured data, we cannot simply count or sort these texts in a straightforward manner. In our context, we often refer to the collection of texts we analyze as a "Corpus". Each individual piece of text is called a "Document". Each document can be broken down into smaller units known as "features". Features can be words, phrases, or even patterns of words, which we then use to quantify and analyze the text [compare p. 230 @Haim2023-or]. For the goal of our research seminar, we can follow the three technical perspectives inspired by @Haim2023-or: 1. Frequency Analysis, 2. Contextual Analysis, and 3. Content Analysis. 
 
-## Schedule
+## Outline
 
-1. In our first session, we begin with frequency analyses of our corpus, which involves counting words or phrases to identify the most common elements. This method provides a foundational understanding of the prominent themes or topics. Additionally, we learn to convert embedded text in images and videos into machine-readable format, using [OCR](https://en.wikipedia.org/wiki/Optical_character_recognition), and automated audio transcription.
-2. Next, we will engage in explorative text analysis. This step enhances our understanding of the corpus and lays the groundwork for quantitative content analysis. We plan to utilize tools like GPT (and possibly [BERTopic](https://maartengr.github.io/BERTopic/index.html) for an in-depth exploration of our documents.
-3. Finally, we move towards more complex methods like classification or coding. These techniques allow us to categorize text into predefined groups or themes, enabling a more nuanced and quantitative understanding of the content. By applying these methods, we can, for example, classify Instagram captions into categories such as 'promotional', 'personal', 'informative', etc., based on their content and context.
+1. **Data Structure and Preprocessing**  
+   We examine the data structure, import data from Zeeschuimer, and create the first metadata table. This provides an organized overview of the corpus, laying the foundation for the next steps.
 
-## Hands-On
-We are working with Python and pandas, our data is structured in tables, also known as DataFrames. Each DataFrame (`df`) consists of rows and columns. We can store and structure data differently using these two dimensions, one concept for storing research data using tables is *Tidy Data* [@Wickham2014-bz]. According to this standard
+2. **Preprocessing for Text Extraction**  
+   [In this phase, we focus on obtaining OCR text from images and transcriptions from audio content.](preprocessing.qmd) This ensures that all embedded text in images and videos is converted into machine-readable formats, preparing the data for analysis.
+
+3. **Data Exploration**  
+   With the text extracted, we move to exploratory analysis. Here, we conduct [frequency analyses](preprocessing.qmd) and other exploratory techniques to gain insights into the corpus, identifying prominent themes or topics. Tools like GPT and possibly [BERTopic](https://maartengr.github.io/BERTopic/index.html) may be used for [deeper exploration](exploration.qmd).
+
+4. **Classification and Coding**  
+   Finally, we apply [classification methods](classification.qmd) to categorize text into predefined groups or themes, providing a more nuanced, quantitative understanding of the content. 
+   
+
+## Organizing Data for Social Media Analysis
+
+This section explains how to structure metadata, text, and visual data for effective analysis. My recommendations are just one example of organizing the data, but the key is following a consistent structure across a project. For the present course, adhering to a set data structure is essential for using the example notebooks effectively.
+
+### General Data Structure
+
+To analyze Instagram Stories or posts, we organize data into multiple tables, each focusing on a specific content type:
+
+1. **Metadata Table**: This table contains basic metadata such as story ID, username, and other general attributes. Each story is represented by one row.
+2. **Text Table**: This table stores text content, like OCR results, transcriptions, and captions. Each text entry is assigned a unique `Text ID` and is linked back to the `Story ID` to connect it with the metadata.
+3. **Images Table**: This table contains information about images or videos, which are also linked to the `Story ID` for easy integration across datasets.
+
+To ensure that our data is organized and clean for analysis, we follow the **Tidy Data Principles**:
 
 > 1. Each variable forms a column.
 > 2. Each observation forms a row.
 > 3. Each type of observational unit forms a table.
 
-
 ![Visualization of the tidy data components, source: [R for Data Science](https://r4ds.had.co.nz/tidy-data.html).](../images/tidy-1.png)
 
 
-What, in context of social media data, is an obersavtion? Is it a post? I suggest to start by seeing posts as observations, i.e. rows. Thus, we have one table for our corpus, consisting of one row per post with multiple columns for different variables, including an `ID`, possibly a link, a referrence to the image / video, and one or more text variables for each post. When dealing with Instagram or TikTok posts, we might have three text columns: caption / description, OCR, and transcription. When dealing with stories two: OCR and transcription. 
+This structure, inspired by Tidy Data [@Wickham2014-bz], ensures that our data is clean, consistent, and accessible to analyze. In social media data, a post is often treated as an observation,Depending on the content type, such as an album, each image might be treated as a separate observation making it a row in our tables.  as a separate observation depending on the content type, such as an album.
 
-::: {.callout-note}
-When dealing with more complex data, e.g. Instagram albums that may contain multiple images per post, we will have to reconsider this choice. In this case we might consider each observation to be one image / video, which has variables like OCR and transcription. Keeping the `ID` column for images and videos, we have a fixed reference to the original post, thus we may re-merge the data later on with the post metadata or combine variables across media for one post.
+::: {.column-screen-inset}
+![An example for mapping multiple rows of text in the *Text Table* to a single row in the metadata table *Story Table*](../images/classification-table.png){#fig-mapping}
 :::
 
-
-All data exported from CrowdTangle, 4CAT, and Zeeschuimer-F are saved as `CSV` files. Throughout the semester, we keep using this file format to save our progress. We work with multiple Jupyter notebooks, generally one notebook per task. This helps to keep a good structure of our projects. Each time we modified the `df`, we save the `CSV` file to our Google Drive / Harddrive. In the two examples below we add an OCR and a Transcription column to our DataFrame, for each task we use one notebook. After completing each task, we store the results in a file. While Google Drive provides file versioning to mitigate data loss in certain scenarios, I recommend to save your results to a new file during the experimental phase. This practice ensures data safety until you have fully verified the functionality of your code. Additionally, I recommend naming your files in a `YYYY-MM-DD-descriptive-name.csv` fashion. When working with colab notebooks I recommend to keep track of notebooks using notes / lists, e.g. using the [Dataloom](https://github.com/trey-wallis/obsidian-dataloom) plugin for [Obsidian](https://obsidian.md).
-
-![Keeping track of Colab notebooks with Obsidian and the [Dataloom](https://github.com/trey-wallis/obsidian-dataloom) plugin.](../images/loom.png)
-
-The `CSV` files contain only metadata, the actual media files (images / videos) are saved to different locations. The OCR and Transcription notebooks below contain code to import media files from 4CAT and Zeeschuimer-F. I suggest to save the files to `media/videos` or `media/images`. Both notebooks introduce a column `image_file` or `video_file` where the relative location of the media files is written to. Creating a new `ZIP` file using the new folder structure and saving the file to Google Drive allows us to use the media files in future notebooks (e.g. for image classification) without modifying the `image_file` or `video_file` columns again. 
-
-::: {.callout-note}
-This page and all referenced notebooks deal with 4CAT and Zeeschuimer-F metadata and media files. Generally all information applies to `instaloader` as well. Its advisable to use the `--filename-pattern` [command line parameter](https://instaloader.github.io/basic-usage.html#filename-specification) to control the filename of the media files. Mapping `JSON` metadata to actual media objects becomes easier this way. Once all posts / stories have been loaded using instaloader, I recommend to read all `JSON` files in a loop and create a DataFrame (see [Data Collection / Posts / Instaloader](../data-collection/ig-posts.qmd#instaloader) for more information and code examples).
-:::
-
-**Key Take-Aways**
-
-* We organize our data inspired by TidyData
-  - One row per post
-  - One column per variable
-* We use one notebook per task
-* We save our progress to `CSV` files, either on our harddrive or Google Drive
-* We keep a reference to media files as a relative reference in our DataFrame
-* We keep our media files in the structure `media/videos`, and `media/images`, which we compress to `ZIP` and keep on our Google Drive (or central HDD location)
-* **When working with experimental code, keep backups of your data file, do not overwrite the original file!**
-
-## From Images / Videos to Text
-Computational approaches for text analyses are established as part of computational sociales science research [@Baden2022-oe], which we may utilize when dealing with visual and multimodal social media. Instagram posts often contain embedded text, TikTok posts often contain an audio layer, both of which we can transform to computer readable text. For the first, we are going to use OCR, for the second we apply Whisper. The following subchapters demonstrate the application of these technique in order to extract textual content from images and videos. In the thirs subchapter, I demonstrate a simple application of corpus analytics for a first analysis of the social media content based on word frequencies.
-
-::: {.callout-important}
-**Update 2024:** [I created an updated Notebook](https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2024_11_11_Preprocessing.ipynb) that uses the OpenAI API for Whisper and [Tidal Tales](https://tidaltal.es) format. I am going to update this page shortly. 
-:::
-
-### OCR
-
-{{< embed ../notebooks/ocr-notebook.ipynb echo=true >}}
+@fig-mapping shows how data from different layers, like text and the variables `Policy Issues` and `Positioning`, can be aggregated at the story level. `Policy Issues` is a categorical variable that references different policy topics, while `Positioning` is a Boolean variable that is `True` if a given text mentions any policy issues and `False` otherwise. The figure illustrates the integration process and highlights how various types of information are combined into a cohesive dataset. Note that these variables are just examples—they can change based on the research question. This structure is flexible, allowing adaptation to different research needs.
 
 
+### Decomposing Text and Image Data
 
-### Automated Audio Transcription (Whisper)
+The **Text Table** may include several text types for each story, such as OCR text and transcriptions, each identified by `Story ID`. Columns in this table typically include:
+
+- `Story ID`: Links to the main metadata.
+- `Text Type`: Specifies the origin of the text (e.g., OCR, transcription).
+- `Text ID`: A unique identifier for each text entry.
+- Other columns like `Positioning` or `Policy Issues` can be added depending on the research focus.
+
+We follow a similar approach for images with the **Images Table**, which contains one row per image. Columns in the Images Table typically include:
+
+- `Image ID`: A unique identifier for each image.
+- `Story ID`: Links to the main metadata to ensure traceability to the original post.
+- Other columns may include attributes like image description or `Image Type`.
+
+When dealing with more complex data, such as Instagram albums with multiple images per post, we consider each image or video as a separate observation. In such cases, the `ID` column helps maintain a fixed reference to the original post, allowing us to re-merge the data later with post-level metadata.
+
+### Metadata Table and Aggregation
+
+The **Metadata Table** aggregates data from multiple content layers, summarizing attributes like `Positioning` and `Policy Issues` for each post or story. For Boolean variables like `Positioning`, the overall value is set to `True` if any text component indicates a position. For categorical variables like `Policy Issues`, unique values from all components are combined into a list. Depending on your research focus, you might also consider other methods, such as counting occurrences instead of simple aggregation. The flexibility of this approach allows you to adapt the analysis to either story-level or post-level data as needed.
+
+The [Zeeschuimer Import Notebook](https://colab.research.google.com/github/michaelachmann/social-media-lab/blob/main/notebooks/2024_11_12_Zeeschuimer_Import_w_Gallery.ipynb) helps create the initial metadata table for posts collected through Zeeschuimer. Similarly, when using Tidal Tales, we can use the CSV downloaded from the extension as our metadata table, and the same applies to the Meta Content Library. However, for the latter, we might need to rename columns to ensure compatibility when using the example notebooks provided on this website.
+
 :::{.callout-note}
-OpenAI offers Whisper transcriptions as a service, see [their documentation](https://platform.openai.com/docs/guides/speech-to-text). The notebook below takes you step-by-step through using the Whisper model on your own computer / colab.
+I updated the [Zeeschuimer Import Notebook](https://colab.research.google.com/github/michaelachmann/social-media-lab/blob/main/notebooks/2024_11_12_Zeeschuimer_Import_w_Gallery.ipynb) to handle gallery posts. The new version creates one row per image. Thus, when using the new notebook, we still need to manually create the metadata table. The [old Zeeschuimer Import Notebook](https://colab.research.google.com/github/michaelachmann/social-media-lab/blob/main/notebooks/2023_11_03_Zeeschuimer_Import.ipynb) is still available -- it creates one row per post and only downloads one image.
 :::
 
-{{< embed ../notebooks/whisper-notebook.ipynb echo=true >}}
+### Data Normalization with the Notebook
+
+We use the [Zeeschuimer Import Notebook](https://colab.research.google.com/github/michaelachmann/social-media-lab/blob/main/notebooks/2024_11_12_Zeeschuimer_Import_w_Gallery.ipynb) notebook to standardize raw data collected through the Zeeschuimer Plugin, specifically importing the data from Zeeschuimer as jsonl files and transforming them into a pandas DataFrame. While Zeeschuimer and 4CAT provide a good standard data structure, we aim to work with data from multiple sources: Zeeschuimer, Tidal Tales (a Firefox extension for collecting IG stories), Meta Content Library, or TikTok data from Zeeschuimer. The notebook helps convert Zeeschuimer data into the unified structure that we use across all projects, ensuring consistency.
+
+The [Zeeschuimer Import Notebook](https://colab.research.google.com/github/michaelachmann/social-media-lab/blob/main/notebooks/2024_11_12_Zeeschuimer_Import_w_Gallery.ipynb)  helps us systematically prepare data for analysis:
+
+- **Data Import**: Imports data from sources like CrowdTangle and 4CAT using tools such as `pandas` and `json`.
+- **Data Sampling**: Displays random samples to check accuracy and ensure data correctness at each step.
+- **Normalization**: Converts different text types (e.g., OCR, transcriptions) into standardized DataFrames.
+- **Media Management**: Organizes media files into folders following a consistent structure. For images, the files are saved in `images/{username}/{ID}.jpg`, and for videos, in `videos/{username}/{ID}.mp4`. The video cover image is also saved as a file in the case of videos. The notebook also handles gallery posts, saving images with filenames such as `{ID}_0.jpg`, `{ID}_1.jpg`, etc.
+
+::: {.callout-note}
+This page and the referenced notebooks cover the data formats and media files of Zeeschuimer and Tidal Tales. Generally, the information also applies when using other software, like `instaloader`. To control media file names, it is advisable to use the `--filename-pattern` [command line parameter](https://instaloader.github.io/basic-usage.html#filename-specification). This makes mapping `JSON` metadata to media objects easier. After loading all posts and stories with `instaloader`, I recommend reading all `JSON` files in a loop and creating a DataFrame. For more information and code examples, see [Data Collection / Posts / Instaloader](../data-collection/ig-posts.qmd#instaloader).
+:::
 
 
+### Best Practices for Data Integration
 
+- **Consistent Identifiers**: Use consistent identifiers like `Story ID` and `Username` across all tables to facilitate data merging.
+- **Unique IDs**: Assign unique IDs for each element (e.g., `Text ID`, `Image ID`) to make tracking and linking straightforward.
+- **Organized Directory Structure**: Store media files systematically. For images, use `images/{username}/{ID}.jpg` and for videos, use `videos/{username}/{ID}.mp4`. In the case of gallery posts, use filenames like `{ID}_0.jpg`, `{ID}_1.jpg`, etc., and reference these paths in your tables for easy access.
+- **Data Integration**: Use tools like pandas to merge tables based on shared identifiers, enabling a complete view of each story or post.
+- **Backup Strategy**: When working with experimental code, keep backups of your data file and avoid overwriting the original file until you are confident in the results.
 
-### Analyzing Corpus and Word Frequencies
+By following these guidelines, you will keep your data well-organized, reproducible, and ready for detailed analysis, minimizing complexity and enhancing your insights' quality.
 
-{{< embed ../notebooks/corpus-analysis-notebook.ipynb echo=true >}}
-
-
-
-## Conclusion
-In summary, this session provides us with the practical skills to use Python, pandas, and Jupyter notebooks for the computational analysis of multimodal social media data. Our adherence to Tidy Data principles and the integration of technologies like OCR and Whisper are integral to extract and analyze textual content from multimedia sources. In the next session we will keep exploring the content through a textual lens. Further, we will use prompting as a technique to classify texts as part of a computational content analysis.
 
 
 ## More Resources
@@ -116,4 +131,3 @@ In summary, this session provides us with the practical skills to use Python, pa
 * [Word Frequencies (Online)](https://programminghistorian.org/en/lessons/counting-frequencies)
 * [Introduction Jupyter Notebooks (Online)](https://programminghistorian.org/en/lessons/jupyter-notebooks)
 * [Konchady (2016): Text Mining Application Programming](https://dl.acm.org/doi/book/10.5555/1137800) (Somewhat older, still an interesting reading for the basics of computational corpus analysis)
-
