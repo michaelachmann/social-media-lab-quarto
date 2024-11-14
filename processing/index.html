@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Michael Achmann-Denkler">
-<meta name="dcterms.date" content="2023-11-27">
+<meta name="dcterms.date" content="2024-11-14">
 
 <title>Text as Data – Social Media Lab</title>
 <style>
@@ -21,40 +21,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 /* CSS for citations */
 div.csl-bib-body { }
@@ -79,14 +45,14 @@ div.csl-indent {
 }</style>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../processing/exploration.html" rel="next">
+<link href="../processing/preprocessing.html" rel="next">
 <link href="../data-collection/ig-stories.html" rel="prev">
 <link href="../images/favicon.ico" rel="icon">
 <script src="../site_libs/cookie-consent/cookie-consent.js"></script>
@@ -147,9 +113,6 @@ cookieconsent.run({
 });
 </script> 
   
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-
-<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 <link rel="stylesheet" href="../styles.css">
@@ -322,6 +285,12 @@ cookieconsent.run({
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../processing/preprocessing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Preprocessing</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../processing/exploration.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Text Exploration</span></a>
   </div>
@@ -408,21 +377,21 @@ cookieconsent.run({
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#schedule" id="toc-schedule" class="nav-link active" data-scroll-target="#schedule">Schedule</a></li>
-  <li><a href="#hands-on" id="toc-hands-on" class="nav-link" data-scroll-target="#hands-on">Hands-On</a></li>
-  <li><a href="#from-images-videos-to-text" id="toc-from-images-videos-to-text" class="nav-link" data-scroll-target="#from-images-videos-to-text">From Images / Videos to Text</a>
+  <li><a href="#outline" id="toc-outline" class="nav-link active" data-scroll-target="#outline">Outline</a></li>
+  <li><a href="#organizing-data-for-social-media-analysis" id="toc-organizing-data-for-social-media-analysis" class="nav-link" data-scroll-target="#organizing-data-for-social-media-analysis">Organizing Data for Social Media Analysis</a>
   <ul class="collapse">
-  <li><a href="#ocr" id="toc-ocr" class="nav-link" data-scroll-target="#ocr">OCR</a></li>
-  <li><a href="#automated-audio-transcription-whisper" id="toc-automated-audio-transcription-whisper" class="nav-link" data-scroll-target="#automated-audio-transcription-whisper">Automated Audio Transcription (Whisper)</a></li>
-  <li><a href="#analyzing-corpus-and-word-frequencies" id="toc-analyzing-corpus-and-word-frequencies" class="nav-link" data-scroll-target="#analyzing-corpus-and-word-frequencies">Analyzing Corpus and Word Frequencies</a></li>
+  <li><a href="#general-data-structure" id="toc-general-data-structure" class="nav-link" data-scroll-target="#general-data-structure">General Data Structure</a></li>
+  <li><a href="#decomposing-text-and-image-data" id="toc-decomposing-text-and-image-data" class="nav-link" data-scroll-target="#decomposing-text-and-image-data">Decomposing Text and Image Data</a></li>
+  <li><a href="#metadata-table-and-aggregation" id="toc-metadata-table-and-aggregation" class="nav-link" data-scroll-target="#metadata-table-and-aggregation">Metadata Table and Aggregation</a></li>
+  <li><a href="#data-normalization-with-the-notebook" id="toc-data-normalization-with-the-notebook" class="nav-link" data-scroll-target="#data-normalization-with-the-notebook">Data Normalization with the Notebook</a></li>
+  <li><a href="#best-practices-for-data-integration" id="toc-best-practices-for-data-integration" class="nav-link" data-scroll-target="#best-practices-for-data-integration">Best Practices for Data Integration</a></li>
   </ul></li>
-  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
   <li><a href="#more-resources" id="toc-more-resources" class="nav-link" data-scroll-target="#more-resources">More Resources</a></li>
   </ul>
-<div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="../notebooks/corpus-analysis-notebook-preview.html"><i class="bi bi-journal-code"></i>Introduction to Corpus Analysis</a></li><li><a href="../notebooks/ocr-notebook-preview.html"><i class="bi bi-journal-code"></i>OCR using easyocr</a></li><li><a href="../notebooks/whisper-notebook-preview.html"><i class="bi bi-journal-code"></i>Transcription using Whisper</a></li></ul></div></nav>
+</nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../processing/index.html">Text Analysis</a></li><li class="breadcrumb-item"><a href="../processing/index.html">Text as Data</a></li></ol></nav>
 <div class="quarto-title">
@@ -443,7 +412,7 @@ cookieconsent.run({
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">November 27, 2023</p>
+      <p class="date">November 14, 2024</p>
     </div>
   </div>
   
@@ -456,17 +425,31 @@ cookieconsent.run({
 
 
 <p>The analysis of texutal data has a long tradition under the term <a href="https://en.wikipedia.org/wiki/Natural_language_processing"><em>Natural Language Processing</em> (NLP)</a>. As noted by <span class="citation" data-cites="Bengfort2018-nr">Bengfort, Bilbro, and Ojeda (<a href="#ref-Bengfort2018-nr" role="doc-biblioref">2018</a>)</span>, “Language is <em>unstructured</em> data that has been produced by people to be understood by other people”. This characterization of language as unstructured data highlights its contrast with <em>structured</em> or <em>semi-structured</em> data. Unlike structured data, which is organized in a way that computers can easily parse and analyze, unstructured data like language requires more complex methods to be processed and understood. In the context of e.g.&nbsp;Instagram, CrowdTangle exports contain <em>structured data</em> columns such as ‘User Name’, ‘Like Count’, or ‘Comment Count’. These pieces of data are quantifiable and can be easily sorted, filtered, or counted, e.g.&nbsp;using tools like Excel or Python’s <code>pandas</code> library. For instance, we can quickly determine the most active users by counting the number of rows associated with each username. In contrast, <em>unstructured</em> data is not organized in a predefined manner and is typically more challenging to process and analyze. The ‘Description’ column in our dataset, which contains the captions of Instagram posts, is a prime example of unstructured data. These captions, composed of paragraphs or sentences, require different analytical approaches to extract meaningful insights. Unlike structured data, we cannot simply count or sort these texts in a straightforward manner. In our context, we often refer to the collection of texts we analyze as a “Corpus”. Each individual piece of text is called a “Document”. Each document can be broken down into smaller units known as “features”. Features can be words, phrases, or even patterns of words, which we then use to quantify and analyze the text <span class="citation" data-cites="Haim2023-or">(compare p.&nbsp;230 <a href="#ref-Haim2023-or" role="doc-biblioref">Haim 2023</a>)</span>. For the goal of our research seminar, we can follow the three technical perspectives inspired by <span class="citation" data-cites="Haim2023-or">Haim (<a href="#ref-Haim2023-or" role="doc-biblioref">2023</a>)</span>: 1. Frequency Analysis, 2. Contextual Analysis, and 3. Content Analysis.</p>
-<section id="schedule" class="level2">
-<h2 class="anchored" data-anchor-id="schedule">Schedule</h2>
+<section id="outline" class="level2">
+<h2 class="anchored" data-anchor-id="outline">Outline</h2>
 <ol type="1">
-<li>In our first session, we begin with frequency analyses of our corpus, which involves counting words or phrases to identify the most common elements. This method provides a foundational understanding of the prominent themes or topics. Additionally, we learn to convert embedded text in images and videos into machine-readable format, using <a href="https://en.wikipedia.org/wiki/Optical_character_recognition">OCR</a>, and automated audio transcription.</li>
-<li>Next, we will engage in explorative text analysis. This step enhances our understanding of the corpus and lays the groundwork for quantitative content analysis. We plan to utilize tools like GPT (and possibly <a href="https://maartengr.github.io/BERTopic/index.html">BERTopic</a> for an in-depth exploration of our documents.</li>
-<li>Finally, we move towards more complex methods like classification or coding. These techniques allow us to categorize text into predefined groups or themes, enabling a more nuanced and quantitative understanding of the content. By applying these methods, we can, for example, classify Instagram captions into categories such as ‘promotional’, ‘personal’, ‘informative’, etc., based on their content and context.</li>
+<li><p><strong>Data Structure and Preprocessing</strong><br>
+We examine the data structure, import data from Zeeschuimer, and create the first metadata table. This provides an organized overview of the corpus, laying the foundation for the next steps.</p></li>
+<li><p><strong>Preprocessing for Text Extraction</strong><br>
+<a href="../processing/preprocessing.html">In this phase, we focus on obtaining OCR text from images and transcriptions from audio content.</a> This ensures that all embedded text in images and videos is converted into machine-readable formats, preparing the data for analysis.</p></li>
+<li><p><strong>Data Exploration</strong><br>
+With the text extracted, we move to exploratory analysis. Here, we conduct <a href="../processing/preprocessing.html">frequency analyses</a> and other exploratory techniques to gain insights into the corpus, identifying prominent themes or topics. Tools like GPT and possibly <a href="https://maartengr.github.io/BERTopic/index.html">BERTopic</a> may be used for <a href="../processing/exploration.html">deeper exploration</a>.</p></li>
+<li><p><strong>Classification and Coding</strong><br>
+Finally, we apply <a href="../processing/classification.html">classification methods</a> to categorize text into predefined groups or themes, providing a more nuanced, quantitative understanding of the content.</p></li>
 </ol>
 </section>
-<section id="hands-on" class="level2">
-<h2 class="anchored" data-anchor-id="hands-on">Hands-On</h2>
-<p>We are working with Python and pandas, our data is structured in tables, also known as DataFrames. Each DataFrame (<code>df</code>) consists of rows and columns. We can store and structure data differently using these two dimensions, one concept for storing research data using tables is <em>Tidy Data</em> <span class="citation" data-cites="Wickham2014-bz">(<a href="#ref-Wickham2014-bz" role="doc-biblioref">Wickham 2014</a>)</span>. According to this standard</p>
+<section id="organizing-data-for-social-media-analysis" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="organizing-data-for-social-media-analysis">Organizing Data for Social Media Analysis</h2>
+<p>This section explains how to structure metadata, text, and visual data for effective analysis. My recommendations are just one example of organizing the data, but the key is following a consistent structure across a project. For the present course, adhering to a set data structure is essential for using the example notebooks effectively.</p>
+<section id="general-data-structure" class="level3 page-columns page-full">
+<h3 class="anchored" data-anchor-id="general-data-structure">General Data Structure</h3>
+<p>To analyze Instagram Stories or posts, we organize data into multiple tables, each focusing on a specific content type:</p>
+<ol type="1">
+<li><strong>Metadata Table</strong>: This table contains basic metadata such as story ID, username, and other general attributes. Each story is represented by one row.</li>
+<li><strong>Text Table</strong>: This table stores text content, like OCR results, transcriptions, and captions. Each text entry is assigned a unique <code>Text ID</code> and is linked back to the <code>Story ID</code> to connect it with the metadata.</li>
+<li><strong>Images Table</strong>: This table contains information about images or videos, which are also linked to the <code>Story ID</code> for easy integration across datasets.</li>
+</ol>
+<p>To ensure that our data is organized and clean for analysis, we follow the <strong>Tidy Data Principles</strong>:</p>
 <blockquote class="blockquote">
 <ol type="1">
 <li>Each variable forms a column.</li>
@@ -480,477 +463,42 @@ cookieconsent.run({
 <figcaption>Visualization of the tidy data components, source: <a href="https://r4ds.had.co.nz/tidy-data.html">R for Data Science</a>.</figcaption>
 </figure>
 </div>
-<p>What, in context of social media data, is an obersavtion? Is it a post? I suggest to start by seeing posts as observations, i.e.&nbsp;rows. Thus, we have one table for our corpus, consisting of one row per post with multiple columns for different variables, including an <code>ID</code>, possibly a link, a referrence to the image / video, and one or more text variables for each post. When dealing with Instagram or TikTok posts, we might have three text columns: caption / description, OCR, and transcription. When dealing with stories two: OCR and transcription.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<p>This structure, inspired by Tidy Data <span class="citation" data-cites="Wickham2014-bz">(<a href="#ref-Wickham2014-bz" role="doc-biblioref">Wickham 2014</a>)</span>, ensures that our data is clean, consistent, and accessible to analyze. In social media data, a post is often treated as an observation,Depending on the content type, such as an album, each image might be treated as a separate observation making it a row in our tables. as a separate observation depending on the content type, such as an album.</p>
+<div class="page-columns page-full">
+<div id="fig-mapping" class="quarto-float quarto-figure quarto-figure-center anchored page-columns page-full">
+<figure class="quarto-float quarto-float-fig figure page-columns page-full">
+<div aria-describedby="fig-mapping-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca" class="page-columns page-full">
+<img src="../images/classification-table.png" class="img-fluid figure-img column-screen-inset">
 </div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>When dealing with more complex data, e.g.&nbsp;Instagram albums that may contain multiple images per post, we will have to reconsider this choice. In this case we might consider each observation to be one image / video, which has variables like OCR and transcription. Keeping the <code>ID</code> column for images and videos, we have a fixed reference to the original post, thus we may re-merge the data later on with the post metadata or combine variables across media for one post.</p>
-</div>
-</div>
-<p>All data exported from CrowdTangle, 4CAT, and Zeeschuimer-F are saved as <code>CSV</code> files. Throughout the semester, we keep using this file format to save our progress. We work with multiple Jupyter notebooks, generally one notebook per task. This helps to keep a good structure of our projects. Each time we modified the <code>df</code>, we save the <code>CSV</code> file to our Google Drive / Harddrive. In the two examples below we add an OCR and a Transcription column to our DataFrame, for each task we use one notebook. After completing each task, we store the results in a file. While Google Drive provides file versioning to mitigate data loss in certain scenarios, I recommend to save your results to a new file during the experimental phase. This practice ensures data safety until you have fully verified the functionality of your code. Additionally, I recommend naming your files in a <code>YYYY-MM-DD-descriptive-name.csv</code> fashion. When working with colab notebooks I recommend to keep track of notebooks using notes / lists, e.g.&nbsp;using the <a href="https://github.com/trey-wallis/obsidian-dataloom">Dataloom</a> plugin for <a href="https://obsidian.md">Obsidian</a>.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../images/loom.png" class="img-fluid figure-img"></p>
-<figcaption>Keeping track of Colab notebooks with Obsidian and the <a href="https://github.com/trey-wallis/obsidian-dataloom">Dataloom</a> plugin.</figcaption>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mapping-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: An example for mapping multiple rows of text in the <em>Text Table</em> to a single row in the metadata table <em>Story Table</em>
+</figcaption>
 </figure>
 </div>
-<p>The <code>CSV</code> files contain only metadata, the actual media files (images / videos) are saved to different locations. The OCR and Transcription notebooks below contain code to import media files from 4CAT and Zeeschuimer-F. I suggest to save the files to <code>media/videos</code> or <code>media/images</code>. Both notebooks introduce a column <code>image_file</code> or <code>video_file</code> where the relative location of the media files is written to. Creating a new <code>ZIP</code> file using the new folder structure and saving the file to Google Drive allows us to use the media files in future notebooks (e.g.&nbsp;for image classification) without modifying the <code>image_file</code> or <code>video_file</code> columns again.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>This page and all referenced notebooks deal with 4CAT and Zeeschuimer-F metadata and media files. Generally all information applies to <code>instaloader</code> as well. Its advisable to use the <code>--filename-pattern</code> <a href="https://instaloader.github.io/basic-usage.html#filename-specification">command line parameter</a> to control the filename of the media files. Mapping <code>JSON</code> metadata to actual media objects becomes easier this way. Once all posts / stories have been loaded using instaloader, I recommend to read all <code>JSON</code> files in a loop and create a DataFrame (see <a href="../data-collection/ig-posts.html#instaloader">Data Collection / Posts / Instaloader</a> for more information and code examples).</p>
-</div>
-</div>
-<p><strong>Key Take-Aways</strong></p>
+<p><a href="#fig-mapping" class="quarto-xref">Figure&nbsp;1</a> shows how data from different layers, like text and the variables <code>Policy Issues</code> and <code>Positioning</code>, can be aggregated at the story level. <code>Policy Issues</code> is a categorical variable that references different policy topics, while <code>Positioning</code> is a Boolean variable that is <code>True</code> if a given text mentions any policy issues and <code>False</code> otherwise. The figure illustrates the integration process and highlights how various types of information are combined into a cohesive dataset. Note that these variables are just examples—they can change based on the research question. This structure is flexible, allowing adaptation to different research needs.</p>
+</section>
+<section id="decomposing-text-and-image-data" class="level3">
+<h3 class="anchored" data-anchor-id="decomposing-text-and-image-data">Decomposing Text and Image Data</h3>
+<p>The <strong>Text Table</strong> may include several text types for each story, such as OCR text and transcriptions, each identified by <code>Story ID</code>. Columns in this table typically include:</p>
 <ul>
-<li>We organize our data inspired by TidyData
-<ul>
-<li>One row per post</li>
-<li>One column per variable</li>
-</ul></li>
-<li>We use one notebook per task</li>
-<li>We save our progress to <code>CSV</code> files, either on our harddrive or Google Drive</li>
-<li>We keep a reference to media files as a relative reference in our DataFrame</li>
-<li>We keep our media files in the structure <code>media/videos</code>, and <code>media/images</code>, which we compress to <code>ZIP</code> and keep on our Google Drive (or central HDD location)</li>
-<li><strong>When working with experimental code, keep backups of your data file, do not overwrite the original file!</strong></li>
+<li><code>Story ID</code>: Links to the main metadata.</li>
+<li><code>Text Type</code>: Specifies the origin of the text (e.g., OCR, transcription).</li>
+<li><code>Text ID</code>: A unique identifier for each text entry.</li>
+<li>Other columns like <code>Positioning</code> or <code>Policy Issues</code> can be added depending on the research focus.</li>
 </ul>
+<p>We follow a similar approach for images with the <strong>Images Table</strong>, which contains one row per image. Columns in the Images Table typically include:</p>
+<ul>
+<li><code>Image ID</code>: A unique identifier for each image.</li>
+<li><code>Story ID</code>: Links to the main metadata to ensure traceability to the original post.</li>
+<li>Other columns may include attributes like image description or <code>Image Type</code>.</li>
+</ul>
+<p>When dealing with more complex data, such as Instagram albums with multiple images per post, we consider each image or video as a separate observation. In such cases, the <code>ID</code> column helps maintain a fixed reference to the original post, allowing us to re-merge the data later with post-level metadata.</p>
 </section>
-<section id="from-images-videos-to-text" class="level2">
-<h2 class="anchored" data-anchor-id="from-images-videos-to-text">From Images / Videos to Text</h2>
-<p>Computational approaches for text analyses are established as part of computational sociales science research <span class="citation" data-cites="Baden2022-oe">(<a href="#ref-Baden2022-oe" role="doc-biblioref">Baden et al. 2022</a>)</span>, which we may utilize when dealing with visual and multimodal social media. Instagram posts often contain embedded text, TikTok posts often contain an audio layer, both of which we can transform to computer readable text. For the first, we are going to use OCR, for the second we apply Whisper. The following subchapters demonstrate the application of these technique in order to extract textual content from images and videos. In the thirs subchapter, I demonstrate a simple application of corpus analytics for a first analysis of the social media content based on word frequencies.</p>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Important
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><strong>Update 2024:</strong> <a href="https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2024_11_11_Preprocessing.ipynb">I created an updated Notebook</a> that uses the OpenAI API for Whisper and <a href="https://tidaltal.es">Tidal Tales</a> format. I am going to update this page shortly.</p>
-</div>
-</div>
-<section id="ocr" class="level3">
-<h3 class="anchored" data-anchor-id="ocr">OCR</h3>
-<div class="quarto-embed-nb-cell">
-<p>We’re using <a href="https://github.com/JaidedAI/EasyOCR">easyocr</a>. See the documentation for more complex configurations. Using CPU only this process takes from minutes to hours (depends on the amount of images). OCR may also be outsourced (e.g.&nbsp;using Google Vision API), see future sessions (and Memespector) for this.</p>
-<div id="cell-1" class="cell" data-outputid="866bf65a-6a8a-4af6-90cc-17190b7eaaeb" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip <span class="op">-</span>q install easyocr</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.9/2.9 MB 29.7 MB/s eta 0:00:00
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 908.3/908.3 kB 57.5 MB/s eta 0:00:00
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 307.2/307.2 kB 29.6 MB/s eta 0:00:00</code></pre>
-</div>
-</div>
-<div id="cell-2" class="cell" data-outputid="27992ada-4a27-4590-f9a3-fc38cb61eb3f" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Imports for OCR</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> easyocr</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>reader <span class="op">=</span> easyocr.Reader([<span class="st">'de'</span>,<span class="st">'en'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Progress: |██████████████████████████████████████████████████| 100.0% Complete</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Progress: |██████████████████████████████████████████████████| 100.0% Complete</code></pre>
-</div>
-</div>
-<p>We define a very simple method to receive one string for all text recognized: The <code>readtext</code>method returns a list of text areas, in this example we concatenate the string, therefore the order of words is sometimes not correct.</p>
-<p>Also, we save the file to Google Drive to save our results.</p>
-<div id="cell-4" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> run_ocr(image_path):</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    ocr_result <span class="op">=</span> reader.readtext(image_path, detail <span class="op">=</span> <span class="dv">0</span>)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    ocr_text <span class="op">=</span> <span class="st">" "</span>.join(ocr_result)</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> ocr_text</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'ocr_text'</span>] <span class="op">=</span> df[<span class="st">'image_file'</span>].<span class="bu">apply</span>(run_ocr)</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Saving Results to Drive</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>df.to_csv(<span class="st">'/content/drive/MyDrive/2022-11-09-Stories-Exported.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="cell-5" class="cell" data-outputid="2ca5efb5-4254-4c36-a001-fe1a0bb5e8b5" data-execution_count="27">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="27">
-
-  <div id="df-3de65dd6-3f2b-4667-8693-231a51b907b3" class="colab-df-container">
-    <div>
-
-
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">Unnamed: 0.1</th>
-<th data-quarto-table-cell-role="th">Unnamed: 0</th>
-<th data-quarto-table-cell-role="th">ID</th>
-<th data-quarto-table-cell-role="th">Time of Posting</th>
-<th data-quarto-table-cell-role="th">Type of Content</th>
-<th data-quarto-table-cell-role="th">video_url</th>
-<th data-quarto-table-cell-role="th">image_url</th>
-<th data-quarto-table-cell-role="th">Username</th>
-<th data-quarto-table-cell-role="th">Video Length (s)</th>
-<th data-quarto-table-cell-role="th">Expiration</th>
-<th data-quarto-table-cell-role="th">...</th>
-<th data-quarto-table-cell-role="th">Is Verified</th>
-<th data-quarto-table-cell-role="th">Stickers</th>
-<th data-quarto-table-cell-role="th">Accessibility Caption</th>
-<th data-quarto-table-cell-role="th">Attribution URL</th>
-<th data-quarto-table-cell-role="th">video_file</th>
-<th data-quarto-table-cell-role="th">audio_file</th>
-<th data-quarto-table-cell-role="th">duration</th>
-<th data-quarto-table-cell-role="th">sampling_rate</th>
-<th data-quarto-table-cell-role="th">image_file</th>
-<th data-quarto-table-cell-role="th">ocr_text</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
-<td>0</td>
-<td>0</td>
-<td>3234500408402516260_1383567706</td>
-<td>2023-11-12 15:21:53</td>
-<td>Image</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>news24</td>
-<td>NaN</td>
-<td>2023-11-13 15:21:53</td>
-<td>...</td>
-<td>True</td>
-<td>[]</td>
-<td>Photo by News24 on November 12, 2023. May be a...</td>
-<td>https://www.threads.net/t/CzjB80Zqme0</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>media/images/3234500408402516260_1383567706.jpg</td>
-<td>Keee WEEKEND NEWS24 PLUS: TESTING FORDS RANGER...</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
-<td>1</td>
-<td>1</td>
-<td>3234502795095897337_8537434</td>
-<td>2023-11-12 15:26:39</td>
-<td>Image</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>bild</td>
-<td>NaN</td>
-<td>2023-11-13 15:26:39</td>
-<td>...</td>
-<td>True</td>
-<td>[]</td>
-<td>Photo by BILD on November 12, 2023. May be an ...</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>media/images/3234502795095897337_8537434.jpg</td>
-<td>Dieses Auto ist einfach der Horror Du glaubst ...</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
-<td>2</td>
-<td>2</td>
-<td>3234503046678453705_8537434</td>
-<td>2023-11-12 15:27:10</td>
-<td>Image</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>bild</td>
-<td>NaN</td>
-<td>2023-11-13 15:27:10</td>
-<td>...</td>
-<td>True</td>
-<td>[]</td>
-<td>Photo by BILD on November 12, 2023. May be an ...</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>media/images/3234503046678453705_8537434.jpg</td>
-<td>Touchdown bei Taylor Swift und Travis Kelce De...</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
-<td>3</td>
-<td>3</td>
-<td>3234503930728728807_8537434</td>
-<td>2023-11-12 15:28:55</td>
-<td>Image</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>bild</td>
-<td>NaN</td>
-<td>2023-11-13 15:28:55</td>
-<td>...</td>
-<td>True</td>
-<td>[]</td>
-<td>Photo by BILD on November 12, 2023. May be an ...</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>media/images/3234503930728728807_8537434.jpg</td>
-<td>Horror-Diagnose für Barton Cowperthwaite Netfl...</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
-<td>4</td>
-<td>4</td>
-<td>3234504185910204562_8537434</td>
-<td>2023-11-12 15:29:25</td>
-<td>Image</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>bild</td>
-<td>NaN</td>
-<td>2023-11-13 15:29:25</td>
-<td>...</td>
-<td>True</td>
-<td>[]</td>
-<td>Photo by BILD on November 12, 2023. May be an ...</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>media/images/3234504185910204562_8537434.jpg</td>
-<td>3v Bilde GG JJ Besorgniserregende Ufo-Aktivitä...</td>
-</tr>
-</tbody>
-</table>
-
-<p>5 rows × 21 columns</p>
-</div>
-    <div class="colab-df-buttons">
-
-  <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-3de65dd6-3f2b-4667-8693-231a51b907b3')" title="Convert this dataframe to an interactive table." style="display:none;">
-
-  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 -960 960 960">
-    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
-  </svg>
-    </button>
-
-  <style>
-    .colab-df-container {
-      display:flex;
-      gap: 12px;
-    }
-
-    .colab-df-convert {
-      background-color: #E8F0FE;
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      display: none;
-      fill: #1967D2;
-      height: 32px;
-      padding: 0 0 0 0;
-      width: 32px;
-    }
-
-    .colab-df-convert:hover {
-      background-color: #E2EBFA;
-      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
-      fill: #174EA6;
-    }
-
-    .colab-df-buttons div {
-      margin-bottom: 4px;
-    }
-
-    [theme=dark] .colab-df-convert {
-      background-color: #3B4455;
-      fill: #D2E3FC;
-    }
-
-    [theme=dark] .colab-df-convert:hover {
-      background-color: #434B5C;
-      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
-      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
-      fill: #FFFFFF;
-    }
-  </style>
-
-    <script>
-      const buttonEl =
-        document.querySelector('#df-3de65dd6-3f2b-4667-8693-231a51b907b3 button.colab-df-convert');
-      buttonEl.style.display =
-        google.colab.kernel.accessAllowed ? 'block' : 'none';
-
-      async function convertToInteractive(key) {
-        const element = document.querySelector('#df-3de65dd6-3f2b-4667-8693-231a51b907b3');
-        const dataTable =
-          await google.colab.kernel.invokeFunction('convertToInteractive',
-                                                    [key], {});
-        if (!dataTable) return;
-
-        const docLinkHtml = 'Like what you see? Visit the ' +
-          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
-          + ' to learn more about interactive tables.';
-        element.innerHTML = '';
-        dataTable['output_type'] = 'display_data';
-        await google.colab.output.renderOutput(dataTable, element);
-        const docLink = document.createElement('div');
-        docLink.innerHTML = docLinkHtml;
-        element.appendChild(docLink);
-      }
-    </script>
-  </div>
-
-
-<div id="df-5b95d2bf-145f-4b97-876b-c2f110f723d6">
-  <button class="colab-df-quickchart" onclick="quickchart('df-5b95d2bf-145f-4b97-876b-c2f110f723d6')" title="Suggest charts" style="display:none;">
-
-<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 0 24 24" width="24px">
-    <g>
-        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"></path>
-    </g>
-</svg>
-  </button>
-
-<style>
-  .colab-df-quickchart {
-      --bg-color: #E8F0FE;
-      --fill-color: #1967D2;
-      --hover-bg-color: #E2EBFA;
-      --hover-fill-color: #174EA6;
-      --disabled-fill-color: #AAA;
-      --disabled-bg-color: #DDD;
-  }
-
-  [theme=dark] .colab-df-quickchart {
-      --bg-color: #3B4455;
-      --fill-color: #D2E3FC;
-      --hover-bg-color: #434B5C;
-      --hover-fill-color: #FFFFFF;
-      --disabled-bg-color: #3B4455;
-      --disabled-fill-color: #666;
-  }
-
-  .colab-df-quickchart {
-    background-color: var(--bg-color);
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    display: none;
-    fill: var(--fill-color);
-    height: 32px;
-    padding: 0;
-    width: 32px;
-  }
-
-  .colab-df-quickchart:hover {
-    background-color: var(--hover-bg-color);
-    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
-    fill: var(--button-hover-fill-color);
-  }
-
-  .colab-df-quickchart-complete:disabled,
-  .colab-df-quickchart-complete:disabled:hover {
-    background-color: var(--disabled-bg-color);
-    fill: var(--disabled-fill-color);
-    box-shadow: none;
-  }
-
-  .colab-df-spinner {
-    border: 2px solid var(--fill-color);
-    border-color: transparent;
-    border-bottom-color: var(--fill-color);
-    animation:
-      spin 1s steps(1) infinite;
-  }
-
-  @keyframes spin {
-    0% {
-      border-color: transparent;
-      border-bottom-color: var(--fill-color);
-      border-left-color: var(--fill-color);
-    }
-    20% {
-      border-color: transparent;
-      border-left-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-    }
-    30% {
-      border-color: transparent;
-      border-left-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-      border-right-color: var(--fill-color);
-    }
-    40% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-    }
-    60% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-    }
-    80% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-      border-bottom-color: var(--fill-color);
-    }
-    90% {
-      border-color: transparent;
-      border-bottom-color: var(--fill-color);
-    }
-  }
-</style>
-
-  <script>
-    async function quickchart(key) {
-      const quickchartButtonEl =
-        document.querySelector('#' + key + ' button');
-      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
-      quickchartButtonEl.classList.add('colab-df-spinner');
-      try {
-        const charts = await google.colab.kernel.invokeFunction(
-            'suggestCharts', [key], {});
-      } catch (error) {
-        console.error('Error during call to suggestCharts:', error);
-      }
-      quickchartButtonEl.classList.remove('colab-df-spinner');
-      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
-    }
-    (() => {
-      let quickchartButtonEl =
-        document.querySelector('#df-5b95d2bf-145f-4b97-876b-c2f110f723d6 button');
-      quickchartButtonEl.style.display =
-        google.colab.kernel.accessAllowed ? 'block' : 'none';
-    })();
-  </script>
-</div>
-    </div>
-  </div>
-</div>
-</div>
-<a class="quarto-notebook-link" id="nblink-1" href="../notebooks/ocr-notebook-preview.html#cell-0">Source: OCR using easyocr</a></div>
-</section>
-<section id="automated-audio-transcription-whisper" class="level3">
-<h3 class="anchored" data-anchor-id="automated-audio-transcription-whisper">Automated Audio Transcription (Whisper)</h3>
+<section id="metadata-table-and-aggregation" class="level3">
+<h3 class="anchored" data-anchor-id="metadata-table-and-aggregation">Metadata Table and Aggregation</h3>
+<p>The <strong>Metadata Table</strong> aggregates data from multiple content layers, summarizing attributes like <code>Positioning</code> and <code>Policy Issues</code> for each post or story. For Boolean variables like <code>Positioning</code>, the overall value is set to <code>True</code> if any text component indicates a position. For categorical variables like <code>Policy Issues</code>, unique values from all components are combined into a list. Depending on your research focus, you might also consider other methods, such as counting occurrences instead of simple aggregation. The flexibility of this approach allows you to adapt the analysis to either story-level or post-level data as needed.</p>
+<p>The <a href="https://colab.research.google.com/github/michaelachmann/social-media-lab/blob/main/notebooks/2024_11_12_Zeeschuimer_Import_w_Gallery.ipynb">Zeeschuimer Import Notebook</a> helps create the initial metadata table for posts collected through Zeeschuimer. Similarly, when using Tidal Tales, we can use the CSV downloaded from the extension as our metadata table, and the same applies to the Meta Content Library. However, for the latter, we might need to rename columns to ensure compatibility when using the example notebooks provided on this website.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -961,885 +509,45 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>OpenAI offers Whisper transcriptions as a service, see <a href="https://platform.openai.com/docs/guides/speech-to-text">their documentation</a>. The notebook below takes you step-by-step through using the Whisper model on your own computer / colab.</p>
+<p>I updated the <a href="https://colab.research.google.com/github/michaelachmann/social-media-lab/blob/main/notebooks/2024_11_12_Zeeschuimer_Import_w_Gallery.ipynb">Zeeschuimer Import Notebook</a> to handle gallery posts. The new version creates one row per image. Thus, when using the new notebook, we still need to manually create the metadata table. The <a href="https://colab.research.google.com/github/michaelachmann/social-media-lab/blob/main/notebooks/2023_11_03_Zeeschuimer_Import.ipynb">old Zeeschuimer Import Notebook</a> is still available – it creates one row per post and only downloads one image.</p>
 </div>
 </div>
-<div class="quarto-embed-nb-cell">
-<p><strong>Extract Audio from Video File</strong></p>
-<p>After loading the metadta and media files from the Google Drive, we extract the audio from each video file to prepare the automated transcription.</p>
-<div id="cell-1" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install <span class="op">-</span>q moviepy</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="cell-2" class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Set audio directory path</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>audio_path <span class="op">=</span> <span class="st">"media/audio/"</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Check if the directory exists</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">not</span> os.path.exists(audio_path):</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Create the directory if it does not exist</span></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    os.makedirs(audio_path)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="cell-3" class="cell" data-outputid="5dcf27b3-c6d4-4548-f9e4-657635c9bac0" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> moviepy.editor <span class="im">import</span> <span class="op">*</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> index, row <span class="kw">in</span> df.iterrows():</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> row[<span class="st">'video_file'</span>] <span class="op">!=</span> <span class="st">""</span>:</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Load the video file</span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>        video <span class="op">=</span> VideoFileClip(row[<span class="st">'video_file'</span>])</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>        filename <span class="op">=</span> row[<span class="st">'video_file'</span>].split(<span class="st">'/'</span>)[<span class="op">-</span><span class="dv">1</span>]</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Extract the audio from the video file</span></span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>        audio <span class="op">=</span> video.audio</span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> audio <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>            sampling_rate <span class="op">=</span> audio.fps</span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>            current_suffix <span class="op">=</span> filename.split(<span class="st">"."</span>)[<span class="op">-</span><span class="dv">1</span>]</span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>            new_filename <span class="op">=</span> filename.replace(current_suffix, <span class="st">"mp3"</span>)</span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Save the audio to a file</span></span>
-<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>            audio.write_audiofile(<span class="st">"</span><span class="sc">{}{}</span><span class="st">"</span>.<span class="bu">format</span>(audio_path, new_filename))</span>
-<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
-<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>            new_filename <span class="op">=</span> <span class="st">"No Audio"</span></span>
-<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>            sampling_rate <span class="op">=</span> <span class="op">-</span><span class="dv">1</span></span>
-<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Update DataFrame inplace</span></span>
-<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>        df.at[index, <span class="st">'audio_file'</span>] <span class="op">=</span> new_filename</span>
-<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>        df.at[index, <span class="st">'duration'</span>] <span class="op">=</span> video.duration</span>
-<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>        df.at[index, <span class="st">'sampling_rate'</span>] <span class="op">=</span> sampling_rate</span>
-<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a>        df.at[index, <span class="st">'video_file'</span>] <span class="op">=</span> row[<span class="st">'video_file'</span>].split(<span class="st">'/'</span>)[<span class="op">-</span><span class="dv">1</span>]</span>
-<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Close the video file</span></span>
-<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>        video.close()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>MoviePy - Writing audio in media/audio/CzD93SEIi-E.mp3</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>MoviePy - Done.</code></pre>
-</div>
-</div>
-<p>We’ve extracted the audio content of each video file to a <code>mp3</code> file in the <code>media/audio</code> folder. The files keep the name of the video file. We added new columns to the metadata for audio duration and sampling_rate. In case the video did not include an audio file, <code>smapling_rate</code>is set to <code>-1</code>, which we use to filter the <code>df</code> when transcribing the files.</p>
-<div id="cell-5" class="cell" data-outputid="46950938-f26d-4c6d-b933-dcefdcc23c26" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>df[df[<span class="st">'video_file'</span>] <span class="op">!=</span> <span class="st">""</span>].head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="11">
-
-  <div id="df-8aec1eb9-74d8-4d05-a892-6603f34aa7e1" class="colab-df-container">
-    <div>
-
-
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">id</th>
-<th data-quarto-table-cell-role="th">thread_id</th>
-<th data-quarto-table-cell-role="th">parent_id</th>
-<th data-quarto-table-cell-role="th">body</th>
-<th data-quarto-table-cell-role="th">author</th>
-<th data-quarto-table-cell-role="th">author_fullname</th>
-<th data-quarto-table-cell-role="th">author_avatar_url</th>
-<th data-quarto-table-cell-role="th">timestamp</th>
-<th data-quarto-table-cell-role="th">type</th>
-<th data-quarto-table-cell-role="th">url</th>
-<th data-quarto-table-cell-role="th">...</th>
-<th data-quarto-table-cell-role="th">num_comments</th>
-<th data-quarto-table-cell-role="th">num_media</th>
-<th data-quarto-table-cell-role="th">location_name</th>
-<th data-quarto-table-cell-role="th">location_latlong</th>
-<th data-quarto-table-cell-role="th">location_city</th>
-<th data-quarto-table-cell-role="th">unix_timestamp</th>
-<th data-quarto-table-cell-role="th">video_file</th>
-<th data-quarto-table-cell-role="th">audio_file</th>
-<th data-quarto-table-cell-role="th">duration</th>
-<th data-quarto-table-cell-role="th">sampling_rate</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
-<td>CzD93SEIi-E</td>
-<td>CzD93SEIi-E</td>
-<td>CzD93SEIi-E</td>
-<td>Mitzuarbeiten für unser Land, Bayern zu entwic...</td>
-<td>markus.soeder</td>
-<td>Markus Söder</td>
-<td>https://scontent-fra3-1.cdninstagram.com/v/t51...</td>
-<td>2023-10-31 12:06:23</td>
-<td>video</td>
-<td>https://www.instagram.com/p/CzD93SEIi-E</td>
-<td>...</td>
-<td>227</td>
-<td>1</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>1698753983</td>
-<td>CzD93SEIi-E.mp4</td>
-<td>CzD93SEIi-E.mp3</td>
-<td>67.89</td>
-<td>44100.0</td>
-</tr>
-</tbody>
-</table>
-
-<p>1 rows × 24 columns</p>
-</div>
-    <div class="colab-df-buttons">
-
-  <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-8aec1eb9-74d8-4d05-a892-6603f34aa7e1')" title="Convert this dataframe to an interactive table." style="display:none;">
-
-  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 -960 960 960">
-    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
-  </svg>
-    </button>
-
-  <style>
-    .colab-df-container {
-      display:flex;
-      gap: 12px;
-    }
-
-    .colab-df-convert {
-      background-color: #E8F0FE;
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      display: none;
-      fill: #1967D2;
-      height: 32px;
-      padding: 0 0 0 0;
-      width: 32px;
-    }
-
-    .colab-df-convert:hover {
-      background-color: #E2EBFA;
-      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
-      fill: #174EA6;
-    }
-
-    .colab-df-buttons div {
-      margin-bottom: 4px;
-    }
-
-    [theme=dark] .colab-df-convert {
-      background-color: #3B4455;
-      fill: #D2E3FC;
-    }
-
-    [theme=dark] .colab-df-convert:hover {
-      background-color: #434B5C;
-      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
-      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
-      fill: #FFFFFF;
-    }
-  </style>
-
-    <script>
-      const buttonEl =
-        document.querySelector('#df-8aec1eb9-74d8-4d05-a892-6603f34aa7e1 button.colab-df-convert');
-      buttonEl.style.display =
-        google.colab.kernel.accessAllowed ? 'block' : 'none';
-
-      async function convertToInteractive(key) {
-        const element = document.querySelector('#df-8aec1eb9-74d8-4d05-a892-6603f34aa7e1');
-        const dataTable =
-          await google.colab.kernel.invokeFunction('convertToInteractive',
-                                                    [key], {});
-        if (!dataTable) return;
-
-        const docLinkHtml = 'Like what you see? Visit the ' +
-          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
-          + ' to learn more about interactive tables.';
-        element.innerHTML = '';
-        dataTable['output_type'] = 'display_data';
-        await google.colab.output.renderOutput(dataTable, element);
-        const docLink = document.createElement('div');
-        docLink.innerHTML = docLinkHtml;
-        element.appendChild(docLink);
-      }
-    </script>
-  </div>
-
-    </div>
-  </div>
-</div>
-</div>
-<p>Let’s update the <code>ZIP</code>ed folder to include the audio files.</p>
-<div id="cell-7" class="cell" data-outputid="d5a1ced4-f1aa-4bab-fdb7-1363c61cfcdd" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span><span class="bu">zip</span> <span class="op">-</span>r <span class="op">/</span>content<span class="op">/</span>drive<span class="op">/</span>MyDrive<span class="op">/</span><span class="dv">2023</span><span class="op">-</span><span class="dv">11</span><span class="op">-</span><span class="dv">24</span><span class="op">-</span><span class="dv">4</span><span class="er">CAT</span><span class="op">-</span>Images<span class="op">-</span>Clean.<span class="bu">zip</span> media</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>updating: media/ (stored 0%)
-updating: media/videos/ (stored 0%)
-updating: media/videos/CzD93SEIi-E.mp4 (deflated 0%)
-  adding: media/audio/ (stored 0%)
-  adding: media/audio/CzD93SEIi-E.mp3 (deflated 1%)</code></pre>
-</div>
-</div>
-<p>And save the updated metadata file. <strong>Change filename when importing stories here!</strong></p>
-<div id="cell-9" class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>df.to_csv(four_cat_file_path)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><strong>Transcriptions using Whisper</strong></p>
-<blockquote class="blockquote">
-<p>The Whisper model was proposed in Robust Speech Recognition via Large-Scale Weak Supervision by Alec Radford, Jong Wook Kim, Tao Xu, Greg Brockman, Christine McLeavey, Ilya Sutskever.</p>
-</blockquote>
-<blockquote class="blockquote">
-<p>The abstract from the paper is the following:</p>
-</blockquote>
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-<p>We study the capabilities of speech processing systems trained simply to predict large amounts of transcripts of audio on the internet. When scaled to 680,000 hours of multilingual and multitask supervision, the resulting models generalize well to standard benchmarks and are often competitive with prior fully supervised results but in a zeroshot transfer setting without the need for any finetuning. When compared to humans, the models approach their accuracy and robustness. We are releasing models and inference code to serve as a foundation for further work on robust speech processing.</p>
-</blockquote>
-</blockquote>
-<p>– https://huggingface.co/docs/transformers/model_doc/whisper</p>
-<div id="cell-11" class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install <span class="op">-</span>q transformers</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>The next code snippet initializes the Whisper model. The <code>transcribe_aduio</code> method is applied to each row of the dataframe where <code>sampling_rate</code> &gt; <code>0</code>, thus only to those lines with referencees to audio files. Each audio file is transcribed using Whisper, the result, one text string, is saved to the <code>transcript</code> column.</p>
-<p><strong>Adjust the language variable according to your needs!</strong> The model is also capable of automated translation, e.g.&nbsp;setting <code>language</code> to english when processing German content results in an English translation of the speech. (Additionally, the <code>task</code> variable accepts <code>translate</code>).</p>
-<div id="cell-13" class="cell" data-outputid="8400ca21-c56c-422f-c4ae-c1f036647d9f" data-execution_count="19">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> transformers <span class="im">import</span> pipeline, WhisperProcessor, WhisperForConditionalGeneration</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> librosa</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Set device to GPU if available, else use CPU</span></span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>device <span class="op">=</span> <span class="st">"cuda:0"</span> <span class="cf">if</span> torch.cuda.is_available() <span class="cf">else</span> <span class="st">"cpu"</span></span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize the Whisper model pipeline for automatic speech recognition</span></span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>pipe <span class="op">=</span> pipeline(</span>
-<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"automatic-speech-recognition"</span>,</span>
-<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>    model<span class="op">=</span><span class="st">"openai/whisper-large"</span>,</span>
-<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>    chunk_length_s<span class="op">=</span><span class="dv">30</span>,</span>
-<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>    device<span class="op">=</span>device,</span>
-<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Load model and processor for multilingual support</span></span>
-<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>processor <span class="op">=</span> WhisperProcessor.from_pretrained(<span class="st">"openai/whisper-large"</span>)</span>
-<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> WhisperForConditionalGeneration.from_pretrained(<span class="st">"openai/whisper-large"</span>)</span>
-<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to read, transcribe, and handle longer audio files in different languages</span></span>
-<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> transcribe_audio(filename, language<span class="op">=</span><span class="st">'german'</span>):</span>
-<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
-<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Load and resample audio file</span></span>
-<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a>        audio_path <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>audio_folder<span class="sc">}</span><span class="ss">/</span><span class="sc">{</span>filename<span class="sc">}</span><span class="ss">"</span></span>
-<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a>        waveform, original_sample_rate <span class="op">=</span> librosa.load(audio_path, sr<span class="op">=</span><span class="va">None</span>, mono<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a>        waveform_resampled <span class="op">=</span> librosa.resample(waveform, orig_sr<span class="op">=</span>original_sample_rate, target_sr<span class="op">=</span><span class="dv">16000</span>)</span>
-<span id="cb18-27"><a href="#cb18-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-28"><a href="#cb18-28" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Get forced decoder IDs for the specified language</span></span>
-<span id="cb18-29"><a href="#cb18-29" aria-hidden="true" tabindex="-1"></a>        forced_decoder_ids <span class="op">=</span> processor.get_decoder_prompt_ids(language<span class="op">=</span>language, task<span class="op">=</span><span class="st">"transcribe"</span>)</span>
-<span id="cb18-30"><a href="#cb18-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-31"><a href="#cb18-31" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Process the audio file in chunks and transcribe</span></span>
-<span id="cb18-32"><a href="#cb18-32" aria-hidden="true" tabindex="-1"></a>        transcription <span class="op">=</span> <span class="st">""</span></span>
-<span id="cb18-33"><a href="#cb18-33" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, <span class="bu">len</span>(waveform_resampled), <span class="dv">16000</span> <span class="op">*</span> <span class="dv">30</span>):  <span class="co"># 30 seconds chunks</span></span>
-<span id="cb18-34"><a href="#cb18-34" aria-hidden="true" tabindex="-1"></a>            chunk <span class="op">=</span> waveform_resampled[i:i <span class="op">+</span> <span class="dv">16000</span> <span class="op">*</span> <span class="dv">30</span>]</span>
-<span id="cb18-35"><a href="#cb18-35" aria-hidden="true" tabindex="-1"></a>            input_features <span class="op">=</span> processor(chunk, sampling_rate<span class="op">=</span><span class="dv">16000</span>, return_tensors<span class="op">=</span><span class="st">"pt"</span>).input_features</span>
-<span id="cb18-36"><a href="#cb18-36" aria-hidden="true" tabindex="-1"></a>            predicted_ids <span class="op">=</span> model.generate(input_features, forced_decoder_ids<span class="op">=</span>forced_decoder_ids)</span>
-<span id="cb18-37"><a href="#cb18-37" aria-hidden="true" tabindex="-1"></a>            chunk_transcription <span class="op">=</span> processor.batch_decode(predicted_ids, skip_special_tokens<span class="op">=</span><span class="va">True</span>)[<span class="dv">0</span>]</span>
-<span id="cb18-38"><a href="#cb18-38" aria-hidden="true" tabindex="-1"></a>            transcription <span class="op">+=</span> <span class="st">" "</span> <span class="op">+</span> chunk_transcription</span>
-<span id="cb18-39"><a href="#cb18-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-40"><a href="#cb18-40" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> transcription.strip()</span>
-<span id="cb18-41"><a href="#cb18-41" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
-<span id="cb18-42"><a href="#cb18-42" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Error processing file </span><span class="sc">{</span>filename<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb18-43"><a href="#cb18-43" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">""</span></span>
-<span id="cb18-44"><a href="#cb18-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-45"><a href="#cb18-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-46"><a href="#cb18-46" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter the DataFrame (sampling_rates &lt; 0 identify items without audio)</span></span>
-<span id="cb18-47"><a href="#cb18-47" aria-hidden="true" tabindex="-1"></a>filtered_index <span class="op">=</span> df[<span class="st">'sampling_rate'</span>] <span class="op">&gt;</span> <span class="dv">0</span></span>
-<span id="cb18-48"><a href="#cb18-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-49"><a href="#cb18-49" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply the transcription function to each row in the filtered DataFrame</span></span>
-<span id="cb18-50"><a href="#cb18-50" aria-hidden="true" tabindex="-1"></a>df.loc[filtered_index, <span class="st">'transcript'</span>] <span class="op">=</span> df.loc[filtered_index, <span class="st">'audio_file'</span>].<span class="bu">apply</span>(transcribe_audio)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="cell-14" class="cell" data-outputid="6ba00b74-ad5e-4def-9bbb-d5d69ac399be" data-execution_count="20">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>df[df[<span class="st">'video_file'</span>] <span class="op">!=</span> <span class="st">""</span>].head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="20">
-
-  <div id="df-f0098e61-844a-4b08-aeba-50efc2e0231d" class="colab-df-container">
-    <div>
-
-
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">id</th>
-<th data-quarto-table-cell-role="th">thread_id</th>
-<th data-quarto-table-cell-role="th">parent_id</th>
-<th data-quarto-table-cell-role="th">body</th>
-<th data-quarto-table-cell-role="th">author</th>
-<th data-quarto-table-cell-role="th">author_fullname</th>
-<th data-quarto-table-cell-role="th">author_avatar_url</th>
-<th data-quarto-table-cell-role="th">timestamp</th>
-<th data-quarto-table-cell-role="th">type</th>
-<th data-quarto-table-cell-role="th">url</th>
-<th data-quarto-table-cell-role="th">...</th>
-<th data-quarto-table-cell-role="th">num_media</th>
-<th data-quarto-table-cell-role="th">location_name</th>
-<th data-quarto-table-cell-role="th">location_latlong</th>
-<th data-quarto-table-cell-role="th">location_city</th>
-<th data-quarto-table-cell-role="th">unix_timestamp</th>
-<th data-quarto-table-cell-role="th">video_file</th>
-<th data-quarto-table-cell-role="th">audio_file</th>
-<th data-quarto-table-cell-role="th">duration</th>
-<th data-quarto-table-cell-role="th">sampling_rate</th>
-<th data-quarto-table-cell-role="th">transcript</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
-<td>CzD93SEIi-E</td>
-<td>CzD93SEIi-E</td>
-<td>CzD93SEIi-E</td>
-<td>Mitzuarbeiten für unser Land, Bayern zu entwic...</td>
-<td>markus.soeder</td>
-<td>Markus Söder</td>
-<td>https://scontent-fra3-1.cdninstagram.com/v/t51...</td>
-<td>2023-10-31 12:06:23</td>
-<td>video</td>
-<td>https://www.instagram.com/p/CzD93SEIi-E</td>
-<td>...</td>
-<td>1</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>1698753983</td>
-<td>CzD93SEIi-E.mp4</td>
-<td>CzD93SEIi-E.mp3</td>
-<td>67.89</td>
-<td>44100.0</td>
-<td>Ich bitte auf den abgelagerten Vortrag der Maa...</td>
-</tr>
-</tbody>
-</table>
-
-<p>1 rows × 25 columns</p>
-</div>
-    <div class="colab-df-buttons">
-
-  <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-f0098e61-844a-4b08-aeba-50efc2e0231d')" title="Convert this dataframe to an interactive table." style="display:none;">
-
-  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 -960 960 960">
-    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
-  </svg>
-    </button>
-
-  <style>
-    .colab-df-container {
-      display:flex;
-      gap: 12px;
-    }
-
-    .colab-df-convert {
-      background-color: #E8F0FE;
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      display: none;
-      fill: #1967D2;
-      height: 32px;
-      padding: 0 0 0 0;
-      width: 32px;
-    }
-
-    .colab-df-convert:hover {
-      background-color: #E2EBFA;
-      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
-      fill: #174EA6;
-    }
-
-    .colab-df-buttons div {
-      margin-bottom: 4px;
-    }
-
-    [theme=dark] .colab-df-convert {
-      background-color: #3B4455;
-      fill: #D2E3FC;
-    }
-
-    [theme=dark] .colab-df-convert:hover {
-      background-color: #434B5C;
-      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
-      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
-      fill: #FFFFFF;
-    }
-  </style>
-
-    <script>
-      const buttonEl =
-        document.querySelector('#df-f0098e61-844a-4b08-aeba-50efc2e0231d button.colab-df-convert');
-      buttonEl.style.display =
-        google.colab.kernel.accessAllowed ? 'block' : 'none';
-
-      async function convertToInteractive(key) {
-        const element = document.querySelector('#df-f0098e61-844a-4b08-aeba-50efc2e0231d');
-        const dataTable =
-          await google.colab.kernel.invokeFunction('convertToInteractive',
-                                                    [key], {});
-        if (!dataTable) return;
-
-        const docLinkHtml = 'Like what you see? Visit the ' +
-          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
-          + ' to learn more about interactive tables.';
-        element.innerHTML = '';
-        dataTable['output_type'] = 'display_data';
-        await google.colab.output.renderOutput(dataTable, element);
-        const docLink = document.createElement('div');
-        docLink.innerHTML = docLinkHtml;
-        element.appendChild(docLink);
-      }
-    </script>
-  </div>
-
-    </div>
-  </div>
-</div>
-</div>
-<div id="cell-15" class="cell" data-outputid="547cdf2d-3e04-441c-d99f-4ea291390324" data-execution_count="21">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>df.loc[<span class="dv">4</span>, <span class="st">'transcript'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="21">
-<pre><code>'Ich bitte auf den abgelagerten Vortrag der Maaßen-Söder-Entfühlen ein.  Erfüllung meiner Amtspflichten, so wahr mir Gott helfe. Ich schwöre Treue der Verfassung des Freistaates Bayern, Gehorsam den Gesetzen und gewissenhafte Erfüllung meiner Amtspflichten, so wahr mir Gott helfe. Herr Ministerpräsident, ich darf Ihnen im Namen des ganzen Hauses ganz persönlich die herzlichsten Glückwünsche aussprechen und wünsche Ihnen viel Erfolg und gute Nerven auch bei Ihrer Aufgabe. Herzlichen Dank.  Applaus'</code></pre>
-</div>
-</div>
-<p>Overall, the transcriptions work well. The first sentence above, however, shows that we still can expect misinterpretations.</p>
-<a class="quarto-notebook-link" id="nblink-2" href="../notebooks/whisper-notebook-preview.html#cell-0">Source: Transcription using Whisper</a></div>
 </section>
-<section id="analyzing-corpus-and-word-frequencies" class="level3">
-<h3 class="anchored" data-anchor-id="analyzing-corpus-and-word-frequencies">Analyzing Corpus and Word Frequencies</h3>
-<div class="quarto-embed-nb-cell">
-<p>Among a variety of possibilities, we can, for example, look at the frequencies of the words contained in the corpus or examine the corpus for recurring themes it contains.</p>
-<p>First we need to import all the required libraries once again. The <a href="https://www.nltk.org/howto.html">Natural Language Toolkit (NLTK)</a> gives us access to a variety of natural language processing functions (e.g.&nbsp;tokenisation, stop word removal, part-of-speech tagging, …).</p>
-<div id="cell-3" class="cell" data-outputid="0a4c7fe9-0768-4e96-b888-680b2e1c6f35" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> nltk</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>nltk.download(<span class="st">'punkt'</span>)</span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.tokenize <span class="im">import</span> RegexpTokenizer</span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.tokenize <span class="im">import</span> word_tokenize</span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.corpus <span class="im">import</span> stopwords</span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="data-normalization-with-the-notebook" class="level3">
+<h3 class="anchored" data-anchor-id="data-normalization-with-the-notebook">Data Normalization with the Notebook</h3>
+<p>We use the <a href="https://colab.research.google.com/github/michaelachmann/social-media-lab/blob/main/notebooks/2024_11_12_Zeeschuimer_Import_w_Gallery.ipynb">Zeeschuimer Import Notebook</a> notebook to standardize raw data collected through the Zeeschuimer Plugin, specifically importing the data from Zeeschuimer as jsonl files and transforming them into a pandas DataFrame. While Zeeschuimer and 4CAT provide a good standard data structure, we aim to work with data from multiple sources: Zeeschuimer, Tidal Tales (a Firefox extension for collecting IG stories), Meta Content Library, or TikTok data from Zeeschuimer. The notebook helps convert Zeeschuimer data into the unified structure that we use across all projects, ensuring consistency.</p>
+<p>The <a href="https://colab.research.google.com/github/michaelachmann/social-media-lab/blob/main/notebooks/2024_11_12_Zeeschuimer_Import_w_Gallery.ipynb">Zeeschuimer Import Notebook</a> helps us systematically prepare data for analysis:</p>
+<ul>
+<li><strong>Data Import</strong>: Imports data from sources like CrowdTangle and 4CAT using tools such as <code>pandas</code> and <code>json</code>.</li>
+<li><strong>Data Sampling</strong>: Displays random samples to check accuracy and ensure data correctness at each step.</li>
+<li><strong>Normalization</strong>: Converts different text types (e.g., OCR, transcriptions) into standardized DataFrames.</li>
+<li><strong>Media Management</strong>: Organizes media files into folders following a consistent structure. For images, the files are saved in <code>images/{username}/{ID}.jpg</code>, and for videos, in <code>videos/{username}/{ID}.mp4</code>. The video cover image is also saved as a file in the case of videos. The notebook also handles gallery posts, saving images with filenames such as <code>{ID}_0.jpg</code>, <code>{ID}_1.jpg</code>, etc.</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-<p>When analysing word frequencies, we can use stop word lists to ignore words that occur frequently but are not relevant to us. We can easily download such a list. However, this can also be individually adapted to the purpose.</p>
-<div id="cell-5" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Retrieve Stopwords from Github</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>sw_json <span class="op">=</span> requests.get(<span class="st">'https://github.com/stopwords-iso/stopwords-de/raw/master/stopwords-de.json'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Now we can tokenise the existing text, remove the stop words or punctuation marks they contain, convert the words to lower case, or use bi-grams in addition to single-word tokens.</p>
-<p>We then sum up the occurrences of the individual words and make the results available in a DataFrame.</p>
-<div id="cell-7" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> word_freq(text, punctuation<span class="op">=</span><span class="va">False</span>, stop_words <span class="op">=</span> <span class="va">False</span>, lowercasing <span class="op">=</span> <span class="va">False</span>, bigrams <span class="op">=</span> <span class="va">False</span>):</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> punctuation:</span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Tokenizing, removing punctuation</span></span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>        tokens <span class="op">=</span> RegexpTokenizer(<span class="vs">r'\w+'</span>).tokenize(text) <span class="co"># https://regexr.com/</span></span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Tokenizing, w/o removing punctuation</span></span>
-<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>        <span class="co"># tokens = text.split()</span></span>
-<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>        tokens <span class="op">=</span> word_tokenize(text)</span>
-<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> stop_words:</span>
-<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Removing Stopwords</span></span>
-<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>        tokens <span class="op">=</span> [w <span class="cf">for</span> w <span class="kw">in</span> tokens <span class="cf">if</span> <span class="kw">not</span> w.lower() <span class="kw">in</span> stop_words]</span>
-<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> lowercasing:</span>
-<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Lower-Casing</span></span>
-<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a>        tokens <span class="op">=</span> [w.lower() <span class="cf">for</span> w <span class="kw">in</span> tokens]</span>
-<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> bigrams:</span>
-<span id="cb24-20"><a href="#cb24-20" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Converting text tokens into bigrams</span></span>
-<span id="cb24-21"><a href="#cb24-21" aria-hidden="true" tabindex="-1"></a>        tokens <span class="op">=</span> nltk.bigrams(tokens)</span>
-<span id="cb24-22"><a href="#cb24-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-23"><a href="#cb24-23" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Creating Data Frame</span></span>
-<span id="cb24-24"><a href="#cb24-24" aria-hidden="true" tabindex="-1"></a>    freq <span class="op">=</span> nltk.FreqDist(tokens) <span class="co"># display(freq)</span></span>
-<span id="cb24-25"><a href="#cb24-25" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> pd.DataFrame.from_dict(freq, orient<span class="op">=</span><span class="st">'index'</span>)</span>
-<span id="cb24-26"><a href="#cb24-26" aria-hidden="true" tabindex="-1"></a>    df.columns <span class="op">=</span> [<span class="st">'Frequency'</span>]</span>
-<span id="cb24-27"><a href="#cb24-27" aria-hidden="true" tabindex="-1"></a>    df.index.name <span class="op">=</span> <span class="st">'Term'</span></span>
-<span id="cb24-28"><a href="#cb24-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-29"><a href="#cb24-29" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Here we calculate the total number of tokens in our Frequency List</span></span>
-<span id="cb24-30"><a href="#cb24-30" aria-hidden="true" tabindex="-1"></a>    total_tokens <span class="op">=</span> <span class="bu">sum</span>(freq.values()) <span class="co"># sum([2,3,4,5,6])</span></span>
-<span id="cb24-31"><a href="#cb24-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-32"><a href="#cb24-32" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Here we add a new column `Relative` (*100 for percentage)</span></span>
-<span id="cb24-33"><a href="#cb24-33" aria-hidden="true" tabindex="-1"></a>    df[<span class="st">'Relative'</span>] <span class="op">=</span> (df[<span class="st">'Frequency'</span>] <span class="op">/</span> total_tokens) <span class="op">*</span> <span class="dv">100</span></span>
-<span id="cb24-34"><a href="#cb24-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-35"><a href="#cb24-35" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="cell-8" class="cell" data-cellview="form" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="co">#@markdown Do you want bigrams included?</span></span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>bigrams <span class="op">=</span> <span class="va">True</span> <span class="co">#@param {type:"boolean"}</span></span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="co">#@markdown Should all words get lower cased before counting the occurances?</span></span>
-<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>lowercasing <span class="op">=</span> <span class="va">True</span> <span class="co">#@param {type:"boolean"}</span></span>
-<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a><span class="co">#@markdown Do you want to exclude stopwords in your result list?</span></span>
-<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>stopwords <span class="op">=</span> <span class="va">True</span> <span class="co">#@param {type:"boolean"}</span></span>
-<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a><span class="co">#@markdown Do you want to remove punctuation before counting the occurances?</span></span>
-<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>punctuation <span class="op">=</span> <span class="va">True</span> <span class="co">#@param {type:"boolean"}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="cell-9" class="cell" data-outputid="dc248b91-d657-4d0d-e55f-141fe7976329" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load stopwords file if necessary</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> stopwords:</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    stopwords <span class="op">=</span> sw_json.json()</span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Read source file and concat all texts</span></span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>text <span class="op">=</span> <span class="st">' '</span>.join(<span class="bu">list</span>(df[text_column]))</span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Call word_freq() with specified parameters</span></span>
-<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>df_freq <span class="op">=</span> word_freq(text, punctuation <span class="op">=</span> punctuation, stop_words <span class="op">=</span> stopwords, lowercasing <span class="op">=</span> lowercasing, bigrams <span class="op">=</span> bigrams)</span>
-<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Sort results for descending values</span></span>
-<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>df_freq <span class="op">=</span> df_freq.sort_values(<span class="st">"Relative"</span>, ascending <span class="op">=</span> <span class="va">False</span>)</span>
-<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>display(df_freq[<span class="dv">0</span>:<span class="dv">10</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-
-  <div id="df-7472da9f-5cf9-4328-8248-82c3ae99036a" class="colab-df-container">
-    <div>
-
-
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">Frequency</th>
-<th data-quarto-table-cell-role="th">Relative</th>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">Term</th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">(jüdisches, leben)</td>
-<td>5</td>
-<td>1.259446</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">(allerheiligen, allerseelen)</td>
-<td>4</td>
-<td>1.007557</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">(ilse, aigner)</td>
-<td>3</td>
-<td>0.755668</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">(bayerischer, landtag)</td>
-<td>3</td>
-<td>0.755668</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">(klare, haltung)</td>
-<td>2</td>
-<td>0.503778</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">(wünschen, einfach)</td>
-<td>2</td>
-<td>0.503778</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">(vaters, freundschaftliche)</td>
-<td>2</td>
-<td>0.503778</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">(tod, vaters)</td>
-<td>2</td>
-<td>0.503778</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">(günter, tod)</td>
-<td>2</td>
-<td>0.503778</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">(schwiegervater, günter)</td>
-<td>2</td>
-<td>0.503778</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-    <div class="colab-df-buttons">
-
-  <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-7472da9f-5cf9-4328-8248-82c3ae99036a')" title="Convert this dataframe to an interactive table." style="display:none;">
-
-  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 -960 960 960">
-    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
-  </svg>
-    </button>
-
-  <style>
-    .colab-df-container {
-      display:flex;
-      gap: 12px;
-    }
-
-    .colab-df-convert {
-      background-color: #E8F0FE;
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      display: none;
-      fill: #1967D2;
-      height: 32px;
-      padding: 0 0 0 0;
-      width: 32px;
-    }
-
-    .colab-df-convert:hover {
-      background-color: #E2EBFA;
-      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
-      fill: #174EA6;
-    }
-
-    .colab-df-buttons div {
-      margin-bottom: 4px;
-    }
-
-    [theme=dark] .colab-df-convert {
-      background-color: #3B4455;
-      fill: #D2E3FC;
-    }
-
-    [theme=dark] .colab-df-convert:hover {
-      background-color: #434B5C;
-      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
-      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
-      fill: #FFFFFF;
-    }
-  </style>
-
-    <script>
-      const buttonEl =
-        document.querySelector('#df-7472da9f-5cf9-4328-8248-82c3ae99036a button.colab-df-convert');
-      buttonEl.style.display =
-        google.colab.kernel.accessAllowed ? 'block' : 'none';
-
-      async function convertToInteractive(key) {
-        const element = document.querySelector('#df-7472da9f-5cf9-4328-8248-82c3ae99036a');
-        const dataTable =
-          await google.colab.kernel.invokeFunction('convertToInteractive',
-                                                    [key], {});
-        if (!dataTable) return;
-
-        const docLinkHtml = 'Like what you see? Visit the ' +
-          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
-          + ' to learn more about interactive tables.';
-        element.innerHTML = '';
-        dataTable['output_type'] = 'display_data';
-        await google.colab.output.renderOutput(dataTable, element);
-        const docLink = document.createElement('div');
-        docLink.innerHTML = docLinkHtml;
-        element.appendChild(docLink);
-      }
-    </script>
-  </div>
-
-
-<div id="df-121f3ee9-2e41-482b-b6c9-b1f54d97c51d">
-  <button class="colab-df-quickchart" onclick="quickchart('df-121f3ee9-2e41-482b-b6c9-b1f54d97c51d')" title="Suggest charts" style="display:none;">
-
-<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 0 24 24" width="24px">
-    <g>
-        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"></path>
-    </g>
-</svg>
-  </button>
-
-<style>
-  .colab-df-quickchart {
-      --bg-color: #E8F0FE;
-      --fill-color: #1967D2;
-      --hover-bg-color: #E2EBFA;
-      --hover-fill-color: #174EA6;
-      --disabled-fill-color: #AAA;
-      --disabled-bg-color: #DDD;
-  }
-
-  [theme=dark] .colab-df-quickchart {
-      --bg-color: #3B4455;
-      --fill-color: #D2E3FC;
-      --hover-bg-color: #434B5C;
-      --hover-fill-color: #FFFFFF;
-      --disabled-bg-color: #3B4455;
-      --disabled-fill-color: #666;
-  }
-
-  .colab-df-quickchart {
-    background-color: var(--bg-color);
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    display: none;
-    fill: var(--fill-color);
-    height: 32px;
-    padding: 0;
-    width: 32px;
-  }
-
-  .colab-df-quickchart:hover {
-    background-color: var(--hover-bg-color);
-    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
-    fill: var(--button-hover-fill-color);
-  }
-
-  .colab-df-quickchart-complete:disabled,
-  .colab-df-quickchart-complete:disabled:hover {
-    background-color: var(--disabled-bg-color);
-    fill: var(--disabled-fill-color);
-    box-shadow: none;
-  }
-
-  .colab-df-spinner {
-    border: 2px solid var(--fill-color);
-    border-color: transparent;
-    border-bottom-color: var(--fill-color);
-    animation:
-      spin 1s steps(1) infinite;
-  }
-
-  @keyframes spin {
-    0% {
-      border-color: transparent;
-      border-bottom-color: var(--fill-color);
-      border-left-color: var(--fill-color);
-    }
-    20% {
-      border-color: transparent;
-      border-left-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-    }
-    30% {
-      border-color: transparent;
-      border-left-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-      border-right-color: var(--fill-color);
-    }
-    40% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-    }
-    60% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-    }
-    80% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-      border-bottom-color: var(--fill-color);
-    }
-    90% {
-      border-color: transparent;
-      border-bottom-color: var(--fill-color);
-    }
-  }
-</style>
-
-  <script>
-    async function quickchart(key) {
-      const quickchartButtonEl =
-        document.querySelector('#' + key + ' button');
-      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
-      quickchartButtonEl.classList.add('colab-df-spinner');
-      try {
-        const charts = await google.colab.kernel.invokeFunction(
-            'suggestCharts', [key], {});
-      } catch (error) {
-        console.error('Error during call to suggestCharts:', error);
-      }
-      quickchartButtonEl.classList.remove('colab-df-spinner');
-      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
-    }
-    (() => {
-      let quickchartButtonEl =
-        document.querySelector('#df-121f3ee9-2e41-482b-b6c9-b1f54d97c51d button');
-      quickchartButtonEl.style.display =
-        google.colab.kernel.accessAllowed ? 'block' : 'none';
-    })();
-  </script>
-</div>
-    </div>
-  </div>
+<div class="callout-title-container flex-fill">
+Note
 </div>
 </div>
-<p><strong>Wordcloud</strong></p>
-<p>One way to visualise word frequencies and recurring themes of texts are word clouds. These basically show the most frequently occurring words in the text (similar to the table created earlier), but more frequently occurring words are depicted larger than less frequently occurring words.</p>
-<p>First, we have to install the necessary library <code>wordcloud</code>.</p>
-<div id="cell-11" class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install <span class="op">-</span>q wordcloud</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>The actual implementation of this approach is relatively simple. We need to combine all the texts into a single text, as we did in the previous step with the frequency analysis, and pass it to the imported library.</p>
-<div id="cell-13" class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> wordcloud <span class="im">import</span> WordCloud, STOPWORDS</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> generate_wordcloud(text, path):</span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>    text <span class="op">=</span> <span class="st">' '</span>.join(<span class="bu">list</span>(text))</span>
-<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Generate a word cloud image</span></span>
-<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>    wordcloud <span class="op">=</span> WordCloud(background_color<span class="op">=</span><span class="st">"white"</span>,width<span class="op">=</span><span class="dv">1920</span>, height<span class="op">=</span><span class="dv">1080</span>).generate(text)</span>
-<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Dazugehörige Grafik erstellen</span></span>
-<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>    plt.imshow(wordcloud, interpolation<span class="op">=</span><span class="st">"bilinear"</span>) <span class="co"># Auflösung/Interpolation der Grafik</span></span>
-<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a>    plt.axis(<span class="st">"off"</span>)</span>
-<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>    plt.figtext(<span class="fl">0.5</span>, <span class="fl">0.1</span>, wordcloud_subcaption, wrap<span class="op">=</span><span class="va">True</span>, horizontalalignment<span class="op">=</span><span class="st">'center'</span>, fontsize<span class="op">=</span><span class="dv">12</span>)</span>
-<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a>    plt.savefig(path, dpi<span class="op">=</span><span class="dv">300</span>)</span>
-<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a>    plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Once again, we have the option of adjusting various parameters. Remember to specify the right file path, file name and column of your text data!</p>
-<div id="cell-15" class="cell" data-cellview="form" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co">#@markdown Input for additional stopwords; whitespace separated</span></span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>stopwords_extension_wc <span class="op">=</span> <span class="st">''</span> <span class="co">#@param {type: "string"}</span></span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="co">#@markdown Subcaption for the wordcloud, leave blank to ignore</span></span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>wordcloud_subcaption <span class="op">=</span> <span class="st">'Markus S</span><span class="ch">\xF6</span><span class="st">der'</span> <span class="co">#@param {type: "string"}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Now all we have to do is load the stop word file, add our own additions and then trigger the creation of the word cloud using the function we created at the beginning.</p>
-<p>The result image is saved in the defined <code>data_path</code>.</p>
-<div id="cell-17" class="cell" data-outputid="2ef03789-d358-46c4-d88b-650478847260" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Retrieve Stopwords from Github</span></span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> requests.get(<span class="st">'https://github.com/stopwords-iso/stopwords-de/raw/master/stopwords-de.json'</span>)</span>
-<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>stop_words <span class="op">=</span> r.json()</span>
-<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert input into list</span></span>
-<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>stopwords_extension_wc_list <span class="op">=</span> stopwords_extension_wc.split(<span class="st">' '</span>)</span>
-<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>stop_words.extend(stopwords_extension_wc_list)</span>
-<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Stopwörter in die WordCloud laden</span></span>
-<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a>STOPWORDS.update(stop_words)</span>
-<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a>generate_wordcloud(df[text_column], <span class="st">'wordcloud.png'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="index_files/figure-html/..-notebooks-corpus-analysis-notebook-cell-10-output-1.png" class="img-fluid figure-img"></p>
-</figure>
+<div class="callout-body-container callout-body">
+<p>This page and the referenced notebooks cover the data formats and media files of Zeeschuimer and Tidal Tales. Generally, the information also applies when using other software, like <code>instaloader</code>. To control media file names, it is advisable to use the <code>--filename-pattern</code> <a href="https://instaloader.github.io/basic-usage.html#filename-specification">command line parameter</a>. This makes mapping <code>JSON</code> metadata to media objects easier. After loading all posts and stories with <code>instaloader</code>, I recommend reading all <code>JSON</code> files in a loop and creating a DataFrame. For more information and code examples, see <a href="../data-collection/ig-posts.html#instaloader">Data Collection / Posts / Instaloader</a>.</p>
 </div>
 </div>
-</div>
-<a class="quarto-notebook-link" id="nblink-3" href="../notebooks/corpus-analysis-notebook-preview.html#cell-0">Source: Introduction to Corpus Analysis</a></div>
 </section>
+<section id="best-practices-for-data-integration" class="level3">
+<h3 class="anchored" data-anchor-id="best-practices-for-data-integration">Best Practices for Data Integration</h3>
+<ul>
+<li><strong>Consistent Identifiers</strong>: Use consistent identifiers like <code>Story ID</code> and <code>Username</code> across all tables to facilitate data merging.</li>
+<li><strong>Unique IDs</strong>: Assign unique IDs for each element (e.g., <code>Text ID</code>, <code>Image ID</code>) to make tracking and linking straightforward.</li>
+<li><strong>Organized Directory Structure</strong>: Store media files systematically. For images, use <code>images/{username}/{ID}.jpg</code> and for videos, use <code>videos/{username}/{ID}.mp4</code>. In the case of gallery posts, use filenames like <code>{ID}_0.jpg</code>, <code>{ID}_1.jpg</code>, etc., and reference these paths in your tables for easy access.</li>
+<li><strong>Data Integration</strong>: Use tools like pandas to merge tables based on shared identifiers, enabling a complete view of each story or post.</li>
+<li><strong>Backup Strategy</strong>: When working with experimental code, keep backups of your data file and avoid overwriting the original file until you are confident in the results.</li>
+</ul>
+<p>By following these guidelines, you will keep your data well-organized, reproducible, and ready for detailed analysis, minimizing complexity and enhancing your insights’ quality.</p>
 </section>
-<section id="conclusion" class="level2">
-<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
-<p>In summary, this session provides us with the practical skills to use Python, pandas, and Jupyter notebooks for the computational analysis of multimodal social media data. Our adherence to Tidy Data principles and the integration of technologies like OCR and Whisper are integral to extract and analyze textual content from multimedia sources. In the next session we will keep exploring the content through a textual lens. Further, we will use prompting as a technique to classify texts as part of a computational content analysis.</p>
 </section>
 <section id="more-resources" class="level2">
 <h2 class="anchored" data-anchor-id="more-resources">More Resources</h2>
@@ -1863,9 +571,6 @@ updating: media/videos/CzD93SEIi-E.mp4 (deflated 0%)
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-Baden2022-oe" class="csl-entry" role="listitem">
-Baden, Christian, Christian Pipal, Martijn Schoonvelde, and Mariken A C G van der Velden. 2022. <span>“<span class="nocase">Three Gaps in Computational Text Analysis Methods for Social Sciences: A Research Agenda</span>.”</span> <em>Communication Methods and Measures</em> 16 (1): 1–18. <a href="https://doi.org/10.1080/19312458.2021.2015574">https://doi.org/10.1080/19312458.2021.2015574</a>.
-</div>
 <div id="ref-Bengfort2018-nr" class="csl-entry" role="listitem">
 Bengfort, Benjamin, Rebecca Bilbro, and Tony Ojeda. 2018. <em><span class="nocase">Applied Text Analysis with Python: Enabling Language-Aware Data Products with Machine Learning</span></em>. <span>“O’Reilly Media, Inc.”</span>
 </div>
@@ -1875,7 +580,18 @@ Haim, Mario. 2023. <em><span class="nocase">Computational Communication Science:
 <div id="ref-Wickham2014-bz" class="csl-entry" role="listitem">
 Wickham, Hadley. 2014. <span>“<span>Tidy Data</span>.”</span> <em>Journal of Statistical Software, Articles</em> 59 (10): 1–23. <a href="https://doi.org/10.18637/jss.v059.i10">https://doi.org/10.18637/jss.v059.i10</a>.
 </div>
-</div></section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section></div></main> <!-- /main -->
+</div></section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{achmann-denkler2024,
+  author = {Achmann-Denkler, Michael},
+  title = {Text as {Data}},
+  date = {2024-11-14},
+  url = {https://social-media-lab.net/processing/},
+  doi = {10.5281/zenodo.10039756},
+  langid = {en}
+}
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-achmann-denkler2024" class="csl-entry quarto-appendix-citeas" role="listitem">
+Achmann-Denkler, Michael. 2024. <span>“Text as Data.”</span> November
+14, 2024. <a href="https://doi.org/10.5281/zenodo.10039756">https://doi.org/10.5281/zenodo.10039756</a>.
+</div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -2447,8 +1163,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../processing/exploration.html" class="pagination-link" aria-label="Text Exploration">
-        <span class="nav-page-text">Text Exploration</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../processing/preprocessing.html" class="pagination-link" aria-label="Data Preprocessing">
+        <span class="nav-page-text">Data Preprocessing</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

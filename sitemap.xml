@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://social-media-lab.net/index.html</loc>
-    <lastmod>2024-10-28T10:48:21.935Z</lastmod>
+    <lastmod>2024-11-14T12:04:20.116Z</lastmod>
   </url>
   <url>
     <loc>https://social-media-lab.net/notebooks/2024_01_12_Visual_BERTopic_Bauernproteste.html</loc>
@@ -37,47 +37,51 @@
     <lastmod>2024-09-05T07:10:46.922Z</lastmod>
   </url>
   <url>
-    <loc>https://social-media-lab.net/notebooks/ig-instaloader.html</loc>
+    <loc>https://social-media-lab.net/notebooks/2024_01_22_Ensemble_Classification.html</loc>
     <lastmod>2024-09-05T07:10:46.926Z</lastmod>
   </url>
   <url>
-    <loc>https://social-media-lab.net/notebooks/2024_01_26_Create_LabelStudio_Image_Evaluation.html</loc>
-    <lastmod>2024-09-05T07:10:46.926Z</lastmod>
-  </url>
-  <url>
-    <loc>https://social-media-lab.net/notebooks/2023_12_14_Create_LabelStudio_Text_Evaluation.html</loc>
+    <loc>https://social-media-lab.net/notebooks/2023_12_01_GPT_Text_Exploration.html</loc>
     <lastmod>2024-09-05T07:10:46.918Z</lastmod>
   </url>
   <url>
-    <loc>https://social-media-lab.net/notebooks/whisper-notebook.html</loc>
-    <lastmod>2024-09-05T07:10:46.930Z</lastmod>
+    <loc>https://social-media-lab.net/notebooks/2024_01_19_Classification_With_CLIP.html</loc>
+    <lastmod>2024-09-05T07:10:46.922Z</lastmod>
   </url>
   <url>
-    <loc>https://social-media-lab.net/projects/index.html</loc>
-    <lastmod>2024-09-05T07:10:46.930Z</lastmod>
+    <loc>https://social-media-lab.net/notebooks/2024_01_22_Classification_With_multimodal_GPT.html</loc>
+    <lastmod>2024-09-05T07:10:46.926Z</lastmod>
   </url>
   <url>
-    <loc>https://social-media-lab.net/getting-started/theory.html</loc>
+    <loc>https://social-media-lab.net/blog.html</loc>
+    <lastmod>2024-09-05T07:10:46.650Z</lastmod>
+  </url>
+  <url>
+    <loc>https://social-media-lab.net/getting-started/index.html</loc>
+    <lastmod>2024-11-14T11:53:17.776Z</lastmod>
+  </url>
+  <url>
+    <loc>https://social-media-lab.net/getting-started/related-work.html</loc>
+    <lastmod>2024-11-14T11:38:15.204Z</lastmod>
+  </url>
+  <url>
+    <loc>https://social-media-lab.net/image-analysis/gephi.html</loc>
     <lastmod>2024-09-05T07:10:46.658Z</lastmod>
   </url>
   <url>
-    <loc>https://social-media-lab.net/image-analysis/index.html</loc>
+    <loc>https://social-media-lab.net/image-analysis/exploration.html</loc>
     <lastmod>2024-09-05T07:10:46.658Z</lastmod>
   </url>
   <url>
-    <loc>https://social-media-lab.net/image-analysis/ensemble.html</loc>
-    <lastmod>2024-09-05T07:10:46.658Z</lastmod>
+    <loc>https://social-media-lab.net/data-collection/ig-stories.html</loc>
+    <lastmod>2024-11-14T12:14:33.104Z</lastmod>
   </url>
   <url>
-    <loc>https://social-media-lab.net/image-analysis/classification.html</loc>
-    <lastmod>2024-09-05T07:10:46.658Z</lastmod>
+    <loc>https://social-media-lab.net/processing/index.html</loc>
+    <lastmod>2024-11-14T12:14:43.264Z</lastmod>
   </url>
   <url>
-    <loc>https://social-media-lab.net/data-collection/ig-posts.html</loc>
-    <lastmod>2024-11-11T16:11:11.938Z</lastmod>
-  </url>
-  <url>
-    <loc>https://social-media-lab.net/processing/exploration.html</loc>
+    <loc>https://social-media-lab.net/processing/classification.html</loc>
     <lastmod>2024-09-05T07:10:46.930Z</lastmod>
   </url>
   <url>
@@ -109,52 +113,56 @@
     <lastmod>2024-09-05T07:10:46.658Z</lastmod>
   </url>
   <url>
-    <loc>https://social-media-lab.net/processing/classification.html</loc>
+    <loc>https://social-media-lab.net/processing/preprocessing.html</loc>
+    <lastmod>2024-11-14T11:33:08.872Z</lastmod>
+  </url>
+  <url>
+    <loc>https://social-media-lab.net/processing/exploration.html</loc>
     <lastmod>2024-09-05T07:10:46.930Z</lastmod>
   </url>
   <url>
-    <loc>https://social-media-lab.net/processing/index.html</loc>
-    <lastmod>2024-11-11T16:19:54.490Z</lastmod>
+    <loc>https://social-media-lab.net/data-collection/ig-posts.html</loc>
+    <lastmod>2024-11-14T12:14:26.824Z</lastmod>
   </url>
   <url>
-    <loc>https://social-media-lab.net/data-collection/ig-stories.html</loc>
-    <lastmod>2024-09-05T08:43:31.066Z</lastmod>
-  </url>
-  <url>
-    <loc>https://social-media-lab.net/image-analysis/exploration.html</loc>
+    <loc>https://social-media-lab.net/image-analysis/classification.html</loc>
     <lastmod>2024-09-05T07:10:46.658Z</lastmod>
   </url>
   <url>
-    <loc>https://social-media-lab.net/image-analysis/gephi.html</loc>
+    <loc>https://social-media-lab.net/image-analysis/ensemble.html</loc>
     <lastmod>2024-09-05T07:10:46.658Z</lastmod>
   </url>
   <url>
-    <loc>https://social-media-lab.net/getting-started/related-work.html</loc>
-    <lastmod>2024-10-28T10:47:44.807Z</lastmod>
+    <loc>https://social-media-lab.net/image-analysis/index.html</loc>
+    <lastmod>2024-09-05T07:10:46.658Z</lastmod>
   </url>
   <url>
-    <loc>https://social-media-lab.net/getting-started/index.html</loc>
-    <lastmod>2024-10-28T09:45:36.763Z</lastmod>
+    <loc>https://social-media-lab.net/getting-started/theory.html</loc>
+    <lastmod>2024-09-05T07:10:46.658Z</lastmod>
   </url>
   <url>
-    <loc>https://social-media-lab.net/blog.html</loc>
-    <lastmod>2024-09-05T07:10:46.650Z</lastmod>
+    <loc>https://social-media-lab.net/projects/index.html</loc>
+    <lastmod>2024-09-05T07:10:46.930Z</lastmod>
   </url>
   <url>
-    <loc>https://social-media-lab.net/notebooks/2024_01_22_Classification_With_multimodal_GPT.html</loc>
-    <lastmod>2024-09-05T07:10:46.926Z</lastmod>
+    <loc>https://social-media-lab.net/notebooks/whisper-notebook.html</loc>
+    <lastmod>2024-09-05T07:10:46.930Z</lastmod>
   </url>
   <url>
-    <loc>https://social-media-lab.net/notebooks/2024_01_19_Classification_With_CLIP.html</loc>
-    <lastmod>2024-09-05T07:10:46.922Z</lastmod>
-  </url>
-  <url>
-    <loc>https://social-media-lab.net/notebooks/2023_12_01_GPT_Text_Exploration.html</loc>
+    <loc>https://social-media-lab.net/notebooks/2023_12_14_Create_LabelStudio_Text_Evaluation.html</loc>
     <lastmod>2024-09-05T07:10:46.918Z</lastmod>
   </url>
   <url>
-    <loc>https://social-media-lab.net/notebooks/2024_01_22_Ensemble_Classification.html</loc>
+    <loc>https://social-media-lab.net/notebooks/2024_01_26_Create_LabelStudio_Image_Evaluation.html</loc>
     <lastmod>2024-09-05T07:10:46.926Z</lastmod>
+  </url>
+  <url>
+    <loc>https://social-media-lab.net/notebooks/ig-instaloader.html</loc>
+    <lastmod>2024-09-05T07:10:46.926Z</lastmod>
+  </url>
+  <url>
+    <loc>https://social-media-lab.net/notebooks/2024_11_11_Preprocessing.html</loc>
+    <lastmod>2024-11-14T11:24:42.116Z</lastmod>
   </url>
   <url>
     <loc>https://social-media-lab.net/notebooks/literature-review-v2.html</loc>

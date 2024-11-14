@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Michael Achmann-Denkler">
-<meta name="dcterms.date" content="2023-11-06">
+<meta name="dcterms.date" content="2024-11-14">
 
 <title>Instagram Posts – Social Media Lab</title>
 <style>
@@ -323,6 +323,12 @@ cookieconsent.run({
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../processing/preprocessing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Preprocessing</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../processing/exploration.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Text Exploration</span></a>
   </div>
@@ -411,11 +417,11 @@ cookieconsent.run({
   <ul>
   <li><a href="#zeeschuimer-4cat" id="toc-zeeschuimer-4cat" class="nav-link active" data-scroll-target="#zeeschuimer-4cat">Zeeschuimer &amp; 4CAT</a>
   <ul class="collapse">
-  <li><a href="#working-with-4cat" id="toc-working-with-4cat" class="nav-link" data-scroll-target="#working-with-4cat">Working with 4CAT</a></li>
   <li><a href="#working-with-python" id="toc-working-with-python" class="nav-link" data-scroll-target="#working-with-python">Working with Python</a></li>
+  <li><a href="#working-with-4cat" id="toc-working-with-4cat" class="nav-link" data-scroll-target="#working-with-4cat">Working with 4CAT</a></li>
   </ul></li>
-  <li><a href="#instaloader" id="toc-instaloader" class="nav-link" data-scroll-target="#instaloader">Instaloader</a></li>
-  <li><a href="#crowdtangle" id="toc-crowdtangle" class="nav-link" data-scroll-target="#crowdtangle">CrowdTangle</a></li>
+  <li><a href="#instaloader-not-recommended" id="toc-instaloader-not-recommended" class="nav-link" data-scroll-target="#instaloader-not-recommended">Instaloader – NOT RECOMMENDED</a></li>
+  <li><a href="#crowdtangle-outdated" id="toc-crowdtangle-outdated" class="nav-link" data-scroll-target="#crowdtangle-outdated">CrowdTangle – OUTDATED</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
 <div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="../notebooks/ig-instaloader-preview.html"><i class="bi bi-journal-code"></i>Collecting Posts with Instaloader</a></li></ul></div></nav>
@@ -442,7 +448,7 @@ cookieconsent.run({
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">November 6, 2023</p>
+      <p class="date">November 14, 2024</p>
     </div>
   </div>
   
@@ -516,6 +522,24 @@ Practical limitations (e.g.&nbsp;volume, timeframe, # of profiles …)
 </ul>
 </section>
 </div>
+<section id="working-with-python" class="level3">
+<h3 class="anchored" data-anchor-id="working-with-python">Working with Python</h3>
+<p>Data collected using Zeeschuimer can also be exported as <em>ndjson</em> files. The <a href="(https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2024_11_11_Preprocessing.ipynb)">Zeeschuimer Import Notebook</a> provides a code example for reading the files and converting them to either 4CAT format, or a table format compatible with the above notebooks for CrowdTangle and instaloader.</p>
+<p>The old version of the <a href="https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2023_11_03_Zeeschuimer_Import.ipynb">Notebook</a> still exists. This version downloads only one image per post.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This is our preferred approach for the research seminar. We take a closer look at the <a href="../processing/index.html">Data Structure</a> and <a href="../processing/preprocessing.html">Preprocessing</a> of Zeeschuimer data through custom notebooks over the course of the next weeks.</p>
+</div>
+</div>
+</section>
 <section id="working-with-4cat" class="level3">
 <h3 class="anchored" data-anchor-id="working-with-4cat">Working with 4CAT</h3>
 <div class="quarto-figure quarto-figure-center">
@@ -534,26 +558,9 @@ Practical limitations (e.g.&nbsp;volume, timeframe, # of profiles …)
 <p>Once the images have been downloaded more analysis options are available when clicking the <em>More</em> button on the right. Further, you may download images as a ZIP file and can export the posts from 4CAT in CSV format. Repeat the process with the <em>Download Video</em> function to access posted videos. We will be able to use the collected data using the CSV export and the media files provided in the ZIP packages. Additionally, each ZIP file contains a <code>.metadata.json</code> file which we may use to map filenames to media files.</p>
 <p>The authors of Zeeschuimer and 4CAT <a href="https://docs.google.com/document/d/19MAiqX7Vx1FcNJ44K-vSdnKDVC5gcFwtrSQiewnwW8A/edit?pli=1">have published a manual here</a>.</p>
 </section>
-<section id="working-with-python" class="level3">
-<h3 class="anchored" data-anchor-id="working-with-python">Working with Python</h3>
-<p>Data collected using Zeeschuimer can also be exported as <em>ndjson</em> files. The <a href="https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2023_11_03_Zeeschuimer_Import.ipynb">Zeeschuimer Import</a> notebook provides a code example for reading the files and converting them to either 4CAT format, or a table format compatible with the above notebooks for CrowdTangle and instaloader.</p>
-<div class="callout callout-style-default callout-caution callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Work-In-Progress
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>We could download multiple images / videos for albums with little refactoring. We will work on an update if necessary.</p>
-</div>
-</div>
 </section>
-</section>
-<section id="instaloader" class="level2">
-<h2 class="anchored" data-anchor-id="instaloader">Instaloader</h2>
+<section id="instaloader-not-recommended" class="level2">
+<h2 class="anchored" data-anchor-id="instaloader-not-recommended">Instaloader – NOT RECOMMENDED</h2>
 <p><a href="https://instaloader.github.io/">Instaloader</a> is a python package for downloading instagram pictures and videos along with their metadata. I have written a <a href="https://achmann.dev/getting-started-with-instagram-analysis-instaloader-bbf686cb6e3b">getting started tutorial on Medium</a>. It is, together with <a href="https://github.com/michaelachmann/ig-tutorial/blob/main/01_DataCollection.ipynb">the provided notebook</a>, the basis for this chapter.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -771,8 +778,8 @@ Blocked Accounts
 </section>
 </div>
 </section>
-<section id="crowdtangle" class="level2">
-<h2 class="anchored" data-anchor-id="crowdtangle">CrowdTangle</h2>
+<section id="crowdtangle-outdated" class="level2">
+<h2 class="anchored" data-anchor-id="crowdtangle-outdated">CrowdTangle – OUTDATED</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../images/crowdtangle.png" class="img-fluid figure-img" width="600"></p>
@@ -838,7 +845,18 @@ Peeters, Stijn, Sal Hagen, and Dale Wahl. n.d. <span>“<span class="nocase">4CA
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section></div></main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{achmann-denkler2024,
+  author = {Achmann-Denkler, Michael},
+  title = {Instagram {Posts}},
+  date = {2024-11-14},
+  url = {https://social-media-lab.net/data-collection/ig-posts.html},
+  doi = {10.5281/zenodo.10039756},
+  langid = {en}
+}
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-achmann-denkler2024" class="csl-entry quarto-appendix-citeas" role="listitem">
+Achmann-Denkler, Michael. 2024. <span>“Instagram Posts.”</span> November
+14, 2024. <a href="https://doi.org/10.5281/zenodo.10039756">https://doi.org/10.5281/zenodo.10039756</a>.
+</div></div></section></div></main> <!-- /main -->
 <script type="application/vnd.jupyter.widget-state+json">
 {"05fe9fa653804364887a671eba646b3b":{"model_module":"@jupyter-widgets/base","model_module_version":"1.2.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"1.2.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"overflow_x":null,"overflow_y":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"22cbb422e31f4526a3d6559f567b1fa8":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"DescriptionStyleModel","state":{"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"DescriptionStyleModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"StyleView","description_width":""}},"2dcf80dad8ff455ea0d235f0ea4d2bbc":{"model_module":"@jupyter-widgets/base","model_module_version":"1.2.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"1.2.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"overflow_x":null,"overflow_y":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"9e830d38a76848838378fcfe8d8dae48":{"model_module":"@jupyter-widgets/base","model_module_version":"1.2.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"1.2.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"overflow_x":null,"overflow_y":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"a4eeb318c69c4014b2b7719e1b25225c":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"FloatProgressModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"FloatProgressModel","_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"1.5.0","_view_name":"ProgressView","bar_style":"success","description":"","description_tooltip":null,"layout":"IPY_MODEL_2dcf80dad8ff455ea0d235f0ea4d2bbc","max":5,"min":0,"orientation":"horizontal","style":"IPY_MODEL_ed581dd35e064ccb8a90088663718a66","value":5}},"ba040b9d901649198653a45b6f22c5cf":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"DescriptionStyleModel","state":{"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"DescriptionStyleModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"StyleView","description_width":""}},"d0e8248f20314929ab7290313d7b7fca":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"HBoxModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"HBoxModel","_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"1.5.0","_view_name":"HBoxView","box_style":"","children":["IPY_MODEL_e9b4da35b28c4c37a959af3852fe7a7b","IPY_MODEL_a4eeb318c69c4014b2b7719e1b25225c","IPY_MODEL_dfd7aade8e10493ebc6ec8a7c085cbc2"],"layout":"IPY_MODEL_9e830d38a76848838378fcfe8d8dae48"}},"dfd7aade8e10493ebc6ec8a7c085cbc2":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"HTMLModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"HTMLModel","_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"1.5.0","_view_name":"HTMLView","description":"","description_tooltip":null,"layout":"IPY_MODEL_05fe9fa653804364887a671eba646b3b","placeholder":"​","style":"IPY_MODEL_ba040b9d901649198653a45b6f22c5cf","value":" 5/5 [00:00&lt;00:00, 70.77it/s]"}},"e9b4da35b28c4c37a959af3852fe7a7b":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"HTMLModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"HTMLModel","_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"1.5.0","_view_name":"HTMLView","description":"","description_tooltip":null,"layout":"IPY_MODEL_f3ff70a3040a401a97ff95d5aa49613a","placeholder":"​","style":"IPY_MODEL_22cbb422e31f4526a3d6559f567b1fa8","value":"100%"}},"ed581dd35e064ccb8a90088663718a66":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"ProgressStyleModel","state":{"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"ProgressStyleModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"StyleView","bar_color":null,"description_width":""}},"f3ff70a3040a401a97ff95d5aa49613a":{"model_module":"@jupyter-widgets/base","model_module_version":"1.2.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"1.2.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"overflow_x":null,"overflow_y":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}}}
 </script>
