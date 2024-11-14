@@ -1,0 +1,74 @@
+---
+format: 
+  html: default
+  # revealjs: 
+  #   slide-number: true
+  #   logo: /images/urlogo.png
+  #   fig-responsive: true
+  #   footer: Michael Achmann-Denkler | Lehrstuhl für Medieninformatik | Universität Regensburg | WiSe 2023 / 24
+  #   output-file: getting-started-revealjs.html
+title: "Tools and Software"
+date: 2023-10-30
+author:
+  - name: Michael Achmann-Denkler
+    id: ma
+    orcid: 0000-0002-4754-7842
+    email: michael.achmann@informatik.uni-regensburg.de
+license: CC BY
+citation:
+  type: webpage
+  doi: 10.5281/zenodo.10039756
+---
+
+This page provides an overview of useful tools -- not just for the visual social media analysis. In our tools session (October 30th) we will take a look at Colab and git / GitHub. As the semester progresses we will learn more tools, which gradually will be added to this page. A first list of software for the future sessions is linked at the bottom of the page. 
+
+## Colab 
+
+[Colab](https://colab.research.google.com/?utm_source=scs-index) is a platform created by Google for collaborative work and research. It offers a preconfigured Python development environment with access to popular libraries and tools. It is based on [Jupyter notebooks](https://jupyter.org/), which allows users to create and share documents that contain live code, equations, visualizations, and narrative text. Throughout the semester I am going to provide code for different applications as Jupyter notebooks, which can easily be accessed and run on Colab.
+
+![A screenshot of Colab](/images/colab.png)
+
+Colab can be used for free, but it also offers a paid subscription plan called Colab Pro. The pro version offers, among other features, access to GPUs, which are often used for machine learning. We are probably going to use APIs and GPT throughout the semester, if we need to access GPUs we may use [schlaubox](https://schlaubox.de/).
+
+## Obsidian
+[Obsidian](https://obsidian.md/) and [Notion](https://www.notion.so/) are excellent tools for note-taking. My personal recommendation is Obsidian, as it is free for personal use and notes are saved in markdown format on your harddrive. Thus, the software does not require any subscriptions. Use Dropbox, iCloud or Nextcloud to backup your files! Obsidian is a note-taking app based on the concept of interconnected notes.
+
+![A screenshot of Obsidian](/images/obsidian.png)
+
+ The app allows to easily link between notes, it is a flexible and powerful tool with a wide range of plugins available. Thanks to this large amount of plugins, it is also possible to extend its use. I recommend the [dataloom](https://github.com/trey-wallis/obsidian-dataloom) plugin to organize excel-like lists, the [textgenerator plugin](https://github.com/nhaouari/obsidian-textgenerator-plugin) to use GPT within Obsidian, and the [Kanban plugin](https://github.com/mgmeyers/obsidian-kanban) to organize your tasks. Additionally, use [Day Planner](https://github.com/ivan-lednev/obsidian-day-planner) to create daily todo lists, the [citations plugin](https://github.com/hans/obsidian-citation-plugin) to organize your literature notes, and the [admonition plugin](https://github.com/javalent/admonitions) to add visually outstanding text blocks. Use [obsidian-git](https://github.com/denolehov/obsidian-git) to collaborate using GitHub. 
+
+
+## Open Research: Quarto for Project Documentation
+[Quarto](https://quarto.org/) is an innovative open-source scientific and technical publishing system. We can draft our research and projects using Jupyter notebooks or with plain text markdown in our chosen editors. What's more, we're able to craft dynamic content using Python, and other languages. When it comes to publishing our findings, we can produce reproducible, top-quality articles, presentations, websites, blogs, and books in various formats, including HTML, PDF, MS Word, and ePub. Writing is made easy with Pandoc markdown, letting us include equations, citations, cross-references, figure panels, callouts, and advanced layouts. The source for this website is available on [GitHub](https://github.com/michaelachmann/social-media-lab-quarto). When working on your projects you will be able to share milestones using Quarto, telling a story with your data. 
+
+![A screenshot of this website opened in Visual Studio Code with quarto running in the terminal](/images/quarto.png)
+
+You may clone the repository with `git clone git@github.com:michaelachmann/social-media-lab-quarto.git`. Add a folder for your projects in the `projects` folder and create a cover page called `index.qmd`. See the [README](https://github.com/michaelachmann/social-media-lab-quarto/blob/main/README.md) for more information on how to `commit` and `push` your changes for publication. Everything will be reviewed before publication!
+
+
+## Git & GitHub
+
+[Git](https://git-scm.com/) is a distributed version control system that enables us to track changes in our codebase, allowing multiple team members to work simultaneously without overwriting each other's contributions. By creating and switching between different branches, we can experiment with new features or bug fixes without disturbing the main code. When we're ready, merging these changes back into the main branch is straightforward. Moreover, Git's history tracking feature ensures that we can always trace back our steps, understand the evolution of our code, and even revert to previous versions if necessary. 
+
+![A screenshot of commiting and pushing changes to the repository of this website.](/images/git.png)
+
+> GitHub, Inc. (/ˈɡɪthʌb/[a]) is a platform and cloud-based service for software development and version control using Git, allowing developers to store and manage their code. It provides the distributed version control of Git plus access control, bug tracking, software feature requests, task management, continuous integration, and wikis for every project.[6] Headquartered in California, it has been a subsidiary of Microsoft since 2018. [Wikipedia](https://en.wikipedia.org/wiki/GitHub)
+
+Using [GitHub](https://github.com/), we can manage our projects, collaborate on coding tasks, and track changes seamlessly using Git. The platform can also be used to host research data and can connected to [OSF](https://osf.io/), to provide code and data anonymously to reviewers. Using [Zenodo](https://zenodo.org/) we can create DOIs and provide citable software packages. 
+
+
+## Future Sessions -- Outlook
+**Visual Exploration**
+
+* [ImageJ](https://imagej.nih.gov/ij/download.html)
+* [PixPlot](https://github.com/YaleDHLab/pix-plot)
+
+**Image Feature Extraction using APIs**
+
+* [Memespector](https://github.com/jason-chao/memespector-gui)
+
+**Data Visualization**
+
+* [Figma](https://www.figma.com/)
+* [Rawgraphs](https://www.rawgraphs.io/)
+

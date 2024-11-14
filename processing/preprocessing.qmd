@@ -1,0 +1,52 @@
+---
+format: 
+  html: default
+title: "Data Preprocessing"
+date: 2024-11-14
+author:
+  - name: Michael Achmann-Denkler
+    id: ma
+    orcid: 0000-0002-4754-7842
+    email: michael.achmann@informatik.uni-regensburg.de
+license: CC BY
+bibliography: ../literature.bib
+citation:
+  type: webpage
+  doi: 10.5281/zenodo.10039756
+notebook-view:
+  - notebook: ../notebooks/2024_11_11_Preprocessing.ipynb
+    title: "Preprocessing"
+    url: https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2024_11_12_Zeeschuimer_Import_w_Gallery.ipynb
+  - notebook: ../notebooks/corpus-analysis-notebook.ipynb
+    title: "Introduction to Corpus Analysis"
+    url: https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2023_11_24_Simple_Corpus_Analysis.ipynb
+---
+
+
+Preprocessing is an important step in the computational analysis of social media data, especially when dealing with multimodal content such as images, videos, and audio. This chapter introduces techniques to transform visual and audio content into computer-readable text, allowing us to apply well-established text analysis methods [@Baden2022-oe] to platforms like Instagram and TikTok. Although these platforms are primarily visual, extracting text enables us to leverage advanced computational social science techniques to derive meaningful insights from embedded and spoken content.
+
+The following sections provide a detailed overview of the preprocessing steps we use for text extraction. Instagram posts often contain embedded text, and videos posted on TikTok or Instagram frequently include audio layers, which we can convert into analyzable textual data. We use Optical Character Recognition (OCR) for text extraction from images, and for audio content, we apply the Whisper model for transcription. Additionally, we conclude this chapter with a simple application of corpus analytics to explore word frequencies within the extracted content.
+
+::: {.callout-important}
+**Update 2024:** [I updated the Notebook](https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2024_11_11_Preprocessing.ipynb) to use the OpenAI API. for Whisper and included the new Tidal Tales file format. Additionally, the new notebook extracts the first frame from any video.
+
+The original [OCR Notebook](https://colab.research.google.com/github/michaelachmann/social-media-lab/blob/main/notebooks/2023_11_24_OCR.ipynb) and [Whisper Notebook](https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2023_11_24_Whisper.ipynb) are still available.
+:::
+
+
+### OCR & Whisper
+
+{{< embed ../notebooks/2024_11_11_Preprocessing.ipynb echo=true >}}
+
+
+### Analyzing Corpus and Word Frequencies
+
+{{< embed ../notebooks/corpus-analysis-notebook.ipynb echo=true >}}
+
+
+
+## Conclusion
+In summary, this session provides us with the practical skills to use Python, pandas, and Jupyter notebooks for the computational analysis of multimodal social media data. Our adherence to Tidy Data principles and the integration of technologies like OCR and Whisper are integral to extract and analyze textual content from multimedia sources. In the next session we will keep exploring the content through a textual lens. Further, we will use prompting as a technique to classify texts as part of a computational content analysis.
+
+
+
