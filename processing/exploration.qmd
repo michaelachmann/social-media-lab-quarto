@@ -2,7 +2,7 @@
 format: 
   html: default
 title: "Text Exploration"
-date: 2023-12-04
+date: 2024-11-18
 author:
   - name: Michael Achmann-Denkler
     id: ma
@@ -22,8 +22,17 @@ citation:
   doi: 10.5281/zenodo.10039756
 ---
 
-In the previous session we talked about [text as data](index.qmd), suggesting that text data offers a rich source of insights. This chapter concentrates on the advanced tools for exploring these textual dimensions: BERTopic and the Generative Pre-trained Transformer (GPT). These technologies stand at the forefront of computational text analysis and are intersting tools to unlock the meanings and patterns hidden within the vast textual content of social media. 
+In the previous session we talked about [text as data](index.qmd), suggesting that text data offers a rich source of insights. We applied [preprocessing](preprocessing.qmd) to extract textual data from images (OCR) and videos (Whisper). This chapter concentrates on the tools for exploring these textual dimensions. We start with some simple frequency analyses, before moving on to BERTopic and the Generative Pre-trained Transformer (GPT).
 
+## Analyzing Corpus and Word Frequencies
+:::{.callout-tip}
+## Update Winter 2024/25
+* Added some information how to use datasets from different sources with the corpus analysis notebook. 
+* Added more recent sample data to the notebook.
+* [The Updated Corpus Analysis Notebook is available on GitHub](https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2024_11_18_Simple_Corpus_Analysis_V2.ipynb).
+:::
+
+{{< embed ../notebooks/corpus-analysis-notebook.ipynb echo=true >}}
 
 ## Topic Modeling with BERTopic 
 ::: {.column-margin}
@@ -32,10 +41,26 @@ In the previous session we talked about [text as data](index.qmd), suggesting th
 
 [BERTopic](https://maartengr.github.io/BERTopic/index.html) [@Grootendorst2022-sd] is a transformer-based topic modeling tool. It uses the BERT (Bidirectional Encoder Representations from Transformers) framework, an advanced method for natural language processing (NLP) that understands the context of words in text. BERTopic is adept at identifying and clustering topics within short text documents [@Grootendorst2022-sd, @Egger2022-dg], making it an interesting tool to analyze and categorize text data from social media. The author is actively working on the documentation and keeps improving the topic modeling technique to adapt the latest advances of Large Language Models (LLMs), just recently a [Zero-Shot topic modeling](https://maartengr.github.io/BERTopic/getting_started/zeroshot/zeroshot.html) approach has been added. I have used BERTopic for a first exploration of stories and posts published by politicians and parties during the 2021 Federal Election in Germany [@Achmann2023-rs]. Past research has used LDA, another topic modeling algorithm, to explore themes and topics in Instagram posts by politicians [@Rodina2019-na].
 
+:::{.callout-tip}
+## Update Winter 2024/25
+* Updated dataset loading section: Reading to use data from 4CAT/Zeeschuimer, [Text Master tables](preprocessing.qmd), and Meta Content Library. 
+* Added more recent sample data to the notebook.
+* [The Updated Topic Modeling Notebook is available on GitHub](https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2024_11_18_BERTopic_V2.ipynb).
+:::
+
 {{< embed ../notebooks/2023_12_01_BERTopic.ipynb echo=true >}}
 
 
 ## Exploration Through Prompting
+:::{.callout-warning}
+## Update Winter 2024/25 🔧
+**The section below is outdated!** 
+
+* OpenAI introduced breaking changes in its python package, the code below needs an update to work properly.
+* I would replace `gpt-3.5-turbo` with `gpt-4o-mini`.
+* Overall I would like to reconsider the value of the section below. 
+* Updated expected until the end of November.
+:::
 {{< embed ../notebooks/2023_12_01_GPT_Text_Exploration.ipynb echo=true >}}
 
 ## Conclusion

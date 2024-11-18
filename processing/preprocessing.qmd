@@ -2,7 +2,7 @@
 format: 
   html: default
 title: "Data Preprocessing"
-date: 2024-11-14
+date: 2024-11-18
 author:
   - name: Michael Achmann-Denkler
     id: ma
@@ -39,14 +39,8 @@ The original [OCR Notebook](https://colab.research.google.com/github/michaelachm
 {{< embed ../notebooks/2024_11_11_Preprocessing.ipynb echo=true >}}
 
 
-### Analyzing Corpus and Word Frequencies
-
-{{< embed ../notebooks/corpus-analysis-notebook.ipynb echo=true >}}
-
-
-
 ## Conclusion
-In summary, this session provides us with the practical skills to use Python, pandas, and Jupyter notebooks for the computational analysis of multimodal social media data. Our adherence to Tidy Data principles and the integration of technologies like OCR and Whisper are integral to extract and analyze textual content from multimedia sources. In the next session we will keep exploring the content through a textual lens. Further, we will use prompting as a technique to classify texts as part of a computational content analysis.
+In summary, this session provided us with the foundations to use Python, pandas, and Jupyter notebooks for the computational analysis of multimodal social media data. Our adherence to Tidy Data principles and the integration of technologies like OCR and Whisper are integral to extract and analyze textual content from multimedia sources. In the next session we will keep exploring the content through a textual lens. Further, we will use prompting as a technique to classify texts as part of a computational content analysis.
 
 
 
