@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Michael Achmann-Denkler">
-<meta name="dcterms.date" content="2023-12-04">
+<meta name="dcterms.date" content="2024-11-25">
 
 <title>Text Classification – Social Media Lab</title>
 <style>
@@ -427,14 +427,12 @@ cookieconsent.run({
   <li><a href="#gpt-text-classification" id="toc-gpt-text-classification" class="nav-link" data-scroll-target="#gpt-text-classification">GPT Text Classification</a></li>
   <li><a href="#zero-shot-multiclass" id="toc-zero-shot-multiclass" class="nav-link" data-scroll-target="#zero-shot-multiclass">Zero-Shot Multiclass</a></li>
   <li><a href="#few-shot-classification" id="toc-few-shot-classification" class="nav-link" data-scroll-target="#few-shot-classification">Few-Shot Classification</a></li>
-  <li><a href="#saving-money-multidocument-classification" id="toc-saving-money-multidocument-classification" class="nav-link" data-scroll-target="#saving-money-multidocument-classification">Saving Money – Multidocument Classification</a>
-  <ul class="collapse">
-  <li><a href="#new-system-prompt" id="toc-new-system-prompt" class="nav-link" data-scroll-target="#new-system-prompt">New System Prompt</a></li>
-  </ul></li>
+  <li><a href="#saving-money-multidocument-classification" id="toc-saving-money-multidocument-classification" class="nav-link" data-scroll-target="#saving-money-multidocument-classification">Saving Money – Multidocument Classification</a></li>
+  <li><a href="#documentation" id="toc-documentation" class="nav-link" data-scroll-target="#documentation">Documentation</a></li>
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
   <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further Reading</a></li>
   </ul>
-<div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="../notebooks/2023_12_11_GPT_Text_Classification-preview.html"><i class="bi bi-journal-code"></i>GPT Text Classification</a></li><li><a href="../notebooks/2023_12_11_GPT_Text_Classification4-preview.html"><i class="bi bi-journal-code"></i>GPT Text Classification</a></li><li><a href="../notebooks/2023_12_11_GPT_Text_Classification2-preview.html"><i class="bi bi-journal-code"></i>GPT Text Classification</a></li><li><a href="../notebooks/2023_12_11_GPT_Text_Classification3-preview.html"><i class="bi bi-journal-code"></i>GPT Text Classification</a></li></ul></div></nav>
+<div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="../notebooks/2023_12_11_GPT_Text_Classification-preview.html"><i class="bi bi-journal-code"></i>GPT Text Classification</a></li><li><a href="../notebooks/2023_12_11_GPT_Text_Classification4-preview.html"><i class="bi bi-journal-code"></i>GPT Text Classification</a></li><li><a href="../notebooks/2023_12_11_GPT_Text_Classification2-preview.html"><i class="bi bi-journal-code"></i>GPT Text Classification</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -458,7 +456,7 @@ cookieconsent.run({
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">December 4, 2023</p>
+      <p class="date">November 25, 2024</p>
     </div>
   </div>
   
@@ -470,14 +468,14 @@ cookieconsent.run({
 </header>
 
 
-<p>The <a href="../processing/index.html">text as data</a> taught us that text is <em>unstructured</em> data, which needs some processing to convert its content into measurable <em>structured</em> data useful for quantitative analyses. This process is for many analyses the operationalization step, where we translate theoretical concepts into measurable quantities <span class="citation" data-cites="Nguyen2020-zg">(<a href="#ref-Nguyen2020-zg" role="doc-biblioref">Nguyen et al. 2020</a>)</span>. <a href="https://en.wikipedia.org/wiki/Content_analysis">Content analysis</a>, a research method used in social science and other disciplines, provides a well-established framework for all necessary steps towards operationalization, classification (labelling or coding), and evaluation. Content analysis can be conducted <em>qualitatively</em> and <em>quantitatively</em>. <span class="citation" data-cites="Doring2016-ul">Döring and Bortz (<a href="#ref-Doring2016-ul" role="doc-biblioref">2016</a>)</span> define the two as:</p>
+<p>The <a href="../processing/index.html">text as data chapter</a> introduced us to the idea that text is <em>unstructured</em> data. To make it useful for quantitative analyses, we need to process it into measurable <em>structured</em> data, which allows for systematic analysis and comparison. This process is for many analyses the operationalization step, where we translate theoretical concepts into measurable quantities <span class="citation" data-cites="Nguyen2020-zg">(<a href="#ref-Nguyen2020-zg" role="doc-biblioref">Nguyen et al. 2020</a>)</span>. <a href="https://en.wikipedia.org/wiki/Content_analysis">Content analysis</a>, a research method used in social science and other disciplines, provides a well-established framework for all necessary steps towards operationalization, classification (labelling or coding), and evaluation. Content analysis can be conducted <em>qualitatively</em> and <em>quantitatively</em>. <span class="citation" data-cites="Doring2016-ul">Döring and Bortz (<a href="#ref-Doring2016-ul" role="doc-biblioref">2016</a>)</span> define the two as:</p>
 <blockquote class="blockquote">
 <p>“Typical for <strong>qualitative</strong> document analyses is a research problem that presents itself as an open research question and thus has an explorative or theory-building function; accordingly, the entire procedure - despite a reference to the previous state of research and the use of a theoretical framework - is rather inductive, i.e.&nbsp;data-driven.” – <span class="citation" data-cites="Doring2016-ul">(<a href="#ref-Doring2016-ul" role="doc-biblioref">Döring and Bortz 2016, 540</a>)</span></p>
 </blockquote>
 <blockquote class="blockquote">
 <p>“[…] a <strong>quantitative</strong> content analysis must first be carried out in order to generate measured values. In contrast to qualitative document analysis, which interprets a small number of documents in detail, quantitative document analysis works with much larger […] samples of documents. The documents are analysed against the background of the respective research problem with regard to individual, theoretically relevant quantitative characteristics.” – <span class="citation" data-cites="Doring2016-ul">(<a href="#ref-Doring2016-ul" role="doc-biblioref">Döring and Bortz 2016, 552</a>)</span></p>
 </blockquote>
-<p>Last session’s <a href="../processing/exploration.html">text exploration approaches</a> might be useful in context of qualitative document analyses. For the quantitative approach, however, we need to operationalize our concept of interest (from the theory, or we use operationalization from the literature), and classify our text according to the operationalization. Additionally, we want to evaluate the computational classification, which will be next session’s topic. For today’s session, we work with two operationalizations, or measurements, from the literature: 1) Mobilization <span class="citation" data-cites="Wurst2023-pn Hasler2021-gg">(<a href="#ref-Wurst2023-pn" role="doc-biblioref">Wurst, Pohl, and Haßler 2023</a>; <a href="#ref-Hasler2021-gg" role="doc-biblioref">Haßler, Kümpel, and Keller 2021</a>)</span>, and 2) Sentiment <span class="citation" data-cites="Moller2023-ni Schmidt2022-lb">(<a href="#ref-Moller2023-ni" role="doc-biblioref">Møller et al. 2023</a>; <a href="#ref-Schmidt2022-lb" role="doc-biblioref">Schmidt et al. 2022</a>)</span>.</p>
+<p>Last session’s <a href="../processing/exploration.html">text exploration approaches</a> might be useful in context of qualitative document analyses, especially for identifying emerging themes or patterns within a smaller set of documents. For example, text exploration can help us uncover initial categories or concepts that can then be examined in detail through qualitative methods. For the quantitative approach, however, we need to operationalize our concept of interest (from the theory, or we use operationalization from the literature), and classify our text according to the operationalization. Additionally, we want to evaluate the computational classification, which will be next session’s topic. For today’s session, we work with two operationalizations, or measurements, from the literature: 1) Mobilization <span class="citation" data-cites="Wurst2023-pn Hasler2021-gg">(<a href="#ref-Wurst2023-pn" role="doc-biblioref">Wurst, Pohl, and Haßler 2023</a>; <a href="#ref-Hasler2021-gg" role="doc-biblioref">Haßler, Kümpel, and Keller 2021</a>)</span>, and 2) Sentiment <span class="citation" data-cites="Moller2023-ni Schmidt2022-lb">(<a href="#ref-Moller2023-ni" role="doc-biblioref">Møller et al. 2023</a>; <a href="#ref-Schmidt2022-lb" role="doc-biblioref">Schmidt et al. 2022</a>)</span>.</p>
 <section id="classification-using-gpt" class="level2">
 <h2 class="anchored" data-anchor-id="classification-using-gpt">Classification using GPT</h2>
 <p>We are going to practice text classification using GPT based on operationalization from the literature. As outlined above, we are going to measure sentiment and mobilization. Each variable has different values and applications:</p>
@@ -485,7 +483,8 @@ cookieconsent.run({
 <p><strong>Mobilization</strong>, on the other hand, refers to the efforts made by political parties to encourage and activate citizens to participate in the political process. This can include activities such as voting, supporting a campaign, seeking political information, liking and sharing posts on social media, and other forms of civic engagement <span class="citation" data-cites="Wurst2023-pn">(<a href="#ref-Wurst2023-pn" role="doc-biblioref">Wurst, Pohl, and Haßler 2023</a>)</span>. The authors distinguish between three types of calls to participate: calls to inform, calls to interact, and calls to support. They also subcategorized offline and online forms of each type of call.</p>
 <section id="prompt-engineering" class="level3">
 <h3 class="anchored" data-anchor-id="prompt-engineering">Prompt Engineering</h3>
-<p>Prompt engineering is a new technique in machine learning that has grown alongside the development of large pre-trained models, such as foundation models or large language models (LLMs). This method emerged when it was realized that these models work better with well-designed inputs. Prompt engineering is about creating or changing a question or input so the model can more easily find the right information <span class="citation" data-cites="Gu2023-gr">(<a href="#ref-Gu2023-gr" role="doc-biblioref">Gu et al. 2023</a>)</span>. It is based on the understanding that different questions can produce more or less accurate results, so adjusting the format and examples of the prompt is key to getting the best results <span class="citation" data-cites="Zhao2021-wr">(<a href="#ref-Zhao2021-wr" role="doc-biblioref">Zhao et al. 2021</a>)</span>. The field of prompt engineering involves different ways of making these prompts. One can decide to create prompts manually or use automated methods <span class="citation" data-cites="Liu2023-ph">(<a href="#ref-Liu2023-ph" role="doc-biblioref">P. Liu et al. 2023</a>)</span>. The growth and use of prompt engineering signify a major change in machine learning, deeply linked to the flexibility and wide range of applications of foundation models <span class="citation" data-cites="Gu2023-gr">(<a href="#ref-Gu2023-gr" role="doc-biblioref">Gu et al. 2023</a>)</span>.</p>
+<p>PPrompt engineering is a new technique in machine learning that has grown alongside the development of large pre-trained models, such as foundation models or large language models (LLMs). Foundation models are extensive, pre-trained neural networks that serve as a base for a wide range of downstream tasks, providing a flexible framework for different applications. This method emerged when it was realized that these models work better with well-designed inputs. Prompt engineering is about creating or changing a question or input so the model can more easily find the right information <span class="citation" data-cites="Gu2023-gr">(<a href="#ref-Gu2023-gr" role="doc-biblioref">Gu et al. 2023</a>)</span>. It is based on the understanding that different questions can produce more or less accurate results, so adjusting the format and examples of the prompt is key to getting the best results <span class="citation" data-cites="Zhao2021-wr">(<a href="#ref-Zhao2021-wr" role="doc-biblioref">Zhao et al. 2021</a>)</span>. The field of prompt engineering involves different ways of making these prompts. One can decide to create prompts manually or use automated methods <span class="citation" data-cites="Liu2023-ph">(<a href="#ref-Liu2023-ph" role="doc-biblioref">P. Liu et al. 2023</a>)</span>. The growth and use of prompt engineering signify a major change in machine learning, deeply linked to the flexibility and wide range of applications of foundation models <span class="citation" data-cites="Gu2023-gr">(<a href="#ref-Gu2023-gr" role="doc-biblioref">Gu et al. 2023</a>)</span>.</p>
+<p>According to <span class="citation" data-cites="Tornberg2024-ub">Törnberg (<a href="#ref-Tornberg2024-ub" role="doc-biblioref">2024</a>)</span>, prompt engineering for text annotation tasks using LLMs requires several important steps to ensure effective prompt engineering for text annotation tasks using LLMs. First, it is important to choose an appropriate model, considering factors such as reproducibility, ethics, transparency, and the complexity of the task. Next, Törnberg suggests following a systematic coding procedure that involves <strong>iterative rounds of calibration</strong> between human coders and LLM outputs to ensure consistency and alignment. He emphasizes that a prompt codebook should be developed to serve as a detailed guide for both human and machine annotation, ensuring replicability and reducing ambiguity. Furthermore, Törnberg highlights the importance of prompt stability analysis, which involves <strong>testing prompts systematically</strong> to ensure that small changes do not lead to significant variations in model responses. This systematic testing is crucial, as it helps to avoid overgeneralizations and ensures robustness across a variety of contexts. <span class="citation" data-cites="Zamfirescu-Pereira2023-fy">Zamfirescu-Pereira et al. (<a href="#ref-Zamfirescu-Pereira2023-fy" role="doc-biblioref">2023</a>)</span> add that non-experts often fail to systematically test prompts, which can create a false sense of reliability when only tested on a few cases.</p>
 </section>
 </section>
 <section id="zero-shot-classification" class="level2">
@@ -494,13 +493,31 @@ cookieconsent.run({
 <div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/QcYGwC4QzW0" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
 <section id="designing-the-prompt" class="level3">
 <h3 class="anchored" data-anchor-id="designing-the-prompt">Designing the Prompt</h3>
-<p>The literature provides several prompts for sentiment analysis using GPT-models. Let’s take this example:</p>
+<p>The literature provides several prompts for sentiment analysis using GPT-models. The Prompt Compass <span class="citation" data-cites="Borra_undated-sl">(<a href="#ref-Borra_undated-sl" role="doc-biblioref">Borra, n.d.</a>)</span> and <em>Can Large Language Models Transform Computational Social Science?</em> <span class="citation" data-cites="Ziems2024-yw">(<a href="#ref-Ziems2024-yw" role="doc-biblioref">Ziems et al. 2024</a>)</span> are good strating points for ideas and prompts for social science applications. For our tutorial, let’s use this example:</p>
 <blockquote class="blockquote">
 <p><strong>System prompt:</strong> You are an advanced classifying AI. You are tasked with classifying the sentiment of a text. Sentiment can be either positive , negative or neutral.</p>
 <p><strong>Prompt:</strong> Classify the following social media comment into either ‘negative’, ‘neutral’ or ‘positive’. Your answer MUST be either one of [‘negative’, ‘neutral’, ‘positive’]. Your answer must be lowercase.</p>
 <p>– <span class="citation" data-cites="Moller2023-ni">Møller et al. (<a href="#ref-Moller2023-ni" role="doc-biblioref">2023</a>)</span> (via <span class="citation" data-cites="Borra_undated-sl">Borra (<a href="#ref-Borra_undated-sl" role="doc-biblioref">n.d.</a>)</span>).</p>
 </blockquote>
-<p>Testing new prompts within the ChatGPT interface turned out as a good practice through my experiments: Without an additional cost we receive a first understanding of the efficacy of the prompt. The following screenshot shows the sentiment analysis prompt used with some random <a href="https://www.amazon.de/product-reviews/B07538S1M9/ref=cm_cr_unknown?ie=UTF8&amp;filterByStar=one_star&amp;reviewerType=all_reviews&amp;pageNumber=1#reviews-filter-bar">Amazon reviews</a>:</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong>System Prompts:</strong> These are instructions that define the general behavior of the model. They set the context for how the LLM should respond, such as defining its role as a classifying AI. The system prompt establishes the model’s identity, expertise level, and provides guidelines to direct its overall actions.</li>
+<li><strong>Prompts:</strong> These are user-provided instructions for a specific task, like classifying the sentiment of a given text. Prompts are the detailed commands or queries that the model must respond to, with specific expectations for the output format. Prompts can vary greatly depending on the specific analysis or outcome required.</li>
+<li>See e.g.&nbsp;<a href="http://promptingguide.ai">http://promptingguide.ai</a> for advice on prompt design and techinques.</li>
+<li>Use the <a href="../basics/openai.html#playground">OpenAI Playground</a> for testing.</li>
+</ul>
+</div>
+</div>
+<p>Testing new prompts in the ChatGPT interface proved useful in my experiments, providing an initial evaluation of prompt efficacy without additional cost. The following screenshot shows the sentiment analysis prompt used with some random <a href="https://www.amazon.de/product-reviews/B07538S1M9/ref=cm_cr_unknown?ie=UTF8&amp;filterByStar=one_star&amp;reviewerType=all_reviews&amp;pageNumber=1#reviews-filter-bar">Amazon reviews</a>:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../images/sentiment-positive.png" class="img-fluid figure-img"></p>
@@ -512,6 +529,19 @@ cookieconsent.run({
 <p><img src="../images/sentiment-negative.png" class="img-fluid figure-img"></p>
 <figcaption>The Sentiment Prompt used with a Negative Review (GPT-4.0)</figcaption>
 </figure>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Be mindful of the pitfalls outlined by <span class="citation" data-cites="Zamfirescu-Pereira2023-fy">Zamfirescu-Pereira et al. (<a href="#ref-Zamfirescu-Pereira2023-fy" role="doc-biblioref">2023</a>)</span>, especially the risk of overgeneralizing from a limited number of successful classifications. To ensure robustness, prompts should be systematically tested across diverse examples and contexts.</p>
+</div>
 </div>
 <p>Using the ChatGPT interface, we can also interact with the model asking for updates:</p>
 <div class="quarto-figure quarto-figure-center">
@@ -552,6 +582,19 @@ Tip
 </section>
 <section id="implementing-the-prompt-using-python" class="level3">
 <h3 class="anchored" data-anchor-id="implementing-the-prompt-using-python">Implementing the Prompt using Python</h3>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Update Winter 2024/25 🚀
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>I updated the <a href="https://colab.research.google.com/github/michaelachmann/social-media-lab/blob/main/notebooks/2024_11_25_GPT_Text_Classification_V2.ipynb">GPT Text Classification Notebook</a>: * Removed the <a href="../processing/archive/saving.html">multidocument classification approach</a>. * Added a new section that makes use of <a href="https://platform.openai.com/docs/guides/structured-outputs">Structured Outputs</a>. * Added another few-shot approach: Using multiple user and system messages. * Updated the models to the new GPT-4o generation.</p>
+</div>
+</div>
 </section>
 </section>
 <section id="gpt-text-classification" class="level2 quarto-embed-nb-cell">
@@ -1277,7 +1320,7 @@ llmx 0.0.15a0 requires cohere, which is not installed.</code></pre>
 <section id="zero-shot-multiclass" class="level2">
 <h2 class="anchored" data-anchor-id="zero-shot-multiclass">Zero-Shot Multiclass</h2>
 <p>So far we have been using one request for exactly one classification. Additionally, our classification has been a categorical variable (sentiment). Since GPT natively speaks <a href="https://en.wikipedia.org/wiki/JSON">JSON</a> as well as other file formats, we can easily request our responses to be formated in JSON. As such, we can request the model to return not just one classification at a time, but multiple classifications simultaneously. <a href="#classification-using-gpt">Above</a> I introduced two theoretically motivated operationalizations. The second example, mobilization, can be measured e.g.&nbsp;as direct vs.&nbsp;indirect calls to action, or online or offline calls. We could model this question as two categorical classification tasks (direct/indirect/NA, online/offline/NA). My example below makes use of so-called <a href="https://en.wikipedia.org/wiki/Dummy_variable_(statistics)">dummy variables</a>, where the presence or absence of each value is coded using 1 or 0 (<code>True</code> or <code>False</code>), as a boolean variable. The dummy variables simplifies the prompt and allow cases, where multiple types of calls to action are used in one text.</p>
-<p>Prompting for multiclass classification works well when defining the output format to adhere strict formatting rules, for more complex use-cases I recommend the <a href="https://github.com/guardrails-ai/guardrails"><code>guardrails</code> package</a>. The second step is to intpret the GPT response in the right, in our case, to use the <code>json</code> package. This is an error-prone process (image the model to retun <code>None</code> instead of <code>{}</code>)! Make use of <a href="https://docs.python.org/3/tutorial/errors.html">python errors and exceptions</a> to guard your loop against runtime errors. The example below expects all values in the <code>COLUMNS</code> variable to be part of the JSON object returned from the model and saves the result in <code>df</code>’s column of the same name. Python’s dynamic typing usually takes care of casting the model result to <code>boolean</code>, further down the stream we might have to cast the columns manually (i.e.&nbsp;after saving and loading the <code>df</code> from <code>csv</code>.)</p>
+<p>Prompting for multiclass classification works well when defining the output format to adhere strict formatting rules, for more complex use-cases I recommend using <a href="https://platform.openai.com/docs/guides/structured-outputs">structured outputs with JSON Schemas</a>. The second step is to intpret the GPT response in the right, in our case, to use the <code>json</code> package. Make use of <a href="https://docs.python.org/3/tutorial/errors.html">python errors and exceptions</a> to guard your loop against runtime errors. The example below expects all values in the <code>COLUMNS</code> variable to be part of the JSON object returned from the model and saves the result in <code>df</code>’s column of the same name. Python’s dynamic typing usually takes care of casting the model result to <code>boolean</code>, further down the stream we might have to cast the columns manually (i.e.&nbsp;after saving and loading the <code>df</code> from <code>csv</code>.)</p>
 <div class="quarto-embed-nb-cell">
 <div id="cell-0" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>system_prompt <span class="op">=</span> <span class="st">"""</span></span>
@@ -2094,810 +2137,16 @@ llmx 0.0.15a0 requires cohere, which is not installed.</code></pre>
 </section>
 <section id="saving-money-multidocument-classification" class="level2">
 <h2 class="anchored" data-anchor-id="saving-money-multidocument-classification">Saving Money – Multidocument Classification</h2>
-<p>When using GPT for text classification using the above prompts, we send one request per text document in our <code>df</code>. Each time, we send the <code>system_prompt</code> and <code>prompt</code>, repeating the same text over and over again. With the code below we try another approach: We send a table with multiple documents at once, thus we just need to send the <code>system_prompt</code> and <code>prompt</code> once every <code>n</code> documents, saving tokens and therefore saving money. Classifications using <code>gpt-3.5</code> are relatively cheap, and the multidocument classification resulted in small quality drops through my experiments, for <code>gpt-4</code>, however, it cut my expenses drastically. <code>gpt-4-turbo</code> lies inbetween the two, it is still 10 times more expansive than <code>gpt-3.5</code>, yet input tokens are 1/3 of <code>gpt-4</code> prices. See: https://openai.com/pricing</p>
-<p><strong>Verdict:</strong> Always run the mock requests first to estimate cost. For <code>gpt-3.5</code> sending one document per request is often the best option. For <code>gpt-4</code> the multidocument approach is often the better option: Cheaper than single-document <code>gpt-4</code>, higher quality than <code>gpt-3.5</code>. (According to my experiments, which have limitations!).</p>
-<section id="new-system-prompt" class="level3">
-<h3 class="anchored" data-anchor-id="new-system-prompt">New System Prompt</h3>
-<p>Let’s get started by creating a new system prompt that incoporates command for the new approach. We need to define the prompt, as we need to calculate the tokens before splitting the textdocuments in tables.</p>
-<div class="quarto-embed-nb-cell">
-<div id="cell-1" class="cell" data-execution_count="27">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>system_prompt <span class="op">=</span> <span class="st">"""</span></span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="st">You are an advanced classifying AI. Your task is to classify the sentiment of a text. Sentiment can be either ‘positive’, ‘negative’, or ‘neutral’.</span></span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="st">**Instructions**</span></span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="st">  1. Examine each row in the table under the 'Text' column.</span></span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="st">  2. For each row consisting of social media comments, classify the content into either ‘negative’, ‘neutral’, or ‘positive’.</span></span>
-<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a><span class="st">  3. Fill the 'Classification' column for the corresponding 'Text' row with your answer. Your answer MUST be one of [‘negative’, ‘neutral’, ‘positive’], and it should be presented in lowercase.</span></span>
-<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="st">**Formatting**</span></span>
-<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a><span class="st">Return a markdown table with the columns "shortcode" and "Classification"</span></span>
-<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<section id="from-documents-to-markdown-tables" class="level4">
-<h4 class="anchored" data-anchor-id="from-documents-to-markdown-tables">From Documents to Markdown Tables</h4>
-<p>We use the <code>tabulate</code> python package to create markdown tables for as many tables as we manage to send within the model’s context window. Currently, the result_table token length (the mockup response) is calculated using the length of <code>False</code>. Replace the value if you expect longer classifications in this line:</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>current_result_table <span class="op">=</span> tabulate(batched_data <span class="op">+</span> [(row[meta], <span class="va">False</span>)], headers<span class="op">=</span>[meta, <span class="st">"Classification"</span>], tablefmt<span class="op">=</span><span class="st">"pipe"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="cell-3" class="cell" data-execution_count="28">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tabulate <span class="im">import</span> tabulate</span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> datetime <span class="im">import</span> datetime</span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> gpt_cost_estimator <span class="im">import</span> num_tokens_from_messages</span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> batch_rows_for_tables(df, system_prompt, column, meta, model<span class="op">=</span><span class="st">"gpt-3.5-turbo-0613"</span>, <span class="op">**</span>kwargs):</span>
-<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>    max_rows <span class="op">=</span> kwargs.get(<span class="st">"max_rows"</span>, <span class="dv">999</span>)</span>
-<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> model <span class="op">==</span> <span class="st">"gpt-4-0613"</span>:</span>
-<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>      max_tokens <span class="op">=</span> <span class="dv">8192</span></span>
-<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> model <span class="op">==</span> <span class="st">"gpt-4-1106-preview"</span>:</span>
-<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a>      max_tokens <span class="op">=</span> <span class="dv">128000</span> <span class="co"># This model has not been tested with the multidocument approach. It is only capable of 4096 tokens output, therefore we might run into trouble</span></span>
-<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> model <span class="op">==</span> <span class="st">"gpt-3.5-turbo-0613"</span>:</span>
-<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a>      max_tokens <span class="op">=</span> <span class="dv">4096</span></span>
-<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Batch rows from the dataframe to fit within token limits and return as a list of markdown tables."""</span></span>
-<span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a>    tables <span class="op">=</span> []</span>
-<span id="cb30-18"><a href="#cb30-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-19"><a href="#cb30-19" aria-hidden="true" tabindex="-1"></a>    df[column] <span class="op">=</span> df[column].astype(<span class="bu">str</span>)</span>
-<span id="cb30-20"><a href="#cb30-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-21"><a href="#cb30-21" aria-hidden="true" tabindex="-1"></a>    pbar <span class="op">=</span> tqdm(total<span class="op">=</span><span class="bu">len</span>(df))</span>
-<span id="cb30-22"><a href="#cb30-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-23"><a href="#cb30-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-24"><a href="#cb30-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> <span class="kw">not</span> df.empty:</span>
-<span id="cb30-25"><a href="#cb30-25" aria-hidden="true" tabindex="-1"></a>        current_tokens <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb30-26"><a href="#cb30-26" aria-hidden="true" tabindex="-1"></a>        batched_data <span class="op">=</span> []</span>
-<span id="cb30-27"><a href="#cb30-27" aria-hidden="true" tabindex="-1"></a>        batched_results <span class="op">=</span> []</span>
-<span id="cb30-28"><a href="#cb30-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-29"><a href="#cb30-29" aria-hidden="true" tabindex="-1"></a>        i <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb30-30"><a href="#cb30-30" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> index, row <span class="kw">in</span> df.iterrows():</span>
-<span id="cb30-31"><a href="#cb30-31" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Remove newline characters from the specific column</span></span>
-<span id="cb30-32"><a href="#cb30-32" aria-hidden="true" tabindex="-1"></a>            cleaned_data <span class="op">=</span> row[column].replace(<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>, <span class="st">' '</span>)</span>
-<span id="cb30-33"><a href="#cb30-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-34"><a href="#cb30-34" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Construct the table for the current batch</span></span>
-<span id="cb30-35"><a href="#cb30-35" aria-hidden="true" tabindex="-1"></a>            current_table <span class="op">=</span> tabulate(batched_data <span class="op">+</span> [(row[meta], cleaned_data)], headers<span class="op">=</span>[meta, <span class="st">"Text"</span>], tablefmt<span class="op">=</span><span class="st">"pipe"</span>)</span>
-<span id="cb30-36"><a href="#cb30-36" aria-hidden="true" tabindex="-1"></a>            current_result_table <span class="op">=</span> tabulate(batched_data <span class="op">+</span> [(row[meta], <span class="va">False</span>)], headers<span class="op">=</span>[meta, <span class="st">"Classification"</span>], tablefmt<span class="op">=</span><span class="st">"pipe"</span>)</span>
-<span id="cb30-37"><a href="#cb30-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-38"><a href="#cb30-38" aria-hidden="true" tabindex="-1"></a>            message <span class="op">=</span> [</span>
-<span id="cb30-39"><a href="#cb30-39" aria-hidden="true" tabindex="-1"></a>                {<span class="st">"role"</span>: <span class="st">"system"</span>, <span class="st">"content"</span>: system_prompt},</span>
-<span id="cb30-40"><a href="#cb30-40" aria-hidden="true" tabindex="-1"></a>                {<span class="st">"role"</span>: <span class="st">"user"</span>, <span class="st">"content"</span>: current_table},</span>
-<span id="cb30-41"><a href="#cb30-41" aria-hidden="true" tabindex="-1"></a>                {<span class="st">"role"</span>: <span class="st">"assistant"</span>, <span class="st">"content"</span>: current_result_table}</span>
-<span id="cb30-42"><a href="#cb30-42" aria-hidden="true" tabindex="-1"></a>                ]</span>
-<span id="cb30-43"><a href="#cb30-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-44"><a href="#cb30-44" aria-hidden="true" tabindex="-1"></a>            tokens_needed <span class="op">=</span> num_tokens_from_messages(message, model<span class="op">=</span>model)</span>
-<span id="cb30-45"><a href="#cb30-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-46"><a href="#cb30-46" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> tokens_needed <span class="op">&lt;=</span> max_tokens <span class="kw">and</span> i <span class="op">&lt;</span> max_rows:</span>
-<span id="cb30-47"><a href="#cb30-47" aria-hidden="true" tabindex="-1"></a>                current_tokens <span class="op">=</span> tokens_needed</span>
-<span id="cb30-48"><a href="#cb30-48" aria-hidden="true" tabindex="-1"></a>                batched_data.append((row[meta], cleaned_data))</span>
-<span id="cb30-49"><a href="#cb30-49" aria-hidden="true" tabindex="-1"></a>                batched_results.append((row[meta], <span class="va">False</span>))</span>
-<span id="cb30-50"><a href="#cb30-50" aria-hidden="true" tabindex="-1"></a>                df.drop(index, inplace<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb30-51"><a href="#cb30-51" aria-hidden="true" tabindex="-1"></a>                i <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb30-52"><a href="#cb30-52" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span>:</span>
-<span id="cb30-53"><a href="#cb30-53" aria-hidden="true" tabindex="-1"></a>                <span class="co"># Stop when you've reached close to the max token count</span></span>
-<span id="cb30-54"><a href="#cb30-54" aria-hidden="true" tabindex="-1"></a>                pbar.update(<span class="bu">len</span>(batched_data))</span>
-<span id="cb30-55"><a href="#cb30-55" aria-hidden="true" tabindex="-1"></a>                <span class="cf">break</span></span>
-<span id="cb30-56"><a href="#cb30-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-57"><a href="#cb30-57" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Convert batched rows to a markdown table and store in tables list</span></span>
-<span id="cb30-58"><a href="#cb30-58" aria-hidden="true" tabindex="-1"></a>        markdown_table <span class="op">=</span> tabulate(batched_data, headers<span class="op">=</span>[meta, <span class="st">"Text"</span>], tablefmt<span class="op">=</span><span class="st">"pipe"</span>)</span>
-<span id="cb30-59"><a href="#cb30-59" aria-hidden="true" tabindex="-1"></a>        tables.append(markdown_table)</span>
-<span id="cb30-60"><a href="#cb30-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-61"><a href="#cb30-61" aria-hidden="true" tabindex="-1"></a>    pbar.close()</span>
-<span id="cb30-62"><a href="#cb30-62" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-63"><a href="#cb30-63" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> tables</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>The next command uses the above function to generate all necessary markdown tables. The <code>column</code> parameter of <code>batch_rows_for_tables</code> expects the name of the text column, the <code>meta</code> parameter expects the name of the identifier column. Additionally, we pass the dataframe, <code>system_prompt</code>, and <code>MODEL</code> to the function. Fill in the <code>TEXT_COLUMN</code>, <code>IDENTIFIER</code>, <code>MODEL</code>, and <code>MAX_ROWS</code> variables as needed. See the comments above each variable for more information.</p>
-<div id="cell-5" class="cell" data-outputid="9b06cfe5-ae7d-4167-cc9a-7e7ef93917e8" data-execution_count="40">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co">#@markdown What's the column name of the text column?</span></span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>TEXT_COLUMN <span class="op">=</span> <span class="st">'Text'</span> <span class="co"># @param {type: "string"}</span></span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="co">#@markdown What's the column name of the text column?</span></span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>IDENTIFIER <span class="op">=</span> <span class="st">'shortcode'</span> <span class="co"># @param {type: "string"}</span></span>
-<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="co">#@markdown Which model do you want to use?</span></span>
-<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>MODEL <span class="op">=</span> <span class="st">"gpt-4-0613"</span> <span class="co"># @param ["gpt-3.5-turbo-0613", "gpt-4-1106-preview", "gpt-4-0613"] {allow-input: true}</span></span>
-<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="co">#@markdown Is there a maximum length of rows? (**Set a very high number, like 999, to disable this feature**)</span></span>
-<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>MAX_ROWS <span class="op">=</span> <span class="dv">999</span> <span class="co"># @param {type: "number", min:0}</span></span>
-<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a copy of your df. This is important! The batching process removes processed rows from the df.</span></span>
-<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>df_batch_copy <span class="op">=</span> df.copy()</span>
-<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Batching the tables, takes a few seconds (~1 Minute)</span></span>
-<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a>tables <span class="op">=</span> batch_rows_for_tables(df_batch_copy, system_prompt, TEXT_COLUMN, IDENTIFIER, MODEL, max_rows<span class="op">=</span>MAX_ROWS)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"b7412473252a4981bc76b02392e69e70","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
-</script>
-</div>
-</div>
-<p>Let’s inspect the table. This is one of many tables that will be sent to the model. (I set the <code>MAX_ROWS</code> to 5 to keep the example short. When working with this approach I usually use <code>MAX_ROWS=999</code>.)</p>
-<div id="cell-7" class="cell" data-outputid="b1650fe5-bee0-439f-e89f-d7989596be1a" data-execution_count="41">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(tables[<span class="dv">0</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>| shortcode   | Text                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-|:------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| CyMAe_tufcR | #Landtagswahl23 🤩🧡🙏 #FREIEWÄHLER #Aiwanger #Danke #Landtagswahl                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| CyL975vouHU | Die Landtagswahl war für uns als Liberale hart. Wir haben alles gegeben, um die FDP wieder in den Landtag zu bringen, aber leider hat es nicht gereicht. Danke für euren Einsatz, egal ob beim Plakatieren, Flyern oder am Infostand. 💛  Wir Julis stehen für unsere Überzeugungen ein, auch wenn es gerade nicht gut läuft. Das macht uns aus! Das haben wir in diesem Wahlkampf gezeigt und das werden wir auch in der außerparlamentarischen Opposition zeigen. 💪  Du bist auch davon überzeugt, dass Freiheit und Eigenverantwortung eine Stimme in der Politik brauchen? Dann steh auch du jetzt für diese Überzeugung ein. Unter www.julis.de/mitglied-werden/ kannst du noch heute Mitglied der besten Jugendorganisation der Welt werden. 🚀  #freistart23                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| CyL8GWWJmci | Nach einem starken Wahlkampf ein verdientes Ergebnis! 💪 Herzlichen Glückwunsch an die CSU und unsere bayrischen JUler, die in der nächsten Legislaturperiode für ein sicheres und stabiles Bayern arbeiten werden. Wir wünschen euch viel Erfolg und alles Gute für das Landtagsmandat (v.l.n.r.): Manuel Knoll, Konrad Baur, Daniel Artmann, Kristan von Waldenfels.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-| CyL7wyJtTV5 | So viele Menschen am Odeonsplatz heute mit einer klaren Botschaft: Wir stehen an der Seite Israels.   Die massiven und brutalen Angriffe der Terrororganisation Hamas sind abscheuliche Verbrechen an unschuldigen Männern, Frauen und Kindern. Die Bilder und Videos der barbarischen Morde zerreißen einem das Herz.   Der Terror der Hamas ist durch nichts zu rechtfertigen und muss sofort gestoppt werden. Israel hat ein völkerrechtlich verbrieftes Recht auf Selbstverteidigung.  Wir Gedenken den Toten. Wir trauern mit den Familien und Angehörigen. Und wir bangen und hoffen mit den verschleppten Israelis.   Es ist gut, dass die Bundesregierung die Entwicklungshilfe für die palestinensischen Gebiete eingefroren hat. Das ist richtig.   Nicht richtig ist, dass Menschen in Deutschland die Angriffe der Hamas auf Jüdinnen und Juden feiern. Das ist mit nichts zu rechtfertigen und wir verurteilen es aufs schärfste.   Wir hier in Deutschland und Bayern haben noch viel zu tun: Antisemitismus und auch israelbezogener Antisemitismus ist in der Mitte unserer Gesellschaft vorhanden. Es ist die Aufgabe des frisch gewählten Bayerischen Landtags noch mehr gegen Judenhass zu tun.   📸 @andreasgregor   #standwithisrael #israel #münchen #bayern |
-| CyLxwHuvR4Y | Herzlichen Glückwunsch zu diesem grandiosen Wahlsieg!  Mit allen 12 JU-Direktkandidaten seid ihr in den hessischen Landtag gezogen 🎉 Wir gratulieren euch und wünschen euch viel Erfolg für den Start und die nächsten fünf Jahre im Parlament (v.l.n.r.): Kim-Sarah Speer, Frederik Bouffier, Sebastian Sommer, Lucas Schmitz, Sebastian Müller, Christin Ziegler, Marie-Sophie Künkel, Maximilian Schimmel, Christoph Mikuschek, Patrick Appel, Maximilian Bathon und Dominik Leyh!                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |</code></pre>
-</div>
-</div>
-<p>We can also inspect them using Markdown formatting in the notebooks:</p>
-<div id="cell-9" class="cell" data-outputid="b62edbd8-fbaf-4467-db29-95552a77c235" data-execution_count="42">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> Markdown, display</span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>display(Markdown(tables[<span class="dv">0</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display cell-output-markdown">
-<table class="caption-top table table-sm table-striped small">
-<colgroup>
-<col style="width: 1%">
-<col style="width: 98%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">shortcode</th>
-<th style="text-align: left;">Text</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">CyMAe_tufcR</td>
-<td style="text-align: left;">#Landtagswahl23 🤩🧡🙏 #FREIEWÄHLER #Aiwanger #Danke #Landtagswahl</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">CyL975vouHU</td>
-<td style="text-align: left;">Die Landtagswahl war für uns als Liberale hart. Wir haben alles gegeben, um die FDP wieder in den Landtag zu bringen, aber leider hat es nicht gereicht. Danke für euren Einsatz, egal ob beim Plakatieren, Flyern oder am Infostand. 💛 Wir Julis stehen für unsere Überzeugungen ein, auch wenn es gerade nicht gut läuft. Das macht uns aus! Das haben wir in diesem Wahlkampf gezeigt und das werden wir auch in der außerparlamentarischen Opposition zeigen. 💪 Du bist auch davon überzeugt, dass Freiheit und Eigenverantwortung eine Stimme in der Politik brauchen? Dann steh auch du jetzt für diese Überzeugung ein. Unter www.julis.de/mitglied-werden/ kannst du noch heute Mitglied der besten Jugendorganisation der Welt werden. 🚀 #freistart23</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">CyL8GWWJmci</td>
-<td style="text-align: left;">Nach einem starken Wahlkampf ein verdientes Ergebnis! 💪 Herzlichen Glückwunsch an die CSU und unsere bayrischen JUler, die in der nächsten Legislaturperiode für ein sicheres und stabiles Bayern arbeiten werden. Wir wünschen euch viel Erfolg und alles Gute für das Landtagsmandat (v.l.n.r.): Manuel Knoll, Konrad Baur, Daniel Artmann, Kristan von Waldenfels.</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">CyL7wyJtTV5</td>
-<td style="text-align: left;">So viele Menschen am Odeonsplatz heute mit einer klaren Botschaft: Wir stehen an der Seite Israels. Die massiven und brutalen Angriffe der Terrororganisation Hamas sind abscheuliche Verbrechen an unschuldigen Männern, Frauen und Kindern. Die Bilder und Videos der barbarischen Morde zerreißen einem das Herz. Der Terror der Hamas ist durch nichts zu rechtfertigen und muss sofort gestoppt werden. Israel hat ein völkerrechtlich verbrieftes Recht auf Selbstverteidigung. Wir Gedenken den Toten. Wir trauern mit den Familien und Angehörigen. Und wir bangen und hoffen mit den verschleppten Israelis. Es ist gut, dass die Bundesregierung die Entwicklungshilfe für die palestinensischen Gebiete eingefroren hat. Das ist richtig. Nicht richtig ist, dass Menschen in Deutschland die Angriffe der Hamas auf Jüdinnen und Juden feiern. Das ist mit nichts zu rechtfertigen und wir verurteilen es aufs schärfste. Wir hier in Deutschland und Bayern haben noch viel zu tun: Antisemitismus und auch israelbezogener Antisemitismus ist in der Mitte unserer Gesellschaft vorhanden. Es ist die Aufgabe des frisch gewählten Bayerischen Landtags noch mehr gegen Judenhass zu tun. 📸 <span class="citation" data-cites="andreasgregor">(<a href="#ref-andreasgregor" role="doc-biblioref"><strong>andreasgregor?</strong></a>)</span> #standwithisrael #israel #münchen #bayern</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">CyLxwHuvR4Y</td>
-<td style="text-align: left;">Herzlichen Glückwunsch zu diesem grandiosen Wahlsieg! Mit allen 12 JU-Direktkandidaten seid ihr in den hessischen Landtag gezogen 🎉 Wir gratulieren euch und wünschen euch viel Erfolg für den Start und die nächsten fünf Jahre im Parlament (v.l.n.r.): Kim-Sarah Speer, Frederik Bouffier, Sebastian Sommer, Lucas Schmitz, Sebastian Müller, Christin Ziegler, Marie-Sophie Künkel, Maximilian Schimmel, Christoph Mikuschek, Patrick Appel, Maximilian Bathon und Dominik Leyh!</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
+<p><strong>Outdated.</strong> <a href="../processing/archive/saving.html">Archived Here</a></p>
 </section>
-<section id="run-the-multidocument-request" class="level4">
-<h4 class="anchored" data-anchor-id="run-the-multidocument-request">Run the Multidocument Request</h4>
-<p>he following code snippet uses my <a href="https://pypi.org/project/gpt-cost-estimator/">gpt-cost-estimator</a> package to simulate API requests and calculate a cost estimate. Please run the estimation whne possible to asses the price-tag before sending requests to OpenAI!</p>
-<p>Fill in the <code>MOCK</code>, <code>RESET_COST</code>, <code>SAMPLE_SIZE</code>, <code>CLASS_NAME</code>, and <code>FILE_NAME</code> variables as needed (see comments above each variable.)</p>
-<div id="cell-11" class="cell" data-cellview="form" data-outputid="cccb12f5-ccf7-44aa-8e01-e92ee3a0fa77" data-execution_count="37">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tqdm.auto <span class="im">import</span> tqdm</span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> ast</span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> datetime <span class="im">import</span> datetime</span>
-<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> io <span class="im">import</span> StringIO</span>
-<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a><span class="co">#@title Run the Multidocument Request</span></span>
-<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a><span class="co">#@markdown T</span></span>
-<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a><span class="co">#@markdown Do you want to mock the OpenAI request (dry run) to calculate the estimated price?</span></span>
-<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>MOCK <span class="op">=</span> <span class="va">False</span> <span class="co"># @param {type: "boolean"}</span></span>
-<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a><span class="co">#@markdown Do you want to reset the cost estimation when running the query?</span></span>
-<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a>RESET_COST <span class="op">=</span> <span class="va">True</span> <span class="co"># @param {type: "boolean"}</span></span>
-<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a><span class="co">#@markdown How many **tables** do you want to send? Enter $0$ for all.</span></span>
-<span id="cb35-15"><a href="#cb35-15" aria-hidden="true" tabindex="-1"></a>SAMPLE_SIZE <span class="op">=</span> <span class="dv">1</span> <span class="co"># @param {type: "number", min: 0}</span></span>
-<span id="cb35-16"><a href="#cb35-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-17"><a href="#cb35-17" aria-hidden="true" tabindex="-1"></a><span class="co">#@markdown Filename for the **new** table that only contains sentiments.</span></span>
-<span id="cb35-18"><a href="#cb35-18" aria-hidden="true" tabindex="-1"></a>FILE_NAME <span class="op">=</span> <span class="st">'/content/drive/MyDrive/2023-12-08-Posts-LTW-Sentiment'</span> <span class="co"># @param {type: "string"}</span></span>
-<span id="cb35-19"><a href="#cb35-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-20"><a href="#cb35-20" aria-hidden="true" tabindex="-1"></a><span class="co">#@markdown Name for the classification column</span></span>
-<span id="cb35-21"><a href="#cb35-21" aria-hidden="true" tabindex="-1"></a>CLASS_NAME <span class="op">=</span> <span class="st">'Sentiment'</span> <span class="co"># @param {type: "string"}</span></span>
-<span id="cb35-22"><a href="#cb35-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-23"><a href="#cb35-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-24"><a href="#cb35-24" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> safe_literal_eval(value):</span>
-<span id="cb35-25"><a href="#cb35-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">isinstance</span>(value, (<span class="bu">str</span>, <span class="bu">bytes</span>)):</span>
-<span id="cb35-26"><a href="#cb35-26" aria-hidden="true" tabindex="-1"></a>        <span class="cf">try</span>:</span>
-<span id="cb35-27"><a href="#cb35-27" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> ast.literal_eval(value)</span>
-<span id="cb35-28"><a href="#cb35-28" aria-hidden="true" tabindex="-1"></a>        <span class="cf">except</span> <span class="pp">ValueError</span>:</span>
-<span id="cb35-29"><a href="#cb35-29" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> value  <span class="co"># or handle the error in another way if you want</span></span>
-<span id="cb35-30"><a href="#cb35-30" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> value</span>
-<span id="cb35-31"><a href="#cb35-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-32"><a href="#cb35-32" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> parse_response(response):</span>
-<span id="cb35-33"><a href="#cb35-33" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Determine if the response is a list or markdown table</span></span>
-<span id="cb35-34"><a href="#cb35-34" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="st">':'</span> <span class="kw">in</span> response.split(<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>)[<span class="dv">0</span>]:</span>
-<span id="cb35-35"><a href="#cb35-35" aria-hidden="true" tabindex="-1"></a>        <span class="co"># List</span></span>
-<span id="cb35-36"><a href="#cb35-36" aria-hidden="true" tabindex="-1"></a>        lines <span class="op">=</span> [line.strip() <span class="cf">for</span> line <span class="kw">in</span> response.strip().split(<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>)]</span>
-<span id="cb35-37"><a href="#cb35-37" aria-hidden="true" tabindex="-1"></a>        data <span class="op">=</span> [(<span class="bu">int</span>(line.split(<span class="st">': '</span>)[<span class="dv">0</span>]), line.split(<span class="st">': '</span>)[<span class="dv">1</span>]) <span class="cf">for</span> line <span class="kw">in</span> lines]</span>
-<span id="cb35-38"><a href="#cb35-38" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Convert the parsed data into a DataFrame</span></span>
-<span id="cb35-39"><a href="#cb35-39" aria-hidden="true" tabindex="-1"></a>        result_df <span class="op">=</span> pd.DataFrame(data, columns<span class="op">=</span>[<span class="st">'uuid'</span>, <span class="st">'Positioning'</span>])</span>
-<span id="cb35-40"><a href="#cb35-40" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb35-41"><a href="#cb35-41" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Markdown Table</span></span>
-<span id="cb35-42"><a href="#cb35-42" aria-hidden="true" tabindex="-1"></a>        csv_data <span class="op">=</span> <span class="st">'</span><span class="ch">\n</span><span class="st">'</span>.join([<span class="st">','</span>.join(line.split(<span class="st">'|'</span>)[<span class="dv">1</span>:<span class="op">-</span><span class="dv">1</span>]) <span class="cf">for</span> line <span class="kw">in</span> response.split(<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>) <span class="cf">if</span> line.strip() <span class="kw">and</span> <span class="kw">not</span> line.startswith(<span class="st">'|:'</span>)])</span>
-<span id="cb35-43"><a href="#cb35-43" aria-hidden="true" tabindex="-1"></a>        result_df <span class="op">=</span> pd.read_csv(StringIO(csv_data.strip()), sep<span class="op">=</span><span class="st">","</span>, skipinitialspace<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb35-44"><a href="#cb35-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-45"><a href="#cb35-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-46"><a href="#cb35-46" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Striping Whitespaces</span></span>
-<span id="cb35-47"><a href="#cb35-47" aria-hidden="true" tabindex="-1"></a>    result_df.columns <span class="op">=</span> [col.strip() <span class="cf">for</span> col <span class="kw">in</span> result_df.columns]</span>
-<span id="cb35-48"><a href="#cb35-48" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="st">'Classification'</span> <span class="kw">in</span> result_df.columns:</span>
-<span id="cb35-49"><a href="#cb35-49" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Renaming the column to fit the rest of the project.</span></span>
-<span id="cb35-50"><a href="#cb35-50" aria-hidden="true" tabindex="-1"></a>        result_df <span class="op">=</span> result_df.rename(columns<span class="op">=</span>{<span class="st">"Classification"</span>: CLASS_NAME})</span>
-<span id="cb35-51"><a href="#cb35-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-52"><a href="#cb35-52" aria-hidden="true" tabindex="-1"></a>    result_df <span class="op">=</span> result_df.applymap(<span class="kw">lambda</span> x: x.strip() <span class="cf">if</span> <span class="bu">isinstance</span>(x, <span class="bu">str</span>) <span class="cf">else</span> x)</span>
-<span id="cb35-53"><a href="#cb35-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-54"><a href="#cb35-54" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> result_df</span>
-<span id="cb35-55"><a href="#cb35-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-56"><a href="#cb35-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-57"><a href="#cb35-57" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
-<span id="cb35-58"><a href="#cb35-58" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Attempt to read the CSV file into a DataFrame</span></span>
-<span id="cb35-59"><a href="#cb35-59" aria-hidden="true" tabindex="-1"></a>    new_df <span class="op">=</span> pd.read_csv(FILE_NAME)</span>
-<span id="cb35-60"><a href="#cb35-60" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">FileNotFoundError</span>:</span>
-<span id="cb35-61"><a href="#cb35-61" aria-hidden="true" tabindex="-1"></a>    <span class="co"># If the file is not found, create an empty DataFrame with the specified columns</span></span>
-<span id="cb35-62"><a href="#cb35-62" aria-hidden="true" tabindex="-1"></a>    new_df <span class="op">=</span> pd.DataFrame(columns<span class="op">=</span>[IDENTIFIER, CLASS_NAME])</span>
-<span id="cb35-63"><a href="#cb35-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-64"><a href="#cb35-64" aria-hidden="true" tabindex="-1"></a><span class="co"># Reset Estimates</span></span>
-<span id="cb35-65"><a href="#cb35-65" aria-hidden="true" tabindex="-1"></a>CostEstimator.reset()</span>
-<span id="cb35-66"><a href="#cb35-66" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Reset Cost Estimation"</span>)</span>
-<span id="cb35-67"><a href="#cb35-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-68"><a href="#cb35-68" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="dv">0</span> <span class="op">&lt;</span> SAMPLE_SIZE <span class="op">&lt;=</span> <span class="bu">len</span>(tables):</span>
-<span id="cb35-69"><a href="#cb35-69" aria-hidden="true" tabindex="-1"></a>    filtered_tables <span class="op">=</span> tables[:SAMPLE_SIZE]</span>
-<span id="cb35-70"><a href="#cb35-70" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
-<span id="cb35-71"><a href="#cb35-71" aria-hidden="true" tabindex="-1"></a>    filtered_tables <span class="op">=</span> tables</span>
-<span id="cb35-72"><a href="#cb35-72" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-73"><a href="#cb35-73" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> table <span class="kw">in</span> tqdm(filtered_tables):</span>
-<span id="cb35-74"><a href="#cb35-74" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> run_request(system_prompt, table, MODEL, MOCK)</span>
-<span id="cb35-75"><a href="#cb35-75" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> result <span class="kw">and</span> <span class="kw">not</span> MOCK:</span>
-<span id="cb35-76"><a href="#cb35-76" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Parsing the data</span></span>
-<span id="cb35-77"><a href="#cb35-77" aria-hidden="true" tabindex="-1"></a>      result_df <span class="op">=</span> parse_response(result.choices[<span class="dv">0</span>].message.content)</span>
-<span id="cb35-78"><a href="#cb35-78" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-79"><a href="#cb35-79" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Append it to master_df</span></span>
-<span id="cb35-80"><a href="#cb35-80" aria-hidden="true" tabindex="-1"></a>      new_df <span class="op">=</span> pd.concat([new_df, result_df], ignore_index<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb35-81"><a href="#cb35-81" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-82"><a href="#cb35-82" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Save Progress</span></span>
-<span id="cb35-83"><a href="#cb35-83" aria-hidden="true" tabindex="-1"></a>      new_df.to_csv(FILE_NAME, index<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb35-84"><a href="#cb35-84" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-85"><a href="#cb35-85" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>()</span>
-<span id="cb35-86"><a href="#cb35-86" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-87"><a href="#cb35-87" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">not</span> MOCK:</span>
-<span id="cb35-88"><a href="#cb35-88" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="ss">f"Saved </span><span class="sc">{</span>FILE_NAME<span class="sc">}</span><span class="ss">."</span>)</span>
-<span id="cb35-89"><a href="#cb35-89" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-90"><a href="#cb35-90" aria-hidden="true" tabindex="-1"></a>  new_df <span class="op">=</span> new_df.dropna(subset<span class="op">=</span>[IDENTIFIER])</span>
-<span id="cb35-91"><a href="#cb35-91" aria-hidden="true" tabindex="-1"></a>  new_df[CLASS_NAME] <span class="op">=</span> new_df[CLASS_NAME].<span class="bu">apply</span>(safe_literal_eval)</span>
-<span id="cb35-92"><a href="#cb35-92" aria-hidden="true" tabindex="-1"></a>  uuid_to_classification <span class="op">=</span> new_df.set_index(IDENTIFIER)[CLASS_NAME].to_dict()</span>
-<span id="cb35-93"><a href="#cb35-93" aria-hidden="true" tabindex="-1"></a>  mask <span class="op">=</span> df[IDENTIFIER].isin(uuid_to_classification.keys())</span>
-<span id="cb35-94"><a href="#cb35-94" aria-hidden="true" tabindex="-1"></a>  df.loc[mask, CLASS_NAME] <span class="op">=</span> df.loc[mask, IDENTIFIER].replace(uuid_to_classification)</span>
-<span id="cb35-95"><a href="#cb35-95" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-96"><a href="#cb35-96" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Reset Cost Estimation</code></pre>
-</div>
-<div class="cell-output cell-output-display">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"8655d5dae5e54e7992dee68d180bee18","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
-</script>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Cost: $0.1408 | Total: $0.1408
-Saved /content/drive/MyDrive/2023-12-08-Posts-LTW-Sentiment.
-</code></pre>
-</div>
-</div>
-<div id="cell-12" class="cell" data-outputid="68c53efc-2446-4b95-90d2-9bf36a4ca700" data-execution_count="38">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>new_df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="38">
-
-  <div id="df-29d5748e-a14d-4bd2-9b94-769ca18a48bf" class="colab-df-container">
-    <div>
-
-
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">shortcode</th>
-<th data-quarto-table-cell-role="th">Sentiment</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
-<td>CyMAe_tufcR</td>
-<td>positive</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
-<td>CyL975vouHU</td>
-<td>neutral</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
-<td>CyL8GWWJmci</td>
-<td>positive</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
-<td>CyL7wyJtTV5</td>
-<td>negative</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
-<td>CyLxwHuvR4Y</td>
-<td>positive</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-    <div class="colab-df-buttons">
-
-  <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-29d5748e-a14d-4bd2-9b94-769ca18a48bf')" title="Convert this dataframe to an interactive table." style="display:none;">
-
-  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 -960 960 960">
-    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
-  </svg>
-    </button>
-
-  <style>
-    .colab-df-container {
-      display:flex;
-      gap: 12px;
-    }
-
-    .colab-df-convert {
-      background-color: #E8F0FE;
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      display: none;
-      fill: #1967D2;
-      height: 32px;
-      padding: 0 0 0 0;
-      width: 32px;
-    }
-
-    .colab-df-convert:hover {
-      background-color: #E2EBFA;
-      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
-      fill: #174EA6;
-    }
-
-    .colab-df-buttons div {
-      margin-bottom: 4px;
-    }
-
-    [theme=dark] .colab-df-convert {
-      background-color: #3B4455;
-      fill: #D2E3FC;
-    }
-
-    [theme=dark] .colab-df-convert:hover {
-      background-color: #434B5C;
-      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
-      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
-      fill: #FFFFFF;
-    }
-  </style>
-
-    <script>
-      const buttonEl =
-        document.querySelector('#df-29d5748e-a14d-4bd2-9b94-769ca18a48bf button.colab-df-convert');
-      buttonEl.style.display =
-        google.colab.kernel.accessAllowed ? 'block' : 'none';
-
-      async function convertToInteractive(key) {
-        const element = document.querySelector('#df-29d5748e-a14d-4bd2-9b94-769ca18a48bf');
-        const dataTable =
-          await google.colab.kernel.invokeFunction('convertToInteractive',
-                                                    [key], {});
-        if (!dataTable) return;
-
-        const docLinkHtml = 'Like what you see? Visit the ' +
-          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
-          + ' to learn more about interactive tables.';
-        element.innerHTML = '';
-        dataTable['output_type'] = 'display_data';
-        await google.colab.output.renderOutput(dataTable, element);
-        const docLink = document.createElement('div');
-        docLink.innerHTML = docLinkHtml;
-        element.appendChild(docLink);
-      }
-    </script>
-  </div>
-
-
-<div id="df-9c8dd237-e044-408d-9a4e-6ee5bb641a26">
-  <button class="colab-df-quickchart" onclick="quickchart('df-9c8dd237-e044-408d-9a4e-6ee5bb641a26')" title="Suggest charts" style="display:none;">
-
-<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 0 24 24" width="24px">
-    <g>
-        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"></path>
-    </g>
-</svg>
-  </button>
-
-<style>
-  .colab-df-quickchart {
-      --bg-color: #E8F0FE;
-      --fill-color: #1967D2;
-      --hover-bg-color: #E2EBFA;
-      --hover-fill-color: #174EA6;
-      --disabled-fill-color: #AAA;
-      --disabled-bg-color: #DDD;
-  }
-
-  [theme=dark] .colab-df-quickchart {
-      --bg-color: #3B4455;
-      --fill-color: #D2E3FC;
-      --hover-bg-color: #434B5C;
-      --hover-fill-color: #FFFFFF;
-      --disabled-bg-color: #3B4455;
-      --disabled-fill-color: #666;
-  }
-
-  .colab-df-quickchart {
-    background-color: var(--bg-color);
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    display: none;
-    fill: var(--fill-color);
-    height: 32px;
-    padding: 0;
-    width: 32px;
-  }
-
-  .colab-df-quickchart:hover {
-    background-color: var(--hover-bg-color);
-    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
-    fill: var(--button-hover-fill-color);
-  }
-
-  .colab-df-quickchart-complete:disabled,
-  .colab-df-quickchart-complete:disabled:hover {
-    background-color: var(--disabled-bg-color);
-    fill: var(--disabled-fill-color);
-    box-shadow: none;
-  }
-
-  .colab-df-spinner {
-    border: 2px solid var(--fill-color);
-    border-color: transparent;
-    border-bottom-color: var(--fill-color);
-    animation:
-      spin 1s steps(1) infinite;
-  }
-
-  @keyframes spin {
-    0% {
-      border-color: transparent;
-      border-bottom-color: var(--fill-color);
-      border-left-color: var(--fill-color);
-    }
-    20% {
-      border-color: transparent;
-      border-left-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-    }
-    30% {
-      border-color: transparent;
-      border-left-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-      border-right-color: var(--fill-color);
-    }
-    40% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-    }
-    60% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-    }
-    80% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-      border-bottom-color: var(--fill-color);
-    }
-    90% {
-      border-color: transparent;
-      border-bottom-color: var(--fill-color);
-    }
-  }
-</style>
-
-  <script>
-    async function quickchart(key) {
-      const quickchartButtonEl =
-        document.querySelector('#' + key + ' button');
-      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
-      quickchartButtonEl.classList.add('colab-df-spinner');
-      try {
-        const charts = await google.colab.kernel.invokeFunction(
-            'suggestCharts', [key], {});
-      } catch (error) {
-        console.error('Error during call to suggestCharts:', error);
-      }
-      quickchartButtonEl.classList.remove('colab-df-spinner');
-      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
-    }
-    (() => {
-      let quickchartButtonEl =
-        document.querySelector('#df-9c8dd237-e044-408d-9a4e-6ee5bb641a26 button');
-      quickchartButtonEl.style.display =
-        google.colab.kernel.accessAllowed ? 'block' : 'none';
-    })();
-  </script>
-</div>
-    </div>
-  </div>
-</div>
-</div>
-<p>The code above expects the GPT-API to return results in a markdown formatted table (see above). We keep appending the API responses to a <code>new_df</code> where we temporarily store the classifications. For each loop (i.e.&nbsp;each time received a classification), we store the results on Google Drive as a backup, since each result has a price tag. In case of error we can resume the operation later without the need to start all over again. The code above does not provide the necessary logic for that, but you should be able to quickly add it.</p>
-<p>Once the loop finished, we use the <code>shortcode</code> column from the API response and join the classification data with <code>df</code>:</p>
-<p><img src="../images/multidocument-join.png" class="img-fluid"></p>
-<p>And finally our <code>df</code> looks as follows. As outlined at the start of the <a href="../processing/exploration.html">text exploration</a> chapter, we want to fill one dataframe piece by piece with more and more classifications.</p>
-<div id="cell-14" class="cell" data-outputid="f7b4eb1a-9411-4914-dcba-27f9241962ff" data-execution_count="44">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>df[mask][[<span class="st">'shortcode'</span>, <span class="st">'Text'</span>, <span class="st">'Text Type'</span>, <span class="st">'Sentiment'</span>]].head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="44">
-
-  <div id="df-a8b41cf9-68a1-4193-b390-6d32b46ec387" class="colab-df-container">
-    <div>
-
-
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">shortcode</th>
-<th data-quarto-table-cell-role="th">Text</th>
-<th data-quarto-table-cell-role="th">Text Type</th>
-<th data-quarto-table-cell-role="th">Sentiment</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
-<td>CyMAe_tufcR</td>
-<td>#Landtagswahl23 🤩🧡🙏 #FREIEWÄHLER #Aiwanger #Da...</td>
-<td>Caption</td>
-<td>positive</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
-<td>CyL975vouHU</td>
-<td>Die Landtagswahl war für uns als Liberale hart...</td>
-<td>Caption</td>
-<td>neutral</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
-<td>CyL8GWWJmci</td>
-<td>Nach einem starken Wahlkampf ein verdientes Er...</td>
-<td>Caption</td>
-<td>positive</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
-<td>CyL7wyJtTV5</td>
-<td>So viele Menschen am Odeonsplatz heute mit ein...</td>
-<td>Caption</td>
-<td>negative</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
-<td>CyLxwHuvR4Y</td>
-<td>Herzlichen Glückwunsch zu diesem grandiosen Wa...</td>
-<td>Caption</td>
-<td>positive</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-    <div class="colab-df-buttons">
-
-  <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-a8b41cf9-68a1-4193-b390-6d32b46ec387')" title="Convert this dataframe to an interactive table." style="display:none;">
-
-  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 -960 960 960">
-    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
-  </svg>
-    </button>
-
-  <style>
-    .colab-df-container {
-      display:flex;
-      gap: 12px;
-    }
-
-    .colab-df-convert {
-      background-color: #E8F0FE;
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      display: none;
-      fill: #1967D2;
-      height: 32px;
-      padding: 0 0 0 0;
-      width: 32px;
-    }
-
-    .colab-df-convert:hover {
-      background-color: #E2EBFA;
-      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
-      fill: #174EA6;
-    }
-
-    .colab-df-buttons div {
-      margin-bottom: 4px;
-    }
-
-    [theme=dark] .colab-df-convert {
-      background-color: #3B4455;
-      fill: #D2E3FC;
-    }
-
-    [theme=dark] .colab-df-convert:hover {
-      background-color: #434B5C;
-      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
-      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
-      fill: #FFFFFF;
-    }
-  </style>
-
-    <script>
-      const buttonEl =
-        document.querySelector('#df-a8b41cf9-68a1-4193-b390-6d32b46ec387 button.colab-df-convert');
-      buttonEl.style.display =
-        google.colab.kernel.accessAllowed ? 'block' : 'none';
-
-      async function convertToInteractive(key) {
-        const element = document.querySelector('#df-a8b41cf9-68a1-4193-b390-6d32b46ec387');
-        const dataTable =
-          await google.colab.kernel.invokeFunction('convertToInteractive',
-                                                    [key], {});
-        if (!dataTable) return;
-
-        const docLinkHtml = 'Like what you see? Visit the ' +
-          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
-          + ' to learn more about interactive tables.';
-        element.innerHTML = '';
-        dataTable['output_type'] = 'display_data';
-        await google.colab.output.renderOutput(dataTable, element);
-        const docLink = document.createElement('div');
-        docLink.innerHTML = docLinkHtml;
-        element.appendChild(docLink);
-      }
-    </script>
-  </div>
-
-
-<div id="df-c4dd0ef6-f823-4900-8169-5f782fecce88">
-  <button class="colab-df-quickchart" onclick="quickchart('df-c4dd0ef6-f823-4900-8169-5f782fecce88')" title="Suggest charts" style="display:none;">
-
-<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 0 24 24" width="24px">
-    <g>
-        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"></path>
-    </g>
-</svg>
-  </button>
-
-<style>
-  .colab-df-quickchart {
-      --bg-color: #E8F0FE;
-      --fill-color: #1967D2;
-      --hover-bg-color: #E2EBFA;
-      --hover-fill-color: #174EA6;
-      --disabled-fill-color: #AAA;
-      --disabled-bg-color: #DDD;
-  }
-
-  [theme=dark] .colab-df-quickchart {
-      --bg-color: #3B4455;
-      --fill-color: #D2E3FC;
-      --hover-bg-color: #434B5C;
-      --hover-fill-color: #FFFFFF;
-      --disabled-bg-color: #3B4455;
-      --disabled-fill-color: #666;
-  }
-
-  .colab-df-quickchart {
-    background-color: var(--bg-color);
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    display: none;
-    fill: var(--fill-color);
-    height: 32px;
-    padding: 0;
-    width: 32px;
-  }
-
-  .colab-df-quickchart:hover {
-    background-color: var(--hover-bg-color);
-    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
-    fill: var(--button-hover-fill-color);
-  }
-
-  .colab-df-quickchart-complete:disabled,
-  .colab-df-quickchart-complete:disabled:hover {
-    background-color: var(--disabled-bg-color);
-    fill: var(--disabled-fill-color);
-    box-shadow: none;
-  }
-
-  .colab-df-spinner {
-    border: 2px solid var(--fill-color);
-    border-color: transparent;
-    border-bottom-color: var(--fill-color);
-    animation:
-      spin 1s steps(1) infinite;
-  }
-
-  @keyframes spin {
-    0% {
-      border-color: transparent;
-      border-bottom-color: var(--fill-color);
-      border-left-color: var(--fill-color);
-    }
-    20% {
-      border-color: transparent;
-      border-left-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-    }
-    30% {
-      border-color: transparent;
-      border-left-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-      border-right-color: var(--fill-color);
-    }
-    40% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-      border-top-color: var(--fill-color);
-    }
-    60% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-    }
-    80% {
-      border-color: transparent;
-      border-right-color: var(--fill-color);
-      border-bottom-color: var(--fill-color);
-    }
-    90% {
-      border-color: transparent;
-      border-bottom-color: var(--fill-color);
-    }
-  }
-</style>
-
-  <script>
-    async function quickchart(key) {
-      const quickchartButtonEl =
-        document.querySelector('#' + key + ' button');
-      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
-      quickchartButtonEl.classList.add('colab-df-spinner');
-      try {
-        const charts = await google.colab.kernel.invokeFunction(
-            'suggestCharts', [key], {});
-      } catch (error) {
-        console.error('Error during call to suggestCharts:', error);
-      }
-      quickchartButtonEl.classList.remove('colab-df-spinner');
-      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
-    }
-    (() => {
-      let quickchartButtonEl =
-        document.querySelector('#df-c4dd0ef6-f823-4900-8169-5f782fecce88 button');
-      quickchartButtonEl.style.display =
-        google.colab.kernel.accessAllowed ? 'block' : 'none';
-    })();
-  </script>
-</div>
-    </div>
-  </div>
-</div>
-</div>
-</section>
-<a class="quarto-notebook-link" id="nblink-4" href="../notebooks/2023_12_11_GPT_Text_Classification3-preview.html#cell-0">Source: GPT Text Classification</a></div>
-</section>
+<section id="documentation" class="level2">
+<h2 class="anchored" data-anchor-id="documentation">Documentation</h2>
+<p>It is important to document all aspects of the prompt engineering process to ensure reproducibility and validity. See these notes as your lab notes.&nbsp;This includes documenting all prompt versions, the model version, the number of samples used, how test annotations were created, and other critical details that could impact the outcome. Proper documentation also helps in contextualizing the findings and understanding the boundaries within which the results are applicable.</p>
+<p>To document effectively, consider taking structured notes, which should include key decisions, changes made during the process, challenges encountered, and how they were addressed. Screenshot are an effective method for documentation. Using consistent formats such as tables or templates can enhance clarity and make it easier to review the work later.</p>
 </section>
 <section id="conclusion" class="level2">
 <h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
-<p>We have scratched the surface of (textual) content analysis as a foundation for our text classification tasks. Starting our journey with the idea of <a href="../processing/index.html">text as data</a> and following the <a href="../processing/exploration.html">exploration of textual content</a>, we just added a new instrument to our toolbox for computational social media analysis: text classification. We focused solely on prompting and GPT for the classification tasks. There exist several other approaches (e.g.&nbsp;using <a href="https://www.tensorflow.org/text/tutorials/classify_text_with_bert">BERT</a> and <a href="https://huggingface.co/docs/transformers/tasks/sequence_classification">other trasnformer models</a>), and several providers offer cloud services and APIs for classification tasks (e.g.&nbsp;in the <a href="https://cloud.google.com/natural-language/docs/classify-text-tutorial">Google Cloud</a>). For sentiment analysis there are dedicated models (see <span class="citation" data-cites="Schmidt2022-lb">Schmidt et al. (<a href="#ref-Schmidt2022-lb" role="doc-biblioref">2022</a>)</span> for the application of such a model), and even more services and APIs (e.g.&nbsp;on <a href="https://learn.microsoft.com/en-us/azure/ai-services/language-service/sentiment-opinion-mining/quickstart?tabs=macos&amp;pivots=programming-language-csharp">Microsoft Azure</a>).</p>
+<p>We have scratched the surface of (textual) content analysis as a foundation for our text classification tasks. Starting our journey with the idea of <a href="../processing/index.html">text as data</a> and following the <a href="../processing/exploration.html">exploration of textual content</a>, we just added a new instrument to our toolbox for computational social media analysis: text classification. We focused solely on prompting and GPT for the classification tasks. There exist several other approaches (e.g.&nbsp;using <a href="https://www.tensorflow.org/text/tutorials/classify_text_with_bert">BERT</a> and <a href="https://huggingface.co/docs/transformers/tasks/sequence_classification">other trasnformer models</a>), and several providers offer cloud services and APIs for classification tasks (e.g.&nbsp;in the <a href="https://cloud.google.com/natural-language/docs/classify-text-tutorial">Google Cloud</a>). For sentiment analysis there are dedicated models (see <span class="citation" data-cites="Schmidt2022-lb">Schmidt et al. (<a href="#ref-Schmidt2022-lb" role="doc-biblioref">2022</a>)</span> for the application of such a model), and even more services and APIs (e.g.&nbsp;on <a href="https://learn.microsoft.com/en-us/azure/ai-services/language-service/sentiment-opinion-mining/quickstart?tabs=macos&amp;pivots=programming-language-csharp">Microsoft Azure</a>). I compared the performance of GPT-4o to a fine tuned BERT Model for the binary classification of Calls to Action <span class="citation" data-cites="achmann-denkler-etal-2024-detecting">(<a href="#ref-achmann-denkler-etal-2024-detecting" role="doc-biblioref">Achmann-Denkler et al. 2024</a>)</span>. While the dedicated BERT model outperformed GPT-4o, the performance difference was relatively small.</p>
 <p>At the same time, the first papers show interesting results when using GPT for text classification <span class="citation" data-cites="Brown2020-il">(e.g. <a href="#ref-Brown2020-il" role="doc-biblioref">Brown et al. 2020</a>)</span>, with prompt design being accessible for researcher with zero to few experience with machine learning. There is currently a lot of opportunity to experiment with prompts, and to test and evaluate Large Language Models and prompts against fine-tuned and existing models. We are currently missing one last step to setup a complete experiment: The evaluation, which is the next topic of our seminar. While there exists literature about prompting and prompt engineering (see top and further reading), some of the literature has a more technical motivation and is short of practical advice. Through this session I have presented the practical knowledge that I gathered through my last research project (currently under review), which still is experimental. I presented the Zero-Shot and Few-Shot approach, as well as a Zero-Shot Multiclass approach and a Multidocument approach to save money / requests while working with expensive models.</p>
 </section>
 <section id="further-reading" class="level2">
@@ -2914,6 +2163,9 @@ Saved /content/drive/MyDrive/2023-12-08-Posts-LTW-Sentiment.
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-achmann-denkler-etal-2024-detecting" class="csl-entry" role="listitem">
+Achmann-Denkler, Michael, Jakob Fehle, Mario Haim, and Christian Wolff. 2024. <span>“Detecting Calls to Action in Multimodal Content: Analysis of the 2021 <span>G</span>erman Federal Election Campaign on <span>I</span>nstagram.”</span> In <em>Proceedings of the 4th Workshop on Computational Linguistics for the Political and Social Sciences: Long and Short Papers</em>, edited by Christopher Klamm, Gabriella Lapesa, Simone Paolo Ponzetto, Ines Rehbein, and Indira Sen, 1–13. Vienna, Austria: Association for Computational Linguistics. <a href="https://aclanthology.org/2024.cpss-1.1">https://aclanthology.org/2024.cpss-1.1</a>.
+</div>
 <div id="ref-Borra_undated-sl" class="csl-entry" role="listitem">
 Borra, Creators Erik. n.d. <span>“<span class="nocase">ErikBorra/PromptCompass: Updated models</span>.”</span> <a href="https://doi.org/10.5281/zenodo.8359916">https://doi.org/10.5281/zenodo.8359916</a>.
 </div>
@@ -2944,6 +2196,9 @@ Nguyen, Dong, Maria Liakata, Simon DeDeo, Jacob Eisenstein, David Mimno, Rebekah
 <div id="ref-Schmidt2022-lb" class="csl-entry" role="listitem">
 Schmidt, Thomas, Jakob Fehle, Maximilian Weissenbacher, Jonathan Richter, Philipp Gottschalk, and Christian Wolff. 2022. <span>“<span class="nocase">Sentiment Analysis on Twitter for the Major German Parties during the 2021 German Federal Election</span>.”</span> In <em><span class="nocase">Proceedings of the 18th Conference on Natural Language Processing (KONVENS 2022)</span></em>, 74–87. Potsdam, Germany: KONVENS 2022 Organizers. <a href="https://aclanthology.org/2022.konvens-1.9">https://aclanthology.org/2022.konvens-1.9</a>.
 </div>
+<div id="ref-Tornberg2024-ub" class="csl-entry" role="listitem">
+Törnberg, Petter. 2024. <span>“<span class="nocase">Best Practices for Text Annotation with Large Language Models</span>.”</span> <em>arXiv [Cs.CL]</em>, February. <a href="http://arxiv.org/abs/2402.05129">http://arxiv.org/abs/2402.05129</a>.
+</div>
 <div id="ref-White2023-lx" class="csl-entry" role="listitem">
 White, Jules, Quchen Fu, Sam Hays, Michael Sandborn, Carlos Olea, Henry Gilbert, Ashraf Elnashar, Jesse Spencer-Smith, and Douglas C Schmidt. 2023. <span>“<span class="nocase">A Prompt Pattern Catalog to Enhance Prompt Engineering with ChatGPT</span>,”</span> February. <a href="http://arxiv.org/abs/2302.11382">http://arxiv.org/abs/2302.11382</a>.
 </div>
@@ -2956,17 +2211,20 @@ Zamfirescu-Pereira, J D, Richmond Y Wong, Bjoern Hartmann, and Qian Yang. 2023. 
 <div id="ref-Zhao2021-wr" class="csl-entry" role="listitem">
 Zhao, Zihao, Eric Wallace, Shi Feng, Dan Klein, and Sameer Singh. 2021. <span>“<span class="nocase">Calibrate Before Use: Improving Few-shot Performance of Language Models</span>.”</span> In <em><span class="nocase">Proceedings of the 38th International Conference on Machine Learning</span></em>, edited by Marina Meila and Tong Zhang, 139:12697–706. Proceedings of Machine Learning Research. PMLR. <a href="https://proceedings.mlr.press/v139/zhao21c.html">https://proceedings.mlr.press/v139/zhao21c.html</a>.
 </div>
-</div></section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{achmann-denkler2023,
+<div id="ref-Ziems2024-yw" class="csl-entry" role="listitem">
+Ziems, Caleb, William Held, Omar Shaikh, Jiaao Chen, Zhehao Zhang, and Diyi Yang. 2024. <span>“<span class="nocase">Can Large language models transform computational social science?</span>”</span> <em>Computational Linguistics (Association for Computational Linguistics)</em> 50 (1): 1–55. <a href="https://doi.org/10.1162/coli\_a\_00502">https://doi.org/10.1162/coli\_a\_00502</a>.
+</div>
+</div></section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{achmann-denkler2024,
   author = {Achmann-Denkler, Michael},
   title = {Text {Classification}},
-  date = {2023-12-04},
+  date = {2024-11-25},
   url = {https://social-media-lab.net/processing/classification.html},
   doi = {10.5281/zenodo.10039756},
   langid = {en}
 }
-</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-achmann-denkler2023" class="csl-entry quarto-appendix-citeas" role="listitem">
-Achmann-Denkler, Michael. 2023. <span>“Text Classification.”</span>
-December 4, 2023. <a href="https://doi.org/10.5281/zenodo.10039756">https://doi.org/10.5281/zenodo.10039756</a>.
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-achmann-denkler2024" class="csl-entry quarto-appendix-citeas" role="listitem">
+Achmann-Denkler, Michael. 2024. <span>“Text Classification.”</span>
+November 25, 2024. <a href="https://doi.org/10.5281/zenodo.10039756">https://doi.org/10.5281/zenodo.10039756</a>.
 </div></div></section></div></main> <!-- /main -->
 <script type="application/vnd.jupyter.widget-state+json">
 {"071250f0772e4c2487b3ac02b23a1073":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"ProgressStyleModel","state":{"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"ProgressStyleModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"StyleView","bar_color":null,"description_width":""}},"0df8f1c56a07425894e16b0d0f4c2827":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"DescriptionStyleModel","state":{"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"DescriptionStyleModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"StyleView","description_width":""}},"19c2e38df66547d4bce9c5d75bf53ff3":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"FloatProgressModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"FloatProgressModel","_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"1.5.0","_view_name":"ProgressView","bar_style":"success","description":"","description_tooltip":null,"layout":"IPY_MODEL_cad7e6d0ce8f489ab4bd00f4fa0c677b","max":1,"min":0,"orientation":"horizontal","style":"IPY_MODEL_7919af9db2d344838b4f5e0068e94806","value":1}},"1f56d21deb674c77b33ca0670dda3622":{"model_module":"@jupyter-widgets/base","model_module_version":"1.2.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"1.2.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"overflow_x":null,"overflow_y":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"2191d7cb4f7a475796f07d7e6015918d":{"model_module":"@jupyter-widgets/base","model_module_version":"1.2.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"1.2.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"overflow_x":null,"overflow_y":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"21cc46e984c84979aebdfb63ac11eeed":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"HBoxModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"HBoxModel","_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"1.5.0","_view_name":"HBoxView","box_style":"","children":["IPY_MODEL_43afd9b8b0944effa0cd943e16821ce2","IPY_MODEL_d486de4f35f84b8b99a693948fdc95ae","IPY_MODEL_dbe1105225a74fd1a2964cb092d1f9da"],"layout":"IPY_MODEL_404a346948204ab1bba4ca8c9af276da"}},"261e8c26bd0a4a86bb052be1f8d04546":{"model_module":"@jupyter-widgets/base","model_module_version":"1.2.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"1.2.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"overflow_x":null,"overflow_y":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"27181dbb3b5e44acb6092df1e9d34c73":{"model_module":"@jupyter-widgets/base","model_module_version":"1.2.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"1.2.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"overflow_x":null,"overflow_y":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"2f8272d7e66646b795b2eec004af7722":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"ProgressStyleModel","state":{"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"ProgressStyleModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"StyleView","bar_color":null,"description_width":""}},"32b747cd69e24132ba060153af8107f8":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"DescriptionStyleModel","state":{"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"DescriptionStyleModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"StyleView","description_width":""}},"32c7cf79637e47b1a98f42b6f6e656bb":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"FloatProgressModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"FloatProgressModel","_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"1.5.0","_view_name":"ProgressView","bar_style":"success","description":"","description_tooltip":null,"layout":"IPY_MODEL_27181dbb3b5e44acb6092df1e9d34c73","max":5,"min":0,"orientation":"horizontal","style":"IPY_MODEL_071250f0772e4c2487b3ac02b23a1073","value":5}},"34ffd85ec4274b2fab97d50c53fac892":{"model_module":"@jupyter-widgets/base","model_module_version":"1.2.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"1.2.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"overflow_x":null,"overflow_y":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"3531b0faeb774bb38a1b31d3d04c52d6":{"model_module":"@jupyter-widgets/base","model_module_version":"1.2.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"1.2.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"overflow_x":null,"overflow_y":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"404a346948204ab1bba4ca8c9af276da":{"model_module":"@jupyter-widgets/base","model_module_version":"1.2.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"1.2.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"overflow_x":null,"overflow_y":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"413d1225d8774c5daff3bc22bfb6a88c":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"DescriptionStyleModel","state":{"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"DescriptionStyleModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"StyleView","description_width":""}},"4151d5cc02574d2f95b900362152e49b":{"model_module":"@jupyter-widgets/base","model_module_version":"1.2.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"1.2.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"overflow_x":null,"overflow_y":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"43afd9b8b0944effa0cd943e16821ce2":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"HTMLModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"HTMLModel","_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"1.5.0","_view_name":"HTMLView","description":"","description_tooltip":null,"layout":"IPY_MODEL_60ee32ec79f44e558b7565789e2764f7","placeholder":"​","style":"IPY_MODEL_7eeb985b40074f37b9a90a21333c82c7","value":"100%"}},"4ab0acd7dbde47cc928137e6a5eb96a8":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"HTMLModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"HTMLModel","_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"1.5.0","_view_name":"HTMLView","description":"","description_tooltip":null,"layout":"IPY_MODEL_f572cf46455c46669ba84cdecf40ba6c","placeholder":"​","style":"IPY_MODEL_7034e056993d4393bc3137c4058cd862","value":"100%"}},"4f1c0658e57d4705b673124cc02e4bf1":{"model_module":"@jupyter-widgets/base","model_module_version":"1.2.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"1.2.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"overflow_x":null,"overflow_y":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"60ee32ec79f44e558b7565789e2764f7":{"model_module":"@jupyter-widgets/base","model_module_version":"1.2.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"1.2.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"overflow_x":null,"overflow_y":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"6618908b4d4941c0aa39be09dcfefccb":{"model_module":"@jupyter-widgets/base","model_module_version":"1.2.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"1.2.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"overflow_x":null,"overflow_y":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"7034e056993d4393bc3137c4058cd862":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"DescriptionStyleModel","state":{"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"DescriptionStyleModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"StyleView","description_width":""}},"7919af9db2d344838b4f5e0068e94806":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"ProgressStyleModel","state":{"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"ProgressStyleModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"StyleView","bar_color":null,"description_width":""}},"7ddc80790efb4b00b8f3b5fd504c4cb6":{"model_module":"@jupyter-widgets/base","model_module_version":"1.2.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"1.2.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"overflow_x":null,"overflow_y":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"7eeb985b40074f37b9a90a21333c82c7":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"DescriptionStyleModel","state":{"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"DescriptionStyleModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"StyleView","description_width":""}},"7f93393af3174ae3b78d052fffe6afb7":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"HBoxModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"HBoxModel","_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"1.5.0","_view_name":"HBoxView","box_style":"","children":["IPY_MODEL_ce9d4d83747f45a1af17fe9dcdc5d1f8","IPY_MODEL_90ed9dc8b77f4af5b5d3538e604f9aac","IPY_MODEL_7fb5e67119d9488dbae151a88eeee3f1"],"layout":"IPY_MODEL_1f56d21deb674c77b33ca0670dda3622"}},"7f9f751825af431ba4437c2cab274801":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"HTMLModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"HTMLModel","_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"1.5.0","_view_name":"HTMLView","description":"","description_tooltip":null,"layout":"IPY_MODEL_6618908b4d4941c0aa39be09dcfefccb","placeholder":"​","style":"IPY_MODEL_413d1225d8774c5daff3bc22bfb6a88c","value":"100%"}},"7fb5e67119d9488dbae151a88eeee3f1":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"HTMLModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"HTMLModel","_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"1.5.0","_view_name":"HTMLView","description":"","description_tooltip":null,"layout":"IPY_MODEL_e090822af65648419e23600dc215fd3a","placeholder":"​","style":"IPY_MODEL_95ded0c9088f4f3d8095df4d9fb7d8f5","value":" 25/25 [00:14&lt;00:00,  1.97it/s]"}},"8068b5c68871439783733a238ed7fb48":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"HTMLModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"HTMLModel","_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"1.5.0","_view_name":"HTMLView","description":"","description_tooltip":null,"layout":"IPY_MODEL_34ffd85ec4274b2fab97d50c53fac892","placeholder":"​","style":"IPY_MODEL_c678034b99c04ad6a007660ba36e28bb","value":" 1/1 [00:21&lt;00:00, 21.88s/it]"}},"8655d5dae5e54e7992dee68d180bee18":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"HBoxModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"HBoxModel","_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"1.5.0","_view_name":"HBoxView","box_style":"","children":["IPY_MODEL_4ab0acd7dbde47cc928137e6a5eb96a8","IPY_MODEL_19c2e38df66547d4bce9c5d75bf53ff3","IPY_MODEL_8068b5c68871439783733a238ed7fb48"],"layout":"IPY_MODEL_4f1c0658e57d4705b673124cc02e4bf1"}},"8bc7d3e548d44fb8a317da4effa0b9f1":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"HTMLModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"HTMLModel","_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"1.5.0","_view_name":"HTMLView","description":"","description_tooltip":null,"layout":"IPY_MODEL_261e8c26bd0a4a86bb052be1f8d04546","placeholder":"​","style":"IPY_MODEL_32b747cd69e24132ba060153af8107f8","value":" 2620/2623 [00:29&lt;00:00, 215.18it/s]"}},"90c7269755fb4b569e97c40e466874fc":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"HBoxModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"HBoxModel","_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"1.5.0","_view_name":"HBoxView","box_style":"","children":["IPY_MODEL_7f9f751825af431ba4437c2cab274801","IPY_MODEL_32c7cf79637e47b1a98f42b6f6e656bb","IPY_MODEL_e99bb0b1f574458ca61d94a32edf36f7"],"layout":"IPY_MODEL_2191d7cb4f7a475796f07d7e6015918d"}},"90ed9dc8b77f4af5b5d3538e604f9aac":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"FloatProgressModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"FloatProgressModel","_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"1.5.0","_view_name":"ProgressView","bar_style":"success","description":"","description_tooltip":null,"layout":"IPY_MODEL_4151d5cc02574d2f95b900362152e49b","max":25,"min":0,"orientation":"horizontal","style":"IPY_MODEL_a9f8028e2abc48d1bb9a81271c2ee421","value":25}},"95ded0c9088f4f3d8095df4d9fb7d8f5":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"DescriptionStyleModel","state":{"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"DescriptionStyleModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"StyleView","description_width":""}},"a189614c88b34aa58bbfc33070da8b48":{"model_module":"@jupyter-widgets/base","model_module_version":"1.2.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"1.2.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"overflow_x":null,"overflow_y":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"a5cbb9adc3bd4a829e6b64b6e64daa0b":{"model_module":"@jupyter-widgets/base","model_module_version":"1.2.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"1.2.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"overflow_x":null,"overflow_y":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"a9f8028e2abc48d1bb9a81271c2ee421":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"ProgressStyleModel","state":{"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"ProgressStyleModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"StyleView","bar_color":null,"description_width":""}},"b385a302e42b4d7395dc5d3f8637dcee":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"HTMLModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"HTMLModel","_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"1.5.0","_view_name":"HTMLView","description":"","description_tooltip":null,"layout":"IPY_MODEL_3531b0faeb774bb38a1b31d3d04c52d6","placeholder":"​","style":"IPY_MODEL_e47d3308229e4dc294b58560370b0241","value":"100%"}},"b71227eaf22345bc947a5275509fbff5":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"DescriptionStyleModel","state":{"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"DescriptionStyleModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"StyleView","description_width":""}},"b7412473252a4981bc76b02392e69e70":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"HBoxModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"HBoxModel","_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"1.5.0","_view_name":"HBoxView","box_style":"","children":["IPY_MODEL_b385a302e42b4d7395dc5d3f8637dcee","IPY_MODEL_f01f50cb3d3047d89d5feb93851cf245","IPY_MODEL_8bc7d3e548d44fb8a317da4effa0b9f1"],"layout":"IPY_MODEL_baab0e4faac1487dbcfdb59b4422545b"}},"baab0e4faac1487dbcfdb59b4422545b":{"model_module":"@jupyter-widgets/base","model_module_version":"1.2.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"1.2.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"overflow_x":null,"overflow_y":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"c678034b99c04ad6a007660ba36e28bb":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"DescriptionStyleModel","state":{"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"DescriptionStyleModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"StyleView","description_width":""}},"c9e476e6ed3b47eca48b97bdff263d9e":{"model_module":"@jupyter-widgets/base","model_module_version":"1.2.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"1.2.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"overflow_x":null,"overflow_y":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"cad7e6d0ce8f489ab4bd00f4fa0c677b":{"model_module":"@jupyter-widgets/base","model_module_version":"1.2.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"1.2.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"overflow_x":null,"overflow_y":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"ce9d4d83747f45a1af17fe9dcdc5d1f8":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"HTMLModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"HTMLModel","_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"1.5.0","_view_name":"HTMLView","description":"","description_tooltip":null,"layout":"IPY_MODEL_a189614c88b34aa58bbfc33070da8b48","placeholder":"​","style":"IPY_MODEL_b71227eaf22345bc947a5275509fbff5","value":"100%"}},"cfffb0d4736043a1b4e82d8f090fc446":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"ProgressStyleModel","state":{"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"ProgressStyleModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"StyleView","bar_color":null,"description_width":""}},"d486de4f35f84b8b99a693948fdc95ae":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"FloatProgressModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"FloatProgressModel","_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"1.5.0","_view_name":"ProgressView","bar_style":"success","description":"","description_tooltip":null,"layout":"IPY_MODEL_e584f989b0ac43e985145293411dc3dd","max":25,"min":0,"orientation":"horizontal","style":"IPY_MODEL_2f8272d7e66646b795b2eec004af7722","value":25}},"dbe1105225a74fd1a2964cb092d1f9da":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"HTMLModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"HTMLModel","_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"1.5.0","_view_name":"HTMLView","description":"","description_tooltip":null,"layout":"IPY_MODEL_c9e476e6ed3b47eca48b97bdff263d9e","placeholder":"​","style":"IPY_MODEL_f079ec22f6804a879734da1c2ca8ddc6","value":" 25/25 [00:13&lt;00:00,  2.00it/s]"}},"e090822af65648419e23600dc215fd3a":{"model_module":"@jupyter-widgets/base","model_module_version":"1.2.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"1.2.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"overflow_x":null,"overflow_y":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"e47d3308229e4dc294b58560370b0241":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"DescriptionStyleModel","state":{"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"DescriptionStyleModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"StyleView","description_width":""}},"e584f989b0ac43e985145293411dc3dd":{"model_module":"@jupyter-widgets/base","model_module_version":"1.2.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"1.2.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"overflow_x":null,"overflow_y":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"e99bb0b1f574458ca61d94a32edf36f7":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"HTMLModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"HTMLModel","_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"1.5.0","_view_name":"HTMLView","description":"","description_tooltip":null,"layout":"IPY_MODEL_a5cbb9adc3bd4a829e6b64b6e64daa0b","placeholder":"​","style":"IPY_MODEL_0df8f1c56a07425894e16b0d0f4c2827","value":" 5/5 [00:11&lt;00:00,  2.16s/it]"}},"f01f50cb3d3047d89d5feb93851cf245":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"FloatProgressModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"FloatProgressModel","_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"1.5.0","_view_name":"ProgressView","bar_style":"danger","description":"","description_tooltip":null,"layout":"IPY_MODEL_7ddc80790efb4b00b8f3b5fd504c4cb6","max":2623,"min":0,"orientation":"horizontal","style":"IPY_MODEL_cfffb0d4736043a1b4e82d8f090fc446","value":2620}},"f079ec22f6804a879734da1c2ca8ddc6":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"DescriptionStyleModel","state":{"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"DescriptionStyleModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"StyleView","description_width":""}},"f572cf46455c46669ba84cdecf40ba6c":{"model_module":"@jupyter-widgets/base","model_module_version":"1.2.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"1.2.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"overflow_x":null,"overflow_y":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}}}

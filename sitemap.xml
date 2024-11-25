@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://social-media-lab.net/index.html</loc>
-    <lastmod>2024-11-18T10:28:48.764Z</lastmod>
+    <lastmod>2024-11-25T15:59:45.032Z</lastmod>
   </url>
   <url>
     <loc>https://social-media-lab.net/notebooks/2024_01_12_Visual_BERTopic_Bauernproteste.html</loc>
@@ -82,39 +82,43 @@
   </url>
   <url>
     <loc>https://social-media-lab.net/processing/classification.html</loc>
-    <lastmod>2024-09-05T07:10:46.930Z</lastmod>
+    <lastmod>2024-11-25T15:59:29.472Z</lastmod>
   </url>
   <url>
-    <loc>https://social-media-lab.net/reporting/index.html</loc>
-    <lastmod>2024-09-05T07:10:46.930Z</lastmod>
-  </url>
-  <url>
-    <loc>https://social-media-lab.net/evaluation/label-studio-images.html</loc>
-    <lastmod>2024-09-05T07:10:46.658Z</lastmod>
-  </url>
-  <url>
-    <loc>https://social-media-lab.net/about.html</loc>
-    <lastmod>2024-09-05T07:10:46.650Z</lastmod>
-  </url>
-  <url>
-    <loc>https://social-media-lab.net/basics/tools.html</loc>
-    <lastmod>2024-10-28T09:46:18.843Z</lastmod>
-  </url>
-  <url>
-    <loc>https://social-media-lab.net/basics/openai.html</loc>
-    <lastmod>2024-10-28T10:27:37.051Z</lastmod>
-  </url>
-  <url>
-    <loc>https://social-media-lab.net/evaluation/agreement.html</loc>
-    <lastmod>2024-09-05T07:10:46.654Z</lastmod>
+    <loc>https://social-media-lab.net/processing/preprocessing.html</loc>
+    <lastmod>2024-11-18T10:10:23.408Z</lastmod>
   </url>
   <url>
     <loc>https://social-media-lab.net/evaluation/index.html</loc>
     <lastmod>2024-09-05T07:10:46.658Z</lastmod>
   </url>
   <url>
-    <loc>https://social-media-lab.net/processing/preprocessing.html</loc>
-    <lastmod>2024-11-18T10:10:23.408Z</lastmod>
+    <loc>https://social-media-lab.net/evaluation/agreement.html</loc>
+    <lastmod>2024-09-05T07:10:46.654Z</lastmod>
+  </url>
+  <url>
+    <loc>https://social-media-lab.net/basics/openai.html</loc>
+    <lastmod>2024-10-28T10:27:37.051Z</lastmod>
+  </url>
+  <url>
+    <loc>https://social-media-lab.net/basics/tools.html</loc>
+    <lastmod>2024-10-28T09:46:18.843Z</lastmod>
+  </url>
+  <url>
+    <loc>https://social-media-lab.net/about.html</loc>
+    <lastmod>2024-09-05T07:10:46.650Z</lastmod>
+  </url>
+  <url>
+    <loc>https://social-media-lab.net/evaluation/label-studio-images.html</loc>
+    <lastmod>2024-09-05T07:10:46.658Z</lastmod>
+  </url>
+  <url>
+    <loc>https://social-media-lab.net/reporting/index.html</loc>
+    <lastmod>2024-09-05T07:10:46.930Z</lastmod>
+  </url>
+  <url>
+    <loc>https://social-media-lab.net/processing/archive/saving.html</loc>
+    <lastmod>2024-11-25T09:47:08.736Z</lastmod>
   </url>
   <url>
     <loc>https://social-media-lab.net/processing/exploration.html</loc>
