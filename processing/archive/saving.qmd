@@ -1,0 +1,34 @@
+---
+format: 
+  html: default
+title: "Text Classification: Saving Money"    
+date: 2023-12-04
+author:
+  - name: Michael Achmann-Denkler
+    id: ma
+    orcid: 0000-0002-4754-7842
+    email: michael.achmann@informatik.uni-regensburg.de
+license: CC BY
+bibliography: ../../literature.bib
+citation:
+  type: webpage
+  doi: 10.5281/zenodo.10039756
+notebook-view:
+  - notebook: ../../notebooks/2023_12_11_GPT_Text_Classification3.ipynb
+    title: "GPT Text Classification"
+    url: https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2023_12_11_GPT_Text_Classification.ipynb
+---
+
+::: {.callout-warning}
+## Outdated
+As of November 2024 the prices have dropped drastically. I recommend to work with one request per document, as my approach below has never been properly evaluated. The documentation stays here for archival. [The Notebook is still available on GitHub](https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2023_12_11_GPT_Text_Classification.ipynb).
+:::
+
+When using GPT for text classification using the above prompts, we send one request per text document in our `df`. Each time, we send the `system_prompt` and `prompt`, repeating the same text over and over again. With the code below we try another approach: We send a table with multiple documents at once, thus we just need to send the `system_prompt` and `prompt` once every `n` documents, saving tokens and therefore saving money. Classifications using `gpt-3.5` are relatively cheap, and the multidocument classification resulted in small quality drops through my experiments, for `gpt-4`, however, it cut my expenses drastically. `gpt-4-turbo` lies inbetween the two, it is still 10 times more expansive than `gpt-3.5`, yet input tokens are 1/3 of `gpt-4` prices. See: https://openai.com/pricing
+
+**Verdict:** Always run the mock requests first to estimate cost. For `gpt-3.5` sending one document per request is often the best option. For `gpt-4` the multidocument approach is often the better option: Cheaper than single-document `gpt-4`, higher quality than `gpt-3.5`. (According to my experiments, which have limitations!).
+
+### New System Prompt
+Let's get started by creating a new system prompt that incoporates command for the new approach. We need to define the prompt, as we need to calculate the tokens before splitting the textdocuments in tables.
+
+{{< embed ../../notebooks/2023_12_11_GPT_Text_Classification3.ipynb echo=true >}}
