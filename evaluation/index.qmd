@@ -2,7 +2,7 @@
 format: 
   html: default
 title: "Human Annotations"    
-date: 2023-12-18
+date: 2024-12-09
 author:
   - name: Michael Achmann-Denkler
     id: ma
@@ -13,10 +13,7 @@ bibliography: ../literature.bib
 citation:
   type: webpage
   doi: 10.5281/zenodo.10039756
-notebook-view:
-  - notebook: ../notebooks/2023_12_14_Create_LabelStudio_Text_Evaluation.ipynb 
-    title: "Create Label Studio Project"
-    url: https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2023_12_14_Create_LabelStudio_Text_Evaluation.ipynb
+notebook-links: false
 ---
 
 In computational social media analysis, validation is crucial for ensuring the accuracy and reliability of text analysis methods. As highlighted by @Birkenmaier2023-nt, validation entails both internal and external processes. Internal validation assess a model's plausibility and quality within the data context and tends to rely researchers' judgment, whereas external validation compares model outputs with external benchmarks, such as human-annotated labels. @Baden2022-oe further emphasize the significance of continuous evaluation and transparent reporting of validation steps and results. Additionally, they criticize the the frequent oversight in evaluating the validity of the actual measures. This problem arises when researchers focus more on the technical performance of their models, neglecting to verify whether these models accurately represent the intended social phenomena. This gap can lead to results that are statistically sound but lack real-world relevance.
@@ -25,10 +22,23 @@ In context of our research projects we'll focus on external validation through n
 
 Having humans coders annotate your social media content is the first part of generating a gold standard dataset. The second step will the the evaluation of the annotations, to validate their quality. We will use the interrater agreement as measurement for the coherence of our annotations. We will focus on this topic in the next session.
 
+::: {.callout-important}
+## Update 2024
+* [Link to Notebook](https://colab.research.google.com/github/michaelachmann/social-media-lab/blob/main/notebooks/2023_12_14_Create_LabelStudio_Text_Evaluation.ipynb).
+* Added new sources to the [recommended reading section](#recommended-reading).
+* Small updates to text incorporating new sources.
+:::
+
+
 ## Creating an Annotation Manual
 Developing an annotation manual for social media text data is an iterative process. We start with a theoretical understanding of the phenomenon to be annotated, and describe it for easy application by annotators, minimizing ambiguity. The process optimally involves multiple rounds of annotation, each refining the guidelines through discussions of disagreements and revisions. Pilot annotations should be done by those familiar with the theory, focusing on major disagreements to refine categories and examples. As guidelines evolve, both the guidelines and annotators improve, while we need to make sure that the guidelines that are understandable even to less trained individuals [@Reiter2019-qv; @Reiter_undated-yo]. In this section I will provide some examples for annotation manuals and some practical adivce to create effective annotation guidelines for social media analysis.
 
 ![Example of an annotation workflow with multiple iterations [Source](https://nilsreiter.de/blog/2017/howto-annotation)](/images/annotation-workflow.png){width=75%}
+
+@Klie2024-kd describes a similar workflow in his dissertation, outlining an agile dataset creation process where each batch of annotated data undergoes evaluation. If the quality is adequate, the data is adjudicated; if not, measures such as revising annotations, training annotators, or refining annotation schemes or guidelines are implemented. This approach is comparable to text production workflows, although these often do not include an adjudication step [@Klie2024-kd].
+
+![Example of an annotation workflow with multiple iterations. Source: [@Klie2024-kd].](/images/Klie-Annotation-Workflow.png){width=75%}
+
 
 Practically speaking, get started by creating a document which can be shared online, e.g. on [Google Docs](https://docs.google.com/) or [CodiMD](https://md.digitalhumanities.io/). I suggest to structure you document as follows:
 
@@ -152,5 +162,16 @@ The annotation manual is written, the data has been added to a label studio proj
 ## Conclusion
 @Baden2022-oe and @Birkenmaier2023-nt provide sound arguments for the need of validation when working with methods of computational text analysis. This chapter outlined the first practical steps towards an external validation of computational classifications: Creating an annotation manual, and setting up an annotation project. In the next session, we will take a look at the actual evaluation of computational classifications: First we are going to evaluate the quality of our human annotations through interrater agreement measurements. In an intermediary step we will derive ground truth data through majority decisions (following a common practiceto improve the quality of the final dataset [@Davani2022-nu]), before calculating the evaluation metrics (accuracy, refall, F1-scores) for our model comparing the gold standard dataset with the computational annotations. 
 
-## Further Reading
+## Recommended Reading
+
+::: {.callout-note}
+During the Winter 2025/26 semester, I am focusing on expanding my research on data annotation and quality management. As the semester progresses, I will update this page with insights and references from the literature listed below.
+:::
+
+* *Analyzing dataset annotation quality management in the wild.* [@Klie2024-xg]
+* *Quality aspects of annotated data: A research synthesis.* [@Beck2023-eb]
+* *Improving labeling through social science insights: Results and research agenda.* [@Beck2022-ng]
+* *A methodology towards effective and efficient manual document annotation: Addressing annotator discrepancy and annotation quality.* [@Zhang2010-kf]
+* *Measurement validity: A shared standard for qualitative and quantitative research.* [@Adcock2001-ui]
+* Dissertation *Improving natural language dataset annotation quality and efficiency* [@Klie2024-kd]
 * [Studies in Communication and Media: Special Issue on Content Analysis](https://www.nomos-elibrary.de/10.5771/2192-4007-2023-4/scm-studies-in-communication-and-media-jahrgang-12-2023-heft-4?page=1)

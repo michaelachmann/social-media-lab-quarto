@@ -3,7 +3,7 @@ format:
   html:
     css: ../styles.css
 title: "Agreement & Evaluation"    
-date: 2024-01-08
+date: 2024-12-09
 author:
   - name: Michael Achmann-Denkler
     id: ma
@@ -14,16 +14,12 @@ bibliography: ../literature.bib
 citation:
   type: webpage
   doi: 10.5281/zenodo.10039756
-notebook-view:
-  - notebook: ../notebooks/2024_01_04_Evaluation_Kurs.ipynb 
-    title: "Evaluation Notebook (V1)"
-    url: https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2024_01_04_Evaluation_Kurs.ipynb
-  - notebook: ../notebooks/2024_01_02_Interrater_Embedded.ipynb
-    title: "-"
-    url: "#"
+notebook-links: false
 ---
 
-The [previous chapter](index.qmd) focused on the creation of a Ground Truth dataset using human annotations. In this chapter we pick up on the annotated data and will first assess the quality of the annotations before adopting them as a gold standard. The integrity of the dataset directly influences the validity of our model evaluations. To this end, we take a look at two interrater agreement measures: Cohen's Kappa and Krippendorff's Alpha. These metrics are important for quantifying the level of agreement among annotators, thereby ensuring that our dataset is not only reliable but also representative of the diverse perspectives inherent in social media analysis. Once we established the quality of our annotations, we will use them as ground truth to determine how well our computational approach performs when applied to real-world data. The performance of machine learning models is typically assessed using a variety of metrics, each offering a different perspective on the model's effectiveness. In this chapter, we will take a look at four fundamental metrics: Accuracy, Precision, Recall, and F1 Score.
+The [previous chapter](index.qmd) focused on the creation of a Ground Truth dataset using human annotations. In this chapter we pick up on the annotated data and will first assess the quality of the annotations before adopting them as a gold standard. The integrity of the dataset directly influences the validity of our model evaluations. @Klie2024-xg emphasize that proper quality management, including interrater agreement, manual inspection, and an iterative annotation processes, is vital for mitigating such issues and producing datasets suitable for real-world applications.
+
+To this end, we take a look at two interrater agreement measures: Cohen's Kappa and Krippendorff's Alpha. These metrics are important for quantifying the level of agreement among annotators. Once we established the quality of our annotations, we will use them as ground truth. In our context there are two use cases for the ground truth dataset: When training or fine-tuning our own model, we need a training for our model to learn from. Additionally, we always--for training our model as well as using LLMs--need an evaluation dataset to determine how well our computational approach performs when applied to real-world data. The performance of machine learning models is typically assessed using a variety of metrics, each offering a different perspective on the model's effectiveness. In this chapter, we will take a look at four fundamental metrics: Accuracy, Precision, Recall, and F1 Score.
 
 In the first part of the chapter we will take a look at [interrater agreements](#interrater-agreement) and [machine learning evaluation measures](#machine-learning-evaluation-metrics). In the [application part](#application) I provide the notebooks to:
 
@@ -33,6 +29,12 @@ In the first part of the chapter we will take a look at [interrater agreements](
 4. Calculate the evaluation metrics for your model based on the gold standard.
 
 Finally, the [optimization](#optimize-you-model--prompt) part of this page provides an outlook for how to use the evaluation metrics in order to tune your classification prompt.
+
+::: {.callout-important}
+## Update 2024
+* [Link to Notebook](http://colab.research.google.com/github/michaelachmann/social-media-lab/blob/main/notebooks/2024_12_09_Evaluation_Kurs_V3.ipynb).
+* Updated the notebook to handle both, single annotation projects (from the enterprise version of Label Studio), and multiple annotation projects (when using the Open Source version).
+:::
   
 
 ## Interrater Agreement
@@ -520,7 +522,7 @@ The original notebook (below) works well with Label Studio Enterprise, where we 
 
 
 ## Conclusion: Prompt Optimization
-This chapter provided an overview of interrater agreement measures and machine learning model evaluation metrics. The last part of the chapter showcases the evaluation notebook, which we can use to import Label Studio annotations and calculate different types of metrics, with the ultimate goal of evaluating our model / prompt against the majority decision, our gold standard or ground truth data. The notebook can also be used throughout the prompting and classification process: Sample a smaller number of items and have each member of your group annotate them. Check the interrater agreement, and in case of reasonable agreement levels use this dataset as your *training* dataset in an iterative process:
+This chapter provided an overview of interrater agreement measures and machine learning model evaluation metrics. The last part of the chapter showcases the evaluation notebook, which we can use to import Label Studio annotations and calculate different types of metrics, with the ultimate goal of evaluating our model / prompt against the majority decision, our gold standard or ground truth data. The notebook can also be used throughout the prompting and classification process: Sample a smaller number of items (ca. 50-150, depending on your data) and have each member of your group annotate them. Check the interrater agreement, and in case of reasonable agreement levels use this dataset as your *training* dataset in an iterative process:
 
 1. Filter your dataset to only include items with *training* annotations.
 2. Run the classification for all *training* rows.
@@ -528,6 +530,8 @@ This chapter provided an overview of interrater agreement measures and machine l
 4. Run the evaluation, check the quality, especially the confusion matrix: Can you spot any problems? Is the F1-Score reasonable?
 5. *Optionally* take a qualitative look at mislabellings. Can you spot any patterns? Take another look at [prompt design ideas](../processing/classification.qmd#designing-the-prompt), e.g. use the negative examples in a conversation with ChatGPT and try to improve the prompt.
 6. Go back to step 2., repeat until the classification quality stagnates. 
+
+@Tornberg2024-ub provides further information on this process.
 
 
 ::: {.callout-warning}
