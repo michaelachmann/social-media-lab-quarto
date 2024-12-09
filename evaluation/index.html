@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Michael Achmann-Denkler">
-<meta name="dcterms.date" content="2023-12-18">
+<meta name="dcterms.date" content="2024-12-09">
 
 <title>Human Annotations – Social Media Lab</title>
 <style>
@@ -451,9 +451,9 @@ window.Quarto = {
   </ul></li>
   <li><a href="#collect-annotations" id="toc-collect-annotations" class="nav-link" data-scroll-target="#collect-annotations">Collect Annotations</a></li>
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
-  <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further Reading</a></li>
+  <li><a href="#recommended-reading" id="toc-recommended-reading" class="nav-link" data-scroll-target="#recommended-reading">Recommended Reading</a></li>
   </ul>
-<div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="../notebooks/2023_12_14_Create_LabelStudio_Text_Evaluation-preview.html"><i class="bi bi-journal-code"></i>Create Label Studio Project</a></li></ul></div></nav>
+</nav>
     </div>
 <!-- main -->
 <main class="content page-columns page-full" id="quarto-document-content">
@@ -477,7 +477,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">December 18, 2023</p>
+      <p class="date">December 9, 2024</p>
     </div>
   </div>
   
@@ -492,6 +492,23 @@ window.Quarto = {
 <p>In computational social media analysis, validation is crucial for ensuring the accuracy and reliability of text analysis methods. As highlighted by <span class="citation" data-cites="Birkenmaier2023-nt">Birkenmaier, Lechner, and Wagner (<a href="#ref-Birkenmaier2023-nt" role="doc-biblioref">2023</a>)</span>, validation entails both internal and external processes. Internal validation assess a model’s plausibility and quality within the data context and tends to rely researchers’ judgment, whereas external validation compares model outputs with external benchmarks, such as human-annotated labels. <span class="citation" data-cites="Baden2022-oe">Baden et al. (<a href="#ref-Baden2022-oe" role="doc-biblioref">2022</a>)</span> further emphasize the significance of continuous evaluation and transparent reporting of validation steps and results. Additionally, they criticize the the frequent oversight in evaluating the validity of the actual measures. This problem arises when researchers focus more on the technical performance of their models, neglecting to verify whether these models accurately represent the intended social phenomena. This gap can lead to results that are statistically sound but lack real-world relevance.</p>
 <p>In context of our research projects we’ll focus on external validation through non-expert annotations using LabelStudio, a practical aspect of the validation approach. Our focus will be on generating gold standard data for an external validation. This is crucial because external validation, through methods like crowd annotation, directly assesses how well computational models perform against real-world data. The setup of LabelStudio projects and the creation of annotation manuals are key steps in this process, ensuring that the data used for validation is accurately and consistently labeled, providing a solid foundation for assessing model performance. Although the evaluation of the actual measures is important <span class="citation" data-cites="Baden2022-oe">(<a href="#ref-Baden2022-oe" role="doc-biblioref">Baden et al. 2022</a>)</span>, our discussion will concentrate on these practical aspects of external validation.</p>
 <p>Having humans coders annotate your social media content is the first part of generating a gold standard dataset. The second step will the the evaluation of the annotations, to validate their quality. We will use the interrater agreement as measurement for the coherence of our annotations. We will focus on this topic in the next session.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Update 2024
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><a href="https://colab.research.google.com/github/michaelachmann/social-media-lab/blob/main/notebooks/2023_12_14_Create_LabelStudio_Text_Evaluation.ipynb">Link to Notebook</a>.</li>
+<li>Added new sources to the <a href="#recommended-reading">recommended reading section</a>.</li>
+<li>Small updates to text incorporating new sources.</li>
+</ul>
+</div>
+</div>
 <section id="creating-an-annotation-manual" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="creating-an-annotation-manual">Creating an Annotation Manual</h2>
 <p>Developing an annotation manual for social media text data is an iterative process. We start with a theoretical understanding of the phenomenon to be annotated, and describe it for easy application by annotators, minimizing ambiguity. The process optimally involves multiple rounds of annotation, each refining the guidelines through discussions of disagreements and revisions. Pilot annotations should be done by those familiar with the theory, focusing on major disagreements to refine categories and examples. As guidelines evolve, both the guidelines and annotators improve, while we need to make sure that the guidelines that are understandable even to less trained individuals <span class="citation" data-cites="Reiter2019-qv Reiter_undated-yo">(<a href="#ref-Reiter2019-qv" role="doc-biblioref">Reiter, Willand, and Gius 2019</a>; <a href="#ref-Reiter_undated-yo" role="doc-biblioref">Reiter, n.d.</a>)</span>. In this section I will provide some examples for annotation manuals and some practical adivce to create effective annotation guidelines for social media analysis.</p>
@@ -499,6 +516,13 @@ window.Quarto = {
 <figure class="figure">
 <p><img src="../images/annotation-workflow.png" class="img-fluid figure-img" style="width:75.0%"></p>
 <figcaption>Example of an annotation workflow with multiple iterations <a href="https://nilsreiter.de/blog/2017/howto-annotation">Source</a></figcaption>
+</figure>
+</div>
+<p><span class="citation" data-cites="Klie2024-kd">Klie (<a href="#ref-Klie2024-kd" role="doc-biblioref">2024</a>)</span> describes a similar workflow in his dissertation, outlining an agile dataset creation process where each batch of annotated data undergoes evaluation. If the quality is adequate, the data is adjudicated; if not, measures such as revising annotations, training annotators, or refining annotation schemes or guidelines are implemented. This approach is comparable to text production workflows, although these often do not include an adjudication step <span class="citation" data-cites="Klie2024-kd">(<a href="#ref-Klie2024-kd" role="doc-biblioref">Klie 2024</a>)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/Klie-Annotation-Workflow.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption>Example of an annotation workflow with multiple iterations. Source: <span class="citation" data-cites="Klie2024-kd">(<a href="#ref-Klie2024-kd" role="doc-biblioref">Klie 2024</a>)</span>.</figcaption>
 </figure>
 </div>
 <p>Practically speaking, get started by creating a document which can be shared online, e.g.&nbsp;on <a href="https://docs.google.com/">Google Docs</a> or <a href="https://md.digitalhumanities.io/">CodiMD</a>. I suggest to structure you document as follows:</p>
@@ -564,7 +588,7 @@ Important
 <section id="setup-a-label-studio-project" class="level3">
 <h3 class="anchored" data-anchor-id="setup-a-label-studio-project">Setup a Label Studio project</h3>
 <p>The <a href="https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2023_12_14_Create_LabelStudio_Text_Evaluation.ipynb">Label Studio Text Evaluation Notebook</a> guides you step by step through the automated creation of a labelstudio project:</p>
-<div class="quarto-embed-nb-cell">
+<div class="quarto-embed-nb-cell" data-notebook="/workspaces/social-media-lab-quarto/notebooks/2023_12_14_Create_LabelStudio_Text_Evaluation.ipynb" data-notebook-title="Human Annotations" data-notebook-cellid="cell-0">
 <p>Install the <code>label-studio-sdk</code> package for programmatic control of Label Studio:</p>
 <div id="cell-2" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip <span class="op">-</span>q install label<span class="op">-</span>studio<span class="op">-</span>sdk</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -950,7 +974,7 @@ Important
 </div>
 </div>
 </section>
-<a class="quarto-notebook-link" id="nblink-1" href="../notebooks/2023_12_14_Create_LabelStudio_Text_Evaluation-preview.html#cell-0">Source: Create Label Studio Project</a></div>
+</div>
 </section>
 <section id="designing-an-interface" class="level3">
 <h3 class="anchored" data-anchor-id="designing-an-interface">Designing an Interface</h3>
@@ -1037,9 +1061,28 @@ Tip
 <h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
 <p><span class="citation" data-cites="Baden2022-oe">Baden et al. (<a href="#ref-Baden2022-oe" role="doc-biblioref">2022</a>)</span> and <span class="citation" data-cites="Birkenmaier2023-nt">Birkenmaier, Lechner, and Wagner (<a href="#ref-Birkenmaier2023-nt" role="doc-biblioref">2023</a>)</span> provide sound arguments for the need of validation when working with methods of computational text analysis. This chapter outlined the first practical steps towards an external validation of computational classifications: Creating an annotation manual, and setting up an annotation project. In the next session, we will take a look at the actual evaluation of computational classifications: First we are going to evaluate the quality of our human annotations through interrater agreement measurements. In an intermediary step we will derive ground truth data through majority decisions (following a common practiceto improve the quality of the final dataset <span class="citation" data-cites="Davani2022-nu">(<a href="#ref-Davani2022-nu" role="doc-biblioref">Davani, Dı́az, and Prabhakaran 2022</a>)</span>), before calculating the evaluation metrics (accuracy, refall, F1-scores) for our model comparing the gold standard dataset with the computational annotations.</p>
 </section>
-<section id="further-reading" class="level2">
-<h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
+<section id="recommended-reading" class="level2">
+<h2 class="anchored" data-anchor-id="recommended-reading">Recommended Reading</h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>During the Winter 2025/26 semester, I am focusing on expanding my research on data annotation and quality management. As the semester progresses, I will update this page with insights and references from the literature listed below.</p>
+</div>
+</div>
 <ul>
+<li><em>Analyzing dataset annotation quality management in the wild.</em> <span class="citation" data-cites="Klie2024-xg">(<a href="#ref-Klie2024-xg" role="doc-biblioref">Klie, Castilho, and Gurevych 2024</a>)</span></li>
+<li><em>Quality aspects of annotated data: A research synthesis.</em> <span class="citation" data-cites="Beck2023-eb">(<a href="#ref-Beck2023-eb" role="doc-biblioref">Beck 2023</a>)</span></li>
+<li><em>Improving labeling through social science insights: Results and research agenda.</em> <span class="citation" data-cites="Beck2022-ng">(<a href="#ref-Beck2022-ng" role="doc-biblioref">Beck et al. 2022</a>)</span></li>
+<li><em>A methodology towards effective and efficient manual document annotation: Addressing annotator discrepancy and annotation quality.</em> <span class="citation" data-cites="Zhang2010-kf">(<a href="#ref-Zhang2010-kf" role="doc-biblioref">Zhang, Chapman, and Ciravegna 2010</a>)</span></li>
+<li><em>Measurement validity: A shared standard for qualitative and quantitative research.</em> <span class="citation" data-cites="Adcock2001-ui">(<a href="#ref-Adcock2001-ui" role="doc-biblioref">Adcock and Collier 2001</a>)</span></li>
+<li>Dissertation <em>Improving natural language dataset annotation quality and efficiency</em> <span class="citation" data-cites="Klie2024-kd">(<a href="#ref-Klie2024-kd" role="doc-biblioref">Klie 2024</a>)</span></li>
 <li><a href="https://www.nomos-elibrary.de/10.5771/2192-4007-2023-4/scm-studies-in-communication-and-media-jahrgang-12-2023-heft-4?page=1">Studies in Communication and Media: Special Issue on Content Analysis</a></li>
 </ul>
 
@@ -1048,8 +1091,17 @@ Tip
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-Adcock2001-ui" class="csl-entry" role="listitem">
+Adcock, Robert, and David Collier. 2001. <span>“<span class="nocase">Measurement validity: A shared standard for qualitative and quantitative research</span>.”</span> <em>The American Political Science Review</em> 95 (3): 529–46. <a href="https://doi.org/10.1017/s0003055401003100">https://doi.org/10.1017/s0003055401003100</a>.
+</div>
 <div id="ref-Baden2022-oe" class="csl-entry" role="listitem">
 Baden, Christian, Christian Pipal, Martijn Schoonvelde, and Mariken A C G van der Velden. 2022. <span>“<span class="nocase">Three Gaps in Computational Text Analysis Methods for Social Sciences: A Research Agenda</span>.”</span> <em>Communication Methods and Measures</em> 16 (1): 1–18. <a href="https://doi.org/10.1080/19312458.2021.2015574">https://doi.org/10.1080/19312458.2021.2015574</a>.
+</div>
+<div id="ref-Beck2023-eb" class="csl-entry" role="listitem">
+Beck, Jacob. 2023. <span>“<span class="nocase">Quality aspects of annotated data: A research synthesis</span>.”</span> <em>AStA Wirtschafts- Und Sozialstatistisches Archiv</em> 17 (3-4): 331–53. <a href="https://doi.org/10.1007/s11943-023-00332-y">https://doi.org/10.1007/s11943-023-00332-y</a>.
+</div>
+<div id="ref-Beck2022-ng" class="csl-entry" role="listitem">
+Beck, Jacob, Stephanie Eckman, Rob Chew, and Frauke Kreuter. 2022. <span>“<span class="nocase">Improving labeling through social science insights: Results and research agenda</span>.”</span> In <em><span class="nocase">Lecture Notes in Computer Science</span></em>, 245–61. Lecture Notes in Computer Science. Cham: Springer Nature Switzerland. <a href="https://doi.org/10.1007/978-3-031-21707-4\_19">https://doi.org/10.1007/978-3-031-21707-4\_19</a>.
 </div>
 <div id="ref-Birkenmaier2023-nt" class="csl-entry" role="listitem">
 Birkenmaier, Lukas, Clemens M Lechner, and Claudia Wagner. 2023. <span>“<span class="nocase">The Search for Solid Ground in Text as Data: A Systematic Review of Validation Practices and Practical Recommendations for Validation</span>.”</span> <em>Communication Methods and Measures</em>, November, 1–29. <a href="https://doi.org/10.1080/19312458.2023.2285765">https://doi.org/10.1080/19312458.2023.2285765</a>.
@@ -1060,23 +1112,32 @@ Davani, Aida Mostafazadeh, Mark Dı́az, and Vinodkumar Prabhakaran. 2022. <span
 <div id="ref-Hasler2021-gg" class="csl-entry" role="listitem">
 Haßler, Jörg, Anna Sophie Kümpel, and Jessica Keller. 2021. <span>“<span class="nocase">Instagram and political campaigning in the 2017 German federal election. A quantitative content analysis of German top politicians’ and parliamentary parties’ posts</span>.”</span> <em>Information, Communication and Society</em>, July, 1–21. <a href="https://doi.org/10.1080/1369118X.2021.1954974">https://doi.org/10.1080/1369118X.2021.1954974</a>.
 </div>
+<div id="ref-Klie2024-kd" class="csl-entry" role="listitem">
+Klie, Jan-Christoph. 2024. <span>“<span class="nocase">Improving natural language dataset annotation quality and efficiency</span>.”</span> PhD thesis, Darmstadt, Germany: Technische Universität Darmstadt. <a href="https://doi.org/10.26083/TUPRINTS-00026580">https://doi.org/10.26083/TUPRINTS-00026580</a>.
+</div>
+<div id="ref-Klie2024-xg" class="csl-entry" role="listitem">
+Klie, Jan-Christoph, Richard Eckart de Castilho, and Iryna Gurevych. 2024. <span>“<span class="nocase">Analyzing dataset annotation quality management in the wild</span>.”</span> <em>Computational Linguistics (Association for Computational Linguistics)</em> 50 (3): 1–50. <a href="https://doi.org/10.1162/coli\_a\_00516">https://doi.org/10.1162/coli\_a\_00516</a>.
+</div>
 <div id="ref-Reiter_undated-yo" class="csl-entry" role="listitem">
 Reiter, Nils. n.d. <span>“<span class="nocase">How to Develop Annotation Guidelines</span>.”</span> <a href="https://nilsreiter.de/blog/2017/howto-annotation" class="uri">https://nilsreiter.de/blog/2017/howto-annotation</a>. <a href="https://nilsreiter.de/blog/2017/howto-annotation">https://nilsreiter.de/blog/2017/howto-annotation</a>.
 </div>
 <div id="ref-Reiter2019-qv" class="csl-entry" role="listitem">
 Reiter, Nils, Marcus Willand, and Evelyn Gius. 2019. <span>“<span class="nocase">A shared task for the digital humanities chapter 1: Introduction to annotation, narrative levels and shared tasks</span>.”</span> <em>Journal of Cultural Analytics</em>. <a href="https://doi.org/10.22148/16.048">https://doi.org/10.22148/16.048</a>.
 </div>
-</div></section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{achmann-denkler2023,
+<div id="ref-Zhang2010-kf" class="csl-entry" role="listitem">
+Zhang, Ziqi, Sam Chapman, and Fabio Ciravegna. 2010. <span>“<span class="nocase">A methodology towards effective and efficient manual document annotation: Addressing annotator discrepancy and annotation quality</span>.”</span> In <em><span class="nocase">Knowledge Engineering and Management by the Masses</span></em>, 301–15. Lecture Notes in Computer Science. Berlin, Heidelberg: Springer Berlin Heidelberg. <a href="https://doi.org/10.1007/978-3-642-16438-5\_21">https://doi.org/10.1007/978-3-642-16438-5\_21</a>.
+</div>
+</div></section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{achmann-denkler2024,
   author = {Achmann-Denkler, Michael},
   title = {Human {Annotations}},
-  date = {2023-12-18},
+  date = {2024-12-09},
   url = {https://social-media-lab.net/evaluation/},
   doi = {10.5281/zenodo.10039756},
   langid = {en}
 }
-</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-achmann-denkler2023" class="csl-entry quarto-appendix-citeas" role="listitem">
-Achmann-Denkler, Michael. 2023. <span>“Human Annotations.”</span>
-December 18, 2023. <a href="https://doi.org/10.5281/zenodo.10039756">https://doi.org/10.5281/zenodo.10039756</a>.
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-achmann-denkler2024" class="csl-entry quarto-appendix-citeas" role="listitem">
+Achmann-Denkler, Michael. 2024. <span>“Human Annotations.”</span>
+December 9, 2024. <a href="https://doi.org/10.5281/zenodo.10039756">https://doi.org/10.5281/zenodo.10039756</a>.
 </div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
