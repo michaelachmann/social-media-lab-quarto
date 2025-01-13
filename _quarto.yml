@@ -32,6 +32,7 @@ website:
           - processing/preprocessing.qmd
           - processing/exploration.qmd
           - processing/classification.qmd
+          - processing/bert_classification.ipynb
       - section: "Image Analysis"
         contents:
           - image-analysis/index.qmd

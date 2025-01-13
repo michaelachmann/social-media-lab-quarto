@@ -13,6 +13,8 @@ bibliography: ../literature.bib
 citation:
   type: webpage
   doi: 10.5281/zenodo.10039756
+notebook-links: false
+
 notebook-view:
   - notebook: ../notebooks/2023_12_11_GPT_Text_Classification2.ipynb 
     title: "GPT Text Classification"
@@ -42,6 +44,9 @@ We are going to practice text classification using GPT based on operationalizati
 
 **Mobilization**, on the other hand, refers to the efforts made by political parties to encourage and activate citizens to participate in the political process. This can include activities such as voting, supporting a campaign, seeking political information, liking and sharing posts on social media, and other forms of civic engagement [@Wurst2023-pn]. The authors distinguish between three types of calls to participate: calls to inform, calls to interact, and calls to support. They also subcategorized offline and online forms of each type of call. 
 
+:::{.callout-tip}
+[In the next chapter](bert_classification.ipynb), we fine-tune a BERT model for text classification. 
+:::
 
 ### Prompt Engineering
 PPrompt engineering is a new technique in machine learning that has grown alongside the development of large pre-trained models, such as foundation models or large language models (LLMs). Foundation models are extensive, pre-trained neural networks that serve as a base for a wide range of downstream tasks, providing a flexible framework for different applications. This method emerged when it was realized that these models work better with well-designed inputs. Prompt engineering is about creating or changing a question or input so the model can more easily find the right information [@Gu2023-gr]. It is based on the understanding that different questions can produce more or less accurate results, so adjusting the format and examples of the prompt is key to getting the best results [@Zhao2021-wr]. The field of prompt engineering involves different ways of making these prompts. One can decide to create prompts manually or use automated methods [@Liu2023-ph]. The growth and use of prompt engineering signify a major change in machine learning, deeply linked to the flexibility and wide range of applications of foundation models [@Gu2023-gr].

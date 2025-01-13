@@ -20,6 +20,8 @@ notebook-view:
 citation:
   type: webpage
   doi: 10.5281/zenodo.10039756
+notebook-links: false
+
 ---
 
 In the previous session we talked about [text as data](index.qmd), suggesting that text data offers a rich source of insights. We applied [preprocessing](preprocessing.qmd) to extract textual data from images (OCR) and videos (Whisper). This chapter concentrates on the tools for exploring these textual dimensions. We start with some simple frequency analyses, before moving on to BERTopic and the Generative Pre-trained Transformer (GPT).
