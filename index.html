@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
+<meta name="generator" content="quarto-1.6.40">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -38,12 +38,12 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-8ea72dc5fed832574809a9c94082fbbb.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-6bd9cfa162949bde0a231f530c97869d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-b2511bcbb01c2159fd96a78deb42ffd9.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -94,7 +94,10 @@ cookieconsent.run({
 <link rel="stylesheet" href="styles.css">
 <meta name="twitter:title" content="Notes on Computational Social Media Research – Social Media Lab">
 <meta name="twitter:description" content="Notes on computational social media analysis">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://social-media-lab.net/images/banner2.png">
+<meta name="twitter:image-height" content="405">
+<meta name="twitter:image-width" content="1080">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 
 <body class="nav-sidebar floating nav-fixed">
@@ -276,6 +279,12 @@ cookieconsent.run({
  <span class="menu-text">Text Classification</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./processing/bert_classification.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Training a BERT Model</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -416,14 +425,13 @@ Updates 2024/25
 <li>✨ <a href="./processing/preprocessing.html">Text Processing</a>: A notebook to convert audio-visual social media data into text using OCR and Whisper.</li>
 <li>✨📝 <a href="./processing/exploration.html">Text Exploration</a>: Introduces two approaches for the exploration of textual content: Topic Modeling using BERTopic and OpenAI’s GPT-API.</li>
 <li>🚀 <a href="./processing/classification.html">Text Classification</a>: An introduction to text classification using GPT. The article presents several approaches, like Zero-Shot and Few-Shot classification. The accompanying notebook provides all the necessary code to get started with GPT.</li>
+<li>🚀 <a href="./processing/bert_classification.html">Fine-Tuning BERT for Text Classification</a>: A notebookt to fine-tune a BERT model for binary classification tasks. Includes hyperparameter tuning, evaluation, and LIME for explainability. May be used as a foundation for Transformer based visual classification.</li>
 <li>✨ <a href="./evaluation/index.html">Gold Standard Validation</a>: This chapter emphasizes the importance of validation in computational social media analysis, focusing on external validation through non-expert annotations using LabelStudio for creating gold standard data. It discusses developing an annotation manual and setting up a Label Studio project for text data annotation, highlighting the iterative nature of manual development and the importance of clear, consistent guidelines.</li>
 <li>✨ <a href="./evaluation/agreement.html">Agreement &amp; Evaluation</a>: This chapter discusses the assessment of annotation quality and the evaluation of machine learning models. It introduces Cohen’s Kappa and Krippendorff’s Alpha for measuring interrater agreement, ensuring the reliability of human annotations in datasets. The chapter then shifts focus to evaluating machine learning models with metrics like Accuracy, Precision, Recall, and F1 Score, crucial for understanding model performance in real-world scenarios.</li>
-<li><a href="./image-analysis/index.html">Images as Data</a>: This chapter introduces the concept of using images as data in computational social science and digital humanities, paralleling the “Text as Data” paradigm. It discusses automated visual analysis for transforming visual content into quantifiable insights, emphasizing the use of computer vision and machine learning techniques.</li>
-<li><a href="./image-analysis/exploration.html">Exploration of Visual Data</a>: The chapter covers various unsupervised techniques for analyzing image datasets. It discusses the use of commercial computer vision APIs for labeling images and examines network analysis and k-means clustering methods. Further, it introduces BERTopic’s multimodal functionality for image captioning and topic modeling.</li>
-<li><a href="./image-analysis/classification.html">Computational Image Classification</a>: This chapter explores different methods for classifying images, focusing on zero-shot classifications with OpenAI’s CLIP and multimodal GPT-4. The first notebook demonstrates CLIP’s application in classifying image types in political communication. The second experiment involves multimodal GPT-4 for the classification of visual frames, based on Grabe &amp; Bucy’s work. In a third subchapter we take a look at an ensemble classification approach: Using APIs we detect text and objects, and generate image captions. Combining these pieces of information into a single prompt we use GPT to classify the image.</li>
-<li><a href="./evaluation/label-studio-images.html">Collecting Human Image Annotations</a>: This chapter is an alternative path of the <a href="./evaluation/index.html">Gold Standard Validation</a> chapter – using the notebook provided here we can upload images to a Google Cloud bucket and annotate images inside Label Studio (alternatively audio and video).</li>
-<li>Data Analysis as a Conversation – Exploring trends using ChatGPT: <em>Work in Progress</em>.</li>
-<li>Visual Presentation of your Data &amp; Results: RAWGraphs and more: <em>Work in Progress</em>.</li>
+<li>🔧 <a href="./image-analysis/index.html">Images as Data</a>: This chapter introduces the concept of using images as data in computational social science and digital humanities, paralleling the “Text as Data” paradigm. It discusses automated visual analysis for transforming visual content into quantifiable insights, emphasizing the use of computer vision and machine learning techniques.</li>
+<li>🔧 <a href="./image-analysis/exploration.html">Exploration of Visual Data</a>: The chapter covers various unsupervised techniques for analyzing image datasets. It discusses the use of commercial computer vision APIs for labeling images and examines network analysis and k-means clustering methods. Further, it introduces BERTopic’s multimodal functionality for image captioning and topic modeling.</li>
+<li>🔧 <a href="./image-analysis/classification.html">Computational Image Classification</a>: This chapter explores different methods for classifying images, focusing on zero-shot classifications with OpenAI’s CLIP and multimodal GPT-4. The first notebook demonstrates CLIP’s application in classifying image types in political communication. The second experiment involves multimodal GPT-4 for the classification of visual frames, based on Grabe &amp; Bucy’s work. In a third subchapter we take a look at an ensemble classification approach: Using APIs we detect text and objects, and generate image captions. Combining these pieces of information into a single prompt we use GPT to classify the image.</li>
+<li>✨ <a href="./evaluation/label-studio-images.html">Collecting Human Image Annotations</a>: This chapter is an alternative path of the <a href="./evaluation/index.html">Gold Standard Validation</a> chapter – using the notebook provided here we can upload images to a Google Cloud bucket and annotate images inside Label Studio (alternatively audio and video).</li>
 </ul>
 </section>
 <section id="citation-and-licences" class="level2">
@@ -660,8 +668,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -772,7 +778,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
+<meta name="generator" content="quarto-1.6.40">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -96,12 +96,12 @@ div.csl-indent {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-8ea72dc5fed832574809a9c94082fbbb.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-6bd9cfa162949bde0a231f530c97869d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-b2511bcbb01c2159fd96a78deb42ffd9.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -368,6 +368,12 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="../processing/classification.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Text Classification</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../processing/bert_classification.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Training a BERT Model</span></a>
   </div>
 </li>
       </ul>
@@ -705,7 +711,7 @@ Static Example
 <p>
 Calculating the Krippendorff Alpha is more complex than Cohen’s kappa. The example below is static, use the code below to calculate Krippendorff’s Alpha in your Jupyter Notebook.
 </p>
-<div class="quarto-embed-nb-cell" data-notebook="/workspaces/social-media-lab-quarto/notebooks/2024_01_02_Interrater_Embedded.ipynb" data-notebook-cellid="cell-0">
+<div class="quarto-embed-nb-cell" data-notebook="/Users/michael/Documents/Dev/social-media-lab-quarto/notebooks/2024_01_02_Interrater_Embedded.ipynb" data-notebook-cellid="cell-0">
 <div id="cell-2" class="cell" data-outputid="55eb486d-38d2-4d72-fd44-62e846013cbf" data-execution_count="88">
 <div class="cell-output cell-output-stdout">
 <pre><code>n: 65
@@ -1192,7 +1198,7 @@ Update (29. Jan.&nbsp;2024)
 <p>The original notebook (below) works well with Label Studio Enterprise, where we have one annotation project handling multiple annotations per item. I created an updated second version of this notebook which handles multiple JSON files. We can use the open source version of Label Studio and create one project per annotator. Once the annotaitons were created, we export the results and use multiple JSON files in <a href="https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2024_01_26_Evaluation_Kurs_V2.ipynb">the updated notebook</a>. Additionally, this version handles <code>labels</code>, annotations of bounding boxes for images.</p>
 </div>
 </div>
-<div class="quarto-embed-nb-cell" data-notebook="/workspaces/social-media-lab-quarto/notebooks/2024_01_04_Evaluation_Kurs.ipynb" data-notebook-title="Agreement &amp; Evaluation" data-notebook-cellid="cell-0">
+<div class="quarto-embed-nb-cell" data-notebook="/Users/michael/Documents/Dev/social-media-lab-quarto/notebooks/2024_01_04_Evaluation_Kurs.ipynb" data-notebook-title="Agreement &amp; Evaluation" data-notebook-cellid="cell-0">
 <section id="read-the-labelstudio-annotations-from-file" class="level3">
 <h3 class="anchored" data-anchor-id="read-the-labelstudio-annotations-from-file">Read the LabelStudio Annotations from file</h3>
 <p>Enter the location (e.g.&nbsp;on Google Drive) of your exported <code>json</code> file and run this cell. It loads the annotations in a long format into the variable <code>all_annotations_df</code>.</p>
@@ -1613,7 +1619,7 @@ Warning
 <th data-quarto-table-cell-role="th">10506</th>
 <th data-quarto-table-cell-role="th">13724</th>
 </tr>
-<tr class="odd">
+<tr class="even">
 <th data-quarto-table-cell-role="th">uuid</th>
 <th data-quarto-table-cell-role="th"></th>
 <th data-quarto-table-cell-role="th"></th>
@@ -2258,7 +2264,7 @@ Successfully installed krippendorff-0.6.1</code></pre>
 <th data-quarto-table-cell-role="th">13724</th>
 <th data-quarto-table-cell-role="th">Majority Decision</th>
 </tr>
-<tr class="odd">
+<tr class="even">
 <th data-quarto-table-cell-role="th">uuid</th>
 <th data-quarto-table-cell-role="th"></th>
 <th data-quarto-table-cell-role="th"></th>
@@ -3820,8 +3826,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -3932,7 +3936,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
