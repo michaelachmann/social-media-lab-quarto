@@ -62,9 +62,18 @@ For our 2025/26 seminar, we will explore two common strategies in practice:
 
 ## Legal and Ethical Grounding 
 
-In this course, you will work with lawfully accessible public social-media content. Classroom projects primarily rely on the European text-and-data-mining (TDM) exception for non-commercial research ([Art. 3, Directive (EU) 2019/790](https://eur-lex.europa.eu/eli/dir/2019/790/oj?uri=CELEX:32019L0790); [§ 60d UrhG](https://dejure.org/gesetze/UrhG/60d.html)).
+In this course, you will work with public accessible social-media content. Classroom projects primarily rely on the European text-and-data-mining (TDM) exception for non-commercial research ([Art. 3, Directive (EU) 2019/790](https://eur-lex.europa.eu/eli/dir/2019/790/oj?uri=CELEX:32019L0790); [§ 60d UrhG](https://dejure.org/gesetze/UrhG/60d.html)).
 
 This exception permits automated analysis and temporary reproduction for scientific purposes, provided that no technical protection measures are circumvented. Expert guidance by the German Data Forum  [@Rat_fur_Sozial-_und_Wirtschaftsdaten_RatSWD2019-re] notes that § 60d UrhG can apply even where platform Terms of Service prohibit automated access.
+
+::: {.callout-note}
+### Out of Scope: Digital Service Act (DSA)
+The EU’s Digital Services Act (DSA) introduces new data-access rights for vetted researchers studying systemic risks on very large platforms. However, our class projects fall outside this definition because they use only publicly accessible content, do not require vetted access, and do not request non-public platform data.
+
+For further insight into current challenges and platform (non-)cooperation under the DSA, see @KupferschmidtUnknown-rd and @Keller2025-sx.
+:::
+
+
 
 Because collection may involve personal data, GDPR applies. Public availability does not eliminate contextual privacy expectations [@Zimmer2010-zh]. Thus, we:
 
