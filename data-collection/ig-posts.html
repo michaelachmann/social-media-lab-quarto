@@ -604,8 +604,11 @@ cookieconsent.run({
   <li><a href="#working-with-python" id="toc-working-with-python" class="nav-link" data-scroll-target="#working-with-python">Working with Python</a></li>
   <li><a href="#working-with-4cat" id="toc-working-with-4cat" class="nav-link" data-scroll-target="#working-with-4cat">Working with 4CAT</a></li>
   </ul></li>
+  <li><a href="#archive" id="toc-archive" class="nav-link" data-scroll-target="#archive">📦 Archive</a>
+  <ul class="collapse">
   <li><a href="#instaloader-not-recommended" id="toc-instaloader-not-recommended" class="nav-link" data-scroll-target="#instaloader-not-recommended">Instaloader – NOT RECOMMENDED</a></li>
   <li><a href="#crowdtangle-outdated" id="toc-crowdtangle-outdated" class="nav-link" data-scroll-target="#crowdtangle-outdated">CrowdTangle – OUTDATED</a></li>
+  </ul></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
 <div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="../notebooks/ig-instaloader-preview.html"><i class="bi bi-journal-code"></i>Collecting Posts with Instaloader</a></li></ul></div></nav>
@@ -709,7 +712,7 @@ Practical limitations (e.g.&nbsp;volume, timeframe, # of profiles …)
 </div>
 <section id="working-with-python" class="level3">
 <h3 class="anchored" data-anchor-id="working-with-python">Working with Python</h3>
-<p>Data collected using Zeeschuimer can also be exported as <em>ndjson</em> files. The <a href="(https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2024_11_11_Preprocessing.ipynb)">Zeeschuimer Import Notebook</a> provides a code example for reading the files and converting them to either 4CAT format, or a table format compatible with the above notebooks for CrowdTangle and instaloader.</p>
+<p>Data collected using Zeeschuimer can also be exported as <em>ndjson</em> files. The <a href="https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2024_11_11_Preprocessing.ipynb">Zeeschuimer Import Notebook</a> provides a code example for reading the files and converting them to either 4CAT format, or a table format compatible with the above notebooks for CrowdTangle and instaloader.</p>
 <p>The old version of the <a href="https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2023_11_03_Zeeschuimer_Import.ipynb">Notebook</a> still exists. This version downloads only one image per post.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -744,8 +747,10 @@ Tip
 <p>The authors of Zeeschuimer and 4CAT <a href="https://docs.google.com/document/d/19MAiqX7Vx1FcNJ44K-vSdnKDVC5gcFwtrSQiewnwW8A/edit?pli=1">have published a manual here</a>.</p>
 </section>
 </section>
-<section id="instaloader-not-recommended" class="level2">
-<h2 class="anchored" data-anchor-id="instaloader-not-recommended">Instaloader – NOT RECOMMENDED</h2>
+<section id="archive" class="level2">
+<h2 class="anchored" data-anchor-id="archive">📦 Archive</h2>
+<section id="instaloader-not-recommended" class="level3">
+<h3 class="anchored">Instaloader – NOT RECOMMENDED</h3>
 <p><a href="https://instaloader.github.io/">Instaloader</a> is a python package for downloading instagram pictures and videos along with their metadata. I have written a <a href="https://achmann.dev/getting-started-with-instagram-analysis-instaloader-bbf686cb6e3b">getting started tutorial on Medium</a>. It is, together with <a href="https://github.com/michaelachmann/ig-tutorial/blob/main/01_DataCollection.ipynb">the provided notebook</a>, the basis for this chapter.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -932,6 +937,7 @@ Note
 </section>
 </section>
 <a class="quarto-notebook-link" id="nblink-1" href="../notebooks/ig-instaloader-preview.html#cell-0">Source: Collecting Posts with Instaloader</a></div>
+</section>
 <div class="pros-cons-container">
 <section id="pros-1" class="level3 pros">
 <h3 class="anchored" data-anchor-id="pros-1">Pros:</h3>
@@ -962,9 +968,8 @@ Blocked Accounts
 </ul>
 </section>
 </div>
-</section>
-<section id="crowdtangle-outdated" class="level2">
-<h2 class="anchored" data-anchor-id="crowdtangle-outdated">CrowdTangle – OUTDATED</h2>
+<section id="crowdtangle-outdated" class="level3">
+<h3 class="anchored" data-anchor-id="crowdtangle-outdated">CrowdTangle – OUTDATED</h3>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../images/crowdtangle.png" class="img-fluid figure-img" width="600"></p>
@@ -985,6 +990,7 @@ Warning
 </div>
 </div>
 <p><a href="https://www.crowdtangle.com/">CrowdTangle</a> is the best option to collect IG posts – in theory. It provides legal access to Instagram data and offers several tools to export large amount of data. For a current project we’ve exported more than 500.000 public posts through a hashtag query. Unfortunately there are several restrictions: CrowdTangle is the best tool to export metadata of public posts, and captions. The abilty to collect images through the platform is limited: Image links expire after a certain amount of time, thus we need to use some makeshift approach to download the images. When we can download the images, it’s always just one per post, no matter if it’s a gallery or a single image. And let’s not talk about videos. I have written <a href="https://achmann.dev/crowdtangle-for-instagram-analysis-a-step-by-step-guide-for-beginners-6d4f1f8cb0a3">another Medium story with a step-by-step guide to CrowdTangle</a>.</p>
+</section>
 <div class="pros-cons-container">
 <section id="pros-2" class="level3 pros">
 <h3 class="anchored" data-anchor-id="pros-2">Pros:</h3>
