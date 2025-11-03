@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Michael Achmann-Denkler">
-<meta name="dcterms.date" content="2024-01-15">
+<meta name="dcterms.date" content="2025-11-03">
 
-<title>Image Exploration with Gephi – Social Media Lab</title>
+<title>Data Collection in a Post-API World – Social Media Lab</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -52,6 +52,8 @@ div.csl-indent {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../data-collection/ig-posts.html" rel="next">
+<link href="../basics/openai.html" rel="prev">
 <link href="../images/favicon.ico" rel="icon">
 <script src="../site_libs/cookie-consent/cookie-consent.js"></script>
 <link href="../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
@@ -118,9 +120,9 @@ cookieconsent.run({
 
 
 <link rel="stylesheet" href="../styles.css">
-<meta name="twitter:title" content="Image Exploration with Gephi – Social Media Lab">
+<meta name="twitter:title" content="Data Collection in a Post-API World – Social Media Lab">
 <meta name="twitter:description" content="Notes on computational social media analysis">
-<meta name="twitter:image" content="https://social-media-lab.net/image-analysis/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
+<meta name="twitter:image" content="https://social-media-lab.net/data-collection/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -334,7 +336,7 @@ cookieconsent.run({
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Image Exploration with Gephi</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../data-collection/index.html">Data Collection</a></li><li class="breadcrumb-item"><a href="../data-collection/index.html">Data Collection in a Post-API World</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -419,7 +421,7 @@ cookieconsent.run({
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../data-collection/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../data-collection/index.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Data Collection in a Post-API World</span></a>
   </div>
 </li>
@@ -553,16 +555,28 @@ cookieconsent.run({
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#background" id="toc-background" class="nav-link active" data-scroll-target="#background">Background</a></li>
+  <li><a href="#collecting-social-media-content-under-post-api-conditions" id="toc-collecting-social-media-content-under-post-api-conditions" class="nav-link" data-scroll-target="#collecting-social-media-content-under-post-api-conditions">Collecting Social-Media Content Under Post-API Conditions</a></li>
+  <li><a href="#legal-and-ethical-grounding" id="toc-legal-and-ethical-grounding" class="nav-link" data-scroll-target="#legal-and-ethical-grounding">Legal and Ethical Grounding</a>
+  <ul class="collapse">
+  <li><a href="#ethical-orientation" id="toc-ethical-orientation" class="nav-link" data-scroll-target="#ethical-orientation">Ethical orientation</a></li>
+  </ul></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
-<main class="content page-columns page-full" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../data-collection/index.html">Data Collection</a></li><li class="breadcrumb-item"><a href="../data-collection/index.html">Data Collection in a Post-API World</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Image Exploration with Gephi</h1>
+<h1 class="title">Data Collection in a Post-API World</h1>
 </div>
 
 
@@ -579,7 +593,7 @@ cookieconsent.run({
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">January 15, 2024</p>
+      <p class="date">November 3, 2025</p>
     </div>
   </div>
   
@@ -591,73 +605,131 @@ cookieconsent.run({
 </header>
 
 
-<p>This page lists the remaining step for <a href="../image-analysis/exploration.html#commercial-computer-vision-apis">creating an image network based on labels from commercial computer vision APIs</a>. The process is rather complex, the steps below omit some intermediary steps, e.g.&nbsp;for filtering and adjusting the text labels for nodes and edges.</p>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Important
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>These steps are based on <span class="citation" data-cites="Omena2021-gu">Omena et al. (<a href="#ref-Omena2021-gu" role="doc-biblioref">2021</a>)</span>’s approach. The first steps are located in the <a href="../image-analysis/exploration.html#step-by-step-towards-a-graph">exploration chapter</a>.</p>
-</div>
-</div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../images/gephi-5.png" class="img-fluid figure-img" style="width:50.0%"></p>
-<figcaption>We cannot see any changes in the graph yet. We need to change the appearance. Select <em>Nodes</em> &gt; <em>Partition</em>, and select “Modularity Class”. Hit <em>Apply</em> and your black network should turn into several colours.</figcaption>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../images/gephi-4.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<figcaption>An example for a network coloured by modularity class.</figcaption>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../images/gephi-14.png" class="img-fluid figure-img" style="width:25.0%"></p>
-<figcaption>Next, move to the <em>Data Lab</em> tab. On the bottom of the window, use the <em>Duplicate Column</em> button, to copy the values from <em>Label</em> to a new column named <em>image</em>. <strong>The name <em>image</em> is important!</strong></figcaption>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../images/gephi-plugin.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<figcaption>Make sure to have the <em>Image Preview</em> Plugin installed. <strong>The plugin is not compatible with the latest Gephi version!</strong></figcaption>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../images/gephi-2.png" class="img-fluid figure-img" style="width:50.0%"></p>
-<figcaption>Finally, move to the tab <em>Preview</em>. Scroll in the left pane to the bottom and cofigure your image folder. Hit <em>Refresh</em> to render the network including the images. In my experience it is best to export the final network to PDF and use a PDF reader for the actual exploration of the images.</figcaption>
-</figure>
-</div>
-<div class="page-columns page-full">
-<div class="quarto-figure quarto-figure-center page-columns page-full">
-<figure class="figure page-columns page-full">
-<p class="page-columns page-full"><img src="../images/gephi-network-example.png" class="img-fluid figure-img column-body-outset" style="width:100.0%"></p>
-<figcaption>This is an example of such a network. I added some additional configuration here to display the labels. Gephi has many advanced features, I recommend a web- and YouTube search for more ideas how to explore your graph and how to render the data nicely.</figcaption>
-</figure>
-</div>
-</div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../images/gephi-close-look.png" class="img-fluid figure-img" style="width:75.0%"></p>
-<figcaption>At the end of the process we can take a look at the modularity classes (clusters). Zooming into each of the clusters we can name them based on their content. In my example the images in the displayed cluster all show streets or city-views, thus glimpses of the farmers’ demonstrations with from a wide-angle perspective.</figcaption>
-</figure>
-</div>
+<p>This section introduces how Instagram content can be collected for social-media research in a “post-API” era <span class="citation" data-cites="Freelon2018-tz Bruns2019-hm Caliandro2021-or Trezza2023-vk">(<a href="#ref-Freelon2018-tz" role="doc-biblioref">Freelon 2018</a>; <a href="#ref-Bruns2019-hm" role="doc-biblioref">Bruns 2019</a>; <a href="#ref-Caliandro2021-or" role="doc-biblioref">Caliandro 2021</a>; <a href="#ref-Trezza2023-vk" role="doc-biblioref">Trezza 2023</a>)</span>. Today, you will find no single best access pathway. Instead, you must navigate a heterogeneous ecosystem:</p>
+<ul>
+<li>Official transparency interfaces when available</li>
+<li>Open-source tools and browser-based capture workflows</li>
+<li>Commercial services that offer managed scheduling and logging</li>
+</ul>
+<p>This chapter aims to help you understand this landscape so that you can make informed, responsible methodological choices. While later tutorial pages will show you technical workflows, here we provide the conceptual grounding, legal/ethical boundaries, and historical motivations behind today’s practices.</p>
+<section id="background" class="level2">
+<h2 class="anchored" data-anchor-id="background">Background</h2>
+<p>On April 4, 2018, Facebook shut down the Pages API, removing TOS-compliant pathways to extract public page content and signaling what many now call the post-API era <span class="citation" data-cites="Freelon2018-tz">(<a href="#ref-Freelon2018-tz" role="doc-biblioref">Freelon 2018</a>)</span>. This wasn’t an isolated technical tweak—it marked a structural pivot in how platforms govern research access and how you, as a researcher, must plan data collection. Freelon argues that when platforms can revoke or restrict APIs at will, researchers should learn robust <a href="https://en.wikipedia.org/wiki/Web_scraping">web-scraping</a> workflows and understand the risks of violating Terms of Service, because heavy investment in platform-specific API skills can become obsolete overnight <span class="citation" data-cites="Freelon2018-tz">(<a href="#ref-Freelon2018-tz" role="doc-biblioref">Freelon 2018</a>)</span>.</p>
+<p>The broader backdrop is the <a href="https://en.wikipedia.org/wiki/Facebook%E2%80%93Cambridge_Analytica_data_scandal">Cambridge Analytica scandal</a>, which catalyzed a wave of tightened access rules across platforms. Post-2018, access restrictions have reconfigured research practice: some scholars adapt via scraping and mixed tooling, others drift toward “easy-data” platforms (historically, Twitter) with better-documented endpoints—raising concerns about selection biases and the over-study of a few platforms <span class="citation" data-cites="Trezza2023-vk">(<a href="#ref-Trezza2023-vk" role="doc-biblioref">Trezza 2023</a>)</span>. Trezza frames this shift as an “APIcalypse”: not a clean break from APIs, but a messier research landscape that demands diversification of sources, ethical caution with user data, and transparent documentation of trade-offs <span class="citation" data-cites="Trezza2023-vk">(<a href="#ref-Trezza2023-vk" role="doc-biblioref">Trezza 2023</a>)</span>.</p>
+</section>
+<section id="collecting-social-media-content-under-post-api-conditions" class="level2">
+<h2 class="anchored" data-anchor-id="collecting-social-media-content-under-post-api-conditions">Collecting Social-Media Content Under Post-API Conditions</h2>
+<p>In a post-API environment, there is no single best tool for collecting social-media data. Platforms differ in what they make accessible, and they regularly change access rules without notice. As a researcher, you therefore need to select a collection strategy that fits your research question, your legal and ethical responsibilities, and your technical capacity — not the other way around.</p>
+<blockquote class="blockquote">
+<p><strong>Most importantly: do not let platforms dictate your research questions.</strong> Start from what you want to understand, then identify how you can feasibly and responsibly observe it.</p>
+</blockquote>
+<p>Broadly, available approaches fall into three families. None is the universally best, each is useful under different conditions.</p>
+<ol type="1">
+<li><p><strong>Browser-based capture</strong> Tools such as <a href="https://www.selenium.dev">Selenium</a>, <a href="https://playwright.dev">Playwright</a>, or custom browser extensions collect content as rendered in the interface. Browser workflows can be powerful but require maintenance, responsible authentication management, and clear logging.</p></li>
+<li><p><strong>Open-source &amp; transparency-oriented tools</strong> Packages such as <code>instaloader</code> or platform-provided transparency resources (e.g., <a href="https://transparency.meta.com/researchtools/meta-content-library">Meta Content Library</a>; <a href="https://developers.tiktok.com/products/research-api/">TikTok Research Tools</a>) can offer structured access to posts, accounts, or engagement metrics. Coverage varies, some support only selected public data, and availability is subject to change.</p></li>
+<li><p><strong>Commercial collection services</strong> Providers like <a href="https://apify.com">Apify</a> encapsulate scraping, scheduling, logging, and proxy management. These can lower technical complexity.These lower technical overhead but may obscure details about how data were obtained and require researchers to evaluate legal and ethical implications carefully.</p></li>
+</ol>
+<blockquote class="blockquote">
+<p><strong>Key idea:</strong> <em>The “best” tool is the one that enables you to answer your question responsibly and transparently, given legal, ethical, and practical constraints.</em></p>
+</blockquote>
+<p>Because constraints differ it is perfectly legitimate for two teams studying similar topics to use different data-collection tools. What matters is that you:</p>
+<ul>
+<li>explain why the chosen approach is appropriate</li>
+<li>operate within the applicable legal/ethical framework</li>
+<li>document what was (and was not) collected</li>
+</ul>
+<p>For our 2025/26 seminar, we will explore two common strategies in practice:</p>
+<ul>
+<li><strong>Browser-extension-based collection</strong> (Zeeschuimer, Tidal Tales)</li>
+<li><strong>Commercial managed collection</strong> (Apify)</li>
+</ul>
+</section>
+<section id="legal-and-ethical-grounding" class="level2">
+<h2 class="anchored" data-anchor-id="legal-and-ethical-grounding">Legal and Ethical Grounding</h2>
+<p>In this course, you will work with lawfully accessible public social-media content. Classroom projects primarily rely on the European text-and-data-mining (TDM) exception for non-commercial research (<a href="https://eur-lex.europa.eu/eli/dir/2019/790/oj?uri=CELEX:32019L0790">Art. 3, Directive (EU) 2019/790</a>; <a href="https://dejure.org/gesetze/UrhG/60d.html">§ 60d UrhG</a>).</p>
+<p>This exception permits automated analysis and temporary reproduction for scientific purposes, provided that no technical protection measures are circumvented. Expert guidance by the German Data Forum <span class="citation" data-cites="Rat_fur_Sozial-_und_Wirtschaftsdaten_RatSWD2019-re">(<a href="#ref-Rat_fur_Sozial-_und_Wirtschaftsdaten_RatSWD2019-re" role="doc-biblioref">Rat für Sozial- und Wirtschaftsdaten (RatSWD) 2019</a>)</span> notes that § 60d UrhG can apply even where platform Terms of Service prohibit automated access.</p>
+<p>Because collection may involve personal data, GDPR applies. Public availability does not eliminate contextual privacy expectations <span class="citation" data-cites="Zimmer2010-zh">(<a href="#ref-Zimmer2010-zh" role="doc-biblioref">Zimmer 2010</a>)</span>. Thus, we:</p>
+<ul>
+<li>limit collection to specific time windows, accounts, and purposes</li>
+<li>avoid profiling or inference about individuals</li>
+<li>store identifiable media only in controlled workspaces</li>
+<li>document decisions, procedures, and limitations</li>
+</ul>
+<section id="ethical-orientation" class="level3">
+<h3 class="anchored" data-anchor-id="ethical-orientation">Ethical orientation</h3>
+<p>Legal compliance is only a baseline. Ethical practice requires contextual, case-based judgment. AoIR’s <em>Internet Research: Ethical Guidelines 3.0</em> emphasizes that internet research should prioritize respect for persons and communities, minimize harm, and attend to context rather than rely on rigid rules <span class="citation" data-cites="Franzke2020-sd">(<a href="#ref-Franzke2020-sd" role="doc-biblioref">Franzke et al. 2020</a>)</span>.</p>
+<p>Key principles include:</p>
+<ul>
+<li><strong>Context matters:</strong> Ethical decisions depend on how material is presented, shared, and understood in its original setting. Public visibility is not the same as ethical availability.</li>
+<li><strong>Respect for persons &amp; communities:</strong> Researchers should acknowledge that users have differing expectations of privacy and visibility, even in public spaces.</li>
+<li><strong>Minimize harm:</strong> Avoid creating new risks for individuals or groups, including reputational harm, unwanted exposure, or identification.</li>
+<li><strong>Proportionality:</strong> Collect only what is necessary to answer the research question; reduce detail where possible.</li>
+<li><strong>Transparency &amp; accountability:</strong> Explain what was collected, how, and why; document trade-offs and limitations.</li>
+</ul>
+<blockquote class="blockquote">
+<p><strong>In short:</strong> A responsible workflow is not only lawful — it is proportionate, well-documented, context-sensitive, and attentive to potential harm.</p>
+</blockquote>
+</section>
+</section>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<p>In today’s post-API landscape, social-media data collection requires deliberate methodological choices rather than reliance on a single unified access point. Your task is to begin from the research question, then select an approach that is legally grounded, ethically defensible, and technically feasible.</p>
+<p>A responsible workflow:</p>
+<ul>
+<li>does not let platforms dictate what you study,<br>
+</li>
+<li>selects tools that align with your goals and constraints,<br>
+</li>
+<li>and clearly documents decisions, limitations, and trade-offs.</li>
+</ul>
+<p>The next pages provide hands-on tutorials to help you apply these principles in practice. They walk you through concrete collection workflows — including browser-extension–based capture and managed commercial collection — and show you how to assemble platform-specific corpora for analysis.</p>
+<p>→ Continue to:</p>
+<ul>
+<li><a href="../data-collection/ig-posts.html">Instagram Posts</a><br>
+</li>
+<li><a href="../data-collection/ig-stories.html">Instagram Stories</a><br>
+</li>
+<li><a href="https://docs.google.com/document/d/19MAiqX7Vx1FcNJ44K-vSdnKDVC5gcFwtrSQiewnwW8A/edit?pli=1">TikTok (external)</a></li>
+</ul>
 
 
 
+</section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-Omena2021-gu" class="csl-entry" role="listitem">
-Omena, Janna Joceli, Pilipets Elena, Beatrice Gobbo, and Chao Jason. 2021. <span>“<span class="nocase">The Potentials of Google Vision API-based Networks to Study Natively Digital Images</span>.”</span> <em>Dise<span>ñ</span>a</em>, no. 19 (September): 1–1. <a href="https://doi.org/10.7764/disena.19.Article.1">https://doi.org/10.7764/disena.19.Article.1</a>.
+<div id="ref-Bruns2019-hm" class="csl-entry" role="listitem">
+Bruns, Axel. 2019. <span>“<span class="nocase">After the <span>‘APIcalypse’</span>: social media platforms and their fight against critical scholarly research</span>.”</span> <em>Information, Communication and Society</em> 22 (11): 1544–66. <a href="https://doi.org/10.1080/1369118X.2019.1637447">https://doi.org/10.1080/1369118X.2019.1637447</a>.
 </div>
-</div></section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section></div></main> <!-- /main -->
+<div id="ref-Caliandro2021-or" class="csl-entry" role="listitem">
+Caliandro, Alessandro. 2021. <span>“<span class="nocase">Repurposing digital methods in a post-API research environment: Methodological and ethical implications</span>.”</span> <em>Italian Sociological Review</em>. <a href="https://doi.org/10.13136/ISR.V11I4S.433">https://doi.org/10.13136/ISR.V11I4S.433</a>.
+</div>
+<div id="ref-Franzke2020-sd" class="csl-entry" role="listitem">
+Franzke, Aline Shakti, Anja Bechmann, Michael Zimmer, Charles M Ess, and the Association of Internet Researchers. 2020. <span>“<span class="nocase">Internet research: ethical guidelines 3.0: association of internet researchers</span>.”</span> <a href="https://aoir.org/reports/ethics3.pdf">https://aoir.org/reports/ethics3.pdf</a>.
+</div>
+<div id="ref-Freelon2018-tz" class="csl-entry" role="listitem">
+Freelon, Deen. 2018. <span>“<span class="nocase">Computational Research in the Post-API Age</span>.”</span> <em>Political Communication</em> 35 (4): 665–68. <a href="https://doi.org/10.1080/10584609.2018.1477506">https://doi.org/10.1080/10584609.2018.1477506</a>.
+</div>
+<div id="ref-Rat_fur_Sozial-_und_Wirtschaftsdaten_RatSWD2019-re" class="csl-entry" role="listitem">
+Rat für Sozial- und Wirtschaftsdaten (RatSWD). 2019. <span>“<span class="nocase">Big Data in den Sozial-, Verhaltens- und Wirtschaftswissenschaften: Datenzugang und Forschungsdatenmanagement - Mit Gutachten "Web Scraping in der unabh<span class="nocase">ä</span>ngigen wissenschaftlichen Forschung"</span>.”</span> <em>RatSWD Output</em>. German Data Forum ( RatSWD). <a href="https://doi.org/10.17620/02671.39">https://doi.org/10.17620/02671.39</a>.
+</div>
+<div id="ref-Trezza2023-vk" class="csl-entry" role="listitem">
+Trezza, Domenico. 2023. <span>“<span class="nocase">To scrape or not to scrape, this is dilemma. The post-API scenario and implications on digital research</span>.”</span> <em>Frontiers in Sociology</em> 8 (March): 1145038. <a href="https://doi.org/10.3389/fsoc.2023.1145038">https://doi.org/10.3389/fsoc.2023.1145038</a>.
+</div>
+<div id="ref-Zimmer2010-zh" class="csl-entry" role="listitem">
+Zimmer, Michael. 2010. <span>“<span class="nocase">"But the Data is Already Public": On the Ethics of Research in Facebook</span>.”</span> <em>Ethics and Information Technology</em> 12 (4): 313–25. <a href="https://doi.org/10.1007/s10676-010-9227-5">https://doi.org/10.1007/s10676-010-9227-5</a>.
+</div>
+</div></section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reuse</h2><div class="quarto-appendix-contents"><div><a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></div></div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{achmann-denkler2025,
+  author = {Achmann-Denkler, Michael},
+  title = {Data {Collection} in a {Post-API} {World}},
+  date = {2025-11-03},
+  url = {https://social-media-lab.net/data-collection/},
+  doi = {10.5281/zenodo.10039756},
+  langid = {en}
+}
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-achmann-denkler2025" class="csl-entry quarto-appendix-citeas" role="listitem">
+Achmann-Denkler, Michael. 2025. <span>“Data Collection in a Post-API
+World.”</span> November 3, 2025. <a href="https://doi.org/10.5281/zenodo.10039756">https://doi.org/10.5281/zenodo.10039756</a>.
+</div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
@@ -1071,6 +1143,18 @@ Omena, Janna Joceli, Pilipets Elena, Beatrice Gobbo, and Chao Jason. 2021. <span
     }
   });
   </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../basics/openai.html" class="pagination-link" aria-label="Basics for OpenAI">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Basics for OpenAI</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../data-collection/ig-posts.html" class="pagination-link" aria-label="Instagram Posts">
+        <span class="nav-page-text">Instagram Posts</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
