@@ -22,6 +22,7 @@ website:
           - basics/openai.qmd
       - section: "Data Collection"
         contents:
+          - data-collection/index.qmd
           - data-collection/ig-posts.qmd
           - data-collection/ig-stories.qmd
           - href: https://docs.google.com/document/d/19MAiqX7Vx1FcNJ44K-vSdnKDVC5gcFwtrSQiewnwW8A/edit?pli=1

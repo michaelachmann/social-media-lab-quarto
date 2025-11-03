@@ -221,3 +221,4 @@ pyrightconfig.json
 /_site/
 
 .DStore
+**/*.quarto_ipynb

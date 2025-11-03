@@ -1,0 +1,113 @@
+---
+title: "Data Collection in a Post-API World"
+format:
+  html
+date: 2025-11-03
+bibliography: ../literature.bib
+author:
+  - name: Michael Achmann-Denkler
+    id: ma
+    orcid: 0000-0002-4754-7842
+    email: michael.achmann@informatik.uni-regensburg.de
+license: CC BY
+citation:
+  type: webpage
+  doi: 10.5281/zenodo.10039756
+---
+
+This section introduces how Instagram content can be collected for social-media research in a “post-API” era [@Freelon2018-tz; @Bruns2019-hm; @Caliandro2021-or; @Trezza2023-vk]. Today, you will find no single best access pathway. Instead, you must navigate a heterogeneous ecosystem:
+
+* Official transparency interfaces when available
+* Open-source tools and browser-based capture workflows
+* Commercial services that offer managed scheduling and logging
+
+This chapter aims to help you understand this landscape so that you can make informed, responsible methodological choices. While later tutorial pages will show you technical workflows, here we provide the conceptual grounding, legal/ethical boundaries, and historical motivations behind today’s practices.
+
+## Background
+On April 4, 2018, Facebook shut down the Pages API, removing TOS-compliant pathways to extract public page content and signaling what many now call the post-API era [@Freelon2018-tz]. This wasn’t an isolated technical tweak—it marked a structural pivot in how platforms govern research access and how you, as a researcher, must plan data collection. Freelon argues that when platforms can revoke or restrict APIs at will, researchers should learn robust [web-scraping](https://en.wikipedia.org/wiki/Web_scraping) workflows and understand the risks of violating Terms of Service, because heavy investment in platform-specific API skills can become obsolete overnight [@Freelon2018-tz]. 
+
+The broader backdrop is the [Cambridge Analytica scandal](https://en.wikipedia.org/wiki/Facebook%E2%80%93Cambridge_Analytica_data_scandal), which catalyzed a wave of tightened access rules across platforms. Post-2018, access restrictions have reconfigured research practice: some scholars adapt via scraping and mixed tooling, others drift toward “easy-data” platforms (historically, Twitter) with better-documented endpoints—raising concerns about selection biases and the over-study of a few platforms [@Trezza2023-vk]. Trezza frames this shift as an “APIcalypse”: not a clean break from APIs, but a messier research landscape that demands diversification of sources, ethical caution with user data, and transparent documentation of trade-offs [@Trezza2023-vk].
+
+## Collecting Social-Media Content Under Post-API Conditions
+
+In a post-API environment, there is no single best tool for collecting social-media data. Platforms differ in what they make accessible, and they regularly change access rules without notice. As a researcher, you therefore need to select a collection strategy that fits your research question, your legal and ethical responsibilities, and your technical capacity — not the other way around.
+
+> **Most importantly: do not let platforms dictate your research questions.**
+> Start from what you want to understand, then identify how you can feasibly and responsibly observe it.
+
+Broadly, available approaches fall into three families. None is the universally best, each is useful under different conditions.
+
+1. **Browser-based capture**
+   Tools such as [Selenium](https://www.selenium.dev), [Playwright](https://playwright.dev), or custom browser extensions collect content as rendered in the interface. Browser workflows can be powerful but require maintenance, responsible authentication management, and clear logging.
+
+2. **Open-source & transparency-oriented tools**
+   Packages such as `instaloader` or platform-provided transparency resources (e.g., [Meta Content Library](https://transparency.meta.com/researchtools/meta-content-library); [TikTok Research Tools](https://developers.tiktok.com/products/research-api/)) can offer structured access to posts, accounts, or engagement metrics. Coverage varies, some support only selected public data, and availability is subject to change.
+
+3. **Commercial collection services**
+   Providers like [Apify](https://apify.com) encapsulate scraping, scheduling, logging, and proxy management. These can lower technical complexity.These lower technical overhead but may obscure details about how data were obtained and require researchers to evaluate legal and ethical implications carefully.
+
+> **Key idea:**
+> *The “best” tool is the one that enables you to answer your question responsibly and transparently, given legal, ethical, and practical constraints.*
+
+Because constraints differ it is perfectly legitimate for two teams studying similar topics to use different data-collection tools. What matters is that you:
+
+* explain why the chosen approach is appropriate
+* operate within the applicable legal/ethical framework
+* document what was (and was not) collected
+
+For our 2025/26 seminar, we will explore two common strategies in practice:
+
+* **Browser-extension-based collection** (Zeeschuimer, Tidal Tales)
+* **Commercial managed collection** (Apify)
+
+## Legal and Ethical Grounding 
+
+In this course, you will work with lawfully accessible public social-media content. Classroom projects primarily rely on the European text-and-data-mining (TDM) exception for non-commercial research ([Art. 3, Directive (EU) 2019/790](https://eur-lex.europa.eu/eli/dir/2019/790/oj?uri=CELEX:32019L0790); [§ 60d UrhG](https://dejure.org/gesetze/UrhG/60d.html)).
+
+This exception permits automated analysis and temporary reproduction for scientific purposes, provided that no technical protection measures are circumvented. Expert guidance by the German Data Forum  [@Rat_fur_Sozial-_und_Wirtschaftsdaten_RatSWD2019-re] notes that § 60d UrhG can apply even where platform Terms of Service prohibit automated access.
+
+Because collection may involve personal data, GDPR applies. Public availability does not eliminate contextual privacy expectations [@Zimmer2010-zh]. Thus, we:
+
+* limit collection to specific time windows, accounts, and purposes
+* avoid profiling or inference about individuals
+* store identifiable media only in controlled workspaces
+* document decisions, procedures, and limitations
+
+### Ethical orientation 
+Legal compliance is only a baseline. Ethical practice requires contextual, case-based judgment. AoIR’s *Internet Research: Ethical Guidelines 3.0* emphasizes that internet research should prioritize respect for persons and communities, minimize harm, and attend to context rather than rely on rigid rules [@Franzke2020-sd].
+
+Key principles include:
+
+* **Context matters:**
+  Ethical decisions depend on how material is presented, shared, and understood in its original setting. Public visibility is not the same as ethical availability.
+* **Respect for persons & communities:**
+  Researchers should acknowledge that users have differing expectations of privacy and visibility, even in public spaces.
+* **Minimize harm:**
+  Avoid creating new risks for individuals or groups, including reputational harm, unwanted exposure, or identification.
+* **Proportionality:**
+  Collect only what is necessary to answer the research question; reduce detail where possible.
+* **Transparency & accountability:**
+  Explain what was collected, how, and why; document trade-offs and limitations.
+
+
+> **In short:**
+> A responsible workflow is not only lawful — it is proportionate, well-documented, context-sensitive, and attentive to potential harm.
+
+## Summary
+
+In today’s post-API landscape, social-media data collection requires deliberate methodological choices rather than reliance on a single unified access point. Your task is to begin from the research question, then select an approach that is legally grounded, ethically defensible, and technically feasible.  
+
+A responsible workflow:
+
+* does not let platforms dictate what you study,  
+* selects tools that align with your goals and constraints,  
+* and clearly documents decisions, limitations, and trade-offs.
+
+The next pages provide hands-on tutorials to help you apply these principles in practice. They walk you through concrete collection workflows — including browser-extension–based capture and managed commercial collection — and show you how to assemble platform-specific corpora for analysis.
+
+→ Continue to:
+
+* [Instagram Posts](ig-posts.qmd)  
+* [Instagram Stories](ig-stories.qmd)  
+* [TikTok (external)](https://docs.google.com/document/d/19MAiqX7Vx1FcNJ44K-vSdnKDVC5gcFwtrSQiewnwW8A/edit?pli=1)
+
