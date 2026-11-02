@@ -1,8 +1,9 @@
 ---
-format: 
+format:
   html: default
-title: "About the Seminar"    
+title: "About the Seminar"
 date: 2024-11-14
+date-modified: 2026-11-02
 author:
   - name: Michael Achmann-Denkler
     id: ma
@@ -10,59 +11,88 @@ author:
     email: michael.achmann@informatik.uni-regensburg.de
 license: CC BY
 ---
-# About the Course: Computational Analysis of Visual Social Media (Winter 2024/25)
 
-This project-centered research seminar focuses on group work, lectures, and practical sessions. The seminar introduces students to various research methodologies, including data collection, content analysis, and machine learning techniques. Students will work with tools such as Whisper for video transcription, GPT, fine-tuning BERT variants, and multimodal models like GPT-4o. Groups will explore diverse research topics and datasets, such as political communication on social media, influencer content, and misinformation, guided by an interdisciplinary approach that integrates media studies, political science, and communication science. The seminar is designed for master students with basic programming experience.
+## Computational Analysis of Visual Social Media · Winter 2026/27
 
-Taught by [Michael Achmann-Denkler](https://go.ur.de/michael-achmann), a PhD candidate at the University of Regensburg, pursuing a PhD titled "Decoding Digital Campaigns: Computational Insights into Multimodal Political Communication on Social Media." This seminar is closely linked to his research, aiming to test approaches, methods, and ideas on a broader scale
+This project-centred research seminar focuses on **frame analysis with vision-language models**. Together, we study political TikTok content with possible AI components. We combine theoretical work on framing with data collection, qualitative exploration, human annotation, and computational experiments.
 
-### Course Outcomes
+Taught by [Michael Achmann-Denkler](https://go.ur.de/michael-achmann), Media Informatics, University of Regensburg.
 
-**Theoretical Skills**:
-- Accessibility of social media data for researchers
-- Concepts of text and images as data
-- Ethical and legal limitations
-- Understanding social media as trace data
+### How We Work
 
-**Practical Skills**:
-- Collecting Instagram and TikTok content
-- Applying OCR and video transcription
-- Exploring and classifying text and images computationally
-- Evaluating and optimizing classifications using human annotations
-- Presenting research findings effectively
+As a seminar, we collect a shared corpus, develop a coding framework from literature and the data, and test it in pilot rounds. We then create independent human annotations and document how a shared reference dataset is derived.
 
-### Requirements
-- Engage independently with literature, formulate research questions, and develop operationalizations
-- Willingness to master new tools via practical exercises and provided Jupyter Notebooks
-- Active and regular collaboration within your project team
-- Continuous documentation of progress through a project wiki
-- Submit a project report by the end of the semester
+Teams compare models or input representations. Prompts are developed on pilot material; the shared test dataset is reserved for evaluation. Document what evidence supports an item's inclusion in the corpus, including any assessment of AI use. A possible AI component is a sampling criterion to investigate, not an established fact about every collected item.
 
-### Project Documentation
-- Documentation will follow an Open Science approach
-- Use the [project report template](https://docs.google.com/document/d/1hCMQlDF85S5ua9dzhJ280gQzbbheo4zJvoVUwYAIdqg/edit?usp=sharing) for your final report
-- Reports will be published on [social-media-lab.net](https://social-media-lab.net)
+### Learning Objectives
+
+By the end of the seminar, you should be able to:
+
+- Explain framing and translate theoretical concepts into explicit coding rules.
+- Prepare and analyse political videos with vision-language models.
+- Compare model outputs with independent human annotations.
+- Report findings, uncertainty, and methodological limitations.
+
+## Course Schedule {#course-schedule}
+
+The following Monday sessions reproduce the working plan from the introductory session on 12 October 2026. Topics and milestones may be adjusted as the project develops. Check GRIPS for announcements and formal requirements.
+
+### Theory and Shared Data
+
+| Date | Topic | Shared outcome |
+|------|-------|----------------|
+| 12 Oct 2026 | Organisation and research idea | Seminar orientation |
+| 19 Oct 2026 | Theory and history of social media analysis | Conceptual foundations |
+| 26 Oct 2026 | Framing, AI, and political content | Research focus |
+| 2 Nov 2026 | TikTok data collection | Shared corpus |
+| 9 Nov 2026 | Preprocessing | Prepared video material |
+
+### Framework and Annotation
+
+| Date | Topic | Shared outcome |
+|------|-------|----------------|
+| 16 Nov 2026 | Data exploration and inductive coding | Candidate categories |
+| 23 Nov 2026 | Framework from literature and data | Draft codebook |
+| 30 Nov 2026 | Pilot coding and framework testing | Disagreements and revisions |
+| 7 Dec 2026 | Framework revision and another pilot | Agreed codebook |
+| 14 Dec 2026 | Test dataset annotation | Independent human labels |
+
+### Team Analysis and Results
+
+| Date | Topic | Outcome |
+|------|-------|---------|
+| 21 Dec 2026 | Annotation agreement and adjudication | Shared reference dataset |
+| 11 Jan 2027 | Team analysis: models and inputs | Experiment setup |
+| 18 Jan 2027 | Team experiments / computational analysis | Comparable outputs |
+| 25 Jan 2027 | Evaluation / computational analysis | Comparison and error analysis |
+| 1 Feb 2027 | Questions, peer review, and possible presentations | Preliminary findings and feedback |
+
+## Requirements and Documentation
+
+- Prepare independently: engage with literature, research questions, and operationalisation.
+- Contribute regularly to your group and seminar discussions.
+- Maintain a shared project document throughout the semester.
+- Record sources, data selection, coding rules, model settings, and changes. Keep disagreements and failed attempts visible in the record.
+- Explain the study design, present results, and discuss limitations in a final project report.
 
 ### Project Report
-- Submit a collaborative report (approx. 20 pages)
-- Follow the IMRAD structure: Introduction, Method, Results, and Discussion
-- Use [APA citation style](https://apastyle.apa.org/)
-- Deadline: **31.03.2025**
 
-### Project Ideas
-- **Video Analysis**: Apply existing analysis approaches to video content
-- **Replication Study**: Replicate Peng (2021) on a German/European dataset
-- **Scalability Study**: Test how well methods tested on small datasets scale with large data
+The working plan is a **joint group report of approximately 20 pages**, organised into Introduction, Methods, Results, and Discussion, with APA citations.
 
-### Materials & Tools
-- Course materials are available on [social-media-lab.net](https://social-media-lab.net).
-- Collaborative editing through [GitHub](https://github.com/) using [Quarto](https://quarto.org/) and Markdown
-- All content will be under [GPL-3](https://www.gnu.de/documents/gpl.en.html)
+::: {.callout-important}
+## Formal requirements and deadline
 
-### Schedule Highlights
-- **October**: Introduction & Tool Setup (Colab, GitHub)
-- **November**: Data Collection (Instagram, TikTok)
-- **December**: Text Analysis & Operationalization, Text Classification using BERT
-- **January**: Evaluation & Image Analysis, Visual Data Exploration with LLMs and Clustering
-- **February**: Data Analysis as a Conversation, Visual Presentation of Results (RAWGraphs, Figma)
+The final submission deadline and formal requirements will be confirmed in **GRIPS**.
+:::
 
+### Use of AI Tools
+
+Follow the course-specific AI rules and the applicable general guidelines provided through the course. Check all submitted content; the team must understand and stand behind it. Disclose the tool or model, its purpose, the affected work steps or parts of the submission, and its specific contribution.
+
+## Materials and Collaboration
+
+- **GRIPS:** announcements, formal requirements, and submission information.
+- **Shared documents:** group documentation, research questions, and report drafts.
+- **[Social Media Lab](../index.qmd):** method notes, computational notebooks, and the status of this semester's material updates.
+
+The website text is licensed under CC BY; code licences are described on the [home page](../index.qmd#citation-and-licences).
