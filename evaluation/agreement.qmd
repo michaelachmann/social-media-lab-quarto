@@ -4,6 +4,7 @@ format:
     css: ../styles.css
 title: "Agreement & Evaluation"    
 date: 2024-12-09
+date-modified: 2026-11-02
 author:
   - name: Michael Achmann-Denkler
     id: ma
@@ -17,149 +18,102 @@ citation:
 notebook-links: false
 ---
 
-The [previous chapter](index.qmd) focused on the creation of a Ground Truth dataset using human annotations. In this chapter we pick up on the annotated data and will first assess the quality of the annotations before adopting them as a gold standard. The integrity of the dataset directly influences the validity of our model evaluations. @Klie2024-xg emphasize that proper quality management, including interrater agreement, manual inspection, and an iterative annotation processes, is vital for mitigating such issues and producing datasets suitable for real-world applications.
+The [previous chapter](index.qmd) introduced human annotations as a basis for evaluating computational classifications. Here, we first examine whether annotators apply the coding scheme consistently, then compare model predictions with a documented reference. @Klie2024-xg emphasize quality management, including agreement assessment and manual inspection. Consistent annotations can still share a systematic error, so agreement and validity need separate attention.
 
-To this end, we take a look at two interrater agreement measures: Cohen's Kappa and Krippendorff's Alpha. These metrics are important for quantifying the level of agreement among annotators. Once we established the quality of our annotations, we will use them as ground truth. In our context there are two use cases for the ground truth dataset: When training or fine-tuning our own model, we need a training for our model to learn from. Additionally, we always--for training our model as well as using LLMs--need an evaluation dataset to determine how well our computational approach performs when applied to real-world data. The performance of machine learning models is typically assessed using a variety of metrics, each offering a different perspective on the model's effectiveness. In this chapter, we will take a look at four fundamental metrics: Accuracy, Precision, Recall, and F1 Score.
+We use Cohen's kappa and Krippendorff's alpha to assess annotation reliability. For model evaluation, we introduce accuracy, precision, recall, and F1. A reference dataset may support model training, prompt development, or final testing, but these roles must be kept separate to avoid optimistic performance estimates.
 
-In the first part of the chapter we will take a look at [interrater agreements](#interrater-agreement) and [machine learning evaluation measures](#machine-learning-evaluation-metrics). In the [application part](#the-evaluation-notebook) I provide the notebooks to:
+In the first part of the chapter we will take a look at [interrater agreements](#interrater-agreement) and [machine learning evaluation measures](#machine-learning-evaluation-metrics). In the [application part](#the-evaluation-notebook) I link to the notebook for these steps:
 
 1. Import Label Studio Annotations
 2. Calculate the interrater measures
-3. Derive the gold standard from the annotations
-4. Calculate the evaluation metrics for your model based on the gold standard.
+3. Derive and document reference labels from the annotations
+4. Calculate model evaluation metrics against those reference labels.
 
 Finally, the [optimization](#conclusion-prompt-optimization) part of this page provides an outlook for how to use the evaluation metrics in order to tune your classification prompt.
 
-::: {.callout-important}
-## Update 2024
-* [Link to Notebook](https://colab.research.google.com/github/michaelachmann/social-media-lab/blob/main/notebooks/2024_12_09_Evaluation_Kurs_V3.ipynb).
-* Updated the notebook to handle both, single annotation projects (from the enterprise version of Label Studio), and multiple annotation projects (when using the Open Source version).
+::: {.callout-tip}
+## Start the evaluation notebook
+
+[Open Evaluation Notebook V3 in Colab](https://colab.research.google.com/github/michaelachmann/social-media-lab/blob/main/notebooks/2024_12_09_Evaluation_Kurs_V3.ipynb){.btn .btn-primary}
+
+Use the notebook to import Label Studio exports and evaluate your annotations and classifications. [View the notebook on GitHub](https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2024_12_09_Evaluation_Kurs_V3.ipynb) before running it. The examples on this page explain the measures; the notebook provides the practical workflow.
 :::
-  
+
 
 ## Interrater Agreement
 
 ### Cohen's $\kappa$
-is a widely used statistic for measuring the agreement between two annotators, taking into account the agreement occurring by chance. This metric is particularly valuable when dealing with categorical data, as is often the case in text annotations. Cohen's Kappa provides a more robust measure than simple percent agreement calculation because it considers the possibility of the agreement occurring randomly. The kappa score can range from -1 (complete disagreement) to 1 (complete agreement), with 0 indicating the level of agreement that can be expected from random chance.
+Cohen's kappa measures agreement between two annotators assigning categorical labels to the same items. It adjusts observed agreement for the agreement expected from the annotators' individual label frequencies:
 
-The definition of $\kappa$ is: 
+$\kappa = \frac{p_o - p_e}{1 - p_e}$
 
-$\kappa \equiv \frac{p_o - p_e}{1 - p_e} = 1- \frac{1 - p_o}{1 - p_e}$
+Here, $p_o$ is the proportion of matching labels and $p_e = \sum_c p_{1c}p_{2c}$, where $p_{1c}$ and $p_{2c}$ are the proportions assigned to category $c$ by each annotator. A value of 1 indicates perfect agreement, 0 agreement at the chance baseline, and a negative value agreement below that baseline. If both annotators assign the same single category to every item, $p_e=1$ and kappa is undefined, despite perfect observed agreement. Label prevalence matters: report label distributions and observed agreement alongside kappa. Agreement alone does not establish that the labels measure the intended concept.
 
-"where $p_{0}$ is the relative observed agreement among raters, and $p_{e}$ is the hypothetical probability of chance agreement, using the observed data to calculate the probabilities of each observer randomly seeing each category."  ([Source: Wikipedia](https://en.wikipedia.org/w/index.php?title=Cohen%27s_kappa&oldid=1188549993))
-
-
+See the [scikit-learn documentation for Cohen's kappa](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.cohen_kappa_score.html) for the definition and implementation.
 
 ::: {.interactive-widget}
 <h4>Interactive Example</h4>
-<p>Adjust the disagreement level to see how it affects the agreement between two coders measured by Cohen's Kappa. The plot below visualizes their codings.</p>
+<p>Choose a disagreement percentage and the number of items. Coder 1 assigns each of the two categories equally often; Coder 2 changes a fixed number of those labels. Each item is changed at most once, so the result is reproducible. The requested percentage is rounded to a whole number of items; the actual disagreement is shown below.</p>
 
 ```{ojs}
 //| echo: false
 
-// Function to draw the plot
-function drawCodingPlot(coder1, coder2) {
-    const svgWidth = coder1.length * 10 + 100; // Adjust the width based on the number of items and space for labels
-    const svgHeight = 50; // Fixed height, two rows
-    const svg = d3.create("svg")
-                  .attr("width", svgWidth)
-                  .attr("height", svgHeight);
-
-    // Adding labels for Coders
-    svg.append("text")
-       .attr("x", 40)
-       .attr("y", 20)
-       .text("Coder 1")
-       .attr("font-size", "10px")
-       .attr("text-anchor", "end");
-
-    svg.append("text")
-       .attr("x", 40)
-       .attr("y", 40)
-       .text("Coder 2")
-       .attr("font-size", "10px")
-       .attr("text-anchor", "end");
-
-    // Drawing circles for codings
-    coder1.forEach((code, index) => {
-        svg.append("circle")
-           .attr("cx", 60 + 10 * index)
-           .attr("cy", 15)
-           .attr("r", 4)
-           .style("fill", code === 1 ? "black" : "none")
-           .style("stroke", "black");
-    });
-
-    coder2.forEach((code, index) => {
-        svg.append("circle")
-           .attr("cx", 60 + 10 * index)
-           .attr("cy", 35)
-           .attr("r", 4)
-           .style("fill", code === 1 ? "black" : "none")
-           .style("stroke", "black");
-    });
-
-    return svg.node();
-}
-
-
-// Function to generate controlled codings
 function generateControlledCoding(nItems, disagreementRate) {
-    let coder1 = Array.from({length: nItems}, () => Math.random() < 0.5 ? 0 : 1);
-    let coder2 = [...coder1];
-    disagreementRate = disagreementRate / 100
-    let nDisagreements = Math.floor(nItems * disagreementRate);
-    for (let i = 0; i < nDisagreements; i++) {
-        let index = Math.floor(Math.random() * nItems);
-        coder2[index] = 1 - coder2[index];
-    }
+    const coder1 = Array.from({length: nItems}, (_, i) => i % 2);
+    const nDisagreements = Math.round(nItems * disagreementRate / 100);
+    const coder2 = coder1.map((label, i) => i < nDisagreements ? 1 - label : label);
     return [coder1, coder2];
 }
 
-// Function to calculate Cohen's Kappa
 function calculateCohensKappa(coder1, coder2) {
-    let totalItems = coder1.length;
-    let agree = 0;
-    let coder1Yes = 0;
-    let coder2Yes = 0;
-
-    for (let i = 0; i < totalItems; i++) {
-        if (coder1[i] === coder2[i]) {
-            agree++;
-        }
-        if (coder1[i] === 1) {
-            coder1Yes++;
-        }
-        if (coder2[i] === 1) {
-            coder2Yes++;
-        }
-    }
-
-    let Po = agree / totalItems;
-    let Pe = (coder1Yes / totalItems) * (coder2Yes / totalItems) + 
-             ((totalItems - coder1Yes) / totalItems) * ((totalItems - coder2Yes) / totalItems);
-
-    return (Po - Pe) / (1 - Pe);
+    const n = coder1.length;
+    if (n === 0) return null;
+    const observed = coder1.filter((label, i) => label === coder2[i]).length / n;
+    const p1 = coder1.filter(label => label === 1).length / n;
+    const p2 = coder2.filter(label => label === 1).length / n;
+    const expected = p1 * p2 + (1 - p1) * (1 - p2);
+    return expected === 1 ? null : (observed - expected) / (1 - expected);
 }
 
-viewof disagreement_rate = Inputs.range([0, 100], {step: 1.0, value: 10, label: "Disagreement"})
-viewof nItems = Inputs.range([11, 65], {step: 1.0, value: 65.0, label: "n"})
+function drawCodingPlot(coder1, coder2) {
+    const width = coder1.length * 10 + 65;
+    const svg = d3.create("svg")
+        .attr("viewBox", `0 0 ${width} 60`)
+        .attr("role", "img")
+        .attr("aria-label", "Two rows of annotation labels: filled circles represent category 1, outlined circles category 0.")
+        .style("width", "100%")
+        .style("max-width", `${width}px`);
+    [coder1, coder2].forEach((coder, row) => {
+        svg.append("text").attr("x", 45).attr("y", 20 + row * 25)
+            .attr("text-anchor", "end").attr("fill", "currentColor")
+            .attr("font-size", 10).text(`Coder ${row + 1}`);
+        coder.forEach((label, i) => svg.append("circle")
+            .attr("cx", 60 + i * 10).attr("cy", 16 + row * 25).attr("r", 3.5)
+            .attr("fill", label === 1 ? "currentColor" : "none")
+            .attr("stroke", "currentColor"));
+    });
+    return svg.node();
+}
 
-// Main calculation and display
+viewof disagreement_rate = Inputs.range([0, 100], {step: 1, value: 10, label: "Requested disagreement (%)"})
+viewof nItems = Inputs.range([10, 60], {step: 2, value: 60, label: "Number of items"})
+
 {
     const [coder1, coder2] = generateControlledCoding(nItems, disagreement_rate);
+    const disagreements = coder1.filter((label, i) => label !== coder2[i]).length;
+    const observed = 1 - disagreements / nItems;
     const kappa = calculateCohensKappa(coder1, coder2);
-
-    // Draw the coding plot
-    const codingPlot = drawCodingPlot(coder1, coder2);
-
-    return html`<div>Cohen's Kappa: ${kappa.toFixed(2)}</div>
-                  <div>${codingPlot}</div>`;
+    return html`<div aria-live="polite">
+        <p><strong>Cohen's kappa: ${kappa === null ? "Undefined" : kappa.toFixed(2)}</strong><br>
+        Disagreements: ${disagreements} / ${nItems} (${(100 * disagreements / nItems).toFixed(1)}%).
+        Observed agreement: ${(100 * observed).toFixed(1)}%. Expected agreement: 50.0%.</p>
+        ${drawCodingPlot(coder1, coder2)}
+        <p>Filled circle = category 1; outlined circle = category 0.</p>
+    </div>`;
 }
-
-
 ```
 
+The 50% chance baseline is a property of this deliberately balanced example. It is not a general constant for binary annotation tasks.
 :::
 
 
@@ -178,61 +132,59 @@ print(f"Cohen's Kappa: {kappa}")
 
 ### Krippendorff's $\alpha$
 
-While Cohen's Kappa is ideal for pairwise annotation evaluation, Krippendorff's Alpha is used when there are more than two annotators. This metric is versatile as it can handle various types of data, including nominal, ordinal, interval, or ratio-scaled. Krippendorff's Alpha assesses the agreement among multiple annotators, accounting for the possibility of chance agreement. Its value also ranges from -1 to 1, with higher values indicating better reliability and 0 representing agreement equivalent to chance.
-
-The definition of $\alpha$ is: 
+Krippendorff's alpha can be used with two or more annotators and can accommodate missing annotations. Choose a disagreement function appropriate to the measurement level: nominal categories, ordered categories, or numerical measurements.
 
 $\alpha = 1-\frac{D_o}{D_e}$
 
-"where $D_o$ is the disagreement observed and $D_e$ is the disagreement expected by chance." ([Source: Wikipedia](https://en.wikipedia.org/w/index.php?title=Krippendorff%27s_alpha&oldid=1185764337))
+Here, $D_o$ is observed disagreement and $D_e$ is expected disagreement under the chance model. A value of 1 indicates perfect agreement, 0 the chance baseline, and negative values disagreement above that baseline. Alpha is undefined when expected disagreement is zero. Do not interpret agreement as proof of validity or adopt a universal cutoff without considering the task and intended use.
 
-::: {.interactive-widget}
-<h4>Static Example</h4>
-<p>Calculating the Krippendorff Alpha is more complex than Cohen's kappa. The example below is static, use the code below to calculate Krippendorff's Alpha in your Jupyter Notebook.</p>
-{{< embed ../notebooks/2024_01_02_Interrater_Embedded.ipynb echo=false >}}
-::: 
+#### Nominal annotations in Python
 
-
-In order to calculate Krippendorff's Alpha using python we need to install the `krippendorff` package: `pip install krippendorff`. Calculating the $\alpha$ value using python is straightforward -- as long as the codings are provided as integers.
+Install the [`krippendorff` package](https://github.com/pln-fing-udelar/fast-krippendorff) in your notebook environment. Rows must represent annotators and columns the same items in the same order. Use `np.nan` for missing annotations.
 
 ```python
 import krippendorff
 import numpy as np
 
-# Example annotations from three annotators
+# Rows = annotators; columns = shared items.
+# These numbers are category IDs, not numerical measurements.
 data = np.array([
     [1, 2, 3, 4, 5],
     [2, 2, 3, 4, 4],
     [1, 2, 4, 4, 5]
 ])
 
-alpha = krippendorff.alpha(data)
-print(f"Krippendorff's Alpha: {alpha}")
+alpha = krippendorff.alpha(data, level_of_measurement="nominal")
+print(f"Krippendorff's alpha: {alpha:.3f}")  # 0.512
 ```
 
-In case of e.g. strings (categorical data), we need to encode the values first:
+For string labels, use one shared mapping across all annotators. Encoding nominal labels as integers does not make the distances between those integers meaningful. Specify `level_of_measurement="nominal"`; the package's default is `"interval"`.
 
 ```python
 data_categorical = [
     ["yes", "no", "yes", "maybe", "no"],
     ["no", "no", "yes", "maybe", "maybe"],
-    ["yes", "no", "maybe", "maybe", "no"]
+    ["yes", "no", "maybe", "maybe", None]
 ]
 
-# Convert categorical data to numerical format
 label_encoding = {"yes": 0, "no": 1, "maybe": 2}
-data_encoded = np.array([[label_encoding.get(item, np.nan) for item in row] for row in data_categorical])
+data_encoded = np.array([
+    [np.nan if item is None else label_encoding[item] for item in row]
+    for row in data_categorical
+])
 
-alpha = krippendorff.alpha(data_encoded)
-print(f"Krippendorff's Alpha: {alpha}")
+alpha = krippendorff.alpha(data_encoded, level_of_measurement="nominal")
+print(f"Krippendorff's alpha: {alpha:.3f}")
 ```
+
+Each item needs at least two available ratings to contribute to the agreement calculation. For ordinal data, define and document the category order; do not reuse an arbitrary nominal mapping as an ordinal scale.
 
 
 ## Machine Learning Evaluation Metrics
-After establishing the reliability of our annotations, we now turn our attention to evaluating the performance of machine learning models using these validated datasets. This is crucial for understanding how well our computational approaches are performing in real-world scenarios. In this segment, we discuss four evaluation metrics: Accuracy, Precision, Recall, and F1 Score.
+Once we have assessed annotation reliability and documented the reference-label procedure, we can compare model predictions with those reference labels. We discuss accuracy, precision, recall, and F1; each describes a different aspect of performance on the evaluated sample.
 
 ::: {.callout-warning}
-This subchapter scratches the surface. Recommended reading: e.g. @Haim2023-or pp. 246--252, or machine learning textbooks. Parts of this section have been generated using ChatGPT (e.g. examples).  
+This subchapter scratches the surface. Recommended reading: e.g. @Haim2023-or pp. 246--252, or machine learning textbooks. The examples were originally developed with GPT-3.5; the calculations and explanations were revised and checked in November 2026.
 :::
 
 ### Understanding Confusion Matrix Components
@@ -244,12 +196,12 @@ Before diving into the metrics, it's important to understand the components of a
 - **False Positives (FP):** These are cases where the model incorrectly predicts the positive class (also known as a "Type I error").
 - **False Negatives (FN):** These are cases where the model incorrectly predicts the negative class (also known as a "Type II error").
 
-The following table summarizes these concepts:
+Throughout this page, rows represent reference (actual) labels and columns represent predictions. The following table summarizes these concepts:
 
-|                       | Actual Positive      | Actual Negative      |
+|                       | Predicted Positive   | Predicted Negative   |
 |-----------------------|----------------------|----------------------|
-| **Predicted Positive** | True Positives (TP)  | False Positives (FP) |
-| **Predicted Negative** | False Negatives (FN) | True Negatives (TN)  |
+| **Actual Positive**   | True Positives (TP)   | False Negatives (FN)  |
+| **Actual Negative**   | False Positives (FP)  | True Negatives (TN)   |
 
 #### Example Scenario:
 
@@ -260,7 +212,7 @@ Consider a social media sentiment analysis model that classifies posts as either
 - A **False Positive** would occur if the model incorrectly classifies a negative post as positive.
 - A **False Negative** would occur if the model incorrectly classifies a positive post as negative.
 
-Understanding these components is key to interpreting the subsequent metrics which are derived from the values in the confusion matrix. These metrics -- Accuracy, Precision, Recall, and F1 Score -- are applicable to both binary (as showcased above) and multi-class classification problems. The concept of True / False Positives / Negatives remains the same, but for multi-class scenarios, they are computed per class and then averaged to provide overall model performance.
+Understanding these components is key to interpreting the subsequent metrics which are derived from the values in the confusion matrix. For multiclass problems, calculate precision, recall, and F1 for each class against all remaining classes, then specify how you average them. Accuracy remains the fraction of correct predictions across all items.
 
 
 **Accuracy: A General Overview**
@@ -277,7 +229,7 @@ Precision reflects the accuracy of positive predictions. It shows how many of th
 
 $\text{Precision} = \frac{\text{True Positives (TP)}}{\text{True Positives (TP)} + \text{False Positives (FP)}}$
 
-High precision indicates a low rate of false positives, which is essential in scenarios where false alarms are costly or dangerous.
+High precision means that few positive predictions are false positives. It does not directly measure the false positive rate, which uses all actual negatives as its denominator: $FP/(FP+TN)$.
 
 **Recall: Assessing Completeness**
 
@@ -293,7 +245,7 @@ The F1 Score is the harmonic mean of Precision and Recall, offering a balance be
 
 $\text{F}_{1} = 2 \times \frac{\text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}}$
 
-A high F1 Score suggests a robust model with a good balance between precision and recall.
+For a binary task, specify which class is positive. Binary F1 describes that class and ignores true negatives. It does not by itself establish robustness or good performance for every class. The equivalent count-based formula is $F_1 = 2TP/(2TP+FP+FN)$ when the denominator is nonzero.
 
 ::: {.callout-warning}
 While a high F1 Score is often seen as indicative of a model's effectiveness, it's important to approach this metric with caution. The F1 Score, being a harmonic mean of precision and recall, may not comprehensively represent the performance nuances in certain contexts, especially in imbalanced datasets where either false positives or false negatives are more consequential. Refer to the criticism section in the [Wikipedia article on F1 Score](https://en.wikipedia.org/w/index.php?title=F-score&oldid=1190896206) or e.g. the paper "Performance Evaluation in Machine Learning: The Good, the Bad, the Ugly, and the Way Forward" by @Flach2019-hj.
@@ -301,138 +253,65 @@ While a high F1 Score is often seen as indicative of a model's effectiveness, it
 
 ::: {.interactive-widget}
 <h4>Machine Learning Metrics Calculator</h4>
-<p>Adjust the values of the confusion matrix to see how they affect accuracy, precision, and macro F1-score.</p>
+<p>Adjust the confusion matrix counts. Precision, recall, and binary F1 refer to the positive class; macro F1 averages the F1 scores of both classes equally.</p>
 
 ```{ojs}
 //| echo: false
 
-// Styling for the interactive elements and the confusion matrix
-html`<style>
-  .ml-metrics-widget {
-    border: 1px solid #ddd;
-    padding: 15px;
-    border-radius: 8px;
-    margin-bottom: 20px;
-  }
-  .ml-metrics-widget h4 {
-    margin-top: 0;
-  }
-  .confusion-matrix {
-    margin-top: 20px;
-    border-collapse: collapse;
-  }
-  .confusion-matrix td, .confusion-matrix th {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: center;
-  }
-  .heatmap {
-    margin-top: 20px;
-  }
-</style>`;
-
-// Interactive inputs for confusion matrix values
 viewof tp = Inputs.range([0, 100], {step: 1, value: 50, label: "True Positives (TP)"})
 viewof fp = Inputs.range([0, 100], {step: 1, value: 10, label: "False Positives (FP)"})
 viewof tn = Inputs.range([0, 100], {step: 1, value: 50, label: "True Negatives (TN)"})
 viewof fn = Inputs.range([0, 100], {step: 1, value: 10, label: "False Negatives (FN)"})
 
-// Function to calculate metrics
 function calculateMetrics(tp, fp, tn, fn) {
-    let accuracy = (tp + tn) / (tp + fp + tn + fn);
-    let precision = tp / (tp + fp);
-    let recall = tp / (tp + fn); // Recall is the same as Sensitivity
-    let f1Score = 2 * (precision * recall) / (precision + recall);
-
-    // Check for NaN and return 0 in such cases
-    accuracy = isNaN(accuracy) ? 0 : accuracy;
-    precision = isNaN(precision) ? 0 : precision;
-    f1Score = isNaN(f1Score) ? 0 : f1Score;
-
-    return { accuracy, precision, f1Score };
+    const divide = (a, b) => b === 0 ? null : a / b;
+    const positiveF1 = divide(2 * tp, 2 * tp + fp + fn);
+    const negativeF1 = divide(2 * tn, 2 * tn + fp + fn);
+    return {
+        n: tp + fp + tn + fn,
+        accuracy: divide(tp + tn, tp + fp + tn + fn),
+        precision: divide(tp, tp + fp),
+        recall: divide(tp, tp + fn),
+        positiveF1,
+        negativeF1,
+        macroF1: positiveF1 === null || negativeF1 === null ? null : (positiveF1 + negativeF1) / 2
+    };
 }
 
-// Function to draw the heatmap plot with adjusted labels
-function drawHeatmap(tp, fp, tn, fn) {
-    // Create an array to represent the confusion matrix
-    let matrix = [
-        [tp, fn],
-        [fp, tn]
-    ];
-
-    // Define dimensions and colors for the heatmap
-    let cellSize = 50; // Size of each cell in the heatmap
-    let labelSpace = 40; // Space for labels
-    let width = 2 * cellSize + labelSpace, height = 2 * cellSize + labelSpace;
-
-    let colors = d3.scaleSequential(d3.interpolateBlues).domain([0, Math.max(tp, fp, tn, fn)]);
-
-    // Create an SVG for the heatmap
-    let svg = d3.create("svg")
-                .attr("width", width)
-                .attr("height", height)
-                .attr("class", "heatmap");
-
-    // Create heatmap squares
-    svg.selectAll("rect")
-       .data(matrix.flat())
-       .enter()
-       .append("rect")
-       .attr("x", (d, i) => labelSpace + cellSize * (i % 2))
-       .attr("y", (d, i) => labelSpace + cellSize * Math.floor(i / 2))
-       .attr("width", cellSize)
-       .attr("height", cellSize)
-       .style("fill", d => colors(d));
-
-    // Add category labels
-    const textAnchor = "middle";
-    svg.append("text").text("Predicted Positive").attr("x", labelSpace + cellSize / 2).attr("y", labelSpace / 2).attr("text-anchor", textAnchor);
-    svg.append("text").text("Predicted Negative").attr("x", labelSpace + 1.5 * cellSize).attr("y", labelSpace / 2).attr("text-anchor", textAnchor);
-    svg.append("text").text("Actual Positive").attr("x", labelSpace / 2).attr("y", labelSpace + cellSize / 2).attr("text-anchor", textAnchor).attr("alignment-baseline", "central");
-    svg.append("text").text("Actual Negative").attr("x", labelSpace / 2).attr("y", labelSpace + 1.5 * cellSize).attr("text-anchor", textAnchor).attr("alignment-baseline", "central");
-
-    return svg.node();
-}
-// Main calculation and display
 {
     const metrics = calculateMetrics(tp, fp, tn, fn);
-
-    return html`<hr /><div style="display: flex; justify-content: space-around; width: 100%;">
-                                  <div>
-                  <h4>Evaluation Metrics</h4>
-                  <table class="confusion-matrix">
-                    <tr>
-                      <th>Accuracy:</th>
-                      <td>${metrics.accuracy.toFixed(2)}</td>
-                    </tr>
-                    <tr>
-                      <th>Precision:</th>
-                      <td>${metrics.precision.toFixed(2)}</td>
-                    </tr>
-                    <tr>
-                      <th>F1-Score:</th>
-                      <td>${metrics.f1Score.toFixed(2)}</td>
-                    </tr>
-                  </table>
-                  </div>
-                <div>
-                  <h4>Confusion Matrix</h4>
-                  <table class="confusion-matrix">
-                    <tr>
-                      <th></th><th>Predicted Positive</th><th>Predicted Negative</th>
-                    </tr>
-                    <tr>
-                      <th>Actual Positive</th><td>${tp}</td><td>${fn}</td>
-                    </tr>
-                    <tr>
-                      <th>Actual Negative</th><td>${fp}</td><td>${tn}</td>
-                    </tr>
-                  </table>
-                  </div>
-                </div>`;
+    const format = value => value === null ? "Undefined" : value.toFixed(3);
+    return html`<div aria-live="polite">
+        <p><strong>Number of items: ${metrics.n}</strong></p>
+        <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; align-items: start;">
+            <table>
+                <caption>Evaluation metrics</caption>
+                <thead><tr><th scope="col">Metric</th><th scope="col">Value</th></tr></thead>
+                <tbody>
+                    <tr><th scope="row">Accuracy</th><td>${format(metrics.accuracy)}</td></tr>
+                    <tr><th scope="row">Precision (positive)</th><td>${format(metrics.precision)}</td></tr>
+                    <tr><th scope="row">Recall (positive)</th><td>${format(metrics.recall)}</td></tr>
+                    <tr><th scope="row">Binary F1 (positive)</th><td>${format(metrics.positiveF1)}</td></tr>
+                    <tr><th scope="row">F1 (negative)</th><td>${format(metrics.negativeF1)}</td></tr>
+                    <tr><th scope="row">Macro F1 (both classes)</th><td>${format(metrics.macroF1)}</td></tr>
+                </tbody>
+            </table>
+            <table>
+                <caption>Confusion matrix: rows = reference, columns = prediction</caption>
+                <thead><tr><th></th><th scope="col">Predicted positive</th><th scope="col">Predicted negative</th></tr></thead>
+                <tbody>
+                    <tr><th scope="row">Actual positive</th><td>TP: ${tp}</td><td>FN: ${fn}</td></tr>
+                    <tr><th scope="row">Actual negative</th><td>FP: ${fp}</td><td>TN: ${tn}</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>`;
 }
-
 ```
+
+A zero denominator is displayed as **Undefined**, rather than silently replaced by zero. For example, precision is undefined if there are no positive predictions. F1 is still zero when there are errors but no true positives; it is undefined only when that class is absent from both reference labels and predictions. Here, macro F1 always refers to the fixed two-class set and is undefined if either class F1 is undefined. Libraries may replace undefined values or omit them when averaging; report your convention. See the [scikit-learn documentation on undefined metrics](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_recall_fscore_support.html).
+
+Try $TP=0$, $FP=0$, $TN=90$, $FN=10$: accuracy is 0.900, positive-class F1 is 0.000, and macro F1 is 0.474. The model never detects a positive item. This is why accuracy alone can be misleading.
 :::
 
 
@@ -443,13 +322,13 @@ When evaluating multi-class classification models, we often need to summarize th
 * The **micro average** aggregates the contributions of all classes to compute the average metric. It calculates the metrics globally by counting the total true positives, false negatives, and false positives. 
 * The **weighted average** calculates each metric for each class like the macro average but takes the size of the class into consideration when averaging. Therefore, it accounts for class imbalance by giving more weight to the metrics of larger classes.
 
-Choosing the Right Average:
+Choose the averaging scheme before comparing models:
 
-- **Use Macro Averages** when you are dealing with imbalanced datasets or when you consider each class equally important.
-- **Use Weighted Averages** when each class's importance is proportional to its size and you want to weight your metric by class distribution.
-- **Use Micro Averages**  if you have a balanced dataset and want an easily understandable metric for overall performance regardless of the class. 
+- **Macro:** gives each class equal weight; inspect per-class scores as well, especially for rare classes.
+- **Weighted:** weights each class by its reference support (number of items). Strong performance on common classes can hide weak performance on rare classes.
+- **Micro:** pools decisions. For single-label multiclass classification with all classes included, micro precision, recall, and F1 equal accuracy, whether or not the dataset is balanced. This equivalence does not generally hold for multilabel tasks or a subset of classes.
 
-See [this medium article for an overview](https://towardsdatascience.com/micro-macro-weighted-averages-of-f1-score-clearly-explained-b603420b292f).
+Macro F1 is the mean of per-class F1 scores, not the harmonic mean of macro precision and macro recall. Specify the evaluated label set, the averaging scheme, and the handling of undefined scores. See the [scikit-learn guide to multiclass averaging](https://scikit-learn.org/stable/modules/model_evaluation.html#multiclass-and-multilabel-classification).
 
 ### Reporting
 When presenting the results of a machine learning model's performance, especially in the context of academic research, the method of reporting is critical. A confusion matrix, such as the one shown below, is a great visualization tool for both, single- and multi-class classification tasks, like in the example below, where I experimented with face recognition on social media images.
@@ -460,24 +339,46 @@ The confusion matrix visualizes the model's predictions in comparison to the tru
 
 The color intensity in each cell corresponds to the count, with darker cells indicating higher numbers. This visual gradation allows for quick identification of which classes are being predicted accurately and which are not. 
 
-However, a confusion matrix is just one of the tools at our disposal for reporting performance metrics. In many cases, supplementing the confusion matrix with additional tables that break down key metrics like accuracy, precision, recall, and F1 score can provide a more nuanced understanding. For example, a table could list each class along with the corresponding precision and recall, giving a clear indication of where the model excels and where it may require further tuning.
+Alongside a confusion matrix, report per-class precision, recall, F1, and support. Accuracy is an overall measure in the table below, rather than a separate score for each class.
 
-| Class/Category       | Accuracy | Precision | Recall | F1 Score |
-|----------------------|----------|-----------|--------|----------|
-| Alice Weidel         | 0.90     | 0.88      | 0.92   | 0.90     |
-| Annalena Baerbock    | 0.93     | 0.94      | 0.89   | 0.91     |
-| Armin Laschet        | 0.85     | 0.83      | 0.88   | 0.85     |
-| ...                  | ...      | ...       | ...    | ...      |
-| Macro Average        | 0.92     | 0.91      | 0.90   | 0.91     |
-| Micro Average        | 0.92     | 0.92      | 0.92   | 0.92     |
-| Weighted Average     | 0.93     | 0.92      | 0.93   | 0.93     |
-: An example for reporting the evaluation metrics of a multi-class classification model, e.g. for face recognition. (This table has been generated using ChatGPT for illustration. Don't check the numbers.)
+For a reproducible teaching example, suppose three categories A, B, and C have the following counts:
 
-In our projects reports, we will also include such tables and graphs to comprehensively present the model's performance, ensuring that we communicate the most detailed insights to our readers.
+| Reference / prediction | A | B | C | Support |
+|------------------------|--:|--:|--:|--------:|
+| A                      | 8 | 1 | 1 | 10 |
+| B                      | 2 | 6 | 2 | 10 |
+| C                      | 0 | 1 | 19 | 20 |
+
+The resulting metrics are:
+
+| Class / average | Precision | Recall | F1 | Support |
+|-----------------|----------:|-------:|---:|--------:|
+| A               | 0.800 | 0.800 | 0.800 | 10 |
+| B               | 0.750 | 0.600 | 0.667 | 10 |
+| C               | 0.864 | 0.950 | 0.905 | 20 |
+| Macro           | 0.805 | 0.783 | 0.790 | 40 |
+| Weighted        | 0.819 | 0.825 | 0.819 | 40 |
+| Micro           | 0.825 | 0.825 | 0.825 | 40 |
+
+Overall accuracy is $33/40 = 0.825$. These are calculated values for a hypothetical dataset. You can reproduce them with:
+
+```python
+from sklearn.metrics import accuracy_score, classification_report
+
+y_true = ["A"] * 10 + ["B"] * 10 + ["C"] * 20
+y_pred = (["A"] * 8 + ["B"] + ["C"]
+          + ["A"] * 2 + ["B"] * 6 + ["C"] * 2
+          + ["B"] + ["C"] * 19)
+
+print(classification_report(y_true, y_pred, labels=["A", "B", "C"], digits=3))
+print(f"Accuracy: {accuracy_score(y_true, y_pred):.3f}")
+```
+
+`classification_report` omits the micro row when it equals accuracy. In your project report, also document the sample, reference-label procedure, model version, prompt, and any excluded items. Scores describe performance on the evaluated data; they do not automatically establish performance on other populations or periods.
 
 
 ## Annotation Export
-In this section I will guide you step-by-step through the export of annotations from label studio, the calculation of interrater agreements, the process of deriving the gold standard, and finally the evaluation of your model (prompt).
+This section shows an example of exporting Label Studio annotations for use in the evaluation notebook. The screenshots document the setup used for this example; your interface may differ by version.
 
 We are going to use some sample data from one of my projects. The goal was to classify three content variables for social media texts. The content was either from captions, OCR, or transcribed audio. Three annotators were tasked to code each variable.
 
@@ -505,42 +406,39 @@ The annotations are a list of JSON objects. Each object deals with one item (e.g
 ![An overview of **one** item with its annotations.](../images/one-annotation.png)
 :::
 
-Each of these annotation objects contains one object for each coding variable, e.g. "Positioning" or "Call to Action" in our example. The *actual* annotation (in this case for the checkbox interface) is contained in the coding object's child element `value.choices[0]`.
+Each of these annotation objects contains one object for each coding variable, e.g. "Positioning" or "Call to Action" in our example. For the single-choice result shown here, the selected label is in `value.choices[0]`. Results with multiple selections require the full `choices` list; other annotation types use different fields. Inspect the export schema before extracting labels.
 
 ![An overview of a **singular** coding.](../images/one-item-annotation.png)
 
-With this structure in mind, we can start importing our annotations. The intention behind the following notebook is to work with one coding at a time. We want to create one dataframe per coding, with one row per item (=annotated text / image object), and one column per annnotator. Later on we will add another column for our computational classifications.
+With this structure in mind, we can start importing our annotations. The intention behind the following notebook is to work with one coding at a time. We want to create one dataframe per coding, with one row per item (=annotated text / image object), and one column per annotator. Later on we will add another column for our computational classifications.
 
 ## The Evaluation Notebook
 
-::: {.callout-important}
-## Update (29. Jan. 2024)
-The original notebook (below) works well with Label Studio Enterprise, where we have one annotation project handling multiple annotations per item. I created an updated second version of this notebook which handles multiple JSON files. We can use the open source version of Label Studio and create one project per annotator. Once the annotaitons were created, we export the results and use multiple JSON files in [the updated notebook](https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2024_01_26_Evaluation_Kurs_V2.ipynb). Additionally, this version handles `labels`, annotations of bounding boxes for images. 
-:::
+::: {.callout-tip}
+## Run the practical workflow
 
-{{< embed ../notebooks/2024_01_04_Evaluation_Kurs.ipynb echo=true >}}
+[Open Evaluation Notebook V3 in Colab](https://colab.research.google.com/github/michaelachmann/social-media-lab/blob/main/notebooks/2024_12_09_Evaluation_Kurs_V3.ipynb){.btn .btn-primary}
+
+[View the notebook on GitHub](https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2024_12_09_Evaluation_Kurs_V3.ipynb).
+
+The notebook imports Label Studio exports, calculates agreement, derives a majority-based reference, and evaluates classifications. It supports a single annotation project or separate exports per annotator; follow its import instructions for your setup. Check the selected coding variable, measurement level, missing labels, and treatment of ties before interpreting the results. A majority decision is a reference-label procedure, not a guarantee of correctness.
+
+The [original notebook](https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2024_01_04_Evaluation_Kurs.ipynb) and [V2](https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2024_01_26_Evaluation_Kurs_V2.ipynb) remain available for reference.
+:::
 
 
 ## Conclusion: Prompt Optimization
-This chapter provided an overview of interrater agreement measures and machine learning model evaluation metrics. The last part of the chapter showcases the evaluation notebook, which we can use to import Label Studio annotations and calculate different types of metrics, with the ultimate goal of evaluating our model / prompt against the majority decision, our gold standard or ground truth data. The notebook can also be used throughout the prompting and classification process: Sample a smaller number of items (ca. 50-150, depending on your data) and have each member of your group annotate them. Check the interrater agreement, and in case of reasonable agreement levels use this dataset as your *training* dataset in an iterative process:
+Use a **development set** to improve prompts and a separate **test set** for the final evaluation. Few-shot examples, error inspection, prompt selection, and threshold choices belong to development. Repeatedly inspecting test errors and changing the prompt turns that test set into development data.
 
-1. Filter your dataset to only include items with *training* annotations.
-2. Run the classification for all *training* rows.
-3. Import the *training* annotations and *training* classifications in the evaluation notebook.
-4. Run the evaluation, check the quality, especially the confusion matrix: Can you spot any problems? Is the F1-Score reasonable?
-5. *Optionally* take a qualitative look at mislabellings. Can you spot any patterns? Take another look at [prompt design ideas](../processing/classification.qmd#designing-the-prompt), e.g. use the negative examples in a conversation with ChatGPT and try to improve the prompt.
-6. Go back to step 2., repeat until the classification quality stagnates. 
+1. Define the coding scheme, sampling procedure, positive class or class set, and primary metric.
+2. Create independent human annotations and assess agreement. Resolve ambiguities and document how reference labels are derived, including ties and missing annotations.
+3. Split development and test data before optimizing prompts. Where posts share accounts, events, or near-duplicate content, consider grouping the split to reduce leakage.
+4. On development data, inspect the confusion matrix and per-class errors, revise the prompt, and record each version. See the [prompt design chapter](../processing/classification.qmd#designing-the-prompt) and @Tornberg2024-ub.
+5. Freeze the chosen prompt, model version, and settings. Evaluate on the held-out test data and report the sample size, class support, per-class scores, averaging scheme, and uncertainty where feasible.
 
-@Tornberg2024-ub provides further information on this process.
+There is no universally adequate sample size of 50–150 items: the required size depends on class prevalence, the precision of the estimate, and the intended comparisons. A development sample may contain too few rare cases for meaningful evaluation.
 
-
-::: {.callout-warning}
-The term *training* data is possibly misleading. When training models using machine learning techinque we use sophisticated approaches to generate a training, a validation set, and a test dataset. The training dataset is used to train the model, the validation set to find the best model, and the test set to estimate the accuracy of your approach. See [e.g. this medium article](https://towardsdatascience.com/train-validation-and-test-sets-72cb40cba9e7). Using Zero-Shot prompts for classification does not need any training data, when working with Few-Shot prompts we might consider the examples as training data as well. 
-
-Why did I chose such a misleading name? **Because we need to be careful when evaluating our prompts:** When optimizing the prompt following the loop above, **we might possibly introduce a bias**! Once the prompt has been optimized you should run a final evaluation using a larger *test* set to make sure that your prompt is not "*overfitting*". 
-:::
-
-This chapter, in combination with the [classification](../processing/classification.qmd) chapter, provides a solid foundation for computational analyses. The evaluation concept can also be applied to visual classifications: We can use Label Studio to collect the codings from our participants and evaluate them in the same fashion as shown in the evaluation notebook.
+See the [scikit-learn guidance on data leakage](https://scikit-learn.org/stable/common_pitfalls.html#data-leakage). The same separation between development and final evaluation applies to visual classification and LLM-based annotations. Human agreement and model performance answer different questions; report both.
 
 
 ## Further Reading
