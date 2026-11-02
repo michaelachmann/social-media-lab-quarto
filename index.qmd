@@ -29,7 +29,7 @@ The material accompanies my research seminar Computational Analysis of Visual So
 * ✨[Data Collection in a Post-API World](data-collection/index.qmd): Overview of conceptual, legal, and ethical foundations for selecting responsible social-media data-collection methods in a post-API environment.
 * [Data Collection: Instagram Posts](data-collection/ig-posts.qmd): Code examples and notebooks to collect Instagram posts using instaloader, CrowdTangle, or Zeeschuimer & 4CAT.
 * [Data Collection: Instagram Stories](data-collection/ig-stories.qmd):  Code examples and notebooks to collect Instagram posts using instaloader or [Tidal Tales](https://tidaltal.es). 
-* [Data Collection: TikTok (External)](https://docs.google.com/document/d/19MAiqX7Vx1FcNJ44K-vSdnKDVC5gcFwtrSQiewnwW8A/edit?pli=1): Link to the Zeeschuimer & 4CAT manual for TikTok provided by the [digital methods initiative](https://digitalmethods.net/).
+* [Data Collection: TikTok](data-collection/tiktok.qmd): Collect TikTok videos, photo posts, and metadata directly to disk with the Tidal Tales Firefox plugin.
 * [Text as Data and Data Organization](processing/index.qmd): Provides an overview of using text as a data source in computational social science. It differentiates between structured and unstructured data, emphasizing the complexity of processing unstructured language data.
 * [Text Processing](processing/preprocessing.qmd): A notebook to convert audio-visual social media data into text using OCR and Whisper.
 * [Text Exploration](processing/exploration.qmd): Introduces two approaches for the exploration of textual content: Topic Modeling using BERTopic and OpenAI's GPT-API.
