@@ -30,7 +30,7 @@ This chapter showcases several approaches to testing and reporting the results o
 
 ![Select the columns.](../images/rawgraphs2.png)
 
-![Take a look at the plot](../images/fake-policy-issues)
+![Take a look at the plot](../images/fake-policy-issues.png)
 
 ![... and download it!](../images/rawgraphs1.png)
 

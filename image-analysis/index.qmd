@@ -16,7 +16,7 @@ citation:
 ---
 
 
-Within the computational social science community and their neighbouring disicplines, the concept of *Images as Data* is currently being established [@Peng2023-hi; @Joo2022-bj], equivalent to the [Text as Data](../processing/index.qmd#text-as-data) paradigm. From a Digital Humanities perspective @Arnold2023-ev have developed a concept of *Distant Viewing*. Both concepts deal with the theory and application of visual analyses using computational methods, with similar very similar ends: as with computational text analyses, computational visual analyses promise to open a new, quantitative, perspective incorporating volumes of data unfeasable for human processing.
+Within the computational social science community and their neighbouring disicplines, the concept of *Images as Data* is currently being established [@Peng2023-hi; @Joo2022-bj], equivalent to the [Text as Data](../processing/index.qmd) paradigm. From a Digital Humanities perspective @Arnold2023-ev have developed a concept of *Distant Viewing*. Both concepts deal with the theory and application of visual analyses using computational methods, with similar very similar ends: as with computational text analyses, computational visual analyses promise to open a new, quantitative, perspective incorporating volumes of data unfeasable for human processing.
 
 ::: {.callout-caution}
 ## Work-In-Progress

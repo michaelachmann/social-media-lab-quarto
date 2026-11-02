@@ -17,16 +17,16 @@ notebook-links: false
 
 notebook-view:
   - notebook: ../notebooks/2023_12_11_GPT_Text_Classification2.ipynb 
-    title: "GPT Text Classification"
+    title: "GPT Text Classification: Few-Shot Example"
     url: https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2023_12_11_GPT_Text_Classification.ipynb
   - notebook: ../notebooks/2023_12_11_GPT_Text_Classification3.ipynb
-    title: "GPT Text Classification"
+    title: "GPT Text Classification: Multidocument Example"
     url: https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2023_12_11_GPT_Text_Classification.ipynb
   - notebook: ../notebooks/2023_12_11_GPT_Text_Classification.ipynb
-    title: "GPT Text Classification"
+    title: "GPT Text Classification: Setup and Zero-Shot Example"
     url: https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2023_12_11_GPT_Text_Classification.ipynb
   - notebook: ../notebooks/2023_12_11_GPT_Text_Classification4.ipynb
-    title: "GPT Text Classification"
+    title: "GPT Text Classification: Multiple Variables Example"
     url: https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2023_12_11_GPT_Text_Classification.ipynb
 ---
 The [text as data chapter](index.qmd) introduced us to the idea that text is *unstructured* data. To make it useful for quantitative analyses, we need to process it into measurable *structured* data, which allows for systematic analysis and comparison. This process is for many analyses the operationalization step, where we translate theoretical concepts into measurable quantities [@Nguyen2020-zg]. [Content analysis](https://en.wikipedia.org/wiki/Content_analysis), a research method used in social science and other disciplines, provides a well-established framework for all necessary steps towards operationalization, classification (labelling or coding), and evaluation. Content analysis can be conducted *qualitatively* and *quantitatively*. @Doring2016-ul define the two as:

@@ -16,7 +16,7 @@ citation:
 notebook-view:
   - notebook: ../notebooks/2024_11_11_Preprocessing.ipynb
     title: "Preprocessing"
-    url: https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2024_11_12_Zeeschuimer_Import_w_Gallery.ipynb
+    url: https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2024_11_11_Preprocessing.ipynb
   - notebook: ../notebooks/corpus-analysis-notebook.ipynb
     title: "Introduction to Corpus Analysis"
     url: https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2023_11_24_Simple_Corpus_Analysis.ipynb

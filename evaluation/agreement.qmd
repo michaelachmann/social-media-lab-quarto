@@ -21,18 +21,18 @@ The [previous chapter](index.qmd) focused on the creation of a Ground Truth data
 
 To this end, we take a look at two interrater agreement measures: Cohen's Kappa and Krippendorff's Alpha. These metrics are important for quantifying the level of agreement among annotators. Once we established the quality of our annotations, we will use them as ground truth. In our context there are two use cases for the ground truth dataset: When training or fine-tuning our own model, we need a training for our model to learn from. Additionally, we always--for training our model as well as using LLMs--need an evaluation dataset to determine how well our computational approach performs when applied to real-world data. The performance of machine learning models is typically assessed using a variety of metrics, each offering a different perspective on the model's effectiveness. In this chapter, we will take a look at four fundamental metrics: Accuracy, Precision, Recall, and F1 Score.
 
-In the first part of the chapter we will take a look at [interrater agreements](#interrater-agreement) and [machine learning evaluation measures](#machine-learning-evaluation-metrics). In the [application part](#application) I provide the notebooks to:
+In the first part of the chapter we will take a look at [interrater agreements](#interrater-agreement) and [machine learning evaluation measures](#machine-learning-evaluation-metrics). In the [application part](#the-evaluation-notebook) I provide the notebooks to:
 
 1. Import Label Studio Annotations
 2. Calculate the interrater measures
 3. Derive the gold standard from the annotations
 4. Calculate the evaluation metrics for your model based on the gold standard.
 
-Finally, the [optimization](#optimize-you-model--prompt) part of this page provides an outlook for how to use the evaluation metrics in order to tune your classification prompt.
+Finally, the [optimization](#conclusion-prompt-optimization) part of this page provides an outlook for how to use the evaluation metrics in order to tune your classification prompt.
 
 ::: {.callout-important}
 ## Update 2024
-* [Link to Notebook](http://colab.research.google.com/github/michaelachmann/social-media-lab/blob/main/notebooks/2024_12_09_Evaluation_Kurs_V3.ipynb).
+* [Link to Notebook](https://colab.research.google.com/github/michaelachmann/social-media-lab/blob/main/notebooks/2024_12_09_Evaluation_Kurs_V3.ipynb).
 * Updated the notebook to handle both, single annotation projects (from the enterprise version of Label Studio), and multiple annotation projects (when using the Open Source version).
 :::
   

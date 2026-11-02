@@ -32,10 +32,10 @@ Through the following subchapters I will try to illuminate the advantages of eac
 As of November 2024 I recommend to collect posts using Zeeschuimer or the official Meta Content Library. Our preferred approach for the 2024/25 winter semester is the combination Zeeschuimer + [Import Notebook](https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2023_11_03_Zeeschuimer_Import.ipynb) where we import the `ndjson` created by Zeeschuimer into a custom notebook and convert the data and download images and videos. An updated notebook for downloading album posts will be added shortly.
 :::
 
-## Zeeschuimer & 4CAT
+## Zeeschuimer & 4CAT {#zeeschuimer--4cat}
 ![Screenshot of Zeeschuimer](/images/zeeschuimer-screenshot.png)
 
-Zeeschuimer [@Peeters_undated-ee] and 4CAT [@Peeters_undated-ow] are two tools developed for the [https://wiki.digitalmethods.net/](Digital Methods Initiative). The first is a firefox plugin that captures traffic when browsing websites likes Instagram or TikTok. The second, 4CAT, is an analysis platform incorporating several steps of preprocessing and further analyses. For post collection we can use the original [Zeeschuimer Firefox Plugin](https://github.com/digitalmethodsinitiative/zeeschuimer), download the latest release from GitHub and install it in Firefox. To download Instagram posts using Zeeschuimer follow these steps (\* steps are only necessary when working with 4CAT):
+Zeeschuimer [@Peeters_undated-ee] and 4CAT [@Peeters_undated-ow] are two tools developed for the [Digital Methods Initiative](https://wiki.digitalmethods.net/). The first is a firefox plugin that captures traffic when browsing websites likes Instagram or TikTok. The second, 4CAT, is an analysis platform incorporating several steps of preprocessing and further analyses. For post collection we can use the original [Zeeschuimer Firefox Plugin](https://github.com/digitalmethodsinitiative/zeeschuimer), download the latest release from GitHub and install it in Firefox. To download Instagram posts using Zeeschuimer follow these steps (\* steps are only necessary when working with 4CAT):
 
 1. [Download and install Firefox](https://www.mozilla.org/de/firefox/new/)
 2. [Download and install the Plugin](https://github.com/digitalmethodsinitiative/zeeschuimer)
@@ -89,7 +89,7 @@ The authors of Zeeschuimer and 4CAT [have published a manual here](https://docs.
 
 ## 📦 Archive 
 
-### Instaloader -- NOT RECOMMENDED
+### Instaloader -- NOT RECOMMENDED {#instaloader}
 [Instaloader](https://instaloader.github.io/) is a python package for downloading instagram pictures and videos along with their metadata. I have written a [getting started tutorial on Medium](https://achmann.dev/getting-started-with-instagram-analysis-instaloader-bbf686cb6e3b). It is, together with [the provided notebook](https://github.com/michaelachmann/ig-tutorial/blob/main/01_DataCollection.ipynb), the basis for this chapter.
 
 ::: {.callout-note}
@@ -123,7 +123,7 @@ Instaloader is a stand-alone piece of software: It offers options to download mo
 </div>
 
 
-### CrowdTangle -- OUTDATED
+### CrowdTangle -- OUTDATED {#crowdtangle}
 ![Screenshot of the [CrowdTangle](https://www.crowdtangle.com/) interface.](/images/crowdtangle.png){width="600"}
 
 ::: {.callout-warning}
