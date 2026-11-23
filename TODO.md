@@ -89,3 +89,10 @@ Notebooks were not executed.
 - [ ] **AI-generated content / synthetic media** — detection and prevalence in political communication; highly relevant for a political-communication seminar in 2026.
 - [ ] **Agentic/automated pipelines** (optional): orchestrating collection→classification→validation with current tooling.
 - [ ] TikTok data collection as a first-class page instead of the external Google-Docs link.
+
+## 6. Annotation Studies page (draft, 23 Nov 2026)
+
+- [ ] Add screenshots (synthetic data only) at the commented placeholders in `evaluation/annotation-studies.qmd`: catalogue, notebook widget form, create study with draft import, form builder and preview, coding view, review and adjudication.
+- [ ] Verify the interface steps and wording against the deployed tool; confirm who closes a study.
+- [ ] Add the export column names and a pandas example once the export format is verified, then add an "annotation studies export" route to `evaluation/agreement.qmd` (its notebook currently imports Label Studio exports).
+- [ ] Update the page when images and whole-video coding become available.

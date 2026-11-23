@@ -53,15 +53,15 @@ The following Monday sessions reproduce the working plan from the introductory s
 |------|-------|----------------|
 | 16 Nov 2026 | Data exploration and inductive coding | Candidate categories |
 | 23 Nov 2026 | Framework from literature and data | Draft codebook |
-| 30 Nov 2026 | Pilot coding and framework testing | Disagreements and revisions |
+| 30 Nov 2026 | [Pilot coding](../evaluation/annotation-studies.qmd) and framework testing | Disagreements and revisions |
 | 7 Dec 2026 | Framework revision and another pilot | Agreed codebook |
-| 14 Dec 2026 | Test dataset annotation | Independent human labels |
+| 14 Dec 2026 | [Test dataset annotation](../evaluation/annotation-studies.qmd) | Independent human labels |
 
 ### Team Analysis and Results
 
 | Date | Topic | Outcome |
 |------|-------|---------|
-| 21 Dec 2026 | Annotation agreement and adjudication | Shared reference dataset |
+| 21 Dec 2026 | [Annotation agreement](../evaluation/agreement.qmd) and adjudication | Shared reference dataset |
 | 11 Jan 2027 | Team analysis: models and inputs | Experiment setup |
 | 18 Jan 2027 | Team experiments / computational analysis | Comparable outputs |
 | 25 Jan 2027 | Evaluation / computational analysis | Comparison and error analysis |

@@ -1,0 +1,114 @@
+---
+format:
+  html: default
+title: "Annotation Studies"
+date: 2026-11-23
+author:
+  - name: Michael Achmann-Denkler
+    id: ma
+    orcid: 0000-0002-4754-7842
+    email: michael.achmann@informatik.uni-regensburg.de
+license: CC BY
+bibliography: ../literature.bib
+citation:
+  type: webpage
+  doi: 10.5281/zenodo.10039756
+---
+
+The [previous page](index.qmd) explains why we collect human annotations and how to write an annotation manual. This page shows how we run the annotation rounds in winter 2026/27: with **Annotation Studies**, a browser tool on the seminar server, and a notebook that selects the items to code. We keep the cycle described by @Klie2024-kd: code a batch, measure agreement, inspect disagreements, revise the manual, and adjudicate once the quality is adequate. The tool changes how we organise the work, not the methodological questions behind it.
+
+::: {.callout-note}
+### Availability and status
+
+Annotation Studies runs on the seminar's JupyterHub server, so you need your seminar login and a connection to the university network. This page describes the pilot version: it supports **post text and comments**; images and whole videos are planned. If you work outside the seminar, or need a different modality, [Label Studio](index.qmd#setup-an-annotation-project) remains a general-purpose alternative.
+:::
+
+<!-- Screenshot suggestion: the Annotation Studies catalogue (Services menu) showing a synthetic study, to orient readers before the workflow starts. Use the synthetic pilot data only. -->
+
+## Where the Rounds Fit
+
+| Date | Round | What the study is for |
+|------|-------|-----------------------|
+| 30 Nov 2026 | Pilot coding | Test the draft codebook and the interface; collect disagreements |
+| 7 Dec 2026 | Second pilot | Check whether the revised rules reduce them |
+| 14 Dec 2026 | Test dataset annotation | Independent labels for the shared test data |
+| 21 Dec 2026 | Agreement and adjudication | Resolve disagreements and derive the reference dataset |
+
+Pilot and test data serve different purposes. Items we use to revise the codebook cannot also count as an unbiased test of the final rules, so keep them apart when you select items (see [step 1](#select-items)).
+
+## Decide Before You Build
+
+Record the following choices in your research notes before you create a study. They determine what the exported data can tell you.
+
+| Decision | Question to answer |
+|----------|--------------------|
+| Unit | What is one item: a caption, a transcript, a comment? |
+| Variables | Which variables does each coder answer, and with which categories? Keep the number small [@Klie2024-xg]. |
+| Sample | Which population are we sampling from, how large is the sample, and which random seed? |
+| Overlap | Does every coder code every item, or only a subset? Agreement needs overlapping ratings. |
+| Codebook version | Which version of the instructions did the coders see? |
+
+The [annotation manual guidance](index.qmd#creating-an-annotation-manual) applies unchanged: describe each category, give examples and counter-examples, and offer an *unsure* option.
+
+## Select Items {#select-items}
+
+Item selection happens in the seminar notebook [`07_select_annotation_items`](https://github.com/michaelachmann/fs-vsma-26/blob/main/notebooks/07_select_annotation_items.ipynb). Open it in your JupyterLab workspace, as described in the [seminar repository](https://github.com/michaelachmann/fs-vsma-26), and work through it in order.
+
+1. **Choose the data.** Start with the *Synthetic pilot* to practise; switch to the seminar corpus when you are ready.
+2. **Choose the source.** One row of the source table becomes one item: a post text or a comment.
+3. **Filter.** You can filter by collection label and strategy, item type, or a search term, and include or exclude individual IDs. Use the exclusion field to keep items from an earlier pilot out of the test set.
+4. **Draw the sample.** Keep all matching items, or draw a simple random sample without replacement. The notebook sorts the IDs before drawing, so the same seed and the same eligible items give the same sample. Write the seed down.
+5. **Inspect and export.** Look at the selected rows before exporting. The export saves a small JSON draft with the title, the source table, and the ordered item IDs to `annotation-drafts` in your workspace. It contains no corpus text.
+
+<!-- Screenshot suggestion: the widget form of the notebook (synthetic pilot), and the preview table of the drawn sample. -->
+
+## Build and Publish the Study
+
+Open **Services → Annotation Studies → Create study** on the seminar server and import your draft. The tool resolves the IDs and shows the exact item sequence, and it reports missing IDs before it accepts the draft.
+
+<!-- Screenshot suggestion: "Create study" with the draft import and the resolved item list. -->
+
+Then design the study in the form builder: the instructions, the questions and their categories, and the coder overlap. Open the preview to see the interface exactly as coders will, with your selected items.
+
+<!-- Screenshot suggestion: the form builder with one question, next to the live preview. -->
+
+When the preview looks right, publish the study to the class. Once coding has started, the schema and the item set are frozen. A revised codebook therefore means a **new version of the study**. This also keeps each round traceable, so you can later report how the codebook developed.
+
+::: {.callout-tip}
+### Optional: author with a coding agent
+
+You can also prepare the study configuration in a local file with a coding assistant and import it into the same draft. Keep corpus material and coder records out of external AI tools. Look for the link beside **Create study**.
+:::
+
+## Code Independently
+
+Coders open the study from the Annotation Studies catalogue and code with their Hub login. The same interface appears in the preview, in coding, and in review. During coding, you see only your own answers. The study owner sees aggregate progress, but no individual ratings. Reviewers likewise cannot see answers while coding is open, which allows them to code too.
+
+Code independently. Discussing items before the round closes removes exactly the variation that agreement is meant to measure. Collect your questions about unclear rules and bring them to the discussion afterwards.
+
+<!-- Screenshot suggestion: the coding view of a synthetic item, including the instructions button. -->
+
+## Close, Review, and Adjudicate
+
+When coding closes, the study owner and designated co-reviewers can inspect the disagreements, adjudicate them, and export the results. For the pilot, ask the instructor to close a study.
+
+<!-- Screenshot suggestion: the review view with one disagreement and the adjudication control (synthetic data). -->
+
+## Learn from Disagreements
+
+Use the first rounds to improve the manual, not only to obtain a number.
+
+1. Calculate agreement **per variable** on the overlapping ratings, and report how many items were coded by whom. The [next chapter](agreement.qmd) shows how.
+2. Read the disagreements. For each, ask why the coders differed: an unclear definition, a missing category, an ambiguous item, or a coding error.
+3. Revise the rules, add an example that resolves the case, and write down what changed.
+4. Publish a new study version and repeat with fresh items.
+
+Agreement shows whether coders apply the rules consistently. It does not show that the rules measure the intended concept, and coders can share a systematic error [@Klie2024-xg].
+
+## Exports and the Reference Dataset
+
+The tool is designed to export two things: the individual ratings, which we use for agreement, and one final row per item with the adjudicated result, which becomes the reference dataset. Unresolved cases stay visible in the final rows, together with their provenance. Each item keeps its source ID, so you can join the exports to the corpus tables with `Text ID` or `Comment ID`.
+
+<!-- TODO: add the export column names and a short pandas example once the export format has been verified in the deployed tool. -->
+
+Document the selection, the seed, the codebook versions, the number of coders per item, the agreement measures, and the adjudication procedure in your report. The [next chapter](agreement.qmd) explains how to use these labels for development and test data without mixing the two.
