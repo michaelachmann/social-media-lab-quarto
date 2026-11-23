@@ -4,10 +4,10 @@ Original status survey from July 2026; reference checks updated on November 2, 2
 
 ## 1. Repo cleaning (do once, before the semester)
 
-- [ ] `basics/index.qmd` is an **empty 0-byte file**, orphaned (not in sidebar, not linked anywhere). Delete it or write a real "Basics" landing page.
-- [ ] Remove committed render artifacts: `notebooks/*.ipynb.html` (7 files) and `.DS_Store`; add `*.ipynb.html` and `.DS_Store` to `.gitignore`.
+- [x] `basics/index.qmd` is an **empty 0-byte file**, orphaned (not in sidebar, not linked anywhere). Delete it or write a real "Basics" landing page.
+- [x] Remove committed render artifacts: `notebooks/*.ipynb.html` (7 files) and `.DS_Store`; add `*.ipynb.html` and `.DS_Store` to `.gitignore`.
 - [ ] `processing/bert_classification.ipynb` is **6.5 MB** (saved outputs). Strip heavy outputs and consider moving it to `notebooks/` for consistency (sidebar + embeds would need updating).
-- [ ] Duplicate notebooks: `literature-review.ipynb` vs `literature-review-v2.ipynb` (only v2 is used); `2023_12_11_GPT_Text_Classification.ipynb` + `2`, `3`, `4`. Archive/delete the superseded ones.
+- [x] Duplicate notebooks (removed unused `literature-review.ipynb`; the four `GPT_Text_Classification` notebooks are all embedded and stay): `literature-review.ipynb` vs `literature-review-v2.ipynb` (only v2 is used); `2023_12_11_GPT_Text_Classification.ipynb` + `2`, `3`, `4`. Archive/delete the superseded ones.
 - [x] Removed the unused blog scaffold (`blog.qmd`, `posts/`).
 - [ ] Decide promote-vs-retire for pages linked in content but missing from the sidebar:
   - `evaluation/label-studio-images.qmd` (linked from 3 pages) — probably promote to sidebar under Evaluation.
@@ -18,8 +18,8 @@ Original status survey from July 2026; reference checks updated on November 2, 2
 
 - [x] Home page (`index.qmd`): update the semester and research focus, link the current course schedule, and replace old update markers with a dated material-status overview.
 - [x] Home page: distinguish current guides, material awaiting review, and historical Instagram approaches; avoid presenting archive tools as current course recommendations.
-- [ ] Enable sidebar search in `_quarto.yml` (`search: false` → `true`) — cheap win for students.
-- [ ] Navbar: Twitter icon/handle → X, or replace with Bluesky/Mastodon/LinkedIn; verify Threads link still correct.
+- [x] Enable sidebar search in `_quarto.yml` (`search: false` → `true`) — cheap win for students.
+- [x] Navbar: Twitter icon → X. Still to verify: the Threads link (`@chaichy`), and whether to add Bluesky/Mastodon/LinkedIn.
 - [ ] Sweep stale time-bound prose: "As of November 2024…", "preferred approach for the 2024/25 winter semester", "During Winter 2025/26 semester…" (basics/openai.qmd, evaluation/index.qmd, others).
 - [ ] Frontmatter `date:` fields stuck at 2023/2024 on many pages — either update per rewrite or add `date-modified` so pages show freshness automatically.
 - [ ] After the semester update: mint a new Zenodo version and check the GPLv3 link (points at supplement repo tag `v0.0.1`).
@@ -36,13 +36,13 @@ Notebooks were not executed.
 - [x] `reporting/index.qmd`: add the missing `.png` image suffix. Verified that the local Statistical Analysis copy intentionally links to the existing `2024_02_05_Reporting.ipynb` in the supplement; no URL change needed.
 - [x] `processing/preprocessing.qmd`: correct the Preprocessing notebook URL in `notebook-view` metadata.
 - [x] `processing/classification.qmd`: distinguish the four snippet titles by purpose. They link to the same full source notebook in the supplement; numbered local snippets are not separate upstream notebooks.
-- [ ] `basics/openai.qmd`: mixed image paths (`/images/...` vs `../images/...`); unfinished "Future Work" checklist (Track Spending, Response Formats, Batch Processing) — finish or remove.
+- [ ] `basics/openai.qmd`: (image paths unified) unfinished "Future Work" checklist (Track Spending, Response Formats, Batch Processing) — finish or remove.
 - [x] Verified Visual BERTopic references in `image-analysis/exploration.qmd`: local embeds exist; the differently named upstream notebook URL also exists. No path change needed.
 - [ ] Investigate full-render resource copying with Quarto 1.9.38: the full build succeeds but omits OJS libraries; a targeted render of `evaluation/agreement.qmd` restores them. The blog-listing warning is gone with the removed scaffold. Notebook execution and exhaustive external-link checks are not part of this verification.
 - [x] `data-collection/ig-posts.qmd`: correct the reversed Digital Methods Initiative link and restore stable anchors for Zeeschuimer, Instaloader, and CrowdTangle.
 - [x] Repair stale section links in evaluation, visual analysis, related work, and theory. Escape an Instagram handle in a saved Markdown output so Quarto does not treat it as a citation; displayed text is unchanged. Fix the embedded archive example image to use a site-root path.
-- [ ] `data-collection/index.qmd` (~line 48): duplicated sentence — "These can lower technical complexity.These lower technical overhead but…" — keep one.
-- [ ] `data-collection/ig-stories.qmd`: "brow~er" typo in image alt text (line 25); step list jumps 1 → 4 → 5 (lines 37–39); "normal user und archive" German/English mix (line 60).
+- [x] `data-collection/index.qmd` (~line 48): duplicated sentence — "These can lower technical complexity.These lower technical overhead but…" — keep one.
+- [x] `data-collection/ig-stories.qmd`: "brow~er" typo in image alt text (line 25); step list jumps 1 → 4 → 5 (lines 37–39); "normal user und archive" German/English mix (line 60).
 
 ## 4. Content updates, week by week (suggested order = course order)
 

@@ -11,7 +11,7 @@ website:
   favicon: images/favicon.ico
   sidebar:
     style: "floating"
-    search: false
+    search: true
     contents:
       - section: "Getting Started"
         contents:
@@ -52,8 +52,8 @@ website:
     tools:
         - icon: threads
           href: https://www.threads.net/chaichy
-        - icon: twitter
-          href: https://twitter.com/michael_achmann
+        - icon: twitter-x
+          href: https://x.com/michael_achmann
         - icon: github
           href: https://github.com/michaelachmann/social-media-lab-quarto
     left:

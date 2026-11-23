@@ -44,7 +44,7 @@ Broadly, available approaches fall into three families. None is the universally 
    Packages such as `instaloader` or platform-provided transparency resources (e.g., [Meta Content Library](https://transparency.meta.com/researchtools/meta-content-library); [TikTok Research Tools](https://developers.tiktok.com/products/research-api/)) can offer structured access to posts, accounts, or engagement metrics. Coverage varies, some support only selected public data, and availability is subject to change.
 
 3. **Commercial collection services**
-   Providers like [Apify](https://apify.com) encapsulate scraping, scheduling, logging, and proxy management. These can lower technical complexity.These lower technical overhead but may obscure details about how data were obtained and require researchers to evaluate legal and ethical implications carefully.
+   Providers like [Apify](https://apify.com) encapsulate scraping, scheduling, logging, and proxy management. These lower technical overhead but may obscure details about how data were obtained and require researchers to evaluate legal and ethical implications carefully.
 
 > **Key idea:**
 > *The “best” tool is the one that enables you to answer your question responsibly and transparently, given legal, ethical, and practical constraints.*

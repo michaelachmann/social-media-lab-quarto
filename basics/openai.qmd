@@ -49,10 +49,10 @@ Colab will ask for your permission when using the notebook for the first time. A
 
 The OpenAI Playground is a useful place for (qualitative) experiments with the GPT family. We can set *System Prompts* and add zero to many user messages, including images. Additionally, we can control parameters, like `temperature`, or `response_format`. The sceenshot below showcases the [Literature Review](../notebooks/literature-review-v2.ipynb) prompts in the playground.
 
-![An overview of the playground interface.](../images/openai4.png)
+![An overview of the playground interface.](/images/openai4.png)
 
 
-![Zoomed in on the results in form of a JSON response.](../images/openai5.png)
+![Zoomed in on the results in form of a JSON response.](/images/openai5.png)
 
 
 ## 🚧 Future Work Checklist 🚧
