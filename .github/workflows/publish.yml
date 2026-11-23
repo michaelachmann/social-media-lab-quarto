@@ -6,14 +6,8 @@ on:
   pull_request:
   workflow_dispatch:
 
-# Publishing pushes to the gh-pages branch, which GitHub Pages serves.
 permissions:
-  contents: write
-
-# Only one publish at a time; pull request builds never cancel a publish.
-concurrency:
-  group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.ref || 'publish' }}
-  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+  contents: read
 
 jobs:
   build:
@@ -41,6 +35,27 @@ jobs:
           test -f _site/CNAME
           test -d _site/site_libs/quarto-ojs
 
-      - name: Publish to GitHub Pages
+      - name: Upload Pages artifact
         if: github.event_name != 'pull_request'
-        run: quarto publish gh-pages --no-render --no-browser
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  # Requires Settings > Pages > Source: "GitHub Actions".
+  deploy:
+    if: github.event_name != 'pull_request'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    # Only one deployment at a time; never cancel one in progress.
+    concurrency:
+      group: pages
+      cancel-in-progress: false
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
