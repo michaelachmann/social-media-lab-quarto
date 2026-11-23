@@ -59,7 +59,6 @@ website:
     left:
       - href: index.qmd
         text: Home
-      #- blog.qmd
       - about.qmd
       - href: https://github.com/michaelachmann/social-media-lab
         text: Notebooks 

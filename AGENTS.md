@@ -54,8 +54,7 @@ existing pages and add selected new content. Work on the requested scope;
   disable execution rather than relying on freeze alone.
 - Follow neighboring pages for frontmatter, including title, author details,
   license, bibliography, and citation metadata. Do not invent or change a DOI.
-- `styles.css` holds shared styling. The blog scaffold (`blog.qmd`, `posts/`)
-  is currently disabled in the navbar.
+- `styles.css` holds shared styling. The unused blog scaffold was removed.
 - Preserve `CNAME`, `.nojekyll`, and the `CNAME` resource entry needed for hosting.
 
 ## Public repository and artifacts
