@@ -8,7 +8,7 @@ Original status survey from July 2026; reference checks updated on November 2, 2
 - [ ] Remove committed render artifacts: `notebooks/*.ipynb.html` (7 files) and `.DS_Store`; add `*.ipynb.html` and `.DS_Store` to `.gitignore`.
 - [ ] `processing/bert_classification.ipynb` is **6.5 MB** (saved outputs). Strip heavy outputs and consider moving it to `notebooks/` for consistency (sidebar + embeds would need updating).
 - [ ] Duplicate notebooks: `literature-review.ipynb` vs `literature-review-v2.ipynb` (only v2 is used); `2023_12_11_GPT_Text_Classification.ipynb` + `2`, `3`, `4`. Archive/delete the superseded ones.
-- [ ] Decide fate of the disabled blog scaffold (`blog.qmd`, `posts/` with only `_metadata.yml`): remove, or launch it as a changelog for the weekly updates.
+- [x] Removed the unused blog scaffold (`blog.qmd`, `posts/`).
 - [ ] Decide promote-vs-retire for pages linked in content but missing from the sidebar:
   - `evaluation/label-studio-images.qmd` (linked from 3 pages) — probably promote to sidebar under Evaluation.
   - `image-analysis/ensemble.qmd` and `image-analysis/gephi.qmd` (soft-orphans, linked from exploration/classification).
@@ -38,7 +38,7 @@ Notebooks were not executed.
 - [x] `processing/classification.qmd`: distinguish the four snippet titles by purpose. They link to the same full source notebook in the supplement; numbered local snippets are not separate upstream notebooks.
 - [ ] `basics/openai.qmd`: mixed image paths (`/images/...` vs `../images/...`); unfinished "Future Work" checklist (Track Spending, Response Formats, Batch Processing) — finish or remove.
 - [x] Verified Visual BERTopic references in `image-analysis/exploration.qmd`: local embeds exist; the differently named upstream notebook URL also exists. No path change needed.
-- [ ] Investigate full-render resource copying with Quarto 1.9.38: the full build succeeds but omits OJS and blog-listing libraries; targeted renders of `evaluation/agreement.qmd` and `blog.qmd` restore them. Resolve the empty blog-listing warning with the blog scaffold decision in §1. Notebook execution and exhaustive external-link checks are not part of this verification.
+- [ ] Investigate full-render resource copying with Quarto 1.9.38: the full build succeeds but omits OJS libraries; a targeted render of `evaluation/agreement.qmd` restores them. The blog-listing warning is gone with the removed scaffold. Notebook execution and exhaustive external-link checks are not part of this verification.
 - [x] `data-collection/ig-posts.qmd`: correct the reversed Digital Methods Initiative link and restore stable anchors for Zeeschuimer, Instaloader, and CrowdTangle.
 - [x] Repair stale section links in evaluation, visual analysis, related work, and theory. Escape an Instagram handle in a saved Markdown output so Quarto does not treat it as a citation; displayed text is unchanged. Fix the embedded archive example image to use a site-root path.
 - [ ] `data-collection/index.qmd` (~line 48): duplicated sentence — "These can lower technical complexity.These lower technical overhead but…" — keep one.
