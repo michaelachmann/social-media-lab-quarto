@@ -1,0 +1,46 @@
+name: Build and publish
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+# Publishing pushes to the gh-pages branch, which GitHub Pages serves.
+permissions:
+  contents: write
+
+# Only one publish at a time; pull request builds never cancel a publish.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.ref || 'publish' }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          version: 1.9.38
+
+      # Never execute notebooks in CI: pages use the outputs saved in the
+      # notebooks, and executing them would call paid APIs.
+      - name: Render site
+        run: quarto render --no-execute
+
+      # A full render omits the OJS libraries (see TODO.md); rendering the
+      # one page that uses OJS restores them.
+      - name: Restore OJS resources
+        run: quarto render evaluation/agreement.qmd --no-execute
+
+      - name: Check output
+        run: |
+          test -f _site/index.html
+          test -f _site/CNAME
+          test -d _site/site_libs/quarto-ojs
+
+      - name: Publish to GitHub Pages
+        if: github.event_name != 'pull_request'
+        run: quarto publish gh-pages --no-render --no-browser
