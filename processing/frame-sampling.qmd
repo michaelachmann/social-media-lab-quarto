@@ -1,0 +1,138 @@
+---
+title: "Sampling Images and Video Frames"
+date: 2026-11-02
+format:
+  html: default
+author:
+  - name: Michael Achmann-Denkler
+    id: ma
+    orcid: 0000-0002-4754-7842
+    email: michael.achmann@informatik.uni-regensburg.de
+license: CC BY
+bibliography: ../literature.bib
+---
+
+Preparing a visual corpus involves deciding which images will become observations. A TikTok post might contain a video, a gallery of photographs, and a cover image. These are different sources of visual evidence. A cover can help us browse a collection, but it cannot describe everything shown during a video.
+
+For our winter 2026/27 work with images, we therefore distinguish the **post collection**, the **selection of images within each post**, and the **analysis of those images**. This follows the broader concern of distant viewing: the transformation of visual material into analyzable data requires interpretive decisions [@Arnold2019-ls]. The sampling choices below should be linked to a research question and checked on a pilot collection.
+
+## Start with the Research Question
+
+What would count as evidence for the phenomenon you want to study?
+
+| Research interest | Useful starting point | What still needs checking? |
+|---|---|---|
+| People, settings, or recurring visual motifs | Frames spread across the full video | Brief appearances can fall between sampled frames. |
+| Written slogans and changing text overlays | Denser temporal sampling, followed by OCR | Text may change without a camera cut; small text may be unreadable. |
+| Editing and visual transitions | Shot-boundary detection and inspection of shots | A detected visual change is not automatically a meaningful narrative boundary. |
+| Visual sequences or the relationship between speech and images | Ordered frames with timestamps, transcripts, and access to the original video | Isolated stills omit motion, timing, and audiovisual relationships. |
+| A photo post's visual content | Each downloaded gallery image in its original order | A cover may duplicate an image; files may be missing. |
+
+A frame sample is a reduced representation. Claims about movement, narrative order, or audiovisual framing may require watching the complete video. An image classifier's output alone does not establish a political position, identity, provenance, or audience effect.
+
+## Why Move Beyond the First Frame?
+
+The opening frame may show an introduction, a transition, a black screen, or text that disappears immediately. Selecting only that frame gives every video's opening privileged status. This can be a deliberate design if the research question concerns openings; otherwise it needs justification.
+
+A downloaded cover is also a separate image asset. Keep it labelled as a cover rather than assigning it a timestamp of zero. Even if it resembles a video frame, we have not established where it occurs in the video.
+
+## Compare Sampling Strategies
+
+| Strategy | Selection rule | Advantage | Main limitation |
+|---|---|---|---|
+| First frame or cover | One opening frame or the supplied cover | Small collection; useful for studying openings or covers | Does not cover the rest of the video. |
+| Fixed time interval | For example, one frame every two seconds | A comparable temporal spacing across videos | Longer videos contribute more images; short events can be missed. |
+| Fixed number per video | For example, five frames spread over the duration | A similar image budget per post | A long video is sampled less densely than a short one. |
+| Time-stratified random sample | One randomly selected time within each of several equal intervals | Covers the timeline while avoiding a fixed position in each interval | Requires saved timestamps and a seed; brief events can still be missed. |
+| Shot-based selection | Detect visual cuts, then select a frame within each shot | Can represent changes in visual setting | Sensitive to detector settings; rapid editing contributes more images. |
+| Hybrid selection | A temporal baseline plus additional frames at detected changes | Combines timeline coverage with extra attention to changes | More complex; the added frames change the composition of the sample. |
+
+These are alternative designs, not a ranking of accuracy. Codec keyframes, which support video compression, should not be assumed to be substantively important images.
+
+### Fixed Intervals or a Fixed Number?
+
+Suppose our collection includes a 10-second video and a 60-second video. Sampling at times 0, 2, 4, ... seconds yields 5 and 30 target times respectively, excluding the duration endpoint. Pooling these images would give the longer video six times as many observations. Sampling five frames per video gives both posts the same image budget, but a brief event in the longer video is easier to miss.
+
+For a fixed number of frames, one transparent rule is to divide the duration into equal intervals and use their midpoints:
+
+$$
+t_i = \frac{i + 0.5}{K}D, \qquad i = 0, \ldots, K-1
+$$
+
+Here, $D$ is the video duration in seconds and $K$ is the requested number of frames. With $K=5$, the target times are 10%, 30%, 50%, 70%, and 90% of the duration. These are requested times; record the timestamps of the frames actually decoded. Very short clips may yield the same source frame more than once, so check for repeated source-frame selections.
+
+Prefer timestamps to “every 60th frame” when comparing videos with different or variable frame rates: a fixed frame count does not imply a fixed time interval.
+
+### Scene Changes Need Interpretation
+
+Visual change detectors identify changes in image content. Camera motion, flashes, animation, and transitions can trigger them; a new text overlay or a change in meaning may remain undetected. A boundary frame can itself be blurred or part of a transition. Detecting boundaries and choosing a representative frame **within** a shot are therefore separate steps.
+
+For an exploratory pilot, compare a time-based sample with additional frames around detected changes. Keep the selection reason for each image so the extra images can be inspected separately. Do not describe a threshold as validated until its behavior has been checked on the material of interest.
+
+## Keep Gallery Images as Separate Observations
+
+For photo posts, retain every available gallery image and its order. Keep covers separate from gallery members, and check whether the cover duplicates one of them. A file hash can identify byte-identical files; visual similarity needs a different check and may also flag substantively meaningful repetitions.
+
+The [Tidal Tales import notebook](../notebooks/tidaltales-import.ipynb) currently prepares one representative image per post for the older OCR workflow. Its media manifest retains all listed image references. **Use that full manifest as the starting point for a visual corpus**, rather than the reduced compatibility folder. Check original filenames and metadata to establish gallery order; do not rely on alphabetical sorting, which can place image 10 before image 2.
+
+## Build a Frame and Image Table
+
+The visual workflow needs a second table alongside `df_posts`: one row per selected image, with a stable image identifier. Do not store all frames under the same `<post_id>.jpg` filename.
+
+| Field | Purpose |
+|---|---|
+| `image_id` | Unique identifier for the sampled image and its analysis results |
+| `post_id`, `platform`, `author` | Link to the post table |
+| `source_kind` | Distinguish `video_frame`, `gallery_image`, and `cover` |
+| `source_file`, `image_file` | Original media and prepared image paths |
+| `frame_index`, `timestamp_seconds` | Actual source-frame position; blank for gallery images and covers |
+| `gallery_index` | Original gallery position; blank for video frames |
+| `sampling_strategy`, `sampling_parameters` | Rule and settings, including a random seed where applicable |
+| `requested_timestamp_seconds` | Target time when sampling at specified times |
+| `status` | Distinguish a successfully extracted image from a failed attempt |
+
+Keep a run record with the extraction software version, source-file checksum, and sampling settings. Retain originals and save derived images to a separate directory. Log unavailable or unreadable videos as failures; zero extracted frames does not mean the post contained no relevant visual content.
+
+The older OCR loop stores results under `(author, post_id)`. Feeding several frames from the same post into that loop would not preserve individual frame results. For this workflow, OCR, labels, embeddings, and manual annotations must instead join on `image_id`. A frame-level text table should retain both `image_id` and `post_id` before any aggregation.
+
+## Technical Starting Point: Extract and Inspect
+
+[FFmpeg's `select` filter](https://ffmpeg.org/ffmpeg-filters.html#select_002c-aselect) supports timestamp-based and scene-change selection. Its `scene` value ranges from 0 to 1. The [`showinfo` filter](https://ffmpeg.org/ffmpeg-filters.html#showinfo) reports frame timestamps in seconds as `pts_time`. Record these alongside the output files.
+
+The following terminal examples assume FFmpeg is installed and `video.mp4` is a local file. Create a fresh output folder for each example. They illustrate extraction rules, not a complete batch pipeline or image manifest.
+
+```bash
+mkdir interval_frames
+ffmpeg -n -i video.mp4 -vf "select='isnan(prev_selected_t)+gte(t-prev_selected_t,2)',showinfo" -fps_mode vfr interval_frames/frame_%06d.jpg 2> interval_frames/extraction.log
+```
+
+This keeps the first available frame and then a frame at least two seconds after the previously selected frame. It is a minimum-spacing rule, which can drift from a fixed time grid. The log records the selected frames' timestamps.
+
+```bash
+mkdir change_frames
+ffmpeg -n -i video.mp4 -vf "select='gt(scene,0.3)',showinfo" -fps_mode vfr change_frames/frame_%06d.jpg 2> change_frames/extraction.log
+```
+
+The second example selects boundary candidates; **0.3 is an illustrative threshold**. It can produce no images. These candidates still need inspection before selecting shot representatives. By contrast, FFmpeg's [`fps` filter](https://ffmpeg.org/ffmpeg-filters.html#fps-1) produces a constant output rate by dropping or duplicating frames. Its output timeline should not be confused with the original timestamps.
+
+## Pilot Before Processing the Collection
+
+A practical starting proposal is to compare **five midpoint frames per video** with **a two-second temporal sample**, retaining all available gallery images separately. These values are teaching examples, not established optimal settings or a final seminar requirement.
+
+1. Choose a varied pilot: short and long videos, static scenes, rapid cuts, text overlays, and photo galleries. Document how you selected it.
+2. Watch each pilot video in full and note the people, motifs, text, or events relevant to the research question, including their time windows.
+3. Generate a chronological contact sheet for each sampling strategy, with image IDs and timestamps. Compare it with the original video. Use original-resolution frames when checking small text.
+4. Record relevant events missed by each sample, repeated selections, unreadable text, extraction failures, image counts, and processing costs. Keep extraction coverage separate from classifier or OCR accuracy.
+5. Choose and document a rule. Check sensitivity to a denser or sparser sample before processing the full collection. If you add a frame budget or cap, distribute it across the timeline rather than stopping at the beginning.
+
+In the seminar, the [`02_extract_frames` notebook](https://github.com/michaelachmann/fs-vsma-26/blob/main/notebooks/02_extract_frames.ipynb) implements several of these strategies and writes each to its own folder with a summary table, so the samples can be compared side by side. To try your own rule, add it to the notebook's `CONFIGS` under a new name. Frame-level OCR follows in [`03_ocr`](https://github.com/michaelachmann/fs-vsma-26/blob/main/notebooks/03_ocr.ipynb); both notebooks run on the seminar server, see [preprocessing](preprocessing.qmd).
+
+A small, deliberately varied pilot can reveal failure modes; it does not establish corpus-wide recall. Preserve the pilot observations and unresolved choices in the study's methods record.
+
+## Return to the Post as the Unit of Analysis
+
+Frames from one video are related observations. Splitting them randomly between training and evaluation data can put nearly identical material on both sides. Group splits by post, and consider account-level or other grouping when the research design requires it.
+
+Choose the aggregation rule before comparing posts. “Detected in at least one sampled frame” measures presence **within the sample**; its detection opportunity increases with sample size. The share of positive sampled frames describes that frame sample and is not automatically the share of video duration. Duration estimates require a design with appropriate temporal coverage and weighting; shot-based counts alone do not supply this.
+
+For post-level comparisons, aggregate to posts first and report the number of usable sampled images and failures per post. Preserve frame-level results so that disagreements and alternative aggregation rules remain inspectable. Continue with [visual exploration](../image-analysis/exploration.qmd) or [visual classification](../image-analysis/classification.qmd) once the sampled corpus has been checked.

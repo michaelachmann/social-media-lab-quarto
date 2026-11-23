@@ -28,6 +28,12 @@ citation:
 The previous chapter outlines some literature on [images as data](index.qmd), emphasizing them importance of evaluation and contextualisation of computer vision applications due to biases inherent to our *looking* at images. This chapter introduces several tools and approaches for exploring visual material. These unsupervised approaches are useful for exploring image datasets. The first approaches, [PixPlot](#pixplot) and [PicArrange](#picarrange) are ready-made tools, they are easy to use and display results quickly. On the downside they offer limited options to manipulate the clustering of images (i.e. what features we are interested in). Therefore we take a look at [commercial computer vision APIs](#commercial-computer-vision-apis) as middle ground between setting up your own notebook for using object detection models, and the fully automated approaches above. We approach the labels using two clustering approaches in this chapter: Using network analysis and the modularity algorithm in Gephi finding communities, or using k-means to find k-clusters in our own notebook. The network analysis is based on @Omena2021-gu's manuals and publications. This approach is complex to reproduce for the sheer interest in image exploration (in contrast to Omena et al.'s interests in studying the web entity networks and their evolutions). The k-means approach offers an easier solution for clustering images based on labels provided by a vision API, while being compatible with Memespector, a GUI tool for multiple vision APIs. Finally we will explore BERTopic's multimodal functionality: Using the [vit-gpt2-image-captioning](https://huggingface.co/nlpconnect/vit-gpt2-image-captioning) model, we generate captions for each image and use them for topic modeling. This captioning approach is one option, we will explore more options in union with image classification in the next session.
 
 ::: {.callout-note}
+### Seminar notebook: `06_explore_covers`
+
+For our TikTok corpus, the [`06_explore_covers` notebook](https://github.com/michaelachmann/fs-vsma-26/blob/main/notebooks/06_explore_covers.ipynb) embeds video covers with DINOv2, clusters them with UMAP and HDBSCAN or k-means, and shows the result as an interactive image map. Photo posts without a cover are excluded, and the clusters are exploratory groupings. The notebook reads the shared corpus tables on the seminar server. For the sampled frames, see the [sampling chapter](../processing/frame-sampling.qmd).
+:::
+
+::: {.callout-note}
 I removed several code cells for rendering the results from the recipes below. The notebooks hosted on GitHub (links below the code and on the top-right) include these cells. 
 :::
 
@@ -72,7 +78,7 @@ Both methods begin with [Memespector](https://github.com/jason-chao/memespector-
 
 ![Each computer vision provides offers multiple models. For image explorations I suggest to invoke the labels. Additionally we can invoke the text (OCR) model for the later processing of embedded text.](../images/memespector-options.png){width="50%"}
 
-Once the API calls succeeded, we can go on and create [an image-label-network](#step-by-step-towards-a-graph), or [cluster the images based on their labels using k-means](#clustering-with-k-means). 
+Once the API calls succeeded, we can go on and create [an image-label-network](#visual-network-analysis), or [cluster the images based on their labels using k-means](#clustering-with-k-means).
 
 ## Visual Network Analysis
 :::{.column-screen-inset}

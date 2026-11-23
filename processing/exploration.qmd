@@ -50,6 +50,12 @@ In the previous session we talked about [text as data](index.qmd), suggesting th
 * [The Updated Topic Modeling Notebook is available on GitHub](https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2024_11_18_BERTopic_V2.ipynb).
 :::
 
+::: {.callout-note}
+### Seminar notebook: `05_explore_texts`
+
+For the seminar corpus, the [`05_explore_texts` notebook](https://github.com/michaelachmann/fs-vsma-26/blob/main/notebooks/05_explore_texts.ipynb) runs a multilingual BERTopic on captions, transcripts, OCR text, or one combined document per post. It reports how much of the corpus each text source covers, supports inspecting the topics, and includes an interactive text map. Topics are exploratory groupings, not validated categories. The notebook reads the shared corpus tables on the seminar server.
+:::
+
 {{< embed ../notebooks/2023_12_01_BERTopic.ipynb echo=true >}}
 
 
