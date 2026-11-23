@@ -34,6 +34,7 @@ The course material is being revised for winter 2026/27. **Status below: 2 Novem
 |----------|-----------------------|
 | [Course organisation](getting-started/index.qmd) | **Updated:** this semester's focus, schedule, and report guidance. Formal requirements and deadlines remain subject to confirmation in GRIPS. |
 | [TikTok collection](data-collection/tiktok.qmd) | **New guide:** collecting media and metadata with Tidal Tales, with an alternative collection workflow and sampling limitations. |
+| [Annotation Studies](evaluation/annotation-studies.qmd) | **New draft:** how we select items, build, code, and adjudicate annotation rounds on the seminar server. Screenshots and export details still to be added. |
 | [Agreement and evaluation](evaluation/agreement.qmd) | **Revised:** checked interactive examples, nominal agreement, binary and macro F1, and a prominently linked evaluation notebook. |
 | [Data preparation](processing/preprocessing.qmd) | **In revision:** importing current exports and preparing image and video observations. Older OCR and transcription examples remain available. |
 | [Tools](basics/tools.qmd) and [API basics](basics/openai.qmd) | **Needs an update:** tool setup, screenshots, and API examples. |
@@ -47,7 +48,7 @@ The course material is being revised for winter 2026/27. **Status below: 2 Novem
 - [Data collection in a post-API world](data-collection/index.qmd): conceptual, ethical, and legal considerations. Check current access conditions before choosing a collection method.
 - [Instagram posts](data-collection/ig-posts.qmd) and [stories](data-collection/ig-stories.qmd): existing workflows and explicitly marked historical approaches. Their current tool compatibility still needs review.
 - [Text as data and data organisation](processing/index.qmd) and [images as data](image-analysis/index.qmd): foundations for preparing and interpreting computational observations.
-- [Human annotations](evaluation/index.qmd) and [image annotations](evaluation/label-studio-images.qmd): coding instructions and Label Studio examples.
+- [Human annotations](evaluation/index.qmd) and [image annotations](evaluation/label-studio-images.qmd): coding instructions and Label Studio examples, kept as a general-purpose approach.
 - [Fine-tuning BERT](processing/bert_classification.ipynb): an earlier notebook for binary text classification, to be reviewed before reuse.
 - [GPT literature assistant](notebooks/literature-review-v2.ipynb): an archived API example, retained for reference.
 - [Student projects](projects/index.qmd): examples from earlier course iterations.

@@ -44,6 +44,7 @@ website:
       - section: "Evaluation"
         contents:
           - evaluation/index.qmd
+          - evaluation/annotation-studies.qmd
           - evaluation/agreement.qmd
       - reporting/index.qmd
       - projects/index.qmd

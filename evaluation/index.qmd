@@ -3,6 +3,7 @@ format:
   html: default
 title: "Human Annotations"    
 date: 2024-12-09
+date-modified: 2026-11-23
 author:
   - name: Michael Achmann-Denkler
     id: ma
@@ -18,12 +19,17 @@ notebook-links: false
 
 In computational social media analysis, validation is crucial for ensuring the accuracy and reliability of text analysis methods. As highlighted by @Birkenmaier2023-nt, validation entails both internal and external processes. Internal validation assess a model's plausibility and quality within the data context and tends to rely researchers' judgment, whereas external validation compares model outputs with external benchmarks, such as human-annotated labels. @Baden2022-oe further emphasize the significance of continuous evaluation and transparent reporting of validation steps and results. Additionally, they criticize the the frequent oversight in evaluating the validity of the actual measures. This problem arises when researchers focus more on the technical performance of their models, neglecting to verify whether these models accurately represent the intended social phenomena. This gap can lead to results that are statistically sound but lack real-world relevance.
 
-In context of our research projects we'll focus on external validation through non-expert annotations using LabelStudio, a practical aspect of the validation approach. Our focus will be on generating gold standard data for an external validation. This is crucial because external validation, through methods like crowd annotation, directly assesses how well computational models perform against real-world data. The setup of LabelStudio projects and the creation of annotation manuals are key steps in this process, ensuring that the data used for validation is accurately and consistently labeled, providing a solid foundation for assessing model performance. Although the evaluation of the actual measures is important [@Baden2022-oe], our discussion will concentrate on these practical aspects of external validation.
+In context of our research projects we'll focus on external validation through non-expert annotations, a practical aspect of the validation approach. This page introduces the general approach with Label Studio, a widely used annotation interface; in winter 2026/27 we run our annotation rounds with the seminar's own tool (see the callout below). Our focus will be on generating gold standard data for an external validation. This is crucial because external validation, through methods like crowd annotation, directly assesses how well computational models perform against real-world data. The setup of LabelStudio projects and the creation of annotation manuals are key steps in this process, ensuring that the data used for validation is accurately and consistently labeled, providing a solid foundation for assessing model performance. Although the evaluation of the actual measures is important [@Baden2022-oe], our discussion will concentrate on these practical aspects of external validation.
 
-Having humans coders annotate your social media content is the first part of generating a gold standard dataset. The second step will the the evaluation of the annotations, to validate their quality. We will use the interrater agreement as measurement for the coherence of our annotations. We will focus on this topic in the next session.
+Having humans coders annotate your social media content is the first part of generating a gold standard dataset. The second step will the the evaluation of the annotations, to validate their quality. We will use the interrater agreement as measurement for the coherence of our annotations. We will focus on this topic in the [next chapter](agreement.qmd).
+
+::: {.callout-tip}
+## Winter 2026/27: Annotation Studies
+For our seminar, we create, code, and adjudicate annotation rounds with the Annotation Studies tool on the seminar server. [Annotation Studies](annotation-studies.qmd) describes that workflow. The sections on the annotation manual below apply to any tool; the Label Studio setup remains a general-purpose alternative.
+:::
 
 ::: {.callout-important}
-## Update 2024
+## Update 2024 (Label Studio)
 * [Link to Notebook](https://colab.research.google.com/github/michaelachmann/social-media-lab/blob/main/notebooks/2023_12_14_Create_LabelStudio_Text_Evaluation.ipynb).
 * Added new sources to the [recommended reading section](#recommended-reading).
 * Small updates to text incorporating new sources.
