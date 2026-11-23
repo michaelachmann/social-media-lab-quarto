@@ -99,5 +99,6 @@ rtk quarto preview --no-execute
 
 The GitHub Actions workflow `.github/workflows/publish.yml` renders the site
 with `--no-execute` on every pull request and publishes to GitHub Pages when a
-change reaches `main`, so merging to `main` publishes. Manual publishing with
-`rtk quarto publish gh-pages` still requires an explicit user request.
+change reaches `main` (artifact deploy via `actions/deploy-pages`; Pages source
+must be "GitHub Actions"), so merging to `main` publishes. Do not publish
+manually with `quarto publish gh-pages`; it no longer feeds the live site.

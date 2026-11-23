@@ -120,19 +120,12 @@ Ensure that all navigational links, images, and content appear as intended and t
 
 ### Publish Website to GitHub Pages
 
-Once you are satisfied with your changes and have committed them to your branch, you can publish the website to GitHub Pages.
+The website is published automatically by the GitHub Actions workflow `.github/workflows/publish.yml`. Pull requests are rendered (without executing notebooks) as a check; merging to `main` deploys the site to GitHub Pages. This requires **Settings → Pages → Source: GitHub Actions**.
 
-1.  **Publish with Quarto**
-    -   Use Quarto to publish the website to GitHub Pages by running:
-
-        ```         
-        quarto publish gh-pages
-        ```
-
-        If you're using a custom domain or path, you might need to provide additional arguments. Refer to the [Quarto documentation](https://quarto.org/docs/publishing/github-pages.html) for more details.
+1.  **Open a pull request** and make sure the build check passes.
 2.  **Verify Live Website**
-    -   An administrator will have to approve your publish request.
-    -   Once published, visit [the website](https://social-media-lab.net/) and confirm that all changes are reflected accurately.
+    -   An administrator reviews and merges the pull request.
+    -   Once the workflow has finished, visit [the website](https://social-media-lab.net/) and confirm that all changes are reflected accurately.
 
 ## Contact
 
