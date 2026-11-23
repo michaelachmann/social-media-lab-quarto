@@ -72,7 +72,7 @@ Both methods begin with [Memespector](https://github.com/jason-chao/memespector-
 
 ![Each computer vision provides offers multiple models. For image explorations I suggest to invoke the labels. Additionally we can invoke the text (OCR) model for the later processing of embedded text.](../images/memespector-options.png){width="50%"}
 
-Once the API calls succeeded, we can go on and create [an image-label-network](#step-by-step-towards-a-graph), or [cluster the images based on their labels using k-means](#clustering-with-k-means). 
+Once the API calls succeeded, we can go on and create [an image-label-network](#visual-network-analysis), or [cluster the images based on their labels using k-means](#clustering-with-k-means).
 
 ## Visual Network Analysis
 :::{.column-screen-inset}

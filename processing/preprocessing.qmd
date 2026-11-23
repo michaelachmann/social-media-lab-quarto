@@ -3,6 +3,7 @@ format:
   html: default
 title: "Data Preprocessing"
 date: 2024-11-18
+date-modified: 2026-11-02
 author:
   - name: Michael Achmann-Denkler
     id: ma
@@ -16,7 +17,7 @@ citation:
 notebook-view:
   - notebook: ../notebooks/2024_11_11_Preprocessing.ipynb
     title: "Preprocessing"
-    url: https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2024_11_12_Zeeschuimer_Import_w_Gallery.ipynb
+    url: https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2024_11_11_Preprocessing.ipynb
   - notebook: ../notebooks/corpus-analysis-notebook.ipynb
     title: "Introduction to Corpus Analysis"
     url: https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2023_11_24_Simple_Corpus_Analysis.ipynb
@@ -25,24 +26,38 @@ notebook-links: false
 ---
 
 
-Preprocessing is an important step in the computational analysis of social media data, especially when dealing with multimodal content such as images, videos, and audio. This chapter introduces techniques to transform visual and audio content into computer-readable text, allowing us to apply well-established text analysis methods [@Baden2022-oe] to platforms like Instagram and TikTok. Although these platforms are primarily visual, extracting text enables us to leverage advanced computational social science techniques to derive meaningful insights from embedded and spoken content.
+Preprocessing prepares collected media for analysis. This includes deciding which images and video frames become observations, keeping links to the original posts, and extracting written or spoken text where it helps answer the research question. Converting visual material into text enables established text-analysis methods [@Baden2022-oe], while retaining images allows us to study visual content directly.
 
-The following sections provide a detailed overview of the preprocessing steps we use for text extraction. Instagram posts often contain embedded text, and videos posted on TikTok or Instagram frequently include audio layers, which we can convert into analyzable textual data. We use Optical Character Recognition (OCR) for text extraction from images, and for audio content, we apply the Whisper model for transcription. Additionally, we conclude this chapter with a simple application of corpus analytics to explore word frequencies within the extracted content.
+For winter 2026/27, use the following workflow:
 
-::: {.callout-important}
-**Update 2024:** [I updated the Notebook](https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2024_11_11_Preprocessing.ipynb) to use the OpenAI API. for Whisper and included the new Tidal Tales file format. Additionally, the new notebook extracts the first frame from any video.
+1. Import the collection and check metadata and local media.
+2. [Select gallery images and sample video frames](frame-sampling.qmd) according to the research question.
+3. Inspect the visual sample and retain an image-level table before starting [image analysis](../image-analysis/index.qmd).
+4. Add OCR and audio transcription when the analysis also requires written or spoken content.
 
-The original [OCR Notebook](https://colab.research.google.com/github/michaelachmann/social-media-lab/blob/main/notebooks/2023_11_24_OCR.ipynb) and [Whisper Notebook](https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2023_11_24_Whisper.ipynb) are still available.
+## Import a Current Tidal Tales Export
+
+Start with the [Tidal Tales import notebook](../notebooks/tidaltales-import.ipynb) when using a current CSV export. It maps TikTok metadata to the `df_posts` table expected below, checks local media, and prepares the `posts/images/<author>/<id>.jpg` and `posts/videos/<author>/<id>.<extension>` layout. Keep the exported CSV and the downloaded `tidaltales/` directory together; the CSV alone contains no media.
+
+The notebook makes duplicate handling explicit and saves a media manifest, including missing files and all gallery-image references. The compatibility export uses one representative image per post for the older OCR loop. Follow its handoff instructions to set the paths in the preprocessing notebook and retain the actual image filename in the Text Master.
+
+## Sample Images and Video Frames
+
+The [image and frame sampling chapter](frame-sampling.qmd) compares fixed time intervals, a fixed number of frames per video, random selection within time intervals, and shot-based strategies. It introduces a pilot workflow and an image-level table linking each selected frame to its post and timestamp. Covers and first frames remain useful for specific questions, but are not the default representation of an entire video.
+
+For galleries, retain the individual images and their order. The import notebook's one-image compatibility export is intended for the older OCR loop; use the full media manifest for the visual workflow.
+
+## OCR & Whisper
+
+::: {.callout-note}
+### Earlier text-extraction workflow
+
+The embedded 2024 notebook below is retained for its OCR and transcription examples. Its post-level image handling does not preserve results for multiple frames or gallery images from the same post. The new visual workflow requires image-level identifiers, as described in the [sampling chapter](frame-sampling.qmd). The original [OCR notebook](https://colab.research.google.com/github/michaelachmann/social-media-lab/blob/main/notebooks/2023_11_24_OCR.ipynb) and [Whisper notebook](https://github.com/michaelachmann/social-media-lab/blob/main/notebooks/2023_11_24_Whisper.ipynb) remain available as historical examples.
 :::
-
-
-### OCR & Whisper
 
 {{< embed ../notebooks/2024_11_11_Preprocessing.ipynb echo=true >}}
 
 
-## Conclusion
-In summary, this session provided us with the foundations to use Python, pandas, and Jupyter notebooks for the computational analysis of multimodal social media data. Our adherence to Tidy Data principles and the integration of technologies like OCR and Whisper are integral to extract and analyze textual content from multimedia sources. In the next session we will keep exploring the content through a textual lens. Further, we will use prompting as a technique to classify texts as part of a computational content analysis.
+## Next Steps
 
-
-
+Retain the original media, the post table, and the image-level sampling record. Check extraction quality and sampling coverage before interpreting automated results. Continue with [visual exploration](../image-analysis/exploration.qmd) and [classification](../image-analysis/classification.qmd), or use extracted text in the [text-analysis workflow](index.qmd).
