@@ -116,7 +116,13 @@ The [TikTok Scraper by Clockworks on Apify](https://apify.com/clockworks/tiktok-
 
 Keep the run ID, collection date, input settings, and Actor version/build information with your dataset. Check the storage retention settings and save your own copy promptly. As with browser capture, inspect missing items and apply your inclusion criteria; a result limit does not guarantee complete coverage of a topic or account.
 
-For our seminar, Tidal Tales remains the first choice for collecting directly to the local machine. Apify is an alternative when managed runs fit the project and its budget. Include the use of an external collection and storage service in your project's data-management decisions.
+For our seminar, Tidal Tales remains the first choice for collecting directly to the local machine. Apify is an alternative when managed runs fit the project and its budget.
+
+::: {.callout-note}
+### Seminar notebook: `00_collect_apify`
+
+The [`00_collect_apify` notebook](https://github.com/michaelachmann/fs-vsma-26/blob/main/notebooks/00_collect_apify.ipynb) in our [seminar repository](https://github.com/michaelachmann/fs-vsma-26) wraps the workflow above. You enter your own token through a hidden prompt, set a maximum run cost, and review the inputs before starting a run. The notebook keeps the exact request, run and build identifiers, and the original dataset rows in a private export, then downloads and prepares media and metadata for the shared seminar corpus. It runs on the seminar's JupyterHub server, and you receive your login from your instructor. Success does not guarantee complete coverage, so inspect the results before submitting them to the corpus.
+::: Include the use of an external collection and storage service in your project's data-management decisions.
 
 ## Preparing for Analysis
 

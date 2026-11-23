@@ -35,6 +35,19 @@ For winter 2026/27, use the following workflow:
 3. Inspect the visual sample and retain an image-level table before starting [image analysis](../image-analysis/index.qmd).
 4. Add OCR and audio transcription when the analysis also requires written or spoken content.
 
+::: {.callout-note}
+### Seminar server pipeline
+
+In the seminar we run these steps as notebooks on a shared JupyterHub server with a GPU, so that the whole class works from one corpus. They are published in the [`fs-vsma-26` repository](https://github.com/michaelachmann/fs-vsma-26):
+
+1. [`02_extract_frames`](https://github.com/michaelachmann/fs-vsma-26/blob/main/notebooks/02_extract_frames.ipynb) samples frames with several strategies and compares them (see the [sampling chapter](frame-sampling.qmd)).
+2. [`01_transcribe`](https://github.com/michaelachmann/fs-vsma-26/blob/main/notebooks/01_transcribe.ipynb) transcribes videos with Whisper.
+3. [`03_ocr`](https://github.com/michaelachmann/fs-vsma-26/blob/main/notebooks/03_ocr.ipynb) reads on-screen text in the extracted frames, and [`03b_clean_ocr`](https://github.com/michaelachmann/fs-vsma-26/blob/main/notebooks/03b_clean_ocr.ipynb) repairs OCR errors with a local Gemma model and flags results containing text the OCR never saw.
+4. [`04_build_tables`](https://github.com/michaelachmann/fs-vsma-26/blob/main/notebooks/04_build_tables.ipynb) builds the tidy tables for metadata, texts, images, collections, and comments.
+
+Transcription and the default extraction and OCR strategies normally run once for the whole seminar, so check with your instructor before running them yourself. The notebooks need the seminar server and its corpus, which are not public. The Tidal Tales import and the embedded notebook below remain the route for working on your own machine.
+:::
+
 ## Import a Current Tidal Tales Export
 
 Start with the [Tidal Tales import notebook](../notebooks/tidaltales-import.ipynb) when using a current CSV export. It maps TikTok metadata to the `df_posts` table expected below, checks local media, and prepares the `posts/images/<author>/<id>.jpg` and `posts/videos/<author>/<id>.<extension>` layout. Keep the exported CSV and the downloaded `tidaltales/` directory together; the CSV alone contains no media.

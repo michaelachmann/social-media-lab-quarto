@@ -125,6 +125,8 @@ A practical starting proposal is to compare **five midpoint frames per video** w
 4. Record relevant events missed by each sample, repeated selections, unreadable text, extraction failures, image counts, and processing costs. Keep extraction coverage separate from classifier or OCR accuracy.
 5. Choose and document a rule. Check sensitivity to a denser or sparser sample before processing the full collection. If you add a frame budget or cap, distribute it across the timeline rather than stopping at the beginning.
 
+In the seminar, the [`02_extract_frames` notebook](https://github.com/michaelachmann/fs-vsma-26/blob/main/notebooks/02_extract_frames.ipynb) implements several of these strategies and writes each to its own folder with a summary table, so the samples can be compared side by side. To try your own rule, add it to the notebook's `CONFIGS` under a new name. Frame-level OCR follows in [`03_ocr`](https://github.com/michaelachmann/fs-vsma-26/blob/main/notebooks/03_ocr.ipynb); both notebooks run on the seminar server, see [preprocessing](preprocessing.qmd).
+
 A small, deliberately varied pilot can reveal failure modes; it does not establish corpus-wide recall. Preserve the pilot observations and unresolved choices in the study's methods record.
 
 ## Return to the Post as the Unit of Analysis
